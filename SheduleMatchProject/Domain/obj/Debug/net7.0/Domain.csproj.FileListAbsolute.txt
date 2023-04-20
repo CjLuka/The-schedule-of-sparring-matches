@@ -1,0 +1,12 @@
+F:\Praca dyplomowa\Projekt\SheduleMatchProject\Domain\bin\Debug\net7.0\Domain.deps.json
+F:\Praca dyplomowa\Projekt\SheduleMatchProject\Domain\bin\Debug\net7.0\Domain.dll
+F:\Praca dyplomowa\Projekt\SheduleMatchProject\Domain\bin\Debug\net7.0\Domain.pdb
+F:\Praca dyplomowa\Projekt\SheduleMatchProject\Domain\obj\Debug\net7.0\Domain.csproj.AssemblyReference.cache
+F:\Praca dyplomowa\Projekt\SheduleMatchProject\Domain\obj\Debug\net7.0\Domain.GeneratedMSBuildEditorConfig.editorconfig
+F:\Praca dyplomowa\Projekt\SheduleMatchProject\Domain\obj\Debug\net7.0\Domain.AssemblyInfoInputs.cache
+F:\Praca dyplomowa\Projekt\SheduleMatchProject\Domain\obj\Debug\net7.0\Domain.AssemblyInfo.cs
+F:\Praca dyplomowa\Projekt\SheduleMatchProject\Domain\obj\Debug\net7.0\Domain.csproj.CoreCompileInputs.cache
+F:\Praca dyplomowa\Projekt\SheduleMatchProject\Domain\obj\Debug\net7.0\Domain.dll
+F:\Praca dyplomowa\Projekt\SheduleMatchProject\Domain\obj\Debug\net7.0\refint\Domain.dll
+F:\Praca dyplomowa\Projekt\SheduleMatchProject\Domain\obj\Debug\net7.0\Domain.pdb
+F:\Praca dyplomowa\Projekt\SheduleMatchProject\Domain\obj\Debug\net7.0\ref\Domain.dll

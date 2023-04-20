@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\SheduleMatchWeb.props" />
+</Project>
