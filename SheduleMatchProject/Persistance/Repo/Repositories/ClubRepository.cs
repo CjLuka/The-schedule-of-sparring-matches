@@ -24,5 +24,9 @@ namespace Persistance.Repo.Repositories
             Console.WriteLine(Clubs);
             return Clubs;
         }
+        public Task AddAsync(Club club)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

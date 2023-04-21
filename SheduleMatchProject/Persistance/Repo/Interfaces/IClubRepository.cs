@@ -10,5 +10,6 @@ namespace Persistance.Repo.Interfaces
     public interface IClubRepository
     {
         Task<List<Club>> GetAllAsync();
+        Task AddAsync(Club club);
     }
 }
