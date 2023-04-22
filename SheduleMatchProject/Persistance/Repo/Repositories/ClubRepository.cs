@@ -21,12 +21,33 @@ namespace Persistance.Repo.Repositories
         public async Task<List<Club>> GetAllAsync()
         {
             var Clubs = await _context.Clubs.ToListAsync();
-            Console.WriteLine(Clubs);
+            Console.WriteLine(Clubs);//Do testów
             return Clubs;
         }
-        public Task AddAsync(Club club)
+        public async Task<Club> GetByIdAsync(int clubId)
         {
-            throw new NotImplementedException();
+            return await _context.Clubs.FirstOrDefaultAsync(c => c.Id == clubId);
+        }
+
+        public async Task<Club> GetByNameAsync(string name)
+        {
+            return await _context.Clubs.FirstAsync(c => c.Name == name);
+        }
+        public async Task AddAsync(Club club)
+        {
+            var newClub = await _context.Clubs.AddAsync(club);
+            await _context.SaveChangesAsync();
+        }
+        public async Task DeleteAsync(Club club)
+        {
+            _context.Clubs.Remove(club);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task UpdateAsync(Club club)
+        {
+            _context.Clubs.Update(club);
+            await _context.SaveChangesAsync();
         }
     }
 }

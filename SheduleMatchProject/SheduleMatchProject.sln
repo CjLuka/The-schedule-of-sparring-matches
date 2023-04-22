@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{69576358-022C-4B8B-A8A6-41D18417186F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Domain\Domain.csproj", "{69576358-022C-4B8B-A8A6-41D18417186F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Persistance", "Persistance\Persistance.csproj", "{69173989-650A-45FC-88F8-BFD1549AF1F4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Persistance", "Persistance\Persistance.csproj", "{69173989-650A-45FC-88F8-BFD1549AF1F4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SheduleMatchWeb", "SheduleMatchWeb\SheduleMatchWeb.csproj", "{02ABD1CB-E52B-4EA4-A1E3-F30FA6D0B54C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SheduleMatchWeb", "SheduleMatchWeb\SheduleMatchWeb.csproj", "{02ABD1CB-E52B-4EA4-A1E3-F30FA6D0B54C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aplication", "Aplication\Aplication.csproj", "{F9BE6D74-A2D5-4DF7-B4E5-57F5A26E6DD3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aplication", "Aplication\Aplication.csproj", "{F9BE6D74-A2D5-4DF7-B4E5-57F5A26E6DD3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -16,6 +16,10 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = F:\Praca dyplomowa\Projekt\SheduleMatchProject\SheduleMatchWeb
 build_property._RazorSourceGeneratorDebug = 
 
+[F:/Praca dyplomowa/Projekt/SheduleMatchProject/SheduleMatchWeb/Pages/Club/ShowAllClubs.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2x1YlxTaG93QWxsQ2x1YnMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [F:/Praca dyplomowa/Projekt/SheduleMatchProject/SheduleMatchWeb/Pages/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
