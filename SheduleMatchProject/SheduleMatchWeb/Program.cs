@@ -1,7 +1,10 @@
+using Aplication.Services.Interfaces;
+using Aplication.Services.Services;
 using Microsoft.EntityFrameworkCore;
 using Persistance.Data;
 using Persistance.Repo.Interfaces;
 using Persistance.Repo.Repositories;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
@@ -10,6 +13,9 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddScoped<IClubRepository, ClubRepository>();
+builder.Services.AddScoped<IGameClassRepository, GameClassRepository>();
+builder.Services.AddScoped<IClubServices, ClubServices>();
+builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

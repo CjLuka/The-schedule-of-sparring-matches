@@ -31,11 +31,11 @@ namespace Persistance.Repo.Repositories
 
         public async Task<Club> GetByNameAsync(string name)
         {
-            return await _context.Clubs.FirstAsync(c => c.Name == name);
+            return await _context.Clubs.FirstOrDefaultAsync(c => c.Name == name);
         }
         public async Task AddAsync(Club club)
         {
-            var newClub = await _context.Clubs.AddAsync(club);
+            await _context.Clubs.AddAsync(club);
             await _context.SaveChangesAsync();
         }
         public async Task DeleteAsync(Club club)

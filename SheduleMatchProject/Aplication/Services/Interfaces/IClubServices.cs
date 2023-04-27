@@ -11,5 +11,6 @@ namespace Aplication.Services.Interfaces
     public interface IClubServices
     {
         Task<ServiceResponse<List<Club>>> GetAllAsync();
+        Task<ServiceResponse<Club>> AddClubAsync(Club club);
     }
 }
