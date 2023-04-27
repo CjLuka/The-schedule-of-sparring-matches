@@ -9,6 +9,6 @@ namespace Persistance.Repo.Interfaces
 {
     public interface IGameClassRepository
     {
-        Task<List<GameClass>> GetAll();
+        Task<List<GameClass>> GetAllAsync();
     }
 }

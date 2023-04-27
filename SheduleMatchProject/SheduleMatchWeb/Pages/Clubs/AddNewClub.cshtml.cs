@@ -11,12 +11,19 @@ namespace SheduleMatchWeb.Pages.Clubs
     public class AddNewClubModel : PageModel
     {
         private readonly IClubServices _clubServices;
-        private readonly IGameClassRepository _gameClassRepository;
-        public AddNewClubModel(IClubServices clubServices, IGameClassRepository gameClassRepository)
+        private readonly IGameClassServices _gameClassServices;
+        public AddNewClubModel(IClubServices clubServices, IGameClassServices gameClassServices)
         {
             _clubServices = clubServices;
-            _gameClassRepository = gameClassRepository;
+            _gameClassServices = gameClassServices;
         }
+
+        //private readonly IGameClassRepository _gameClassRepository;
+        //public AddNewClubModel(IClubServices clubServices, IGameClassRepository gameClassRepository)
+        //{
+        //    _clubServices = clubServices;
+        //    _gameClassRepository = gameClassRepository;
+        //}
         [BindProperty]
         public Club NewClub { get; set; }
         [BindProperty]
@@ -25,12 +32,12 @@ namespace SheduleMatchWeb.Pages.Clubs
         public async Task <IActionResult> OnGetAsync()
         {
             List<SelectListItem> GameClassess = new List<SelectListItem>();
-            var AllGameClassess = await _gameClassRepository.GetAll();
+            var AllGameClassess = await _gameClassServices.GetAllAsync();
             foreach (var item in AllGameClassess)
             {
                 GameClassess.Add(new SelectListItem { Text = item.Name, Value = item.Id.ToString() });
             }
-            ViewData["demo"] = GameClassess;
+            ViewData["klasyRozgrywkowe"] = GameClassess;
             return Page();
         }
         public async Task<IActionResult> OnPostAsync()

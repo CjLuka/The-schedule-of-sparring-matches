@@ -15,6 +15,7 @@ builder.Services.AddRazorPages();
 builder.Services.AddScoped<IClubRepository, ClubRepository>();
 builder.Services.AddScoped<IGameClassRepository, GameClassRepository>();
 builder.Services.AddScoped<IClubServices, ClubServices>();
+builder.Services.AddScoped<IGameClassServices, GameClassServices>();
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 var app = builder.Build();
 

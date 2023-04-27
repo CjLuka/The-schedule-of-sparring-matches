@@ -17,7 +17,7 @@ namespace Persistance.Repo.Repositories
             _context = context;
         }
 
-        public async Task<List<GameClass>> GetAll()
+        public async Task<List<GameClass>> GetAllAsync()
         {
             var gameClassList =  _context.GameClasses.ToList();
             return gameClassList;
