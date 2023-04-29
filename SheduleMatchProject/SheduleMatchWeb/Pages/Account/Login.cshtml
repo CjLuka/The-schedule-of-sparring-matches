@@ -1,0 +1,30 @@
+﻿@page
+@model SheduleMatchWeb.Pages.Account.LoginModel
+@{
+}
+
+<div class="container border" style="padding:20px">
+    <form method="post">
+        <div class="form-group-row">
+            <div class="col-2">
+                <label>Test</label>
+            </div>
+            <div class="col-5">
+                <input type="text" asp-for="User.Email" class="form-control" />
+            </div>
+        </div>
+        <div class="form-group-row">
+            <div class="col-2">
+                <label asp-for="User.Password"></label>
+            </div>
+            <div class="col-5">
+                <input type="password" asp-for="User.Password" class="form-control" />
+            </div>
+        </div>
+        <div class="form-group-row">
+            <div class="col-2">
+                <input type="submit" class="btn btn-primary" value="Zaloguj się!" />
+            </div>
+        </div>
+    </form>
+</div>

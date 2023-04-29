@@ -17,13 +17,6 @@ namespace SheduleMatchWeb.Pages.Clubs
             _clubServices = clubServices;
             _gameClassServices = gameClassServices;
         }
-
-        //private readonly IGameClassRepository _gameClassRepository;
-        //public AddNewClubModel(IClubServices clubServices, IGameClassRepository gameClassRepository)
-        //{
-        //    _clubServices = clubServices;
-        //    _gameClassRepository = gameClassRepository;
-        //}
         [BindProperty]
         public Club NewClub { get; set; }
         [BindProperty]
@@ -31,29 +24,29 @@ namespace SheduleMatchWeb.Pages.Clubs
         
         public async Task <IActionResult> OnGetAsync()
         {
-            List<SelectListItem> GameClassess = new List<SelectListItem>();
-            var AllGameClassess = await _gameClassServices.GetAllAsync();
+            //Potrzebne przy tworzeniu nowego klubu, aby móc wybieraæ klasê rozgrywkow¹ z listy
+            List<SelectListItem> GameClassess = new List<SelectListItem>();//Utworzenie selectlisty
+            var AllGameClassess = await _gameClassServices.GetAllAsync();//Pobranie wszystkich klas rozgrywkowych
             foreach (var item in AllGameClassess)
             {
-                GameClassess.Add(new SelectListItem { Text = item.Name, Value = item.Id.ToString() });
+                GameClassess.Add(new SelectListItem { Text = item.Name, Value = item.Id.ToString() });//przypisanie wszystkich klas rozgrywkowych do selectlisty
             }
-            ViewData["klasyRozgrywkowe"] = GameClassess;
+            ViewData["klasyRozgrywkowe"] = GameClassess;//przypisanie klas rozgrywkowych do ViewData
             return Page();
         }
         public async Task<IActionResult> OnPostAsync()
         {
-            foreach (var item in GameClassess)
-            {
-                GameClassess.Add(item);
-            }
+            //foreach (var item in GameClassess)
+            //{
+            //    GameClassess.Add(item);
+            //}
             //var addNewClub = await _clubServices.AddClubAsync(NewClub);
             NewClub.CreatedDate = DateTime.Now;
             NewClub.CreatedBy = "LukaTesty";
             NewClub.LastModifiedBy = "LukaTesty";
-            //NewClub.GameClass = 1;
             await _clubServices.AddClubAsync(NewClub);
 
-            return RedirectToPage("../Index");
+            return RedirectToPage("../Clubs/ShowAllClubs");
         }
     }
 }

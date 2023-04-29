@@ -13,12 +13,15 @@
            </div>
            <div class="mb-3">
                 <label for="Data" class="form-label">
-                    Podaj Date utworzenia:
+                    Podaj date utworzenia:
                 </label>
-                <input id="Data" type="date" class="form-control" asp-for="NewClub.CreatedDate" />
+                <input id="Data" type="date" class="form-control" asp-for="NewClub.DateCreated" />
            </div>
+            <label class="form-label">
+                Podaj klasę rozgrywkową klubu:
+            </label>
            <div class="form-group">
-                <select asp-for="NewClub.GameClassId" asp-items="@(ViewData["klasyRozgrywkowe"] as IEnumerable<SelectListItem>)"></select> 
+                <select class="form-select" aria-label="Default select example" asp-for="NewClub.GameClassId" asp-items="@(ViewData["klasyRozgrywkowe"] as IEnumerable<SelectListItem>)"></select>
                 <span asp-validation-for="GameClassess" class="text-danger"></span>
               </div>
 
