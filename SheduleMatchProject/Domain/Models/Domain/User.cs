@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Domain.Models.Domain
 {
-    public class User : AuditableEntity
+    public class User 
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }

@@ -1,0 +1,35 @@
+﻿@page
+@model SheduleMatchWeb.Pages.Account.RegisterModel
+@{
+}
+
+<div class="container mx-auto">
+    <div class="row justify-content-center">
+        <div class="col-12 col-lg-6">
+            <h1 class="mb-3 h3">Rejestracja</h1>
+
+            <form method="post">
+                <div class="mb-3">
+                    <label class="form-label">Imie</label>
+                    <input type="text" class="form-control" asp-for="NewUser.FirstName"/>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Nazwisko</label>
+                    <input type="text" class="form-control" asp-for="NewUser.LastName" />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Email</label>
+                    <input type="email" class="form-control" asp-for="NewUser.Email"/>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Hasło</label>
+                    <input type="password" class="form-control" asp-for="NewUser.Password"/>
+                </div>
+
+                <div class="mb-3">
+                    <button type="submit">Zarejestruj się!</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

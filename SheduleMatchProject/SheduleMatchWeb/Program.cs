@@ -8,13 +8,14 @@ using Persistance.Repo.Repositories;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlServer(
-        builder.Configuration.GetConnectionString("DefaultConnection")));//po³¹czenie z jedn¹ baz¹
-
 builder.Services.AddDbContext<AuthDbContext>(options =>
     options.UseSqlServer(
-        builder.Configuration.GetConnectionString("AuthDbConnectionString")));//po³¹czenie z drug¹ baz¹
+        builder.Configuration.GetConnectionString("AuthDbConnectionString")));//po³¹czenie z pierwsz¹ baz¹
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+    options.UseSqlServer(
+        builder.Configuration.GetConnectionString("DefaultConnection")));//po³¹czenie z drug¹ baz¹
+
+
 
 builder.Services.AddIdentity<IdentityUser, IdentityRole>()
     .AddEntityFrameworkStores<AuthDbContext>();
