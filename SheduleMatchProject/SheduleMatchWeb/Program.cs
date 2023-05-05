@@ -6,21 +6,24 @@ using Persistance.Data;
 using Persistance.Repo.Interfaces;
 using Persistance.Repo.Repositories;
 using System.Reflection;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddDbContext<AuthDbContext>(options =>
-    options.UseSqlServer(
-        builder.Configuration.GetConnectionString("AuthDbConnectionString")));//po³¹czenie z pierwsz¹ baz¹
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(
-        builder.Configuration.GetConnectionString("DefaultConnection")));//po³¹czenie z drug¹ baz¹
+        builder.Configuration.GetConnectionString("DefaultConnection")));
 
 
 
-builder.Services.AddIdentity<IdentityUser, IdentityRole>()
-    .AddEntityFrameworkStores<AuthDbContext>();
+
 // Add services to the container.
 builder.Services.AddRazorPages();
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(option =>
+    {
+        option.LoginPath = "/Access/Login";
+        option.ExpireTimeSpan= TimeSpan.FromMinutes(20);
+    });
 builder.Services.AddScoped<IClubRepository, ClubRepository>();
 builder.Services.AddScoped<IGameClassRepository, GameClassRepository>();
 builder.Services.AddScoped<IClubServices, ClubServices>();

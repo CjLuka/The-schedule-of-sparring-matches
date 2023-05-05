@@ -44,6 +44,7 @@ namespace SheduleMatchWeb.Pages.Clubs
             NewClub.CreatedDate = DateTime.Now;
             NewClub.CreatedBy = "LukaTesty";
             NewClub.LastModifiedBy = "LukaTesty";
+            NewClub.UserId = 2;
             await _clubServices.AddClubAsync(NewClub);
 
             return RedirectToPage("../Clubs/ShowAllClubs");

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Domain.Models.Domain
 {
-    public class User 
+    public class User
     {
         public int Id { get; set; }
         public string FirstName { get; set; }
@@ -16,6 +16,7 @@ namespace Domain.Models.Domain
         public string Email { get; set; }
         public string Password { get; set; }
         public virtual Club Club { get; set; }
+        public string Role { get; set; }
         public List<BranchClub> BranchClubs { get; set; }
 
     }

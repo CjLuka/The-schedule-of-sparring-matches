@@ -5,6 +5,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.IdentityModel.Tokens;
 using System.Text.Json;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace SheduleMatchWeb.Pages.Account
 {
@@ -16,7 +19,7 @@ namespace SheduleMatchWeb.Pages.Account
         {
 
         }
-        public async Task <IActionResult> OnPostAsync()
+        public async Task <IActionResult> OnPostAsync(User userLogin)
         {
             if (User.Email.IsNullOrEmpty() || User.Password.IsNullOrEmpty())
             {
