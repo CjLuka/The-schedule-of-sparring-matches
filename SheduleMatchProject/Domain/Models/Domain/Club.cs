@@ -15,9 +15,10 @@ namespace Domain.Models.Domain
         public string Name { get; set; }
         public DateTime DateCreated { get; set; }
         public GameClass GameClass { get; set; }
-        [ForeignKey("GameClass")]
         public int GameClassId { get; set; }
+        public int UserId { get; set; }
+        //public User President { get; set; }
+        public List<BranchClub> Branches { get; set; }
         //public GameClass GameClass { get; set; }
-        public List<User> Users { get; set; }
     }
 }

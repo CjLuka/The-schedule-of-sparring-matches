@@ -10,7 +10,7 @@ namespace Persistance.Data
 {
     public class ApplicationDbContext : DbContext
     {
-        public ApplicationDbContext(DbContextOptions options) : base(options)
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
 
         }
@@ -22,6 +22,7 @@ namespace Persistance.Data
         public DbSet<FootballPitchRequest> FootballPitchRequests { get; set; }
         public DbSet<MatchRequest> MatchRequests { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<BranchClub> BranchesClubs { get;set; }
 
         //protected override void OnModelCreating(ModelBuilder modelBuilder)
         //{
@@ -30,5 +31,6 @@ namespace Persistance.Data
         //    .WithOne(u => u.Club)
         //    .HasForeignKey<User>(u => u.Club);
         //}
+
     }
 }

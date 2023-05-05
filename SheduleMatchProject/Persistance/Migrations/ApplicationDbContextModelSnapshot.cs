@@ -47,6 +47,32 @@ namespace Persistance.Migrations
                     b.ToTable("Addresses");
                 });
 
+            modelBuilder.Entity("Domain.Models.Domain.BranchClub", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("ClubId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Type")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ClubId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("BranchesClubs");
+                });
+
             modelBuilder.Entity("Domain.Models.Domain.Club", b =>
                 {
                     b.Property<int>("Id")
@@ -79,9 +105,15 @@ namespace Persistance.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("GameClassId");
+
+                    b.HasIndex("UserId")
+                        .IsUnique();
 
                     b.ToTable("Clubs");
                 });
@@ -289,9 +321,6 @@ namespace Persistance.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("ClubId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -310,9 +339,26 @@ namespace Persistance.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ClubId");
-
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("Domain.Models.Domain.BranchClub", b =>
+                {
+                    b.HasOne("Domain.Models.Domain.Club", "Club")
+                        .WithMany("Branches")
+                        .HasForeignKey("ClubId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Domain.Models.Domain.User", "User")
+                        .WithMany("BranchClubs")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Club");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Domain.Models.Domain.Club", b =>
@@ -320,6 +366,12 @@ namespace Persistance.Migrations
                     b.HasOne("Domain.Models.Domain.GameClass", "GameClass")
                         .WithMany()
                         .HasForeignKey("GameClassId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Domain.Models.Domain.User", null)
+                        .WithOne("Club")
+                        .HasForeignKey("Domain.Models.Domain.Club", "UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -406,13 +458,6 @@ namespace Persistance.Migrations
                     b.Navigation("Sender");
                 });
 
-            modelBuilder.Entity("Domain.Models.Domain.User", b =>
-                {
-                    b.HasOne("Domain.Models.Domain.Club", null)
-                        .WithMany("Users")
-                        .HasForeignKey("ClubId");
-                });
-
             modelBuilder.Entity("Domain.Models.Domain.Addresses", b =>
                 {
                     b.Navigation("FootballPitches");
@@ -420,7 +465,15 @@ namespace Persistance.Migrations
 
             modelBuilder.Entity("Domain.Models.Domain.Club", b =>
                 {
-                    b.Navigation("Users");
+                    b.Navigation("Branches");
+                });
+
+            modelBuilder.Entity("Domain.Models.Domain.User", b =>
+                {
+                    b.Navigation("BranchClubs");
+
+                    b.Navigation("Club")
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

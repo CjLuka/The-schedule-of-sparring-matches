@@ -20,9 +20,9 @@ namespace SheduleMatchWeb.Pages.Account
         {
             return Page();
         }
-        public async Task <IActionResult> OnPostAsync()
-        {
+        //public async Task <IActionResult> OnPostAsync()
+        //{
 
-        }
+        //}
     }
 }
