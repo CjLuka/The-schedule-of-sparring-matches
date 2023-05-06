@@ -21,11 +21,13 @@ builder.Services.AddRazorPages();
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(option =>
     {
-        option.LoginPath = "/Access/Login";
+        option.LoginPath = "/Account/Login";
         option.ExpireTimeSpan= TimeSpan.FromMinutes(20);
     });
 builder.Services.AddScoped<IClubRepository, ClubRepository>();
 builder.Services.AddScoped<IGameClassRepository, GameClassRepository>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IUserServices, UserServices>();
 builder.Services.AddScoped<IClubServices, ClubServices>();
 builder.Services.AddScoped<IGameClassServices, GameClassServices>();
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());

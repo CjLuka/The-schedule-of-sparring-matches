@@ -1,4 +1,6 @@
 ﻿using Domain.Models.Domain;
+using Microsoft.EntityFrameworkCore;
+using Persistance.Data;
 using Persistance.Repo.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -10,19 +12,53 @@ namespace Persistance.Repo.Repositories
 {
     public class UserRepository : IUserRepository
     {
-        public Task<List<User>> GetAllAsync()
+        private readonly ApplicationDbContext _context;
+        public UserRepository(ApplicationDbContext context)
         {
-            throw new NotImplementedException();
+            _context= context;
+        }
+        public async Task<List<User>> GetAllAsync()
+        {
+            var Users = await _context.Users.ToListAsync();
+            return Users;
         }
 
-        public Task<User> GetByEmailAsync(string Email)
+        public async Task<User> GetByEmailAsync(string Email)
         {
-            throw new NotImplementedException();
+            return await _context.Users.FirstOrDefaultAsync(c => c.Email == Email);
         }
 
-        public Task<User> GetByIdAsync(int id)
+        public async Task<User> GetByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            return await _context.Users.FirstOrDefaultAsync(c => c.Id == id);
+        }
+
+        public async Task<string> GetPasswordByEmailAsync(string Email)
+        {
+            var user = await _context.Users.FirstOrDefaultAsync(c => c.Email == Email);
+            if (user != null)
+            {
+                return user.Password.ToString();
+            }
+            return null;
+        }
+        public async Task<string> GetEmailAsync(string Email)
+        {
+            var user = await _context.Users.FirstOrDefaultAsync(c => c.Email == Email);
+            if (user != null){
+                return user.Email.ToString();
+            }
+            return null;
+        }
+
+        public async Task<string> GetRoleByEmailAsync(string Email)
+        {
+            var user = await _context.Users.FirstOrDefaultAsync(c => c.Email == Email);
+            if (user != null)
+            {
+                return user.Role.ToString();
+            }
+            return null;
         }
     }
 }

@@ -2,6 +2,10 @@
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Persistance.Repo.Interfaces;
 
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
+
 namespace SheduleMatchWeb.Pages
 {
     public class IndexModel : PageModel
