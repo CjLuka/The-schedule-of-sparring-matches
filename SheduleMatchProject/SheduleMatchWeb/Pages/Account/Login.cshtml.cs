@@ -15,16 +15,16 @@ namespace SheduleMatchWeb.Pages.Account
 {
     public class LoginModel : PageModel
     {
-        //private readonly IUserServices _userServices;
-        //public LoginModel(IUserServices userServices)
-        //{
-        //    _userServices = userServices;
-        //}
-        private readonly IUserRepository _userRepository;
-        public LoginModel(IUserRepository userRepository)
+        private readonly IUserServices _userServices;
+        public LoginModel(IUserServices userServices)
         {
-            _userRepository= userRepository;
+            _userServices = userServices;
         }
+        //private readonly IUserRepository _userRepository;
+        //public LoginModel(IUserRepository userRepository)
+        //{
+        //    _userRepository= userRepository;
+        //}
 
         [BindProperty]
         public User User { get; set; }
@@ -51,8 +51,20 @@ namespace SheduleMatchWeb.Pages.Account
                 ViewData["MessageValidation"] = "Uzupe³nij wszystkie wymagane pola!";
                 return Page();
             }
-            var emailFromBase = await _userRepository.GetEmailAsync(User.Email);
-            var passwordFromBase = await _userRepository.GetPasswordByEmailAsync(User.Email);
+            var emailFromBase = await _userServices.GetEmailAsync(User.Email);
+            var passwordFromBase = await _userServices.GetPasswordByEmailAsync(User.Email);
+            if (emailFromBase.ToString() != User.Email)
+            {
+                var notification = new Notification
+                {
+                    Type = Domain.Models.Enum.NotificationType.Error,
+                    Message = "Podany adres email nie istnieje w bazie danych"
+
+                };
+                TempData["Notification"] = JsonSerializer.Serialize(notification);
+                ViewData["MessageValidation"] = "Podany adres email nie istnieje w bazie danych";
+                return Page();
+            }
             if (emailFromBase == null)
             {
                 var notification = new Notification
@@ -80,7 +92,7 @@ namespace SheduleMatchWeb.Pages.Account
             List<Claim> claims = new List<Claim>()
             {
                 new Claim(ClaimTypes.NameIdentifier, User.Email),//obiekt klasy Claim reprezentuj¹cy podstawowe dane uwierzytelniaj¹ce u¿ytkownika, w tym wskazuj¹cy na identyfikator u¿ytkownika i jego adres e-mail 
-                new Claim("OtherProperties", _userRepository.GetRoleByEmailAsync(User.Email).ToString())//niestandardowy obiekt klasy Claim, który przechowuje dodatkowe w³aœciwoœci w tym wypadku role uzytkownika
+                new Claim("OtherProperties", _userServices.GetRoleByEmailAsync(User.Email).ToString())//niestandardowy obiekt klasy Claim, który przechowuje dodatkowe w³aœciwoœci w tym wypadku role uzytkownika
             };
 
             ClaimsIdentity claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);

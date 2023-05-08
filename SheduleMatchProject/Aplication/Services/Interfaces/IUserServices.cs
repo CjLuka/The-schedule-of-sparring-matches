@@ -10,6 +10,9 @@ namespace Aplication.Services.Interfaces
 {
     public interface IUserServices
     {
+        Task<string> GetEmailAsync(string email);
+        Task<string> GetPasswordByEmailAsync(string email);
+        Task<string> GetRoleByEmailAsync(string email);
         public void Login(string email);
     }
 }

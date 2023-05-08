@@ -9,6 +9,7 @@ namespace Persistance.Repo.Interfaces
 {
     public interface IUserRepository
     {
+        Task AddAsync(User user);
         Task<List<User>> GetAllAsync();
         Task <User> GetByIdAsync(int id);
         Task<User> GetByEmailAsync(string Email);
