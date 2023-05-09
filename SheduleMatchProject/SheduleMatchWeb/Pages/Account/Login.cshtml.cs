@@ -53,7 +53,7 @@ namespace SheduleMatchWeb.Pages.Account
             }
             var emailFromBase = await _userServices.GetEmailAsync(User.Email);
             var passwordFromBase = await _userServices.GetPasswordByEmailAsync(User.Email);
-            if (emailFromBase.ToString() != User.Email)
+            if (emailFromBase.ToString() != User.Email)//sprawdzenie czy email jest taki sam jak wprowadzony przez uzytkownika
             {
                 var notification = new Notification
                 {
@@ -65,19 +65,7 @@ namespace SheduleMatchWeb.Pages.Account
                 ViewData["MessageValidation"] = "Podany adres email nie istnieje w bazie danych";
                 return Page();
             }
-            if (emailFromBase == null)
-            {
-                var notification = new Notification
-                {
-                    Type = Domain.Models.Enum.NotificationType.Error,
-                    Message = "Podany adres email nie istnieje w bazie danych"
-
-                };
-                TempData["Notification"] = JsonSerializer.Serialize(notification);
-                ViewData["MessageValidation"] = "Podany adres email nie istnieje w bazie danych";
-                return Page();
-            }
-            if (passwordFromBase.ToString() != User.Password)
+            if (passwordFromBase.ToString() != User.Password)//sprawdzenie czy haslo jest takie samo jak wprowadzone przez uzytkownika
             {
                 var notification = new Notification
                 {
@@ -85,7 +73,7 @@ namespace SheduleMatchWeb.Pages.Account
                     Message = "B³êdne has³o!"
 
                 };
-                TempData["Notification"] = JsonSerializer.Serialize(notification);
+                TempData["Notification"] = JsonSerializer.Serialize(notification);//JsonSerializer pomaga przenieœæ dane, poniewa¿ typ notification nie jest zwyklym prostym typem
                 ViewData["MessageValidation"] = "B³êdne has³o!";
                 return Page();
             }

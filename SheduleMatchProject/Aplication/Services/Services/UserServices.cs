@@ -20,6 +20,26 @@ namespace Aplication.Services.Services
             _userRepository= userRepository;
         }
 
+        public async Task<ServiceResponse<User>> AddAsync(User user)
+        {
+            await _userRepository.AddAsync(user);
+            var checkEmail = await _userRepository.GetEmailAsync(user.Email);
+            if (checkEmail == null)
+            {
+                return new ServiceResponse<User>()
+                {
+                    Success = true,
+                    Data = user,
+                    Message = "Dodano użytkownika!"
+                };
+            }
+            return new ServiceResponse<User>()
+            {
+                Success = false,
+                Message = "Podany adres email istnieje w bazie danych!"
+            };
+        }
+
         public async Task<string> GetEmailAsync(string email)
         {
             

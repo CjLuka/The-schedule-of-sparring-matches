@@ -1,12 +1,57 @@
+using Aplication.Services.Interfaces;
+using Domain.Models.Domain;
+using Domain.Models.VievModel;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.IdentityModel.Tokens;
+using System.Text.Json;
 
 namespace SheduleMatchWeb.Pages.Account
 {
     public class RegisterModel : PageModel
     {
-        public void OnGet()
+        private readonly IUserServices _userServices;
+        public RegisterModel(IUserServices userServices)
         {
+            _userServices = userServices;
+        }
+        [BindProperty]
+        public User newUser { get; set; }
+        public async Task <IActionResult> OnGetAsync()
+        {
+            return Page();
+        }
+
+        public async Task <IActionResult> OnPostAsync()
+        {
+            if (newUser.FirstName.IsNullOrEmpty()|| newUser.LastName.IsNullOrEmpty() 
+                || newUser.Email.IsNullOrEmpty()|| newUser.Password.IsNullOrEmpty())
+            {
+                var notification = new Notification
+                {
+                    Type = Domain.Models.Enum.NotificationType.Error,
+                    Message = "Uzupe³nij wszystkie pola!"
+
+                };
+                TempData["Notification"] = JsonSerializer.Serialize(notification);
+                ViewData["MessageValidation"] = "Uzupe³nij wszystkie pola!";
+                return Page();
+            }
+            //var checkEmail = _userServices.GetEmailAsync(newUser.Email);
+            //if (checkEmail != null)
+            //{
+            //    var notification = new Notification
+            //    {
+            //        Type = Domain.Models.Enum.NotificationType.Error,
+            //        Message = "Podany adres email ju¿ istnieje w bazie danych."
+            //    };
+            //    TempData["Notification"] = JsonSerializer.Serialize(notification);
+            //    ViewData["MessageValidation"] = "Podany adres email ju¿ istnieje w bazie danych.";
+            //    return Page();
+            //}
+            newUser.Role = "User";
+            await _userServices.AddAsync(newUser);
+            return RedirectToPage("/Index");
         }
     }
 }
