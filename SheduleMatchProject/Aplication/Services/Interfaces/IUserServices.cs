@@ -15,5 +15,6 @@ namespace Aplication.Services.Interfaces
         Task<string> GetRoleByEmailAsync(string email);
         public void Login(string email);
         Task<ServiceResponse<User>> AddAsync(User user);
+        
     }
 }

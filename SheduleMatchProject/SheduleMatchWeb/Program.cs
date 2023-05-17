@@ -31,6 +31,10 @@ builder.Services.AddScoped<IUserServices, UserServices>();
 builder.Services.AddScoped<IClubServices, ClubServices>();
 builder.Services.AddScoped<IGameClassServices, GameClassServices>();
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
+//builder.Services.AddAuthorization(options =>
+//{
+//    options.AddPolicy("RequireAdminRole", policy => policy.RequireRole("Admin"));
+//});
 builder.Services.AddAuthorization();
 var app = builder.Build();
 

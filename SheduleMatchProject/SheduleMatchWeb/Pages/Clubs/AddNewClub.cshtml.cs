@@ -1,13 +1,16 @@
 using Aplication.Services.Interfaces;
 using Domain.Models.Domain;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Persistance.Migrations;
 using Persistance.Repo.Interfaces;
+using System.Security.Claims;
 
 namespace SheduleMatchWeb.Pages.Clubs
 {
+    [Authorize(Roles = "Admin")]
     public class AddNewClubModel : PageModel
     {
         private readonly IClubServices _clubServices;
@@ -21,6 +24,7 @@ namespace SheduleMatchWeb.Pages.Clubs
         public Club NewClub { get; set; }
         [BindProperty]
         public List<SelectListItem> GameClassess { get; set; }
+
         
         public async Task <IActionResult> OnGetAsync()
         {
@@ -36,15 +40,11 @@ namespace SheduleMatchWeb.Pages.Clubs
         }
         public async Task<IActionResult> OnPostAsync()
         {
-            //foreach (var item in GameClassess)
-            //{
-            //    GameClassess.Add(item);
-            //}
-            //var addNewClub = await _clubServices.AddClubAsync(NewClub);
             NewClub.CreatedDate = DateTime.Now;
             NewClub.CreatedBy = "LukaTesty";
-            NewClub.LastModifiedBy = "LukaTesty";
-            NewClub.UserId = 2;
+            string userEmail = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;//pobranie emailu zalogowanego uzytkownika
+            NewClub.LastModifiedBy = userEmail;
+            NewClub.UserId = 1002;
             await _clubServices.AddClubAsync(NewClub);
 
             return RedirectToPage("../Clubs/ShowAllClubs");

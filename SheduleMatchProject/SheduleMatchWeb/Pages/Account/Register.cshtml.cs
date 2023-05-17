@@ -4,10 +4,12 @@ using Domain.Models.VievModel;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.IdentityModel.Tokens;
+using System.Security.Claims;
 using System.Text.Json;
 
 namespace SheduleMatchWeb.Pages.Account
 {
+
     public class RegisterModel : PageModel
     {
         private readonly IUserServices _userServices;
@@ -19,6 +21,11 @@ namespace SheduleMatchWeb.Pages.Account
         public User newUser { get; set; }
         public async Task <IActionResult> OnGetAsync()
         {
+            ClaimsPrincipal claimUser = HttpContext.User;
+            if (claimUser.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("/Index");
+            }
             return Page();
         }
 
@@ -37,18 +44,18 @@ namespace SheduleMatchWeb.Pages.Account
                 ViewData["MessageValidation"] = "Uzupe³nij wszystkie pola!";
                 return Page();
             }
-            //var checkEmail = _userServices.GetEmailAsync(newUser.Email);
-            //if (checkEmail != null)
-            //{
-            //    var notification = new Notification
-            //    {
-            //        Type = Domain.Models.Enum.NotificationType.Error,
-            //        Message = "Podany adres email ju¿ istnieje w bazie danych."
-            //    };
-            //    TempData["Notification"] = JsonSerializer.Serialize(notification);
-            //    ViewData["MessageValidation"] = "Podany adres email ju¿ istnieje w bazie danych.";
-            //    return Page();
-            //}
+            var checkEmail = _userServices.GetEmailAsync(newUser.Email);
+            if (checkEmail != null)
+            {
+                var notification = new Notification
+                {
+                    Type = Domain.Models.Enum.NotificationType.Error,
+                    Message = "Podany adres email ju¿ istnieje w bazie danych."
+                };
+                TempData["Notification"] = JsonSerializer.Serialize(notification);
+                ViewData["MessageValidation"] = "Podany adres email ju¿ istnieje w bazie danych.";
+                return Page();
+            }
             newUser.Role = "User";
             await _userServices.AddAsync(newUser);
             return RedirectToPage("/Index");

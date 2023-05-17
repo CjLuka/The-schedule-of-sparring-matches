@@ -75,12 +75,16 @@ namespace SheduleMatchWeb.Pages.Account
                 };
                 TempData["Notification"] = JsonSerializer.Serialize(notification);//JsonSerializer pomaga przenieœæ dane, poniewa¿ typ notification nie jest zwyklym prostym typem
                 ViewData["MessageValidation"] = "B³êdne has³o!";
+                
                 return Page();
+                
             }
+            var rola = await _userServices.GetRoleByEmailAsync(User.Email);
             List<Claim> claims = new List<Claim>()
             {
                 new Claim(ClaimTypes.NameIdentifier, User.Email),//obiekt klasy Claim reprezentuj¹cy podstawowe dane uwierzytelniaj¹ce u¿ytkownika, w tym wskazuj¹cy na identyfikator u¿ytkownika i jego adres e-mail 
-                new Claim("OtherProperties", _userServices.GetRoleByEmailAsync(User.Email).ToString())//niestandardowy obiekt klasy Claim, który przechowuje dodatkowe w³aœciwoœci w tym wypadku role uzytkownika
+                new Claim("OtherProperties", _userServices.GetRoleByEmailAsync(User.Email).ToString()),//niestandardowy obiekt klasy Claim, który przechowuje dodatkowe w³aœciwoœci w tym wypadku role uzytkownika
+                new Claim(ClaimTypes.Role, rola)
             };
 
             ClaimsIdentity claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);

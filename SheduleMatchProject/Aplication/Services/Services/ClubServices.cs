@@ -7,6 +7,7 @@ using Persistance.Repo.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -18,8 +19,8 @@ namespace Aplication.Services.Services
         private readonly IMapper _mapper;
         public ClubServices(IClubRepository clubRepository, IMapper mapper)
         {
-            _clubRepository= clubRepository;
-            _mapper= mapper;
+            _clubRepository = clubRepository;
+            _mapper = mapper;
         }
 
 
@@ -31,7 +32,7 @@ namespace Aplication.Services.Services
                 return new ServiceResponse<List<Club>>
                 {
                     Message = "Brak klubów w bazie danych!",
-                    Success= false
+                    Success = false
                 };
             }
             return new ServiceResponse<List<Club>>
@@ -62,5 +63,55 @@ namespace Aplication.Services.Services
                 Success = true
             };
         }
+
+        public async Task<ServiceResponse<Club>> UpdateClubAsync(Club club, int id, string lastModifiedBy)
+        {
+            var clubFromBase = await _clubRepository.GetByIdAsync(id);
+            if (clubFromBase == null)
+            {
+                return new ServiceResponse<Club>()
+                {
+                    Message = "Brak klubu o takim Id",
+                    Success = false
+                };
+            }
+            clubFromBase.Name = club.Name;
+            clubFromBase.DateCreated = club.DateCreated;
+            clubFromBase.GameClass = club.GameClass;
+            clubFromBase.UserId = clubFromBase.UserId;
+            //string userEmail = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;//pobranie emailu zalogowanego uzytkownika
+            clubFromBase.LastModifiedBy = lastModifiedBy;
+            clubFromBase.LastModifiedDate = DateTime.UtcNow;
+
+
+            await _clubRepository.UpdateAsync(clubFromBase);
+            return new ServiceResponse<Club>()
+            {
+                Data = clubFromBase,
+                Success = true
+            };
+        }
+
+        public async Task<ServiceResponse<Club>> GetDetailClubAsync(int id)
+        {
+            var Club = await _clubRepository.GetByIdAsync(id);
+            return new ServiceResponse<Club>()
+            {
+                Data = Club,
+                Message = "Twoj klub",
+                Success = true
+            };
+        }
+
+        public async Task<ServiceResponse<Club>> UpdateLastModifedBy(Club club, string lastModifedBy)
+        {
+            club.LastModifiedBy = lastModifedBy;
+            await _clubRepository.UpdateAsync(club);
+            return new ServiceResponse<Club>()
+            {
+                Data = club
+            };
+        }
+        
     }
 }

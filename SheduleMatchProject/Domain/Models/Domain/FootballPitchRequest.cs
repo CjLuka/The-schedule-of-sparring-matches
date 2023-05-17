@@ -16,5 +16,6 @@ namespace Domain.Models.Domain
         public DateTime DateStartEnd { get; set; }
         public Club Club { get; set; }
         public FootballPitch FootballPitch { get; set; }
+        public bool IsAccepted { get; set; }
     }
 }

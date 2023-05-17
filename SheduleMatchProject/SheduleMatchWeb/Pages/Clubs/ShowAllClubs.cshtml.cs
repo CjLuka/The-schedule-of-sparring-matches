@@ -3,6 +3,8 @@ using Domain.Models.Domain;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
+
+
 namespace SheduleMatchWeb.Pages.Clubs
 {
     public class ShowAllClubsModel : PageModel
@@ -16,8 +18,8 @@ namespace SheduleMatchWeb.Pages.Clubs
         public List<Club> Clubs;
         public async Task<IActionResult> OnGetAsync()
         {
-            var allClubs = _clubServices.GetAllAsync();
-            Clubs = allClubs.Result.Data.ToList();
+            var allClubs = await _clubServices.GetAllAsync();
+            Clubs = allClubs.Data.ToList();
             if (!Clubs.Any())
             {
                 return NotFound();
