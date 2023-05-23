@@ -40,13 +40,32 @@ namespace Aplication.Services.Services
             };
         }
 
+        public async Task<ServiceResponse<List<User>>> GetAllUsersAsync()
+        {
+            var users = await _userRepository.GetAllAsync();
+            if (users.IsNullOrEmpty())
+            {
+                return new ServiceResponse<List<User>>()
+                {
+                    Success= false,
+                    Message= "Brak użytkowników"
+                };
+            }
+            return new ServiceResponse<List<User>>()
+            {
+                Success = true,
+                Data = users,
+                Message = "Wszyscy uzytkownicy"
+            };
+        }
+
         public async Task<string> GetEmailAsync(string email)
         {
             
             var emailFromUser = await _userRepository.GetEmailAsync(email);
             if (emailFromUser.IsNullOrEmpty())
             {
-                return "Brak emaila w bazie danych";
+                return null;
             }
             return emailFromUser;
             

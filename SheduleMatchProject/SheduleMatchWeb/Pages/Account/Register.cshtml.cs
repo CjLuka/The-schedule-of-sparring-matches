@@ -44,7 +44,14 @@ namespace SheduleMatchWeb.Pages.Account
                 ViewData["MessageValidation"] = "Uzupe³nij wszystkie pola!";
                 return Page();
             }
-            var checkEmail = _userServices.GetEmailAsync(newUser.Email);
+            var checkEmail = await _userServices.GetEmailAsync(newUser.Email);
+            
+            if (checkEmail == null)
+            {
+                newUser.Role = "User";
+                await _userServices.AddAsync(newUser);
+                return RedirectToPage("/Index");
+            }
             if (checkEmail != null)
             {
                 var notification = new Notification
@@ -56,9 +63,7 @@ namespace SheduleMatchWeb.Pages.Account
                 ViewData["MessageValidation"] = "Podany adres email ju¿ istnieje w bazie danych.";
                 return Page();
             }
-            newUser.Role = "User";
-            await _userServices.AddAsync(newUser);
-            return RedirectToPage("/Index");
+            return Page();
         }
     }
 }

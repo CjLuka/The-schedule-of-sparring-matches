@@ -49,8 +49,14 @@
                         <select class="form-select" aria-label="Default select example" asp-for="ClubUpdate.GameClassId" asp-items="@(ViewData["klasyRozgrywkowe"] as IEnumerable<SelectListItem>)"></select>
                         <span asp-validation-for="GameClassess" class="text-danger"></span>
                     </div>*@
-
-                    <div class="mb-3 d-flex justify-content-between">
+            @if (User.IsInRole("Admin"))
+            {
+                <div class="form-group">
+                    <select class="form-select" aria-label="Default select example" asp-for="ClubUpdate.UserId" asp-items="@(ViewData["Users"] as IEnumerable<SelectListItem>)"></select>
+                        <span asp-validation-for="Users" class="text-danger"></span>
+                    </div>
+            }
+            <div class="mb-3 d-flex justify-content-between">
                         <button class="btn btn-primary" type="submit" asp-page-handler="Update">Submit</button>
                         <button class="btn btn-danger" type="submit" asp-page-handler="Delete">Delete</button>
                     </div>
