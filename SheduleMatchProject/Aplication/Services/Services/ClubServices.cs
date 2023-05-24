@@ -112,6 +112,24 @@ namespace Aplication.Services.Services
                 Data = club
             };
         }
-        
+
+        public async Task<ServiceResponse<Club>> DeleteClubAsync(int id)
+        {
+            var delete = await _clubRepository.GetByIdAsync(id);
+            if(delete == null)
+            {
+                return new ServiceResponse<Club>()
+                {
+                    Message = "Podany klub nie istnieje",
+                    Success = false
+                };
+            }
+            await _clubRepository.DeleteAsync(delete);
+            return new ServiceResponse<Club>()
+            {
+                Message = "Usunięto klub",
+                Success = true
+            };
+        }
     }
 }

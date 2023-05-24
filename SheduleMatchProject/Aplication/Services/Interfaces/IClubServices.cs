@@ -15,5 +15,6 @@ namespace Aplication.Services.Interfaces
         Task<ServiceResponse<Club>> UpdateClubAsync(Club club, int id, string lastModifiedBy);//3 parametr po to, aby móc ustawic pole LastModifiedBy
         Task<ServiceResponse<Club>> GetDetailClubAsync(int id);
         Task<ServiceResponse<Club>> UpdateLastModifedBy(Club club,string lastModifedBy);
+        Task<ServiceResponse<Club>> DeleteClubAsync(int id);
     }
 }
