@@ -82,7 +82,7 @@ namespace Aplication.Services.Services
             //string userEmail = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;//pobranie emailu zalogowanego uzytkownika
             clubFromBase.LastModifiedBy = lastModifiedBy;
             clubFromBase.LastModifiedDate = DateTime.UtcNow;
-
+            clubFromBase.UserId = club.UserId;
 
             await _clubRepository.UpdateAsync(clubFromBase);
             return new ServiceResponse<Club>()

@@ -10,6 +10,7 @@ namespace Domain.Models.Domain
 {
     public class BranchClub
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         public BranchType Type { get; set; }
         public int UserId { get; set; }

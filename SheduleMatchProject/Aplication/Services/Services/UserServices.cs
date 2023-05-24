@@ -15,9 +15,11 @@ namespace Aplication.Services.Services
     public class UserServices : IUserServices
     {
         private readonly IUserRepository _userRepository;
-        public UserServices(IUserRepository userRepository)
+        private readonly IClubRepository _clubRepository;
+        public UserServices(IUserRepository userRepository, IClubRepository clubRepository)
         {
-            _userRepository= userRepository;
+            _userRepository = userRepository;
+            _clubRepository = clubRepository;
         }
 
         public async Task<ServiceResponse<User>> AddAsync(User user)
@@ -90,6 +92,23 @@ namespace Aplication.Services.Services
             }
             return role;
             
+        }
+
+        public async Task<ServiceResponse<List<User>>> GetUsersWithoutClub()
+        {
+            var users = await _userRepository.GetAllAsync();
+            var clubs = await _clubRepository.GetAllAsync();
+
+            //var users = usersResponse;
+            //var clubs = clubsResponse;
+
+            var usersWithoutClub = users.Where(user => !clubs.Any(club => club.UserId == user.Id)).ToList();
+            return new ServiceResponse<List<User>>
+            {
+                Success=true,
+                Data = usersWithoutClub,
+                Message="Uzytkownicy bez klubow"
+            };
         }
 
         public void Login(string email)

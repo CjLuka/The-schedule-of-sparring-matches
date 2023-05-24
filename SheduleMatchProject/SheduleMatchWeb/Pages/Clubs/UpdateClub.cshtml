@@ -4,7 +4,7 @@
 }
 <div class="bg-secondary bg-opacity-10 py-2 mb-5">
     <div class="container">
-        <h1>Edit Blog Post</h1>
+        <h1>Aktualizacja klubu</h1>
     </div>
 </div>
 
@@ -52,8 +52,17 @@
             @if (User.IsInRole("Admin"))
             {
                 <div class="form-group">
-                    <select class="form-select" aria-label="Default select example" asp-for="ClubUpdate.UserId" asp-items="@(ViewData["Users"] as IEnumerable<SelectListItem>)"></select>
+                    <label for="UserId" class="form-label">Prezes</label>
+                        <select class="form-select" aria-label="Default select example" asp-for="ClubUpdate.UserId" asp-items="@(ViewData["Users"] as IEnumerable<SelectListItem>)"></select>
                         <span asp-validation-for="Users" class="text-danger"></span>
+                    </div>
+            }
+            @if (User.IsInRole("President"))
+            {
+                <div class="form-group">
+                    <label for="UserId" class="form-label">Prezes</label>
+                        <input type="text" class="form-control" id="id" asp-for="ClubUpdate.UserId" readonly>
+                    <span asp-validation-for="Users" class="text-danger"></span>
                     </div>
             }
             <div class="mb-3 d-flex justify-content-between">

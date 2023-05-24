@@ -1,4 +1,5 @@
 using Aplication.Services.Interfaces;
+using Aplication.Services.Services;
 using Domain.Models.Domain;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -15,36 +16,50 @@ namespace SheduleMatchWeb.Pages.Clubs
     {
         private readonly IClubServices _clubServices;
         private readonly IGameClassServices _gameClassServices;
-        public AddNewClubModel(IClubServices clubServices, IGameClassServices gameClassServices)
+        private readonly IUserServices _userServices;
+        public AddNewClubModel(IClubServices clubServices, IGameClassServices gameClassServices, IUserServices userServices)
         {
             _clubServices = clubServices;
             _gameClassServices = gameClassServices;
+            _userServices = userServices;
         }
         [BindProperty]
         public Club NewClub { get; set; }
         [BindProperty]
         public List<SelectListItem> GameClassess { get; set; }
-
+        public List<SelectListItem> Users { get; set; }
         
         public async Task <IActionResult> OnGetAsync()
         {
             //Potrzebne przy tworzeniu nowego klubu, aby móc wybieraæ klasê rozgrywkow¹ z listy
-            List<SelectListItem> GameClassess = new List<SelectListItem>();//Utworzenie selectlisty
+            List<SelectListItem> GameClassess = new List<SelectListItem>();//Utworzenie selectlisty dla klas rozgrywkowych
+            List<SelectListItem> Users = new List<SelectListItem>();//Utworzenie selectlisty dla uzytkownikow
+
             var AllGameClassess = await _gameClassServices.GetAllAsync();//Pobranie wszystkich klas rozgrywkowych
             foreach (var item in AllGameClassess)
             {
                 GameClassess.Add(new SelectListItem { Text = item.Name, Value = item.Id.ToString() });//przypisanie wszystkich klas rozgrywkowych do selectlisty
             }
             ViewData["klasyRozgrywkowe"] = GameClassess;//przypisanie klas rozgrywkowych do ViewData
+
+
+            var UsersWithoutClub = await _userServices.GetUsersWithoutClub();//pobranie uzytkownikow, ktorzy nie sa prezesami zadnego klubu
+            foreach (var user in UsersWithoutClub.Data)
+            {
+                Users.Add(new SelectListItem { Text = user.Email, Value = user.Id.ToString() });//dodanie uzytkownikow, ktorzy nie sa prezesami zadnego klubu do selectlisty
+            }
+            ViewData["Users"] = Users;//przypisanie listy uzytkownikow do ViewData
             return Page();
         }
         public async Task<IActionResult> OnPostAsync()
         {
-            NewClub.CreatedDate = DateTime.Now;
-            NewClub.CreatedBy = "LukaTesty";
+            NewClub.CreatedDate = DateTime.Now; 
+            
             string userEmail = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;//pobranie emailu zalogowanego uzytkownika
             NewClub.LastModifiedBy = userEmail;
-            NewClub.UserId = 1002;
+            NewClub.CreatedBy = userEmail;
+            
+            
             await _clubServices.AddClubAsync(NewClub);
 
             return RedirectToPage("../Clubs/ShowAllClubs");

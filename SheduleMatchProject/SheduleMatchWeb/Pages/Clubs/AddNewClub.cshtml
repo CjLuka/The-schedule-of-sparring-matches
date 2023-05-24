@@ -24,7 +24,11 @@
                 <select class="form-select" aria-label="Default select example" asp-for="NewClub.GameClassId" asp-items="@(ViewData["klasyRozgrywkowe"] as IEnumerable<SelectListItem>)"></select>
                 <span asp-validation-for="GameClassess" class="text-danger"></span>
               </div>
-
+            <div class="form-group">
+                <label for="UserId" class="form-label">Prezes</label>
+                <select class="form-select" aria-label="Default select example" asp-for="NewClub.UserId" asp-items="@(ViewData["Users"] as IEnumerable<SelectListItem>)"></select>
+                <span asp-validation-for="NewClub" class="text-danger"></span>
+           </div>
            <div>
                <button type="submit" class="btn btn-dark">
                    Dodaj
