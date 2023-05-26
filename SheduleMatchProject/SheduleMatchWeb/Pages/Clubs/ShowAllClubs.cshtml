@@ -32,10 +32,19 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.GameClass)
                     </td>
-                    <td><a href="./UpdateClub/@item.Id">View</a></td>
+                    @if (User.IsInRole("Admin") || User.IsInRole("President"))
+                    {
+                        <td><a href="./UpdateClub/@item.Id">Aktualizuj</a></td>
+                        <td><a href="./BranchClubs/ShowAllBranchesClub/@item.Id">Pokaz wszystkie oddzialy</a></td>
+                    }
+                    
                 </tr>
             }
         </tbody>
     </table>
-    <a asp-page="./AddNewClub">Dodaj nowy klub</a>
+    @if (User.IsInRole("Admin"))
+    {
+        <a asp-page="./AddNewClub">Dodaj nowy klub</a>
+    }
+    
 </form>

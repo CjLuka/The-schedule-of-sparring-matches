@@ -51,9 +51,9 @@ namespace SheduleMatchWeb.Pages.Account
                 ViewData["MessageValidation"] = "Uzupe³nij wszystkie wymagane pola!";
                 return Page();
             }
-            var emailFromBase = await _userServices.GetEmailAsync(User.Email);
-            var passwordFromBase = await _userServices.GetPasswordByEmailAsync(User.Email);
-            if (emailFromBase.ToString() != User.Email)//sprawdzenie czy email jest taki sam jak wprowadzony przez uzytkownika
+            var emailFromBase = await _userServices.GetEmailAsync(User.Email);//pobranie emaila
+            var passwordFromBase = await _userServices.GetPasswordByEmailAsync(User.Email);//pobranie has³a
+            if (emailFromBase == null)//funkcja zwracaj¹ca email jest ustawiona na zwracanie nulla, jesli nie znajdzie maila w bazie
             {
                 var notification = new Notification
                 {

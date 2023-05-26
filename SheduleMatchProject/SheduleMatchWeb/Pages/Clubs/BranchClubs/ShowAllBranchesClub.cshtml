@@ -1,0 +1,41 @@
+﻿@page "{id:int}"
+@model SheduleMatchWeb.Pages.Clubs.BranchClubs.ShowAllBranchesClubModel
+@{
+}
+
+<h1>Wszystkie oddziały w klubie</h1>
+<form method="post">
+    <table class="table table-striped table-dark">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.BranchClubss[0].Id)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.BranchClubss[0].ClubId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.BranchClubss[0].Type)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.BranchClubss)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ClubId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Type)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    @*<a asp-page="./AddNewClub">Dodaj nowy klub</a>*@
+</form>

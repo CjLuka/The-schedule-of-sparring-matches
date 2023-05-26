@@ -15,6 +15,7 @@ namespace Domain.Models.Domain
         public string Name { get; set; }
         public DateTime DateCreated { get; set; }
         public GameClass GameClass { get; set; }
+        public string FeaturedImageUrl { get; set; }
         public int GameClassId { get; set; }
         public int UserId { get; set; }
         //public User President { get; set; }

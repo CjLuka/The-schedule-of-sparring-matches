@@ -77,9 +77,8 @@ namespace Aplication.Services.Services
             }
             clubFromBase.Name = club.Name;
             clubFromBase.DateCreated = club.DateCreated;
-            clubFromBase.GameClass = club.GameClass;
+            clubFromBase.GameClassId = club.GameClassId;
             clubFromBase.UserId = clubFromBase.UserId;
-            //string userEmail = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;//pobranie emailu zalogowanego uzytkownika
             clubFromBase.LastModifiedBy = lastModifiedBy;
             clubFromBase.LastModifiedDate = DateTime.UtcNow;
             clubFromBase.UserId = club.UserId;

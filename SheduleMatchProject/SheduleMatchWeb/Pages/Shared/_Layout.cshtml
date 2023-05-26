@@ -22,10 +22,31 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Clubs/ShowAllClubs">Wszystkie kluby</a>
                         </li>
-                        @if (User.Identity.IsAuthenticated)
+                        @if (User.IsInRole("Admin") || User.IsInRole("President") || User.IsInRole("Coach"))
                         {
+                            @*<li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Clubs/MyClub">Mój klub</a>
+                            </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-page="/LogOut">Wyloguj</a>
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Clubs/MyScheduleMatch">Zaplanowane mecze</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Clubs/HistoryMyMatch">Histora moich meczów</a>
+                            </li>*@
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" id="navbarDropdownAdmin">
+                                    Mój klub
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdownAdmin">
+                                    <li>
+                                        <a class="dropdown-item" href="/clubs/myclub">
+                                            Profil klubu
+                                        </a>
+                                        <a class="dropdown-item" href="/Clubs/MyScheduleMatch">
+                                            Zaplanowane mecze
+                                        </a>
+                                    </li>
+                                </ul>
                             </li>
                         }
                         
@@ -40,6 +61,12 @@
                 </div>
                 <div class="nav-item">
                     <a class="nav-link text-dark" asp-area="" asp-page="/Account/Register">Zarejestruj się!</a>
+                </div>
+            }
+            @if (User.Identity.IsAuthenticated)
+            {
+                <div class="nav-item">
+                    <a class="nav-link text-dark" asp-area="" asp-page="/LogOut">Wyloguj się!</a>
                 </div>
             }
             

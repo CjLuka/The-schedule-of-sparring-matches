@@ -74,7 +74,7 @@ namespace SheduleMatchWeb.Pages.Clubs
             }
             return Page();
         }
-        public async Task<IActionResult> OnPostUpdateAsync(int id)
+        public async Task<IActionResult> OnPostUpdateAsync(int id)//update klubu
         {
             if (ClubUpdate.Name.IsNullOrEmpty())
             {
@@ -116,7 +116,7 @@ namespace SheduleMatchWeb.Pages.Clubs
 
             return Page();
         }
-        public async Task<IActionResult> OnPostDeleteAsync(int id)
+        public async Task<IActionResult> OnPostDeleteAsync(int id)//usuwanie klubu
         {
             var deleted = await _clubServices.DeleteClubAsync(id);
             if (deleted.Success)
