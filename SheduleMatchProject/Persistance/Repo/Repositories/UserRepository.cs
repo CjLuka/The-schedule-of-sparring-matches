@@ -66,5 +66,15 @@ namespace Persistance.Repo.Repositories
             await _context.Users.AddAsync(user);
             await _context.SaveChangesAsync();
         }
+
+        public async Task<int> GetUserIdByEmailAsync(string Email)
+        {
+            var user = await _context.Users.FirstOrDefaultAsync(c => c.Email == Email);
+            if (user != null)
+            {
+                return user.Id;
+            }
+            return 0;
+        }
     }
 }

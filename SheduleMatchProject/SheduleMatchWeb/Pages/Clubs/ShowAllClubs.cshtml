@@ -8,14 +8,20 @@
         <thead>
             <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.Clubs[0].Name)
+@*                    @Html.DisplayNameFor(model => model.Clubs[0].Name)*@ 
+                    Nazwa
+               </th>
+                <th>
+                   @* @Html.DisplayNameFor(model => model.Clubs[0].DateCreated)*@
+                   Data powstania klubu
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Clubs[0].DateCreated)
+                    @*@Html.DisplayNameFor(model => model.Clubs[0].GameClass)*@
+                    Klasa rozgrywkowa
                 </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Clubs[0].GameClass)
-                </th>
+                <div>
+                    @*@Html.DisplayNameFor(model => model.Clubs[0].FeaturedImageUrl)*@
+                </div>
                 <th></th>
             </tr>
         </thead>
@@ -30,8 +36,9 @@
                         @Html.DisplayFor(modelItem => item.DateCreated)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.GameClass)
+                        @Html.DisplayFor(modelItem => item.GameClassId)
                     </td>
+                    <img src="item.FeaturedImageUrl" class="d-block img-fluid mb-3" />
                     @if (User.IsInRole("Admin") || User.IsInRole("President"))
                     {
                         <td><a href="./UpdateClub/@item.Id">Aktualizuj</a></td>

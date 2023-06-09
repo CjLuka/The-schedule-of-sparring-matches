@@ -94,6 +94,16 @@ namespace Aplication.Services.Services
             
         }
 
+        public async Task<int> GetUserIdByEmailAsync(string email)
+        {
+            var userId = await _userRepository.GetUserIdByEmailAsync(email);
+            if(userId == 0)
+            {
+                
+            }
+            return userId;
+        }
+
         public async Task<ServiceResponse<List<User>>> GetUsersWithoutClub()
         {
             var users = await _userRepository.GetAllAsync();

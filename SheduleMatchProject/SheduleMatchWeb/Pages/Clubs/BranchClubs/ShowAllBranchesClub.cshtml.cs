@@ -16,6 +16,7 @@ namespace SheduleMatchWeb.Pages.Clubs.BranchClubs
         public List<BranchClub> BranchClubss { get; set; }
         public async Task<IActionResult> OnGetAsync(int id)
         {
+            //var clubId = HttpContext.User.Identity.
             var allBranches = await _branchClubRepository.GetAllByClubAsync(id);
             if (allBranches != null && allBranches.Any())
             {

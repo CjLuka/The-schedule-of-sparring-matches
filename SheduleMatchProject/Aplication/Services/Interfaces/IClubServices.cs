@@ -16,5 +16,6 @@ namespace Aplication.Services.Interfaces
         Task<ServiceResponse<Club>> GetDetailClubAsync(int id);
         Task<ServiceResponse<Club>> UpdateLastModifedBy(Club club,string lastModifedBy);
         Task<ServiceResponse<Club>> DeleteClubAsync(int id);
+        Task<ServiceResponse<Club>> GetClubByPresidentIdAsync(int userId);
     }
 }

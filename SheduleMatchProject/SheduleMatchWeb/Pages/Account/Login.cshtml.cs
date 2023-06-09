@@ -80,10 +80,12 @@ namespace SheduleMatchWeb.Pages.Account
                 
             }
             var rola = await _userServices.GetRoleByEmailAsync(User.Email);
+            var userId = await _userServices.GetUserIdByEmailAsync(User.Email);
             List<Claim> claims = new List<Claim>()
             {
                 new Claim(ClaimTypes.NameIdentifier, User.Email),//obiekt klasy Claim reprezentuj¹cy podstawowe dane uwierzytelniaj¹ce u¿ytkownika, w tym wskazuj¹cy na identyfikator u¿ytkownika i jego adres e-mail 
                 new Claim("OtherProperties", _userServices.GetRoleByEmailAsync(User.Email).ToString()),//niestandardowy obiekt klasy Claim, który przechowuje dodatkowe w³aœciwoœci w tym wypadku role uzytkownika
+                new Claim("UserId", userId.ToString()),
                 new Claim(ClaimTypes.Role, rola)
             };
 

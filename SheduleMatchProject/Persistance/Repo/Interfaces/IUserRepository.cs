@@ -16,5 +16,6 @@ namespace Persistance.Repo.Interfaces
         Task<string> GetPasswordByEmailAsync(string Email);
         Task<string> GetEmailAsync(string Email);
         Task<string> GetRoleByEmailAsync(string Email);
+        Task<int> GetUserIdByEmailAsync(string Email);
     }
 }

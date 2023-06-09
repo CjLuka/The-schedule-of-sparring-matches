@@ -130,5 +130,24 @@ namespace Aplication.Services.Services
                 Success = true
             };
         }
+
+        public async Task<ServiceResponse<Club>> GetClubByPresidentIdAsync(int userId)
+        {
+            var club = await _clubRepository.GetClubByPresidentIdAsync(userId);
+            if (club == null)
+            {
+                return new ServiceResponse<Club>()
+                {
+                    Message = "Coś poszło nie tak.",
+                    Success= false
+                };
+            }
+            return new ServiceResponse<Club>()
+            {
+                Data= club,
+                Success = true,
+                Message = "Twoj klub"
+            };
+        }
     }
 }
