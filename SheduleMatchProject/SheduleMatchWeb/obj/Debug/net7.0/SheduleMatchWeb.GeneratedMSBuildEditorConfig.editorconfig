@@ -24,8 +24,12 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/Praca dyplomowa/Projekt/SheduleMatchProject/SheduleMatchWeb/Pages/Clubs/AddNewClub.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2x1YnNcQWRkTmV3Q2x1Yi5jc2h0bWw=
+[F:/Praca dyplomowa/Projekt/SheduleMatchProject/SheduleMatchWeb/Pages/Clubs/Admin/AddNewClub.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2x1YnNcQWRtaW5cQWRkTmV3Q2x1Yi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/Praca dyplomowa/Projekt/SheduleMatchProject/SheduleMatchWeb/Pages/Clubs/BranchClubs/AddNewBranch.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2x1YnNcQnJhbmNoQ2x1YnNcQWRkTmV3QnJhbmNoLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [F:/Praca dyplomowa/Projekt/SheduleMatchProject/SheduleMatchWeb/Pages/Clubs/BranchClubs/ShowAllBranchesClub.cshtml]
@@ -34,6 +38,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [F:/Praca dyplomowa/Projekt/SheduleMatchProject/SheduleMatchWeb/Pages/Clubs/MyClub.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2x1YnNcTXlDbHViLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/Praca dyplomowa/Projekt/SheduleMatchProject/SheduleMatchWeb/Pages/Clubs/MyScheduleMatch.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2x1YnNcTXlTY2hlZHVsZU1hdGNoLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [F:/Praca dyplomowa/Projekt/SheduleMatchProject/SheduleMatchWeb/Pages/Clubs/ShowAllClubs.cshtml]

@@ -245,7 +245,7 @@ namespace Persistance.Migrations
                     b.Property<DateTime>("DateStart")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("FootballPitchId")
+                    b.Property<int?>("FootballPitchId")
                         .HasColumnType("int");
 
                     b.Property<int>("GoalsAway")
@@ -289,7 +289,7 @@ namespace Persistance.Migrations
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("FootballPitchId")
+                    b.Property<int?>("FootballPitchId")
                         .HasColumnType("int");
 
                     b.Property<bool>("IsAccepted")
@@ -429,9 +429,7 @@ namespace Persistance.Migrations
 
                     b.HasOne("Domain.Models.Domain.FootballPitch", "FootballPitch")
                         .WithMany()
-                        .HasForeignKey("FootballPitchId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("FootballPitchId");
 
                     b.Navigation("ClubAway");
 
@@ -444,9 +442,7 @@ namespace Persistance.Migrations
                 {
                     b.HasOne("Domain.Models.Domain.FootballPitch", "FootballPitch")
                         .WithMany()
-                        .HasForeignKey("FootballPitchId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("FootballPitchId");
 
                     b.HasOne("Domain.Models.Domain.Club", "Receiver")
                         .WithMany()

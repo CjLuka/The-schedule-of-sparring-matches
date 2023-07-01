@@ -2,40 +2,60 @@
 @model SheduleMatchWeb.Pages.Clubs.BranchClubs.ShowAllBranchesClubModel
 @{
 }
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Wszystkie oddziały w klubie</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    @*<style>
+        body {
+            background-color: #f8f9fa;
+        }
 
-<h1>Wszystkie oddziały w klubie</h1>
-<form method="post">
-    <table class="table table-striped table-dark">
-        <thead>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.BranchClubss[0].Id)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.BranchClubss[0].ClubId)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.BranchClubss[0].Type)
-                </th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model.BranchClubss)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Id)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.ClubId)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Type)
-                    </td>
-                </tr>
+        h1 {
+            color: #343a40;
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .table {
+            margin-top: 30px;
+        }
+
+            .table th {
+                background-color: #343a40;
+                color: #fff;
             }
-        </tbody>
-    </table>
-    @*<a asp-page="./AddNewClub">Dodaj nowy klub</a>*@
-</form>
+
+            .table td {
+                background-color: #fff;
+            }
+    </style>*@
+</head>
+<body>
+    <div class="container">
+        <h1>Wszystkie oddziały w klubie</h1>
+        <form method="post">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Klub Id</th>
+                        <th>Typ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.BranchClubss)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => item.Id)</td>
+                            <td>@Html.DisplayFor(modelItem => item.ClubId)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Type)</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </form>
+    </div>
+</body>
+</html>

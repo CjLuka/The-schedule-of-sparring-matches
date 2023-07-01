@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "ObwcBp+8nkG3bfkwGlZq0NyZiAzfzq7POACeouN0gQA=",
+  "Hash": "8xYe+RQiQEaUfeW2jT2oUMYCRS0d4Sh7z1xk/UWOiYc=",
   "Source": "SheduleMatchWeb",
   "BasePath": "_content/SheduleMatchWeb",
   "Mode": "Default",
@@ -66,6 +66,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\site.css"
+    },
+    {
+      "Identity": "F:\\Praca dyplomowa\\Projekt\\SheduleMatchProject\\SheduleMatchWeb\\wwwroot\\css\\siteShow.css",
+      "SourceId": "SheduleMatchWeb",
+      "SourceType": "Discovered",
+      "ContentRoot": "F:\\Praca dyplomowa\\Projekt\\SheduleMatchProject\\SheduleMatchWeb\\wwwroot\\",
+      "BasePath": "_content/SheduleMatchWeb",
+      "RelativePath": "css/siteShow.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\siteShow.css"
     },
     {
       "Identity": "F:\\Praca dyplomowa\\Projekt\\SheduleMatchProject\\SheduleMatchWeb\\wwwroot\\favicon.ico",

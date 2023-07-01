@@ -10,6 +10,7 @@ namespace Persistance.Repo.Interfaces
     public interface IMatchRepository
     {
         Task<List<Match>> GetAllAsync();
+        Task<List<Match>> GetAllByClubAsync(int clubId);
         Task<Match> GetByIdAsync(int matchId);
         Task AddAsync(Match match);
         Task DeleteAsync(Match match);

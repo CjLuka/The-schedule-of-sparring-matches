@@ -15,7 +15,7 @@ namespace Domain.Models.Domain
         public DateTime Date { get; set; }
         public Club Sender { get; set; }
         public Club Receiver { get; set; }
-        public FootballPitch FootballPitch { get; set; }
+        public FootballPitch? FootballPitch { get; set; }
         public bool IsAccepted { get; set; }
 
     }

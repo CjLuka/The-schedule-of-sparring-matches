@@ -40,5 +40,20 @@ namespace Persistance.Repo.Repositories
         {
             throw new NotImplementedException();
         }
+
+        public async Task<List<Match>> GetAllByClubAsync(int clubId)
+        {
+            var AllMatches = await _context.Matches.ToListAsync();
+            List<Match> matches = new List<Match>();
+            foreach (var match in AllMatches)
+            {
+                if (match.ClubAway == clubId || match.ClubHome == clubId)
+                {
+                    matches.Add(match);
+                    match.
+                }
+            }
+            return matches;
+        }
     }
 }

@@ -21,6 +21,6 @@ namespace Domain.Models.Domain
         public int GoalsHome { get; set; }
         public int GoalsAway { get; set; }
 
-        public FootballPitch FootballPitch { get; set; }
+        public FootballPitch? FootballPitch { get; set; }
     }
 }
