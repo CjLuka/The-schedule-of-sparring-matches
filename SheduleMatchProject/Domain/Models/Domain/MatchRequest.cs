@@ -10,6 +10,7 @@ namespace Domain.Models.Domain
 {
     public class MatchRequest : AuditableEntity
     {
+
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         public DateTime Date { get; set; }
@@ -17,6 +18,7 @@ namespace Domain.Models.Domain
         public Club Receiver { get; set; }
         public FootballPitch? FootballPitch { get; set; }
         public bool IsAccepted { get; set; }
+        public Match Match { get; set; }
 
     }
 }

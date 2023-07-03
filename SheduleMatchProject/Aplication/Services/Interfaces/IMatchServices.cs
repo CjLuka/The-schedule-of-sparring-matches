@@ -11,6 +11,7 @@ namespace Aplication.Services.Interfaces
     public interface IMatchServices
     {
         Task<ServiceResponse<List<Match>>> GetAllAsync();
-        Task <>
+        Task<ServiceResponse<List<Match>>> GetAllByClubAsync(int clubId);
+
     }
 }

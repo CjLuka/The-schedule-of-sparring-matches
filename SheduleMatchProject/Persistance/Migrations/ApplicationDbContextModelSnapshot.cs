@@ -251,7 +251,7 @@ namespace Persistance.Migrations
                     b.Property<int>("GoalsAway")
                         .HasColumnType("int");
 
-                    b.Property<int>("GoalsHome")
+                    b.Property<int>("GoalsHomee")
                         .HasColumnType("int");
 
                     b.Property<string>("LastModifiedBy")
@@ -260,6 +260,9 @@ namespace Persistance.Migrations
                     b.Property<DateTime?>("LastModifiedDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("MatchRequestId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("ClubAwayId");
@@ -267,6 +270,9 @@ namespace Persistance.Migrations
                     b.HasIndex("ClubHomeId");
 
                     b.HasIndex("FootballPitchId");
+
+                    b.HasIndex("MatchRequestId")
+                        .IsUnique();
 
                     b.ToTable("Matches");
                 });
@@ -431,11 +437,19 @@ namespace Persistance.Migrations
                         .WithMany()
                         .HasForeignKey("FootballPitchId");
 
+                    b.HasOne("Domain.Models.Domain.MatchRequest", "MatchRequest")
+                        .WithOne("Match")
+                        .HasForeignKey("Domain.Models.Domain.Match", "MatchRequestId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("ClubAway");
 
                     b.Navigation("ClubHome");
 
                     b.Navigation("FootballPitch");
+
+                    b.Navigation("MatchRequest");
                 });
 
             modelBuilder.Entity("Domain.Models.Domain.MatchRequest", b =>
@@ -471,6 +485,12 @@ namespace Persistance.Migrations
             modelBuilder.Entity("Domain.Models.Domain.Club", b =>
                 {
                     b.Navigation("Branches");
+                });
+
+            modelBuilder.Entity("Domain.Models.Domain.MatchRequest", b =>
+                {
+                    b.Navigation("Match")
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Domain.Models.Domain.User", b =>

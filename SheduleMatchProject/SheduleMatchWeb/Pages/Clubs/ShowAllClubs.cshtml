@@ -30,7 +30,7 @@
                         <tr>
                             <td>@Html.DisplayFor(modelItem => item.Name)</td>
                             <td>@Html.DisplayFor(modelItem => item.DateCreated)</td>
-                            <td>@Html.DisplayFor(modelItem => item.GameClassId)</td>
+                            <td>@Html.DisplayFor(modelItem => item.GameClass.Name)</td>
                             <td>
                                 <img src="@item.FeaturedImageUrl" class="club-image" />
                             </td>

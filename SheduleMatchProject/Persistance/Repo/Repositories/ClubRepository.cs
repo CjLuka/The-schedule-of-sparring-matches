@@ -20,8 +20,9 @@ namespace Persistance.Repo.Repositories
 
         public async Task<List<Club>> GetAllAsync()
         {
-            var Clubs = await _context.Clubs.ToListAsync();
-            Console.WriteLine(Clubs);//Do testów
+            var Clubs = await _context.Clubs
+                .Include(C => C.GameClass)
+                .ToListAsync();
             return Clubs;
         }
         public async Task<Club> GetByIdAsync(int clubId)

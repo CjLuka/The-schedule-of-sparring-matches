@@ -24,15 +24,6 @@
                         </li>
                         @if (User.IsInRole("Admin") || User.IsInRole("President") || User.IsInRole("Coach"))
                         {
-                            @*<li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-page="/Clubs/MyClub">Mój klub</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-page="/Clubs/MyScheduleMatch">Zaplanowane mecze</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-page="/Clubs/HistoryMyMatch">Histora moich meczów</a>
-                            </li>*@
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" id="navbarDropdownAdmin">
                                     Mój klub
@@ -43,7 +34,7 @@
                                             Profil klubu
                                         </a>
                                         <a class="dropdown-item" href="/Clubs/MyScheduleMatch">
-                                            Zaplanowane mecze
+                                            Rozegrane mecze
                                         </a>
                                     </li>
                                 </ul>

@@ -17,9 +17,13 @@ namespace Domain.Models.Domain
 
         public Club ClubHome { get; set; }
         public Club ClubAway { get; set; }
+        public int ClubHomeId { get; set; }
+        public int ClubAwayId { get; set; }
 
-        public int GoalsHome { get; set; }
+        public int GoalsHomee { get; set; }
         public int GoalsAway { get; set; }
+        public int MatchRequestId { get; set; }
+        public MatchRequest MatchRequest { get; set; }
 
         public FootballPitch? FootballPitch { get; set; }
     }

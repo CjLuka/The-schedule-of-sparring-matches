@@ -3,3 +3,37 @@
 @{
 }
 
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Data rozpoczęcia meczu</th>
+            <th>Data zakończenia meczu</th>
+            <th>Gospodarze</th>
+            <th>Gole</th>
+            <th>Goście</th>
+            <th>Gole</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Matches)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.DateStart)</td>
+                <td>@Html.DisplayFor(modelItem => item.DateEnd)</td>
+                @*@{
+                var clubId = item.ClubHomeId;
+                var clubName = Clubs.FirstOrDefault(c => c.Id == clubId)?.Name;//sluzy do wyswietlenia nazwy zamiast id
+                var test = 
+                }*@
+                <td>@Html.DisplayFor(modelItem => item.ClubHome.Name)</td>
+                @*<td>@Html.DisplayFor(modelItem => item.ClubHomeId)</td>*@
+                <td>@Html.DisplayFor(modelItem => item.GoalsHomee)</td>
+                @*<td>@Html.DisplayFor(modelItem => item.ClubAwayId)</td>*@
+                <td>@Html.DisplayFor(modelItem => item.ClubAway.Name)</td>
+                <td>@Html.DisplayFor(modelItem => item.GoalsAway)</td>
+            </tr>
+        }
+    </tbody>
+</table>
