@@ -15,12 +15,16 @@ namespace Domain.Models.Domain
         public DateTime DateStart { get; set; }
         public DateTime DateEnd { get; set; }
 
-        public Club ClubHome { get; set; }
-        public Club ClubAway { get; set; }
-        public int ClubHomeId { get; set; }
-        public int ClubAwayId { get; set; }
+        //public Club ClubHome { get; set; }
+        //public Club ClubAway { get; set; }
+        //public int ClubHomeId { get; set; }
+        //public int ClubAwayId { get; set; }
+        public BranchClub BranchClubHome { get; set; }
+        public BranchClub BranchClubAway { get; set; }
+        public int BranchClubHomeId { get; set; }
+        public int BranchClubAwayId { get; set; }
 
-        public int GoalsHomee { get; set; }
+        public int GoalsHome { get; set; }
         public int GoalsAway { get; set; }
         public int MatchRequestId { get; set; }
         public MatchRequest MatchRequest { get; set; }

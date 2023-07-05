@@ -14,8 +14,11 @@ namespace Domain.Models.Domain
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         public DateTime Date { get; set; }
-        public Club Sender { get; set; }
-        public Club Receiver { get; set; }
+        //public Club Sender { get; set; }
+        //public Club Receiver { get; set; }
+        public BranchClub Sender{ get; set; }
+        public BranchClub Receiver { get; set; }
+
         public FootballPitch? FootballPitch { get; set; }
         public bool IsAccepted { get; set; }
         public Match Match { get; set; }

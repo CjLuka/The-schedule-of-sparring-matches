@@ -26,8 +26,10 @@ namespace Persistance.Repo.Repositories
         public async Task<List<Match>> GetAllAsync()
         {
             var Matches = await _context.Matches
-                            .Include(m => m.ClubHome) // Nadanie dostępu do tabeli Club, aby mozna bylo odowlywac sie do wartosci z tej tabeli
-                            .Include(mecz => mecz.ClubAway) // Załaduj powiązaną drużynę wyjazdową
+                            .Include(m => m.BranchClubHome)//Nadanie dostępu do tabeli BranchClub, aby mozna bylo odowlywac sie do wartosci z tej tabeli                       
+                            .ThenInclude(mb => mb.Club)//Nadanie wartości jeszcze dalej, do tabeli Club 
+                            .Include(m => m.BranchClubAway)// Załaduj powiązaną drużynę wyjazdową 
+                            .ThenInclude(mb => mb.Club)// Załaduj powiązaną drużynę wyjazdową 
                             .ToListAsync();
             return Matches;
         }
@@ -53,20 +55,22 @@ namespace Persistance.Repo.Repositories
         public async Task<List<Match>> GetAllByClubAsync(int clubId)
         {
             var Matches = await _context.Matches
-                            .Include(m => m.ClubHome) // Nadanie dostępu do tabeli Club, aby mozna bylo odowlywac sie do wartosci z tej tabeli                                                      //.ThenInclude(mc => mc.Name)
-                            .Include(m => m.ClubAway) // Załaduj powiązaną drużynę wyjazdową                                                           //.ThenInclude(ClubAway => ClubAway.Name)
+                            .Include(m=>m.BranchClubHome)//Nadanie dostępu do tabeli BranchClub, aby mozna bylo odowlywac sie do wartosci z tej tabeli                       
+                            .ThenInclude(mb => mb.Club)//Nadanie wartości jeszcze dalej, do tabeli Club 
+                            .Include(m => m.BranchClubAway)// Załaduj powiązaną drużynę wyjazdową 
+                            .ThenInclude(mb => mb.Club)// Załaduj powiązaną drużynę wyjazdową 
                             .ToListAsync();
 
-            List<Match> matches = new List<Match>();//Lista meczow do ktorej będą dodawane mecze i ta, która będzie zwracana
+            List<Match> ListOfMatches = new List<Match>();//Lista meczow do ktorej będą dodawane mecze i ta, która będzie zwracana
 
             foreach (var match in Matches)
             {
-                if (match.ClubAwayId == clubId || match.ClubHomeId == clubId)
+                if (match.BranchClubHomeId == clubId || match.BranchClubAwayId == clubId)
                 {
-                    matches.Add(match);
+                    ListOfMatches.Add(match);
                 }
             }
-            return matches;
+            return ListOfMatches;
         }
     }
 }

@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Persistance.Migrations;
+//using Persistance.Migrations;
 using Persistance.Repo.Interfaces;
 using System.Security.Claims;
 

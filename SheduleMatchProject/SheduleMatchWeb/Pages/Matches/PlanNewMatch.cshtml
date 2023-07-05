@@ -1,0 +1,34 @@
+﻿@page
+@model SheduleMatchWeb.Pages.Matches.PlanNewMatchModel
+@{
+}
+
+<div>
+    <div class="container">
+        <form method="post">
+            <div class="mb-3">
+                <label for="Data" class="form-label">
+                    Podaj date meczu:
+                </label>
+                <input id="Data" type="date" class="form-control" asp-for="NewMatchRequest.Date" />
+            </div>
+            <label class="form-label">
+                Wybierz przeciwnika
+            </label>
+            <div class="form-group">
+                <select class="form-select" aria-label="Default select example" asp-for="NewMatchRequest.Receiver" asp-items="@(ViewData["AllClubs"] as IEnumerable<SelectListItem>)"></select>
+                <span asp-validation-for="NewMatchRequest" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label for="UserId" class="form-label">Stadion</label>
+                <select class="form-select" aria-label="Default select example" asp-for="NewMatchRequest.FootballPitch" asp-items="@(ViewData["AllFootballPitch"] as IEnumerable<SelectListItem>)"></select>
+                <span asp-validation-for="NewMatchRequest" class="text-danger"></span>
+            </div>
+            <div>
+                <button type="submit" class="btn btn-dark">
+                    Dodaj
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

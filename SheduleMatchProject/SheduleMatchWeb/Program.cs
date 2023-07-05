@@ -29,10 +29,14 @@ builder.Services.AddScoped<IGameClassRepository, GameClassRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IBranchClubRepository, BranchClubRepository>();
 builder.Services.AddScoped<IMatchRepository, MatchRepository>();
+builder.Services.AddScoped<IFootballPitchRepository, FootballPitchRepository>();
+
 builder.Services.AddScoped<IUserServices, UserServices>();
 builder.Services.AddScoped<IClubServices, ClubServices>();
 builder.Services.AddScoped<IGameClassServices, GameClassServices>();
 builder.Services.AddScoped<IMatchServices, MatchServices>();
+builder.Services.AddScoped<IFootballPitchServices, FootballPitchServices>();
+
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 //builder.Services.AddAuthorization(options =>
 //{

@@ -1,0 +1,39 @@
+﻿@page
+@model SheduleMatchWeb.Pages.Clubs.MyScheduleMatchModel
+@{
+}
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Data rozpoczęcia meczu</th>
+            <th>Data zakończenia meczu</th>
+            <th>Gospodarze</th>
+            <th>Kategoria wiekowa</th>
+            <th>Gole</th>
+            <th>Goście</th>
+            <th>Kategoria wiekowa</th>
+            <th>Gole</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Matches)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.DateStart)</td>
+                <td>@Html.DisplayFor(modelItem => item.DateEnd)</td>
+
+                <td>@Html.DisplayFor(modelItem => item.BranchClubHome.Club.Name)</td>
+                <td>@Html.DisplayFor(modelItem => item.BranchClubHome.Type)</td>
+                <td>@Html.DisplayFor(modelItem => item.GoalsHome)</td>
+
+                @*<td>@Html.DisplayFor(modelItem => item.BranchClubAway.Club.Name)</td>*@
+                <td>@Html.DisplayFor(modelItem => item.BranchClubAway.Club.Name)</td>
+                <td>@Html.DisplayFor(modelItem => item.BranchClubAway.Type)</td>
+                <td>@Html.DisplayFor(modelItem => item.GoalsAway)</td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -226,10 +226,10 @@ namespace Persistance.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("ClubAwayId")
+                    b.Property<int>("BranchClubAwayId")
                         .HasColumnType("int");
 
-                    b.Property<int>("ClubHomeId")
+                    b.Property<int>("BranchClubHomeId")
                         .HasColumnType("int");
 
                     b.Property<string>("CreatedBy")
@@ -251,7 +251,7 @@ namespace Persistance.Migrations
                     b.Property<int>("GoalsAway")
                         .HasColumnType("int");
 
-                    b.Property<int>("GoalsHomee")
+                    b.Property<int>("GoalsHome")
                         .HasColumnType("int");
 
                     b.Property<string>("LastModifiedBy")
@@ -265,9 +265,9 @@ namespace Persistance.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ClubAwayId");
+                    b.HasIndex("BranchClubAwayId");
 
-                    b.HasIndex("ClubHomeId");
+                    b.HasIndex("BranchClubHomeId");
 
                     b.HasIndex("FootballPitchId");
 
@@ -421,15 +421,15 @@ namespace Persistance.Migrations
 
             modelBuilder.Entity("Domain.Models.Domain.Match", b =>
                 {
-                    b.HasOne("Domain.Models.Domain.Club", "ClubAway")
+                    b.HasOne("Domain.Models.Domain.BranchClub", "BranchClubAway")
                         .WithMany()
-                        .HasForeignKey("ClubAwayId")
+                        .HasForeignKey("BranchClubAwayId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Domain.Models.Domain.Club", "ClubHome")
+                    b.HasOne("Domain.Models.Domain.BranchClub", "BranchClubHome")
                         .WithMany()
-                        .HasForeignKey("ClubHomeId")
+                        .HasForeignKey("BranchClubHomeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -443,9 +443,9 @@ namespace Persistance.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("ClubAway");
+                    b.Navigation("BranchClubAway");
 
-                    b.Navigation("ClubHome");
+                    b.Navigation("BranchClubHome");
 
                     b.Navigation("FootballPitch");
 
@@ -458,13 +458,13 @@ namespace Persistance.Migrations
                         .WithMany()
                         .HasForeignKey("FootballPitchId");
 
-                    b.HasOne("Domain.Models.Domain.Club", "Receiver")
+                    b.HasOne("Domain.Models.Domain.BranchClub", "Receiver")
                         .WithMany()
                         .HasForeignKey("ReceiverId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Domain.Models.Domain.Club", "Sender")
+                    b.HasOne("Domain.Models.Domain.BranchClub", "Sender")
                         .WithMany()
                         .HasForeignKey("SenderId")
                         .OnDelete(DeleteBehavior.Cascade)
