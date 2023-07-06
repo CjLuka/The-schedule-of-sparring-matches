@@ -46,7 +46,7 @@ namespace SheduleMatchWeb.Pages.Matches
         }
         public async Task<IActionResult> OnPostAsync()
         {
-            NewMatchRequest.IsAccepted = false;
+            NewMatchRequest.IsAccepted = false;//przypisanie braku zaakceptowania meczu podczas tworzenia zapytania o mecz
             return RedirectToPage("/MatchPlanned");
         }
     }

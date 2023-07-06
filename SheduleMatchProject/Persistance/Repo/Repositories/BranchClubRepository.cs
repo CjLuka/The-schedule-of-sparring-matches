@@ -31,5 +31,13 @@ namespace Persistance.Repo.Repositories
             }
             return branchClubsById;
         }
+
+        public async Task<BranchClub> GetClubBranchByCoach(int userId)//funkcja pobierająca klub dla danego trenera
+        {
+            var myBranchClub = await _context.BranchesClubs
+                .Include(c => c.Club)
+                .FirstOrDefaultAsync(u => u.UserId == userId);
+            return myBranchClub;
+        }
     }
 }

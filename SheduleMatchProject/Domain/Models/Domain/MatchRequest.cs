@@ -18,7 +18,8 @@ namespace Domain.Models.Domain
         //public Club Receiver { get; set; }
         public BranchClub Sender{ get; set; }
         public BranchClub Receiver { get; set; }
-
+        public int SenderId { get; set; }
+        public int ReceiverId { get; set; }
         public FootballPitch? FootballPitch { get; set; }
         public bool IsAccepted { get; set; }
         public Match Match { get; set; }

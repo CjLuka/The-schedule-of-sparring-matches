@@ -1,0 +1,30 @@
+﻿@page
+@model SheduleMatchWeb.Pages.Clubs.BranchClubs.MyBranchClubModel
+@{
+}
+
+<table class="table table-striped table-dark">
+    <thead>
+        <tr>
+            <th>
+                Nazwa klubu
+            </th>
+            <th>
+                Rodzaj drużyny
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+
+
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => Model.MyBranchClub.Club.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => Model.MyBranchClub.Type)
+            </td>
+        </tr>
+
+    </tbody>
+</table>
