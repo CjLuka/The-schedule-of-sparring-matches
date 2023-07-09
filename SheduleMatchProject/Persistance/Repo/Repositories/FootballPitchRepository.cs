@@ -22,5 +22,19 @@ namespace Persistance.Repo.Repositories
             var allFootballPitches = await _context.FootballPitches.ToListAsync();
             return allFootballPitches;
         }
+        public async Task<List<FootballPitch>> GetAvailableFootballPitchesForMatchRequest(DateTime dateTime)
+        {
+            var reservedFootballPitchIds = await _context.MatchRequests
+                .Where(mr => mr.Date == dateTime && mr.IsAccepted)
+                .Select(mr => mr.FootballPitch.Id)
+                .ToListAsync();
+
+            var availableFootballPitches = await _context.FootballPitches
+                .Where(fp => !reservedFootballPitchIds.Contains(fp.Id))
+                .ToListAsync();
+
+            return availableFootballPitches;
+        }
     }
+
 }

@@ -11,5 +11,7 @@ namespace Aplication.Services.Interfaces
     public interface IFootballPitchServices
     {
         Task<ServiceResponse<List<FootballPitch>>> GetAllFootballPitchesAsync();
+        Task<ServiceResponse<List<FootballPitch>>> GetAvailableFootballPitchesForMatchRequest(DateTime dateTime);
+
     }
 }

@@ -38,5 +38,25 @@ namespace Aplication.Services.Services
                 Success = true
             };
         }
+
+        public async Task<ServiceResponse<List<FootballPitch>>> GetAvailableFootballPitchesForMatchRequest(DateTime dateTime)
+        {
+            var allFootballPitches = await _footballPitchRepository.GetAvailableFootballPitchesForMatchRequest(dateTime);
+            if (allFootballPitches.IsNullOrEmpty())
+            {
+                return new ServiceResponse<List<FootballPitch>>()
+                {
+                    Data = null,
+                    Message = "Brak dostępnych stadionów w tym terminie",
+                    Success = false
+                };
+            }
+            return new ServiceResponse<List<FootballPitch>>()
+            {
+                Data = allFootballPitches,
+                Message = "Wszystkie stadiony",
+                Success = true
+            };
+        }
     }
 }

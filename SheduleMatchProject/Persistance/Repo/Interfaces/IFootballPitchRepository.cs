@@ -10,6 +10,7 @@ namespace Persistance.Repo.Interfaces
 {
     public interface IFootballPitchRepository
     {
-        Task<List<FootballPitch>> GetAllAsync(); 
+        Task<List<FootballPitch>> GetAllAsync();
+        Task<List<FootballPitch>> GetAvailableFootballPitchesForMatchRequest(DateTime dateTime);
     }
 }

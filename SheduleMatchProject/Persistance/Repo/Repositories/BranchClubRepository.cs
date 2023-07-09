@@ -18,9 +18,35 @@ namespace Persistance.Repo.Repositories
             _context = context;
         }
 
+        public async Task<List<BranchClub>> GetAllBranchClubAsync()
+        {
+            var allBranchClubs = await _context.BranchesClubs
+                .Include(c => c.Club)
+                .ToListAsync();
+            return allBranchClubs;
+        }
+
+        public async Task<List<BranchClub>> GetAllBranchClubsForPlanMatch(int clubId)
+        {
+            var allBranchClubs = await _context.BranchesClubs
+                .Include(c => c.Club)
+                .ToListAsync();
+            List<BranchClub> branchClubsWithoutSender= new List<BranchClub>();
+            foreach (var branchClub in allBranchClubs)
+            {
+                if (branchClub.ClubId != clubId)
+                {
+                    branchClubsWithoutSender.Add(branchClub);//dodawanie do listy tych zespołow, ktore nie będą wysyłały zapytania o mecz
+                }
+            }
+            return branchClubsWithoutSender;
+        }
+
         public async Task<List<BranchClub>> GetAllByClubAsync(int clubId)
         {
-            var allBranchClubs = await _context.BranchesClubs.ToListAsync();
+            var allBranchClubs = await _context.BranchesClubs
+                .Include(c => c.Club)
+                .ToListAsync();
             List<BranchClub> branchClubsById = new List<BranchClub>();
             foreach (var branchClub in allBranchClubs)
             {

@@ -23,7 +23,6 @@ namespace SheduleMatchWeb.Pages.Clubs
         {
 
             string userIdString = HttpContext.User.FindFirstValue("UserId");//pobranie userId zalogowanego uzytkownika, aby móc pobraæ odpowiedni klub
-            //var test4 = await _matchServices.GetAllAsync();
             int.TryParse(userIdString, out int userId);//przerobieine userId na int
 
             var Club = await _clubServices.GetClubByPresidentIdAsync(userId);//pobranie klubu przypisanego do zalogowanego uzytkownika

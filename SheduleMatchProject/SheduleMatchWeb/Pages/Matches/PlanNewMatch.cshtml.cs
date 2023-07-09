@@ -4,6 +4,7 @@ using Domain.Models.Domain;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Security.Claims;
 
 namespace SheduleMatchWeb.Pages.Matches
 {
@@ -12,12 +13,14 @@ namespace SheduleMatchWeb.Pages.Matches
         private readonly IMatchServices _matchServices;
         private readonly IClubServices _clubServices;
         private readonly IFootballPitchServices _footballPitchServices;
+        private readonly IBranchClubServices _branchClubServices;
         
-        public PlanNewMatchModel(IMatchServices matchServices, IClubServices clubServices, IFootballPitchServices footballPitchServices)
+        public PlanNewMatchModel(IMatchServices matchServices, IClubServices clubServices, IFootballPitchServices footballPitchServices, IBranchClubServices branchClubServices)
         {
             _matchServices = matchServices;
             _clubServices = clubServices;
             _footballPitchServices= footballPitchServices;
+            _branchClubServices= branchClubServices;
         }
 
         [BindProperty]
@@ -26,16 +29,19 @@ namespace SheduleMatchWeb.Pages.Matches
         public List<SelectListItem> Clubs { get; set; }
         public async Task<IActionResult> OnGetAsync()
         {
-            List<SelectListItem> ClubsFromBase = new List<SelectListItem>();//Utworzenie selectlisty dla klubów
+            string userIdString = HttpContext.User.FindFirstValue("UserId");//pobranie userId zalogowanego uzytkownika, aby móc pobraæ odpowiedni klub
+            int.TryParse(userIdString, out int userId);//przerobieine userId na int
+
+            List<SelectListItem> BranchClubsFromBase = new List<SelectListItem>();//Utworzenie selectlisty dla wszystkich zespo³ów
             List<SelectListItem> FootballPitchFromBase = new List<SelectListItem>();//Utworzenie selectlisty dla stadionow
-            var AllClubs = await _clubServices.GetAllAsync();//Pobranie wszystkich druzyn
-
-            foreach (var item in AllClubs.Data)
+            var AllBranchClubs = await _branchClubServices.GetAllBranchClubsForPlanMatch(userId);//Pobranie wszystkich 
+            foreach (var item in AllBranchClubs.Data)
             {
-                ClubsFromBase.Add(new SelectListItem { Text = item.Name, Value = item.Id.ToString() });//przypisanie wszystkich klubów do selectlisty
+                BranchClubsFromBase.Add(new SelectListItem { Text = item.Club.Name + " - " + item.Type, Value = item.Id.ToString() });//przypisanie wszystkich klubów do selectlisty
             }
-            ViewData["AllClubs"] = ClubsFromBase;//przypisanie klubów do ViewData
+            ViewData["AllClubs"] = BranchClubsFromBase;//przypisanie klubów do ViewData
 
+            //var allFootballPitch = await _footballPitchServices.GetAvailableFootballPitchesForMatchRequest(NewMatchRequest.Date);
             var allFootballPitch = await _footballPitchServices.GetAllFootballPitchesAsync();
             foreach (var item in allFootballPitch.Data)
             {

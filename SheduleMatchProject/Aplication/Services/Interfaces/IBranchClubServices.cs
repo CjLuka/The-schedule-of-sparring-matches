@@ -11,5 +11,7 @@ namespace Aplication.Services.Interfaces
     public interface IBranchClubServices
     {
         Task<ServiceResponse<BranchClub>> GetBranchClubByCoach(int coachId);
+        Task<ServiceResponse<List<BranchClub>>> GetAllBranchClubs();
+        Task<ServiceResponse<List<BranchClub>>> GetAllBranchClubsForPlanMatch(int clubId);//serwis pobierający wszystkie zespoły, poza zespolami z klubu, który składa prośbę o mecz
     }
 }
