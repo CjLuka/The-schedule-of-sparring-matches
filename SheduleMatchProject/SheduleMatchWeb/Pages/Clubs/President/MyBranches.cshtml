@@ -1,0 +1,40 @@
+﻿@page
+@model SheduleMatchWeb.Pages.Clubs.President.MyBranchesModel
+@{
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Wszystkie oddziały w klubie</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Wszystkie oddziały w klubie</h1>
+        <form method="post">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Klub Id</th>
+                        <th>Typ</th>
+                        <th>Trener</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.BranchClubs)
+                    {
+                            <tr>
+                                <td>@Html.DisplayFor(modelItem => item.Club.Name)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Type)</td>
+                                <td>@(item.User.FirstName + " " + item.User.LastName)</td>
+                                <td>
+                                    <a href="./UpdateBranch/@item.Id" class="btn btn-primary">Aktualizuj</a>
+                                </td>
+                            </tr>
+                    }
+                </tbody>
+            </table>
+        </form>
+    </div>
+</body>
+</html>

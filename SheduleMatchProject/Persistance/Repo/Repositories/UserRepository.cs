@@ -1,5 +1,6 @@
 ﻿using Domain.Models.Domain;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Identity.Client;
 using Persistance.Data;
 using Persistance.Repo.Interfaces;
 using System;
@@ -75,6 +76,22 @@ namespace Persistance.Repo.Repositories
                 return user.Id;
             }
             return 0;
+        }
+
+        public async Task<List<User>> GetCoachWithoutClub()
+        {
+            var coachesWithoutClub = _context.Users
+            .Where(coach => coach.Role == "Coach" && !coach.BranchClubs.Any())//pobranie tylko takich, ktorzy są trenerami i nie mają innych klubow
+            .ToList();
+            return coachesWithoutClub;
+        }
+
+        public async Task<List<User>> GetAllCoaches()
+        {
+            var allCoaches = _context.Users
+            .Where(coach => coach.Role == "Coach")
+            .ToList();
+            return allCoaches;
         }
     }
 }

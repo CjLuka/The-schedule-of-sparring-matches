@@ -18,5 +18,7 @@ namespace Aplication.Services.Interfaces
         Task<ServiceResponse<User>> AddAsync(User user);
         Task<ServiceResponse<List<User>>> GetAllUsersAsync();
         Task<ServiceResponse<List<User>>> GetUsersWithoutClub();
+        Task<ServiceResponse<List<User>>> GetCoachesWithoutClub();
+        Task<ServiceResponse<List<User>>> GetAllCoaches();
     }
 }

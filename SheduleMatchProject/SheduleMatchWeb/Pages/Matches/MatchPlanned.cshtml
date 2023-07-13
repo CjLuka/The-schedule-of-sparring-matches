@@ -2,3 +2,30 @@
 @model SheduleMatchWeb.Pages.Matches.MatchPlannedModel
 @{
 }
+
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Data rozegrania meczu</th>
+            <th>Gospodarze</th>
+            <th>Goście</th>
+            <th>Stadion</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.matchRequests)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.Date)</td>
+                <td>@Html.DisplayFor(modelItem => item.SenderId)</td>
+
+                <td>@Html.DisplayFor(modelItem => item.ReceiverId)</td>
+@*                <td>@Html.DisplayFor(modelItem => item.ReceiverId.Club.Name)</td>
+*@                <td>@Html.DisplayFor(modelItem => item.FootballPitch)</td>
+            </tr>
+        }
+    </tbody>
+</table>

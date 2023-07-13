@@ -29,6 +29,11 @@
                             <a class="nav-link text-dark" asp-area="" asp-page="/Matches/PlanNewMatch">Zaplanuj nowy mecz</a>
 
                         }
+                        @if (User.IsInRole("President"))
+                        {
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Clubs/President/MyBranches">Moje drużyny</a>
+
+                        }
                         @if (User.IsInRole("Admin") || User.IsInRole("President") || User.IsInRole("Coach"))
                         {
                             <li class="nav-item dropdown">

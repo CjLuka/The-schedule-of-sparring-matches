@@ -30,6 +30,7 @@ namespace Persistance.Repo.Repositories
         {
             var allBranchClubs = await _context.BranchesClubs
                 .Include(c => c.Club)
+                .Include(u => u.User)
                 .ToListAsync();
             List<BranchClub> branchClubsWithoutSender= new List<BranchClub>();
             foreach (var branchClub in allBranchClubs)
@@ -46,11 +47,12 @@ namespace Persistance.Repo.Repositories
         {
             var allBranchClubs = await _context.BranchesClubs
                 .Include(c => c.Club)
+                .Include(u => u.User)
                 .ToListAsync();
             List<BranchClub> branchClubsById = new List<BranchClub>();
             foreach (var branchClub in allBranchClubs)
             {
-                if(branchClub.ClubId== clubId)
+                if(branchClub.ClubId == clubId)
                 {
                     branchClubsById.Add(branchClub);
                 }
@@ -64,6 +66,11 @@ namespace Persistance.Repo.Repositories
                 .Include(c => c.Club)
                 .FirstOrDefaultAsync(u => u.UserId == userId);
             return myBranchClub;
+        }
+
+        public async Task<BranchClub> GetDetailBranchByIdAsync(int branchClubId)
+        {
+            return await _context.BranchesClubs.FirstOrDefaultAsync(c => c.Id == branchClubId);
         }
     }
 }

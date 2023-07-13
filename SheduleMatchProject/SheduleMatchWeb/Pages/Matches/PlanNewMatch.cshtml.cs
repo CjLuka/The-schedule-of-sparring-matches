@@ -27,6 +27,8 @@ namespace SheduleMatchWeb.Pages.Matches
         public MatchRequest NewMatchRequest { get; set; }
         [BindProperty]
         public List<SelectListItem> Clubs { get; set; }
+        [BindProperty]
+        public List<BranchClub> Branches { get; set; }
         public async Task<IActionResult> OnGetAsync()
         {
             string userIdString = HttpContext.User.FindFirstValue("UserId");//pobranie userId zalogowanego uzytkownika, aby móc pobraæ odpowiedni klub
@@ -34,20 +36,22 @@ namespace SheduleMatchWeb.Pages.Matches
 
             List<SelectListItem> BranchClubsFromBase = new List<SelectListItem>();//Utworzenie selectlisty dla wszystkich zespo³ów
             List<SelectListItem> FootballPitchFromBase = new List<SelectListItem>();//Utworzenie selectlisty dla stadionow
-            var AllBranchClubs = await _branchClubServices.GetAllBranchClubsForPlanMatch(userId);//Pobranie wszystkich 
-            foreach (var item in AllBranchClubs.Data)
-            {
-                BranchClubsFromBase.Add(new SelectListItem { Text = item.Club.Name + " - " + item.Type, Value = item.Id.ToString() });//przypisanie wszystkich klubów do selectlisty
-            }
-            ViewData["AllClubs"] = BranchClubsFromBase;//przypisanie klubów do ViewData
+            var AllBranchClubs = await _branchClubServices.GetAllBranchClubsForPlanMatchAsync(userId);//Pobranie wszystkich 
+
+            Branches = AllBranchClubs.Data;
+            //foreach (var item in AllBranchClubs.Data)
+            //{
+            //    BranchClubsFromBase.Add(new SelectListItem { Text = item.Club.Name + " - " + item.Type, Value = item.Id.ToString() });//przypisanie wszystkich klubów do selectlisty
+            //}
+            //ViewData["AllClubs"] = BranchClubsFromBase;//przypisanie klubów do ViewData
 
             //var allFootballPitch = await _footballPitchServices.GetAvailableFootballPitchesForMatchRequest(NewMatchRequest.Date);
-            var allFootballPitch = await _footballPitchServices.GetAllFootballPitchesAsync();
-            foreach (var item in allFootballPitch.Data)
-            {
-                FootballPitchFromBase.Add(new SelectListItem { Text = item.Name, Value = item.Id.ToString() });//przypisanie wszystkich stadionow do selectlisty
-            }
-            ViewData["AllFootballPitch"] = FootballPitchFromBase;//przypisanie stadionów do ViewData
+            //var allFootballPitch = await _footballPitchServices.GetAllFootballPitchesAsync();
+            //foreach (var item in allFootballPitch.Data)
+            //{
+            //    FootballPitchFromBase.Add(new SelectListItem { Text = item.Name, Value = item.Id.ToString() });//przypisanie wszystkich stadionow do selectlisty
+            //}
+            //ViewData["AllFootballPitch"] = FootballPitchFromBase;//przypisanie stadionów do ViewData
             return Page();
         }
         public async Task<IActionResult> OnPostAsync()

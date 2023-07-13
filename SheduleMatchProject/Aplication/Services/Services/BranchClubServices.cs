@@ -18,7 +18,7 @@ namespace Aplication.Services.Services
             _branchClubRepository = branchClubRepository;
         }
 
-        public async Task<ServiceResponse<List<BranchClub>>> GetAllBranchClubs()
+        public async Task<ServiceResponse<List<BranchClub>>> GetAllBranchClubsAsync()
         {
             var branchClubs = await _branchClubRepository.GetAllBranchClubAsync();
             if (branchClubs == null)
@@ -38,7 +38,7 @@ namespace Aplication.Services.Services
             };
         }
 
-        public async Task<ServiceResponse<List<BranchClub>>> GetAllBranchClubsForPlanMatch(int clubId)
+        public async Task<ServiceResponse<List<BranchClub>>> GetAllBranchClubsForPlanMatchAsync(int clubId)
         {
             var branchClubs = await _branchClubRepository.GetAllBranchClubsForPlanMatch(clubId);
             if (branchClubs == null)
@@ -58,7 +58,27 @@ namespace Aplication.Services.Services
             };
         }
 
-        public async Task<ServiceResponse<BranchClub>> GetBranchClubByCoach(int coachId)
+        public async Task<ServiceResponse<List<BranchClub>>> GetBranchesByClubAsync(int clubId)
+        {
+            var myBranches = await _branchClubRepository.GetAllByClubAsync(clubId);
+            if (myBranches == null)
+            {
+                return new ServiceResponse<List<BranchClub>>
+                {
+                    Data = null,
+                    Message = "Brak zespołów",
+                    Success = false
+                };
+            }
+            return new ServiceResponse<List<BranchClub>>
+            {
+                Data = myBranches,
+                Message = "Oto wszystkie zespoły",
+                Success = true
+            };
+        }
+
+        public async Task<ServiceResponse<BranchClub>> GetBranchClubByCoachAsync(int coachId)
         {
             var myBranchClub = await _branchClubRepository.GetClubBranchByCoach(coachId);
             if (myBranchClub == null)
@@ -74,6 +94,26 @@ namespace Aplication.Services.Services
             {
                 Data = myBranchClub,
                 Message = "Oto twój zespół",
+                Success = true
+            };
+        }
+
+        public async Task<ServiceResponse<BranchClub>> GetDetailBranchByIdAsync(int branchId)
+        {
+            var branchClub = await _branchClubRepository.GetDetailBranchByIdAsync(branchId);
+            if (branchClub == null)
+            {
+                return new ServiceResponse<BranchClub>
+                {
+                    Data = null,
+                    Message = "Brak zespołu",
+                    Success = false
+                };
+            }
+            return new ServiceResponse<BranchClub>
+            {
+                Data = branchClub,
+                Message = "Zespół",
                 Success = true
             };
         }

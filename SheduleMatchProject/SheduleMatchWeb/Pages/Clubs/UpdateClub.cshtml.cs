@@ -29,8 +29,8 @@ namespace SheduleMatchWeb.Pages.Clubs
         [BindProperty]
         public Club ClubUpdate { get; set; }
         [BindProperty]
-        public List<SelectListItem> GameClassess { get; set; }
-        public List<SelectListItem> Users { get; set; }
+        public List<SelectListItem> GameClassess { get; set; }//do sprawdzenia 
+        public List<SelectListItem> Users { get; set; }//do sprawdzenia czy to potrzebne
         public async Task<IActionResult> OnGetAsync(int id)
         {
             List <SelectListItem> Users = new List<SelectListItem>();//utworzenie selectlisty dla wszystkich uzytkownikow

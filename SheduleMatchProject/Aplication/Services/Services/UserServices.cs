@@ -42,6 +42,26 @@ namespace Aplication.Services.Services
             };
         }
 
+        public async Task<ServiceResponse<List<User>>> GetAllCoaches()
+        {
+            var allCoaches = await _userRepository.GetAllCoaches();
+            if (allCoaches == null)
+            {
+                return new ServiceResponse<List<User>>()
+                {
+                    Success = false,
+                    Data = null,
+                    Message = "Brak trenerów"
+                };
+            }
+            return new ServiceResponse<List<User>> 
+            { 
+                Success = false,
+                Data = allCoaches, 
+                Message= "Wszyscy trenerzy"
+            };
+        }
+
         public async Task<ServiceResponse<List<User>>> GetAllUsersAsync()
         {
             var users = await _userRepository.GetAllAsync();
@@ -58,6 +78,26 @@ namespace Aplication.Services.Services
                 Success = true,
                 Data = users,
                 Message = "Wszyscy uzytkownicy"
+            };
+        }
+
+        public async Task<ServiceResponse<List<User>>> GetCoachesWithoutClub()
+        {
+            var coaches = await _userRepository.GetCoachWithoutClub();
+            if (coaches.IsNullOrEmpty())
+            {
+                return new ServiceResponse<List<User>>()
+                {
+                    Data = null,
+                    Success= false,
+                    Message = "Brak trenerow bez klubu"
+                };
+            }
+            return new ServiceResponse<List<User>>
+            {
+                Data= coaches,
+                Success= true,
+                Message="Wszyscy trenerzy"
             };
         }
 

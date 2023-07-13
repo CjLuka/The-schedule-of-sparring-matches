@@ -18,13 +18,13 @@ namespace Persistance.Repo.Repositories
         {
             _context= context;
         }
-        public async Task<List<MatchRequest>> GetPlannedMatchAsync(int clubBranchId)
+        public async Task<List<MatchRequest>> GetPlannedMatchAsync(BranchClub branchClub)
         {
             var allMatchRequest = await _context.MatchRequests.ToListAsync();//pobranie wszystkich zapytan o mecz
             List<MatchRequest> allMatchRequestByBranchClub = new List<MatchRequest>();//utworzenie listy, którą będziemy zwracać
             foreach (var item in allMatchRequest)
             {
-                if (item.ReceiverId == clubBranchId && item.SenderId == clubBranchId && item.IsAccepted == true) 
+                if (item.ReceiverId == branchClub.Id && item.SenderId == branchClub.Id && item.IsAccepted == true) 
                 {
                     allMatchRequestByBranchClub.Add(item);//Dodawanie do listy tylko zapytan o mecz dla danego odzdziału w klubie i tych ktore sa zaakeptowane
                 }

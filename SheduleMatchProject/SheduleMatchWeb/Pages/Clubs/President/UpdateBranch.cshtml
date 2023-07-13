@@ -1,0 +1,53 @@
+﻿@page "{id:int}"
+@using Domain.Models.Enum
+@model SheduleMatchWeb.Pages.Clubs.President.UpdateBranchModel
+@{
+}
+
+<div class="bg-secondary bg-opacity-10 py-2 mb-5">
+    <div class="container">
+        <h1>Aktualizacja zespołu</h1>
+    </div>
+</div>
+
+
+@{
+    var messageValidation = (string)ViewData["MessageValidation"];
+}
+
+@if (!string.IsNullOrWhiteSpace(messageValidation))
+{
+    <div class="container mb-5">
+        <div class="alert alert-danger alert-dismissible fade show mb-5" role="alert">
+            @Html.Raw(messageValidation)
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    </div>
+
+}
+@*@if (Model.ClubUpdate != null)
+    {*@
+<div>
+    <div class="container">
+        <form method="post">
+            <div class="mb-3">
+                <label for="Id" class="form-label">Nazwa klubu</label>
+                <input type="text" class="form-control" id="id" asp-for="BranchClub.Club.Name" readonly>
+            </div>
+@*            <div class="mb-3">
+                <label for="Type" class="form-label">Typ zespołu</label>
+                @Html.GetEnumSelectList(model => model.BranchClub.Type, new { @class = "form-control" })
+            </div>*@
+            <div class="form-group">
+                <label asp-for="BranchClub.Type" class="control-label"></label>
+                <select asp-for="BranchClub.Type" asp-items="@Html.GetEnumSelectList<BranchType>()" class="form-control"></select>
+                <span asp-validation-for="BranchClub.Type" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                    <label for="UserId" class="form-label">Trener</label>
+                    <select class="form-select" aria-label="Default select example" asp-for="BranchClub.UserId" asp-items="@(ViewData["Coaches"] as IEnumerable<SelectListItem>)"></select>
+                    <span asp-validation-for="User" class="text-danger"></span>
+            </div>
+        </form>
+    </div>
+</div>
