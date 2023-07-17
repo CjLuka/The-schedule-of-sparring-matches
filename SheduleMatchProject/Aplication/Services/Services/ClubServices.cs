@@ -1,6 +1,7 @@
 ﻿using Aplication.Services.Interfaces;
 using AutoMapper;
 using Domain.Models.Domain;
+using Domain.Models.VievModel;
 using Domain.Response;
 using Microsoft.IdentityModel.Tokens;
 using Persistance.Repo.Interfaces;
@@ -43,22 +44,22 @@ namespace Aplication.Services.Services
 
             };
         }
-        public async Task<ServiceResponse<Club>> AddClubAsync(Club club)
+        public async Task<ServiceResponse<newClub>> AddClubAsync(newClub newClub)
         {
-            var newClubIsExist = await _clubRepository.GetByNameAsync(club.Name);
+            var newClubIsExist = await _clubRepository.GetByNameAsync(newClub.Name);
             if (newClubIsExist != null)
             {
-                new ServiceResponse<Club>
+                new ServiceResponse<newClub>
                 {
                     Message = "Klub o podanej nazwie istnieje w bazie danych",
                     Success = false
                 };
             }
-            await _clubRepository.AddAsync(club);
-
-            return new ServiceResponse<Club>
+            await _clubRepository.AddAsync(_mapper.Map<Club>(newClub));
+            //await _clubRepository.AddAsync(club);
+            return new ServiceResponse<newClub>
             {
-                Data = club,
+                Data = _mapper.Map<newClub>(newClub),
                 Message = "Dodano nowy klub",
                 Success = true
             };
@@ -82,6 +83,7 @@ namespace Aplication.Services.Services
             clubFromBase.LastModifiedBy = lastModifiedBy;
             clubFromBase.LastModifiedDate = DateTime.UtcNow;
             clubFromBase.UserId = club.UserId;
+            clubFromBase.CreatedBy = clubFromBase.CreatedBy;
 
             await _clubRepository.UpdateAsync(clubFromBase);
             return new ServiceResponse<Club>()
@@ -114,8 +116,8 @@ namespace Aplication.Services.Services
 
         public async Task<ServiceResponse<Club>> DeleteClubAsync(int id)
         {
-            var delete = await _clubRepository.GetByIdAsync(id);
-            if(delete == null)
+            var club = await _clubRepository.GetByIdAsync(id);
+            if(club == null)
             {
                 return new ServiceResponse<Club>()
                 {
@@ -123,7 +125,7 @@ namespace Aplication.Services.Services
                     Success = false
                 };
             }
-            await _clubRepository.DeleteAsync(delete);
+            await _clubRepository.DeleteAsync(club);
             return new ServiceResponse<Club>()
             {
                 Message = "Usunięto klub",

@@ -18,6 +18,18 @@ namespace Persistance.Repo.Repositories
             _context = context;
         }
 
+        public async Task AddAsync(BranchClub branchClub)
+        {
+            await _context.BranchesClubs.AddAsync(branchClub);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task DeleteAsync(BranchClub branchClub)
+        {
+            _context.BranchesClubs.Remove(branchClub);
+            await _context.SaveChangesAsync();
+        }
+
         public async Task<List<BranchClub>> GetAllBranchClubAsync()
         {
             var allBranchClubs = await _context.BranchesClubs
@@ -60,6 +72,14 @@ namespace Persistance.Repo.Repositories
             return branchClubsById;
         }
 
+        public async Task<BranchClub> GetBranchByIdAsync(int branchClubId)
+        {
+            var branch = await _context.BranchesClubs
+                //.Include(c => c.Club)
+                .FirstOrDefaultAsync(b => b.Id == branchClubId);
+            return branch;
+        }
+
         public async Task<BranchClub> GetClubBranchByCoach(int userId)//funkcja pobierająca klub dla danego trenera
         {
             var myBranchClub = await _context.BranchesClubs
@@ -70,7 +90,16 @@ namespace Persistance.Repo.Repositories
 
         public async Task<BranchClub> GetDetailBranchByIdAsync(int branchClubId)
         {
-            return await _context.BranchesClubs.FirstOrDefaultAsync(c => c.Id == branchClubId);
+            var branch = await _context.BranchesClubs
+                .Include(c => c.Club)
+                .FirstOrDefaultAsync(c => c.Id == branchClubId);
+            return branch;
+        }
+
+        public async Task UpdateAsync(BranchClub branchClub)
+        {
+            _context.Update(branchClub);
+            await _context.SaveChangesAsync();
         }
     }
 }

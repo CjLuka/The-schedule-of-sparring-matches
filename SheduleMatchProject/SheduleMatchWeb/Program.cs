@@ -7,6 +7,7 @@ using Persistance.Repo.Interfaces;
 using Persistance.Repo.Repositories;
 using System.Reflection;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Hosting;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
@@ -40,6 +41,7 @@ builder.Services.AddScoped<IMatchServices, MatchServices>();
 builder.Services.AddScoped<IFootballPitchServices, FootballPitchServices>();
 
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
+
 //builder.Services.AddAuthorization(options =>
 //{
 //    options.AddPolicy("RequireAdminRole", policy => policy.RequireRole("Admin"));

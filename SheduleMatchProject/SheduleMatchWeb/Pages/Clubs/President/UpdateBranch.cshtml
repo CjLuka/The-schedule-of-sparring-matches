@@ -34,6 +34,10 @@
                 <label for="Id" class="form-label">Nazwa klubu</label>
                 <input type="text" class="form-control" id="id" asp-for="BranchClub.Club.Name" readonly>
             </div>
+            <div class="mb-3">
+                <label for="Id" class="form-label">Nazwa klubu</label>
+                <input type="text" class="form-control" id="id" asp-for="BranchClub.Club.CreatedBy" readonly>
+            </div>
 @*            <div class="mb-3">
                 <label for="Type" class="form-label">Typ zespołu</label>
                 @Html.GetEnumSelectList(model => model.BranchClub.Type, new { @class = "form-control" })
@@ -47,6 +51,10 @@
                     <label for="UserId" class="form-label">Trener</label>
                     <select class="form-select" aria-label="Default select example" asp-for="BranchClub.UserId" asp-items="@(ViewData["Coaches"] as IEnumerable<SelectListItem>)"></select>
                     <span asp-validation-for="User" class="text-danger"></span>
+            </div>
+            <div class="mb-3 d-flex justify-content-between">
+                <button class="btn btn-primary" type="submit" asp-page-handler="Update">Zaktualizuj</button>
+                <button class="btn btn-danger" type="submit" asp-page-handler="Delete">Usuń</button>
             </div>
         </form>
     </div>

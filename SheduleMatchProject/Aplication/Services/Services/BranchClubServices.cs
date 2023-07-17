@@ -100,7 +100,7 @@ namespace Aplication.Services.Services
 
         public async Task<ServiceResponse<BranchClub>> GetDetailBranchByIdAsync(int branchId)
         {
-            var branchClub = await _branchClubRepository.GetDetailBranchByIdAsync(branchId);
+            var branchClub = await _branchClubRepository.GetBranchByIdAsync(branchId);
             if (branchClub == null)
             {
                 return new ServiceResponse<BranchClub>
@@ -116,6 +116,51 @@ namespace Aplication.Services.Services
                 Message = "Zespół",
                 Success = true
             };
+        }
+
+        public async Task<ServiceResponse<BranchClub>> AddBranchAsync(BranchClub branchClub)
+        {
+            await _branchClubRepository.AddAsync(branchClub);
+            return new ServiceResponse<BranchClub>
+            {
+                Success= true,
+                Message="Dodano nowy oddział"
+            };
+        }
+
+        public async Task<ServiceResponse<BranchClub>> UpdateBranchAsync(BranchClub branchClub, int id, string lastModifiedBy)
+        {
+            var branch = await _branchClubRepository.GetBranchByIdAsync(id);
+            if (branch == null)
+            {
+                return new ServiceResponse<BranchClub>
+                {
+                    Data = null,
+                    Message = "Brak klubu o takim id",
+                    Success = false
+                };
+            }
+            branchClub.Type= branch.Type;
+            branchClub.UserId = branch.UserId;
+            branchClub.LastModifiedDate = DateTime.Now;
+            branchClub.LastModifiedBy = lastModifiedBy;
+            branchClub.ClubId= branch.ClubId;
+
+
+
+            await _branchClubRepository.UpdateAsync(branchClub);
+
+            return new ServiceResponse<BranchClub>
+            {
+                Data = branchClub,
+                Success = true,
+                Message="Oddział zaktualizowany"
+            };
+        }
+
+        public Task<ServiceResponse<BranchClub>> DeleteBranchAsync(BranchClub branchClub)
+        {
+            throw new NotImplementedException();
         }
     }
 }

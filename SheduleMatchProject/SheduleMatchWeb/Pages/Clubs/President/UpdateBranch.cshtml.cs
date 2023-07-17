@@ -1,9 +1,11 @@
 using Aplication.Services.Interfaces;
 using Aplication.Services.Services;
 using Domain.Models.Domain;
+using Domain.Models.VievModel;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Security.Claims;
 
 namespace SheduleMatchWeb.Pages.Clubs.President
 {
@@ -18,6 +20,7 @@ namespace SheduleMatchWeb.Pages.Clubs.President
         }
         [BindProperty]
         public BranchClub BranchClub { get; set; }
+        
         public async Task<IActionResult> OnGetAsync(int id)
         {
             var myBranch = await _branchClubServices.GetDetailBranchByIdAsync(id);//pobranie danych na temat zespo³u po id
@@ -40,6 +43,38 @@ namespace SheduleMatchWeb.Pages.Clubs.President
                 continue;
             }
             ViewData["Coaches"] = Coaches;//przypisanie listy uzytkownikow do ViewData
+            return Page();
+        }
+        public async Task <IActionResult> OnPostUpdateAsync(int id)
+        {
+            try
+            {
+             
+
+                string userEmail = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;//pobranie emailu zalogowanego uzytkownika
+                
+                BranchClub.LastModifiedBy = userEmail;
+                BranchClub.LastModifiedDate= DateTime.Now;
+
+                await _branchClubServices.UpdateBranchAsync(BranchClub, id, userEmail);
+                
+                ViewData["Notification"] = new Notification
+                {
+                    Message = "Rekord poprawnie edytowany",
+                    Type = Domain.Models.Enum.NotificationType.Success
+                };
+
+                return RedirectToPage("/Clubs/President/MyBranches");
+            }
+            catch (Exception ex)
+            {
+                ViewData["Notification"] = new Notification
+                {
+                    Message = "Coœ posz³o nie tak",
+                    Type = Domain.Models.Enum.NotificationType.Error
+                };
+            }
+
             return Page();
         }
     }

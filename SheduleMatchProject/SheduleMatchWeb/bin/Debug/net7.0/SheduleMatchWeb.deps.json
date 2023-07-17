@@ -2373,6 +2373,9 @@
         }
       },
       "Domain/1.0.0": {
+        "dependencies": {
+          "AutoMapper": "12.0.1"
+        },
         "runtime": {
           "Domain.dll": {}
         }

@@ -1,6 +1,7 @@
 using Aplication.Services.Interfaces;
 using Aplication.Services.Services;
 using Domain.Models.Domain;
+using Domain.Models.VievModel;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -24,7 +25,7 @@ namespace SheduleMatchWeb.Pages.Clubs
             _userServices = userServices;
         }
         [BindProperty]
-        public Club NewClub { get; set; }
+        public newClub NewClub { get; set; }
         [BindProperty]
         public List<SelectListItem> GameClassess { get; set; }
         public List<SelectListItem> Users { get; set; }
@@ -43,7 +44,7 @@ namespace SheduleMatchWeb.Pages.Clubs
             ViewData["klasyRozgrywkowe"] = GameClassess;//przypisanie klas rozgrywkowych do ViewData
 
 
-            var UsersWithoutClub = await _userServices.GetUsersWithoutClub();//pobranie uzytkownikow, ktorzy nie sa prezesami zadnego klubu
+            var UsersWithoutClub = await _userServices.GetPresidentWithoutClub();//pobranie uzytkownikow, ktorzy nie sa prezesami zadnego klubu
             foreach (var user in UsersWithoutClub.Data)
             {
                 Users.Add(new SelectListItem { Text = user.Email, Value = user.Id.ToString() });//dodanie uzytkownikow, ktorzy nie sa prezesami zadnego klubu do selectlisty
@@ -53,16 +54,28 @@ namespace SheduleMatchWeb.Pages.Clubs
         }
         public async Task<IActionResult> OnPostAsync()
         {
-            NewClub.CreatedDate = DateTime.Now;//Data utworzenia - obecna
-            NewClub.FeaturedImageUrl = "test";
-            string userEmail = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;//pobranie emailu zalogowanego uzytkownika
-            NewClub.LastModifiedBy = userEmail;//ostatnia modyfikacja przez uzytkownika zalogowanego
-            NewClub.CreatedBy = userEmail;//utworzenie przez uzytkownika zalogowanego
-            
-            
-            await _clubServices.AddClubAsync(NewClub);
+            try
+            {
+                string userEmail = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;//pobranie emailu zalogowanego uzytkownika
+                NewClub.CreatedDate = DateTime.Now;//Data utworzenia - obecna
+                NewClub.FeaturedImageUrl = "test";
+                NewClub.LastModifiedBy = userEmail;//ostatnia modyfikacja przez uzytkownika zalogowanego
+                NewClub.CreatedBy = userEmail;//utworzenie przez uzytkownika zalogowanego
 
-            return RedirectToPage("../ShowAllClubs");
+                await _clubServices.AddClubAsync(NewClub);
+
+                return RedirectToPage("../ShowAllClubs");
+            }
+            catch (Exception ex)
+            {
+                ViewData["Notification"] = new Notification
+                {
+                    Message = "Coœ posz³o nie tak",
+                    Type = Domain.Models.Enum.NotificationType.Error
+                };
+            }
+            return Page();
+            
         }
     }
 }

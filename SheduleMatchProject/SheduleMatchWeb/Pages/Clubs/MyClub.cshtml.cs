@@ -22,7 +22,9 @@ namespace SheduleMatchWeb.Pages.Clubs
         {
             string userIdString = HttpContext.User.FindFirstValue("UserId");//pobranie userId zalogowanego uzytkownika, aby wyswietlic odpowiedni klub
             int.TryParse(userIdString, out int userId);//przerobieine userId na int
+
             var myClub2 = await _clubServices.GetClubByPresidentIdAsync(userId);//wyswietlenie klubu zalogowanego uzytkownika
+
             myClub = myClub2.Data;//przypisanie danych do bindProperty
             return Page();
         }

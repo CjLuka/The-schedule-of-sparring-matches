@@ -14,6 +14,10 @@ namespace Persistance.Repo.Interfaces
         Task<List<BranchClub>> GetAllBranchClubAsync();
         Task<List<BranchClub>> GetAllBranchClubsForPlanMatch(int clubId);
         Task<BranchClub> GetDetailBranchByIdAsync(int branchClubId);
+        Task<BranchClub> GetBranchByIdAsync(int branchClubId);
+        Task AddAsync(BranchClub branchClub);
+        Task UpdateAsync(BranchClub branchClub);
+        Task DeleteAsync(BranchClub branchClub);
 
         //Task<BranchClub> GetByIdAsync(int branchId);
         //Task AddAsync(BranchClub branchClub);

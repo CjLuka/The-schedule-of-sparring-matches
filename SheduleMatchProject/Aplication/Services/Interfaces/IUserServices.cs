@@ -17,7 +17,7 @@ namespace Aplication.Services.Interfaces
         public void Login(string email);
         Task<ServiceResponse<User>> AddAsync(User user);
         Task<ServiceResponse<List<User>>> GetAllUsersAsync();
-        Task<ServiceResponse<List<User>>> GetUsersWithoutClub();
+        Task<ServiceResponse<List<User>>> GetPresidentWithoutClub();
         Task<ServiceResponse<List<User>>> GetCoachesWithoutClub();
         Task<ServiceResponse<List<User>>> GetAllCoaches();
     }

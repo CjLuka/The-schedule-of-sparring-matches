@@ -1,8 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "v/jdvn+BMrPibjzjaMnXJDed3xCixgI28+zuhBnbpmT1+t6eCqPrRpyvB6nWU9qxlk8HYBwducsKATNHEc9kUw==",
+  "dgSpecHash": "m9duZ5QNAxanOpFlGBf1GvMxAJZLbgWQI8qT5CBsoZ2sCxRpvDml71nqqoWFF5zTsJBCpyEn59aUBF4/GlOwBQ==",
   "success": true,
   "projectFilePath": "F:\\Praca dyplomowa\\Projekt\\SheduleMatchProject\\Domain\\Domain.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Luka\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
+    "C:\\Users\\Luka\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512"
+  ],
   "logs": []
 }

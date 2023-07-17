@@ -1,4 +1,5 @@
-﻿using Domain.Models.Enum;
+﻿using Domain.Models.Auditable;
+using Domain.Models.Enum;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Domain.Models.Domain
 {
-    public class BranchClub
+    public class BranchClub : AuditableEntity
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }

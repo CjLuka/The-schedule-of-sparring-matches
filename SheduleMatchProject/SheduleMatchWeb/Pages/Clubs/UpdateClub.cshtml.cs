@@ -39,7 +39,7 @@ namespace SheduleMatchWeb.Pages.Clubs
             ClubUpdate = response.Data;//przypisanie danych, aby wyswietlaly sie po wejsciu w edycje
 
 
-            var UsersWithoutClub = await _userServices.GetUsersWithoutClub();//pobranie uzytkownikow, ktorzy nie sa prezesami zadnego klubu
+            var UsersWithoutClub = await _userServices.GetPresidentWithoutClub();//pobranie uzytkownikow, ktorzy nie sa prezesami zadnego klubu
             foreach (var user in UsersWithoutClub.Data) 
             {
                 Users.Add(new SelectListItem { Text = user.Email, Value = user.Id.ToString() });//dodanie uzytkownikow, ktorzy nie sa prezesami zadnego klubu do selectlisty

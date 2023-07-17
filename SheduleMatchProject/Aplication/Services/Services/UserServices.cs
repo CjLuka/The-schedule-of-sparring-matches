@@ -144,7 +144,7 @@ namespace Aplication.Services.Services
             return userId;
         }
 
-        public async Task<ServiceResponse<List<User>>> GetUsersWithoutClub()
+        public async Task<ServiceResponse<List<User>>> GetPresidentWithoutClub()
         {
             var users = await _userRepository.GetAllAsync();
             var clubs = await _clubRepository.GetAllAsync();
@@ -152,7 +152,10 @@ namespace Aplication.Services.Services
             //var users = usersResponse;
             //var clubs = clubsResponse;
 
-            var usersWithoutClub = users.Where(user => !clubs.Any(club => club.UserId == user.Id)).ToList();
+            var usersWithoutClub = users
+                .Where(user => user.Role == "President" || user.Role == "User")
+                .Where(user => !clubs.Any(club => club.UserId == user.Id))
+                .ToList();
             return new ServiceResponse<List<User>>
             {
                 Success=true,
