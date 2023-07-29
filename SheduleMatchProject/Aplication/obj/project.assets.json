@@ -1143,7 +1143,8 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v7.0",
         "dependencies": {
-          "AutoMapper": "12.0.1"
+          "AutoMapper": "12.0.1",
+          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "7.0.5"
         },
         "compile": {
           "bin/placeholder/Domain.dll": {}

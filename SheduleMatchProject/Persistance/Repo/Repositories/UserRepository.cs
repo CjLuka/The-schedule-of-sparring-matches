@@ -34,15 +34,15 @@ namespace Persistance.Repo.Repositories
             return await _context.Users.FirstOrDefaultAsync(c => c.Id == id);
         }
 
-        public async Task<string> GetPasswordByEmailAsync(string Email)
-        {
-            var user = await _context.Users.FirstOrDefaultAsync(c => c.Email == Email);
-            if (user != null)
-            {
-                return user.Password.ToString();
-            }
-            return null;
-        }
+        //public async Task<string> GetPasswordByEmailAsync(string Email)
+        //{
+        //    var user = await _context.Users.FirstOrDefaultAsync(c => c.Email == Email);
+        //    if (user != null)
+        //    {
+        //        return user.Password.ToString();
+        //    }
+        //    return null;
+        //}
         public async Task<string> GetEmailAsync(string Email)
         {
             var user = await _context.Users.FirstOrDefaultAsync(c => c.Email == Email);
@@ -93,5 +93,10 @@ namespace Persistance.Repo.Repositories
             .ToList();
             return allCoaches;
         }
-    }
+
+		public Task<string> GetPasswordByEmailAsync(string Email)
+		{
+			throw new NotImplementedException();
+		}
+	}
 }

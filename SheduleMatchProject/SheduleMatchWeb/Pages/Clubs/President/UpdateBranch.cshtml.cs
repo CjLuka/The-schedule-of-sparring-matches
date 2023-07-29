@@ -49,14 +49,16 @@ namespace SheduleMatchWeb.Pages.Clubs.President
         {
             try
             {
-             
+                //var myBranch = await _branchClubServices.GetDetailBranchByIdAsync(id);//pobranie danych na temat zespo³u po id
+                //BranchClub = myBranch.Data;
 
                 string userEmail = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;//pobranie emailu zalogowanego uzytkownika
                 
                 BranchClub.LastModifiedBy = userEmail;
                 BranchClub.LastModifiedDate= DateTime.Now;
+                BranchClub.CreatedBy = userEmail;
 
-                await _branchClubServices.UpdateBranchAsync(BranchClub, id, userEmail);
+                await _branchClubServices.UpdateBranchAsync(BranchClub, id);
                 
                 ViewData["Notification"] = new Notification
                 {

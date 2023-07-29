@@ -1,4 +1,5 @@
 ﻿using Domain.Models.Domain;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Persistance.Data
 {
-    public class ApplicationDbContext : DbContext
+    public class ApplicationDbContext : IdentityDbContext <User>
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
@@ -24,13 +25,15 @@ namespace Persistance.Data
         public DbSet<User> Users { get; set; }
         public DbSet<BranchClub> BranchesClubs { get;set; }
 
-        //protected override void OnModelCreating(ModelBuilder modelBuilder)
-        //{
-        //    //modelBuilder.Entity<Club>()
-        //    //.HasOne(k => k.User)
-        //    //.WithOne(u => u.Club)
-        //    //.HasForeignKey<User>(u => u.Club);
-        //}
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            //modelBuilder.Entity<User>()
+            //.HasOne(u => u.Club)
+            //.WithOne(k => k.User)
+            //.HasForeignKey<Club>(u => u.UserId);
+        }
 
     }
 }

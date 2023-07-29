@@ -16,12 +16,20 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = F:\Praca dyplomowa\Projekt\SheduleMatchProject\SheduleMatchWeb
 build_property._RazorSourceGeneratorDebug = 
 
+[F:/Praca dyplomowa/Projekt/SheduleMatchProject/SheduleMatchWeb/Pages/AccessDenied.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWNjZXNzRGVuaWVkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [F:/Praca dyplomowa/Projekt/SheduleMatchProject/SheduleMatchWeb/Pages/Account/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWNjb3VudFxMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [F:/Praca dyplomowa/Projekt/SheduleMatchProject/SheduleMatchWeb/Pages/Account/Register.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/Praca dyplomowa/Projekt/SheduleMatchProject/SheduleMatchWeb/Pages/Calendar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2FsZW5kYXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [F:/Praca dyplomowa/Projekt/SheduleMatchProject/SheduleMatchWeb/Pages/Clubs/Admin/AddNewClub.cshtml]
@@ -72,6 +80,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[F:/Praca dyplomowa/Projekt/SheduleMatchProject/SheduleMatchWeb/Pages/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTG9naW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [F:/Praca dyplomowa/Projekt/SheduleMatchProject/SheduleMatchWeb/Pages/LogOut.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTG9nT3V0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -90,6 +102,14 @@ build_metadata.AdditionalFiles.CssScope =
 
 [F:/Praca dyplomowa/Projekt/SheduleMatchProject/SheduleMatchWeb/Pages/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJpdmFjeS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/Praca dyplomowa/Projekt/SheduleMatchProject/SheduleMatchWeb/Pages/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmVnaXN0ZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/Praca dyplomowa/Projekt/SheduleMatchProject/SheduleMatchWeb/Pages/Shared/_Notification.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9Ob3RpZmljYXRpb24uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [F:/Praca dyplomowa/Projekt/SheduleMatchProject/SheduleMatchWeb/Pages/Shared/_ValidationScriptsPartial.cshtml]

@@ -75,7 +75,7 @@ namespace Persistance.Repo.Repositories
         public async Task<BranchClub> GetBranchByIdAsync(int branchClubId)
         {
             var branch = await _context.BranchesClubs
-                //.Include(c => c.Club)
+                .Include(c => c.Club)
                 .FirstOrDefaultAsync(b => b.Id == branchClubId);
             return branch;
         }

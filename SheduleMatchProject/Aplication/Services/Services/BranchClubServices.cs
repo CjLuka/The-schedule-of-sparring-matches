@@ -128,7 +128,7 @@ namespace Aplication.Services.Services
             };
         }
 
-        public async Task<ServiceResponse<BranchClub>> UpdateBranchAsync(BranchClub branchClub, int id, string lastModifiedBy)
+        public async Task<ServiceResponse<BranchClub>> UpdateBranchAsync(BranchClub branchClub, int id)
         {
             var branch = await _branchClubRepository.GetBranchByIdAsync(id);
             if (branch == null)
@@ -143,7 +143,6 @@ namespace Aplication.Services.Services
             branchClub.Type= branch.Type;
             branchClub.UserId = branch.UserId;
             branchClub.LastModifiedDate = DateTime.Now;
-            branchClub.LastModifiedBy = lastModifiedBy;
             branchClub.ClubId= branch.ClubId;
 
 

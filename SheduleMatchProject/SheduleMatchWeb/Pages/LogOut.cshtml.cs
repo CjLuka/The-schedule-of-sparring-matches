@@ -3,16 +3,24 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 
 namespace SheduleMatchWeb.Pages
 {
     [Authorize]
     public class LogOutModel : PageModel
     {
-        public async Task<IActionResult> OnGetAsync()
+        private readonly SignInManager<IdentityUser> _signInManager;
+
+        public LogOutModel(SignInManager<IdentityUser> signInManager)
         {
-            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-            return RedirectToAction("Index", "Account");
+            _signInManager = signInManager;
         }
+        public async Task<IActionResult> OnGet()
+        {
+            await _signInManager.SignOutAsync();
+            return RedirectToPage("Index");
+        }
+        
     }
 }

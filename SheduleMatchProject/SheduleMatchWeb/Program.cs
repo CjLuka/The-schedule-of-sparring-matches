@@ -15,16 +15,45 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
         builder.Configuration.GetConnectionString("DefaultConnection")));
 
 
+//builder.Services.AddDbContext<AuthDbContext>(options =>
+//    options.UseSqlServer(
+//        builder.Configuration.GetConnectionString("AuthDbConnectionString")));
 
+//builder.Services.AddIdentity<IdentityUser, IdentityRole>()
+//    .AddEntityFrameworkStores<AuthDbContext>();
+
+builder.Services.Configure<IdentityOptions>(options =>
+{
+    options.Password.RequireDigit = false;
+    options.Password.RequireLowercase= false;
+    options.Password.RequireUppercase= false;
+    options.Password.RequireNonAlphanumeric= false;
+    options.Password.RequiredLength = 5;
+    options.Password.RequiredUniqueChars = 0;
+});
+
+//DODANE PRZEZ WYŒWIETLANY B£¥D - InvalidOperationException: No service for type 'Microsoft.AspNetCore.Identity.SignInManager`1[Microsoft.AspNetCore.Identity.IdentityUser]' has been registered.
+//POMOG£O I DZIA£A
+builder.Services.AddIdentity<IdentityUser, IdentityRole>()
+    .AddEntityFrameworkStores<ApplicationDbContext>()
+    .AddDefaultTokenProviders();
+
+services.AddDefaultIdentity<IdentityUser>()
+
+builder.Services.ConfigureApplicationCookie(options =>
+{
+    options.LoginPath = "/Login";
+    options.AccessDeniedPath= "/AccessDenied";
+});
 
 // Add services to the container.
 builder.Services.AddRazorPages();
-builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-    .AddCookie(option =>
-    {
-        option.LoginPath = "/Account/Login";
-        option.ExpireTimeSpan= TimeSpan.FromMinutes(20);
-    });
+//builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+//    .AddCookie(option =>
+//    {
+//        option.LoginPath = "/Account/Login";
+//        option.ExpireTimeSpan= TimeSpan.FromMinutes(20);
+//    });
 builder.Services.AddScoped<IClubRepository, ClubRepository>();
 builder.Services.AddScoped<IGameClassRepository, GameClassRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();

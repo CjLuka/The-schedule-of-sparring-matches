@@ -25,4 +25,8 @@
     <ProjectReference Include="..\Aplication\Aplication.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Controlers\" />
+  </ItemGroup>
+
 </Project>
