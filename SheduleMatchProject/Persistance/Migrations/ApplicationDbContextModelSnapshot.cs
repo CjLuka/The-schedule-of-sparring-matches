@@ -347,7 +347,7 @@ namespace Persistance.Migrations
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
 
-                    b.Property<int>("ClubId")
+                    b.Property<int?>("ClubId")
                         .HasColumnType("int");
 
                     b.Property<string>("ConcurrencyStamp")
@@ -384,10 +384,6 @@ namespace Persistance.Migrations
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
 
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("PasswordHash")
                         .HasColumnType("nvarchar(max)");
 
@@ -414,7 +410,8 @@ namespace Persistance.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("ClubId")
-                        .IsUnique();
+                        .IsUnique()
+                        .HasFilter("[ClubId] IS NOT NULL");
 
                     b.HasIndex("NormalizedEmail")
                         .HasDatabaseName("EmailIndex");
@@ -678,9 +675,7 @@ namespace Persistance.Migrations
                 {
                     b.HasOne("Domain.Models.Domain.Club", "Club")
                         .WithOne("User")
-                        .HasForeignKey("Domain.Models.Domain.User", "ClubId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("Domain.Models.Domain.User", "ClubId");
 
                     b.Navigation("Club");
                 });

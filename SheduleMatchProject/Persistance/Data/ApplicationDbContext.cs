@@ -1,4 +1,5 @@
 ﻿using Domain.Models.Domain;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -24,6 +25,7 @@ namespace Persistance.Data
         public DbSet<MatchRequest> MatchRequests { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<BranchClub> BranchesClubs { get;set; }
+        //public DbSet<IdentityUser> IdentityUsers { get;set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
