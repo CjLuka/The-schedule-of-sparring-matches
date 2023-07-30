@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Reflection.Metadata.BlobBuilder;
 
 namespace Aplication.Services.Services
 {
@@ -16,6 +17,7 @@ namespace Aplication.Services.Services
     {
         private readonly IUserRepository _userRepository;
         private readonly IClubRepository _clubRepository;
+
         public UserServices(IUserRepository userRepository, IClubRepository clubRepository)
         {
             _userRepository = userRepository;
@@ -183,6 +185,49 @@ namespace Aplication.Services.Services
                 Success = true
             };
             
+        }
+
+        public async Task<ServiceResponse<List<User>>> GetUsersWithoutAnyFunction()//pobranie uzytkownikow, ktorzy nie pelnią żadnych funkcji
+        {
+            var users = await _userRepository.GetAllAsync();
+            var clubs = await _clubRepository.GetAllAsync();
+            var usersWithoutFunction = users
+                .Where(users => !clubs.Any(club => club.UserId == users.Id)).ToList();
+
+            if (usersWithoutFunction.IsNullOrEmpty())
+            {
+                return new ServiceResponse<List<User>>()
+                {
+                    Success = false
+                };
+            }
+
+            return new ServiceResponse<List<User>>()
+            {
+                Data = usersWithoutFunction,
+                Success = true,
+                Message = "Wszyscy użytkownicy bez funkcji w klubach"
+            };
+        }
+
+        public async Task<ServiceResponse<User>> GetUserById(int userId)
+        {
+            var user = await _userRepository.GetByIdAsync(userId);
+            if (user == null)
+            {
+                return new ServiceResponse<User>()
+                {
+                    Success = false,
+                    Message = "Problem z pobraniem użytkownika o podanym Id"
+                };
+            }
+            return new ServiceResponse<User>()
+            {
+                Data = user,
+                Success = true,
+                Message = "Pobrano użytkownika"
+            };
+
         }
     }
 }

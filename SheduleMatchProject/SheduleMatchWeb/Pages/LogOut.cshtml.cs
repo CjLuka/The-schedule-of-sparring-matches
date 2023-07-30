@@ -4,15 +4,16 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
+using Domain.Models.Domain;
 
 namespace SheduleMatchWeb.Pages
 {
     [Authorize]
     public class LogOutModel : PageModel
     {
-        private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly SignInManager<User> _signInManager;
 
-        public LogOutModel(SignInManager<IdentityUser> signInManager)
+        public LogOutModel(SignInManager<User> signInManager)
         {
             _signInManager = signInManager;
         }

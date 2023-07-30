@@ -8,6 +8,7 @@ using Persistance.Repo.Repositories;
 using System.Reflection;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Hosting;
+using Domain.Models.Domain;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
@@ -34,7 +35,7 @@ builder.Services.Configure<IdentityOptions>(options =>
 
 //DODANE PRZEZ WYŒWIETLANY B£¥D - InvalidOperationException: No service for type 'Microsoft.AspNetCore.Identity.SignInManager`1[Microsoft.AspNetCore.Identity.IdentityUser]' has been registered.
 //POMOG£O I DZIA£A
-builder.Services.AddIdentity<IdentityUser, IdentityRole>()
+builder.Services.AddIdentity<User, IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>()
     .AddDefaultTokenProviders();
 

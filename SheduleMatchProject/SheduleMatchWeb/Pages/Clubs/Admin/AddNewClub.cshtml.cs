@@ -3,6 +3,7 @@ using Aplication.Services.Services;
 using Domain.Models.Domain;
 using Domain.Models.VievModel;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -18,11 +19,13 @@ namespace SheduleMatchWeb.Pages.Clubs
         private readonly IClubServices _clubServices;
         private readonly IGameClassServices _gameClassServices;
         private readonly IUserServices _userServices;
-        public AddNewClubModel(IClubServices clubServices, IGameClassServices gameClassServices, IUserServices userServices)
+        private readonly UserManager<User> userManager;
+        public AddNewClubModel(IClubServices clubServices, IGameClassServices gameClassServices, IUserServices userServices, UserManager<User> userManager)
         {
             _clubServices = clubServices;
             _gameClassServices = gameClassServices;
             _userServices = userServices;
+            this.userManager = userManager;
         }
         [BindProperty]
         public newClub NewClub { get; set; }
@@ -56,13 +59,18 @@ namespace SheduleMatchWeb.Pages.Clubs
         {
             try
             {
-                string userEmail = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;//pobranie emailu zalogowanego uzytkownika
+                //string userEmail = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;//pobranie emailu zalogowanego uzytkownika
                 NewClub.CreatedDate = DateTime.Now;//Data utworzenia - obecna
                 NewClub.FeaturedImageUrl = "test";
-                NewClub.LastModifiedBy = userEmail;//ostatnia modyfikacja przez uzytkownika zalogowanego
-                NewClub.CreatedBy = userEmail;//utworzenie przez uzytkownika zalogowanego
+                NewClub.LastModifiedBy = "test";//ostatnia modyfikacja przez uzytkownika zalogowanego
+                NewClub.CreatedBy = "test";//utworzenie przez uzytkownika zalogowanego
 
                 await _clubServices.AddClubAsync(NewClub);
+
+                var user2 = await _userServices.GetUserById(NewClub.UserId);
+                var addRolesResult = await userManager.AddToRoleAsync(user2.Data, "User");
+
+
 
                 return RedirectToPage("../ShowAllClubs");
             }

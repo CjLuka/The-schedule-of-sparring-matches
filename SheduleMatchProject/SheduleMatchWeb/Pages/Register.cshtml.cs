@@ -9,11 +9,11 @@ namespace SheduleMatchWeb.Pages
 {
     public class RegisterModel : PageModel
     {
-        private readonly UserManager<IdentityUser> userManager;
+        private readonly UserManager<User> userManager;
 
         [BindProperty]
         public Register RegisterViewModel { get; set; }
-        public RegisterModel(UserManager<IdentityUser> userManager)
+        public RegisterModel(UserManager<User> userManager)
         {
             this.userManager = userManager;
         }
@@ -28,28 +28,39 @@ namespace SheduleMatchWeb.Pages
                 LastName = RegisterViewModel.LastName,
                 UserName = RegisterViewModel.Username,
                 Email = RegisterViewModel.Email,
+                Role = "User",
+                NormalizedEmail = RegisterViewModel.Email.ToUpper()
             };
-
             var identityResult = await userManager.CreateAsync(user, RegisterViewModel.Password);
 
-            if (identityResult.Succeeded)
+            try
             {
-                var addRolesResult = await userManager.AddToRoleAsync(user, "User");
-                if (addRolesResult.Succeeded)
+                if (identityResult.Succeeded)
                 {
-                    ViewData["Notification"] = new Notification
+                    var addRolesResult = await userManager.AddToRoleAsync(user, "User");
+                    if (addRolesResult.Succeeded)
                     {
-                        Type = Domain.Models.Enum.NotificationType.Success,
-                        Message = "Poprawnie zarejestrowano u¿ytkownika"
-                    };
-                    return Page();
-                }
+                        ViewData["Notification"] = new Notification
+                        {
+                            Type = Domain.Models.Enum.NotificationType.Success,
+                            Message = "Poprawnie zarejestrowano użytkownika"
+                        };
+                        return Page();
+                    }
 
+                }
             }
+            catch (Exception)
+            {
+                await userManager.DeleteAsync(user);//usunięcie uzytkownika w przypadku problemu z przypisaniem roli
+                throw;
+            }
+
+
             ViewData["Notification"] = new Notification
             {
                 Type = Domain.Models.Enum.NotificationType.Error,
-                Message = "Coœ posz³o nie tak.."
+                Message = "Coś poszło nie tak.."
             };
             return Page();
         }
