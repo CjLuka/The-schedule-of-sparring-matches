@@ -10,7 +10,7 @@ namespace Persistance.Repo.Interfaces
     public interface IBranchClubRepository
     {
         Task<List<BranchClub>> GetAllByClubAsync(int clubId);
-        Task <BranchClub> GetClubBranchByCoach(int userId);
+        Task <BranchClub> GetClubBranchByCoach(Guid userId);
         Task<List<BranchClub>> GetAllBranchClubAsync();
         Task<List<BranchClub>> GetAllBranchClubsForPlanMatch(int clubId);
         Task<BranchClub> GetDetailBranchByIdAsync(int branchClubId);

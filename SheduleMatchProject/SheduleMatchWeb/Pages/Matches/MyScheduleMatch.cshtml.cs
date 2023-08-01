@@ -21,9 +21,11 @@ namespace SheduleMatchWeb.Pages.Clubs
         public List<Match> Matches { get; set; }
         public async Task<IActionResult> OnGetAsync()
         {
-
-            string userIdString = HttpContext.User.FindFirstValue("UserId");//pobranie userId zalogowanego uzytkownika, aby móc pobraæ odpowiedni klub
-            int.TryParse(userIdString, out int userId);//przerobieine userId na int
+            ClaimsPrincipal currentUser = this.User;//pobranie u¿ytkownika
+            string userIdString = currentUser.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            Guid.TryParse(userIdString, out var userId);
+            //string userIdString = HttpContext.User.FindFirstValue("UserId");//pobranie userId zalogowanego uzytkownika, aby móc pobraæ odpowiedni klub
+            //int.TryParse(userIdString, out int userId);//przerobieine userId na int
 
             var Club = await _clubServices.GetClubByPresidentIdAsync(userId);//pobranie klubu przypisanego do zalogowanego uzytkownika
 

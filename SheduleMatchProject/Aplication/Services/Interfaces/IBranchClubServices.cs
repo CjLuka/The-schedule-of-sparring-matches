@@ -10,7 +10,7 @@ namespace Aplication.Services.Interfaces
 {
     public interface IBranchClubServices
     {
-        Task<ServiceResponse<BranchClub>> GetBranchClubByCoachAsync(int coachId);
+        Task<ServiceResponse<BranchClub>> GetBranchClubByCoachAsync(Guid coachId);
         Task<ServiceResponse<List<BranchClub>>> GetBranchesByClubAsync(int clubId);
         Task<ServiceResponse<List<BranchClub>>> GetAllBranchClubsAsync();
         Task<ServiceResponse<BranchClub>> GetDetailBranchByIdAsync(int branchId);

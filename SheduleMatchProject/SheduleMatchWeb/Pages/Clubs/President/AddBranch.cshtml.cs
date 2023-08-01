@@ -29,8 +29,12 @@ namespace SheduleMatchWeb.Pages.Clubs.President
         {
             List<SelectListItem> Coaches = new List<SelectListItem>();//Utworzenie selectlisty dla trenerow bez klubu
 
-            string userIdString = HttpContext.User.FindFirstValue("UserId");//pobranie userId zalogowanego uzytkownika, aby wyswietlic odpowiedni klub
-            int.TryParse(userIdString, out int userId);//przerobieine userId na int
+            //string userIdString = HttpContext.User.FindFirstValue("UserId");//pobranie userId zalogowanego uzytkownika, aby wyswietlic odpowiedni klub
+            //int.TryParse(userIdString, out int userId);//przerobieine userId na int
+
+            ClaimsPrincipal currentUser = this.User;//pobranie u¿ytkownika
+            string userIdString = currentUser.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            Guid.TryParse(userIdString, out var userId);
 
             var myClub = await _clubServices.GetClubByPresidentIdAsync(userId);
             Club = myClub.Data;

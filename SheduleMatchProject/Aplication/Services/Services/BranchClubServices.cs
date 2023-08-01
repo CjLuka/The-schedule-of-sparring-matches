@@ -78,7 +78,7 @@ namespace Aplication.Services.Services
             };
         }
 
-        public async Task<ServiceResponse<BranchClub>> GetBranchClubByCoachAsync(int coachId)
+        public async Task<ServiceResponse<BranchClub>> GetBranchClubByCoachAsync(Guid coachId)
         {
             var myBranchClub = await _branchClubRepository.GetClubBranchByCoach(coachId);
             if (myBranchClub == null)

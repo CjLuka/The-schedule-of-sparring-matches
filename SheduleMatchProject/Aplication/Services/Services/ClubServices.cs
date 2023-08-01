@@ -133,7 +133,7 @@ namespace Aplication.Services.Services
             };
         }
 
-        public async Task<ServiceResponse<Club>> GetClubByPresidentIdAsync(int userId)
+        public async Task<ServiceResponse<Club>> GetClubByPresidentIdAsync(Guid userId)
         {
             var club = await _clubRepository.GetClubByPresidentIdAsync(userId);
             if (club == null)

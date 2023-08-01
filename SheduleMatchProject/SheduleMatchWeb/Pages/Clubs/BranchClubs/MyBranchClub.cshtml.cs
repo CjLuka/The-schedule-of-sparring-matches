@@ -17,11 +17,11 @@ namespace SheduleMatchWeb.Pages.Clubs.BranchClubs
         public BranchClub MyBranchClub { get; set; }
         public async Task<IActionResult> OnGetAsync()
         {
-            string userIdString = HttpContext.User.FindFirstValue("UserId");//pobranie userId zalogowanego uzytkownika, aby wyswietlic odpowiedni zespó³
-            int.TryParse(userIdString, out int userId);//przerobieine userId na int
-            var BranchClubFromBase = await _branchClubServices.GetBranchClubByCoachAsync(userId);
+            //string userIdString = HttpContext.User.FindFirstValue("UserId");//pobranie userId zalogowanego uzytkownika, aby wyswietlic odpowiedni zespó³
+            //int.TryParse(userIdString, out int userId);//przerobieine userId na int
+            //var BranchClubFromBase = await _branchClubServices.GetBranchClubByCoachAsync(userId);
 
-            MyBranchClub = BranchClubFromBase.Data;
+            //MyBranchClub = BranchClubFromBase.Data;
 
             return Page();
         }

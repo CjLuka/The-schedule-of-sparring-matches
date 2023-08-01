@@ -22,8 +22,12 @@ namespace SheduleMatchWeb.Pages.Clubs.President
         public List<BranchClub> BranchClubs{ get; set; }
         public async Task<IActionResult> OnGetAsync()
         {
-            string userIdString = HttpContext.User.FindFirstValue("UserId");//pobranie userId zalogowanego uzytkownika, aby wyswietlic odpowiedni klub
-            int.TryParse(userIdString, out int userId);//przerobieine userId na int
+            //string userIdString = HttpContext.User.FindFirstValue("UserId");//pobranie userId zalogowanego uzytkownika, aby wyswietlic odpowiedni klub
+            //int.TryParse(userIdString, out int userId);//przerobieine userId na int
+
+            ClaimsPrincipal currentUser = this.User;//pobranie u¿ytkownika
+            string userIdString = currentUser.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            Guid.TryParse(userIdString, out var userId);
 
             var club = await _clubServices.GetClubByPresidentIdAsync(userId);//pobranie klubu zalogowanego uzytkownika
 

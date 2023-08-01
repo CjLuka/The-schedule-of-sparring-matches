@@ -51,7 +51,7 @@ namespace Persistance.Repo.Repositories
             await _context.SaveChangesAsync();
         }
 
-        public async Task<Club> GetClubByPresidentIdAsync(int userId)
+        public async Task<Club> GetClubByPresidentIdAsync(Guid userId)
         {
             return await _context.Clubs.FirstOrDefaultAsync(c => c.UserId== userId);
         }

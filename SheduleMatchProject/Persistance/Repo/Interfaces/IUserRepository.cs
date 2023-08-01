@@ -11,13 +11,13 @@ namespace Persistance.Repo.Interfaces
     {
         Task AddAsync(User user);
         Task<List<User>> GetAllAsync();
-        Task <User> GetByIdAsync(int id);
+        Task <User> GetByIdAsync(Guid id);
         Task<User> GetByEmailAsync(string Email);
         Task<List<User>> GetCoachWithoutClub();
         Task<List<User>> GetAllCoaches();
         Task<string> GetPasswordByEmailAsync(string Email);
         Task<string> GetEmailAsync(string Email);
         Task<string> GetRoleByEmailAsync(string Email);
-        Task<int> GetUserIdByEmailAsync(string Email);
+        Task<Guid> GetUserIdByEmailAsync(string Email);
     }
 }

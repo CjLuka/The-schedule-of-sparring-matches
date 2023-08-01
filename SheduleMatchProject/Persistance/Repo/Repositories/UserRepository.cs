@@ -29,7 +29,7 @@ namespace Persistance.Repo.Repositories
             return await _context.Users.FirstOrDefaultAsync(c => c.Email == Email);
         }
 
-        public async Task<User> GetByIdAsync(int id)
+        public async Task<User> GetByIdAsync(Guid id)
         {
             return await _context.Users.FirstOrDefaultAsync(c => c.Id == id);
         }
@@ -68,14 +68,14 @@ namespace Persistance.Repo.Repositories
             await _context.SaveChangesAsync();
         }
 
-        public async Task<int> GetUserIdByEmailAsync(string Email)
+        public async Task<Guid> GetUserIdByEmailAsync(string Email)
         {
             var user = await _context.Users.FirstOrDefaultAsync(c => c.Email == Email);
             if (user != null)
             {
                 return user.Id;
             }
-            return 0;
+            return Guid.Empty;
         }
 
         public async Task<List<User>> GetCoachWithoutClub()

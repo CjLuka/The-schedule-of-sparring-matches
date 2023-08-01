@@ -136,10 +136,10 @@ namespace Aplication.Services.Services
             
         }
 
-        public async Task<int> GetUserIdByEmailAsync(string email)
+        public async Task<Guid> GetUserIdByEmailAsync(string email)
         {
             var userId = await _userRepository.GetUserIdByEmailAsync(email);
-            if(userId == 0)
+            if(userId == Guid.Empty)
             {
                 
             }
@@ -210,7 +210,7 @@ namespace Aplication.Services.Services
             };
         }
 
-        public async Task<ServiceResponse<User>> GetUserById(int userId)
+        public async Task<ServiceResponse<User>> GetUserById(Guid userId)
         {
             var user = await _userRepository.GetByIdAsync(userId);
             if (user == null)

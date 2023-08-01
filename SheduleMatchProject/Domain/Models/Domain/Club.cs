@@ -18,7 +18,7 @@ namespace Domain.Models.Domain
         public string FeaturedImageUrl { get; set; }
         public int GameClassId { get; set; }
         public User User { get; set; }
-        public int UserId { get; set; }
+        public Guid UserId { get; set; }
         //public User President { get; set; }
         public List<BranchClub> Branches { get; set; }
         //public GameClass GameClass { get; set; }
