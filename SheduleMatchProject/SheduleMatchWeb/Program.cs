@@ -9,6 +9,7 @@ using System.Reflection;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Hosting;
 using Domain.Models.Domain;
+using Aplication;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
@@ -68,7 +69,8 @@ builder.Services.AddScoped<IBranchClubServices, BranchClubServices>();
 builder.Services.AddScoped<IMatchServices, MatchServices>();
 builder.Services.AddScoped<IFootballPitchServices, FootballPitchServices>();
 
-builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
+builder.Services.addAplication(builder.Configuration);
+//builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
 //builder.Services.AddAuthorization(options =>
 //{

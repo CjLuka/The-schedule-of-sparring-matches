@@ -34,12 +34,13 @@ namespace SheduleMatchWeb.Pages.Clubs.President
 
             ClaimsPrincipal currentUser = this.User;//pobranie u¿ytkownika
             string userIdString = currentUser.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-            Guid.TryParse(userIdString, out var userId);
+            //Guid.TryParse(userIdString, out var userId);
 
-            var myClub = await _clubServices.GetClubByPresidentIdAsync(userId);
+            var myClub = await _clubServices.GetClubByPresidentIdAsync(userIdString);
             Club = myClub.Data;
 
-            var coachesFromBase = await _userServices.GetCoachesWithoutClub();//pobranie uzytkownikow, ktorzy nie sa prezesami zadnego klubu
+            var coachesFromBase = await _userServices.GetAll();//pobranie uzytkownikow, ktorzy nie sa prezesami zadnego klubu
+            //var coachesFromBase = await _userServices.GetCoachesWithoutClub();//pobranie uzytkownikow, ktorzy nie sa prezesami zadnego klubu
             foreach (var user in coachesFromBase.Data)
             {
                 Coaches.Add(new SelectListItem { Text = user.FirstName + " " + user.LastName, Value = user.Id.ToString() });//dodanie uzytkownikow, ktorzy nie sa prezesami zadnego klubu do selectlisty
@@ -50,10 +51,14 @@ namespace SheduleMatchWeb.Pages.Clubs.President
         public async Task<IActionResult> OnPostAsync()
         {
             string userEmail = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;//pobranie emailu zalogowanego uzytkownika
+            ClaimsPrincipal currentUser = this.User;//pobranie u¿ytkownika
+            string userIdString = currentUser.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            //Guid.TryParse(userIdString, out var userId);
 
+            var myClub = await _clubServices.GetClubByPresidentIdAsync(userIdString);
             Branch.CreatedDate= DateTime.Now;
             Branch.CreatedBy = userEmail;
-            Branch.ClubId = Club.Id;
+            Branch.ClubId = myClub.Data.Id;
             await _branchClubServices.AddBranchAsync(Branch);
 
             return RedirectToAction("/President/MyBranches");

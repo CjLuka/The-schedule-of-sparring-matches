@@ -23,11 +23,11 @@ namespace SheduleMatchWeb.Pages.Clubs
         {
             ClaimsPrincipal currentUser = this.User;//pobranie u¿ytkownika
             string userIdString = currentUser.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-            Guid.TryParse(userIdString, out var userId);
+            //Guid.TryParse(userIdString, out var userId);
             //string userIdString = HttpContext.User.FindFirstValue("UserId");//pobranie userId zalogowanego uzytkownika, aby móc pobraæ odpowiedni klub
             //int.TryParse(userIdString, out int userId);//przerobieine userId na int
 
-            var Club = await _clubServices.GetClubByPresidentIdAsync(userId);//pobranie klubu przypisanego do zalogowanego uzytkownika
+            var Club = await _clubServices.GetClubByPresidentIdAsync(userIdString);//pobranie klubu przypisanego do zalogowanego uzytkownika
 
             var Matches2 = await _matchServices.GetAllByClubAsync(Club.Data.Id);
 

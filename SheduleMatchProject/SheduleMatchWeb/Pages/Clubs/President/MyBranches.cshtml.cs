@@ -27,9 +27,9 @@ namespace SheduleMatchWeb.Pages.Clubs.President
 
             ClaimsPrincipal currentUser = this.User;//pobranie u¿ytkownika
             string userIdString = currentUser.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-            Guid.TryParse(userIdString, out var userId);
+            //Guid.TryParse(userIdString, out var userId);
 
-            var club = await _clubServices.GetClubByPresidentIdAsync(userId);//pobranie klubu zalogowanego uzytkownika
+            var club = await _clubServices.GetClubByPresidentIdAsync(userIdString);//pobranie klubu zalogowanego uzytkownika
 
             var myBranches = await _branchClubServices.GetBranchesByClubAsync(club.Data.Id);//Pobranie wszystkich zespo³ów przypisanych do klubu
             BranchClubs = myBranches.Data;

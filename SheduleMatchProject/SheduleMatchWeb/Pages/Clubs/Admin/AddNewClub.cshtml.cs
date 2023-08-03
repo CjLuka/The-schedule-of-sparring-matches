@@ -42,7 +42,7 @@ namespace SheduleMatchWeb.Pages.Clubs
             var AllGameClassess = await _gameClassServices.GetAllAsync();//Pobranie wszystkich klas rozgrywkowych
             foreach (var item in AllGameClassess)
             {
-                Console.WriteLine(item.Id);
+                //Console.WriteLine(item.Id);
                 GameClassess.Add(new SelectListItem { Text = item.Name, Value = item.Id.ToString() });//przypisanie wszystkich klas rozgrywkowych do selectlisty
             }
             ViewData["klasyRozgrywkowe"] = GameClassess;//przypisanie klas rozgrywkowych do ViewData
@@ -51,9 +51,9 @@ namespace SheduleMatchWeb.Pages.Clubs
             var UsersWithoutClub = await _userServices.GetPresidentWithoutClub();//pobranie uzytkownikow, ktorzy nie sa prezesami zadnego klubu
             foreach (var user in UsersWithoutClub.Data)
             {
-                Console.WriteLine(user.Id);
-                Users.Add(new SelectListItem { Text = user.Email, Value = user.Id.ToString()});//dodanie uzytkownikow, ktorzy nie sa prezesami zadnego klubu do selectlisty
-                //Users.Add(new SelectListItem { Text = user.Email, Value = user.Id.ToString() });//dodanie uzytkownikow, ktorzy nie sa prezesami zadnego klubu do selectlisty
+                //Console.WriteLine(user.Id);
+                //Users.Add(new SelectListItem { Text = user.Email, Value = user.Id});//dodanie uzytkownikow, ktorzy nie sa prezesami zadnego klubu do selectlisty
+                Users.Add(new SelectListItem { Text = user.Email, Value = user.Id.ToString() });//dodanie uzytkownikow, ktorzy nie sa prezesami zadnego klubu do selectlisty
             }
             ViewData["Users"] = Users;//przypisanie listy uzytkownikow do ViewData
             return Page();
@@ -62,18 +62,15 @@ namespace SheduleMatchWeb.Pages.Clubs
         {
             try
             {
-                //string userEmail = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;//pobranie emailu zalogowanego uzytkownika
                 NewClub.CreatedDate = DateTime.Now;//Data utworzenia - obecna
                 NewClub.FeaturedImageUrl = "test";
                 NewClub.LastModifiedBy = "test";//ostatnia modyfikacja przez uzytkownika zalogowanego
                 NewClub.CreatedBy = "test";//utworzenie przez uzytkownika zalogowanego
 
-                //await _clubServices.AddClubAsync(NewClub);
-                var user2 = await _userServices.GetUserById(NewClub.UserId);
-                var addRolesResult = await userManager.AddToRoleAsync(user2.Data, "President");
-
                 await _clubServices.AddClubAsync(NewClub);//w ramach testu
-
+                var user2 = await _userServices.GetUserById(NewClub.UserId);
+                
+                var addRolesResult = await userManager.AddToRoleAsync(user2.Data, "President");
                 return RedirectToPage("../ShowAllClubs");
             }
             catch (Exception ex)

@@ -80,7 +80,7 @@ namespace Persistance.Repo.Repositories
             return branch;
         }
 
-        public async Task<BranchClub> GetClubBranchByCoach(Guid userId)//funkcja pobierająca klub dla danego trenera
+        public async Task<BranchClub> GetClubBranchByCoach(string userId)//funkcja pobierająca klub dla danego trenera
         {
             var myBranchClub = await _context.BranchesClubs
                 .Include(c => c.Club)

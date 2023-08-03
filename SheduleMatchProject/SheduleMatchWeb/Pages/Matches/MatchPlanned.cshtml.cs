@@ -24,8 +24,9 @@ namespace SheduleMatchWeb.Pages.Matches
             
             ClaimsPrincipal currentUser = this.User;//pobranie u¿ytkownika
             string userIdString = currentUser.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-            Guid.TryParse(userIdString, out var userId);
-            var branchClub = await _branchClubServices.GetBranchClubByCoachAsync(userId);//pobranie zespo³u poprzez id trenera
+            //Guid.TryParse(userIdString, out var userId);
+
+            var branchClub = await _branchClubServices.GetBranchClubByCoachAsync(userIdString);//pobranie zespo³u poprzez id trenera
             var matchRequeestsFromBase = await _matchRequestServices.GetPlannedMatchAsync(branchClub.Data);//pobranie wszystkich meczów per klub
             matchRequests = matchRequeestsFromBase.Data;
 

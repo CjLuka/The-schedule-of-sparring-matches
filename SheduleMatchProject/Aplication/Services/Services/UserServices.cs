@@ -136,10 +136,10 @@ namespace Aplication.Services.Services
             
         }
 
-        public async Task<Guid> GetUserIdByEmailAsync(string email)
+        public async Task<string> GetUserIdByEmailAsync(string email)
         {
             var userId = await _userRepository.GetUserIdByEmailAsync(email);
-            if(userId == Guid.Empty)
+            if(userId == string.Empty)
             {
                 
             }
@@ -155,7 +155,7 @@ namespace Aplication.Services.Services
             //var clubs = clubsResponse;
 
             var usersWithoutClub = users
-                .Where(user => user.Role == "President" || user.Role == "User")
+                //.Where(user => user.Role == "President" || user.Role == "User")
                 .Where(user => !clubs.Any(club => club.UserId == user.Id))
                 .ToList();
             return new ServiceResponse<List<User>>
@@ -210,7 +210,7 @@ namespace Aplication.Services.Services
             };
         }
 
-        public async Task<ServiceResponse<User>> GetUserById(Guid userId)
+        public async Task<ServiceResponse<User>> GetUserById(string userId)
         {
             var user = await _userRepository.GetByIdAsync(userId);
             if (user == null)
@@ -228,6 +228,17 @@ namespace Aplication.Services.Services
                 Message = "Pobrano użytkownika"
             };
 
+        }
+
+        public async Task<ServiceResponse<List<User>>> GetAll()
+        {
+            List<User> users = await _userRepository.GetAllUsersAsync();
+            return new ServiceResponse<List<User>>()
+            {
+                Success = true,
+                Data= users,
+                Message="Użytkownicy"
+            };
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Domain.Models.Domain;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Identity.Client;
 using Persistance.Data;
@@ -14,14 +15,18 @@ namespace Persistance.Repo.Repositories
     public class UserRepository : IUserRepository
     {
         private readonly ApplicationDbContext _context;
-        public UserRepository(ApplicationDbContext context)
+        private readonly UserManager<User> _userManager;
+
+        public UserRepository(ApplicationDbContext context, UserManager<User> userManager)
         {
             _context= context;
+            _userManager= userManager;
         }
         public async Task<List<User>> GetAllAsync()
         {
-            var Users = await _context.Users.ToListAsync();
-            return Users;
+            List<User> allUsers = await _userManager.Users.ToListAsync();
+            //var Users = await _context.Users.ToListAsync();
+            return allUsers;
         }
 
         public async Task<User> GetByEmailAsync(string Email)
@@ -29,9 +34,19 @@ namespace Persistance.Repo.Repositories
             return await _context.Users.FirstOrDefaultAsync(c => c.Email == Email);
         }
 
-        public async Task<User> GetByIdAsync(Guid id)
+        public async Task<User> GetByIdAsync(string id)
         {
             return await _context.Users.FirstOrDefaultAsync(c => c.Id == id);
+        }
+        public async Task<IdentityUser> GetUserByIdAsync(string id)
+        {
+            IdentityUser user = await _userManager.FindByIdAsync(id);
+            return user;
+        }
+        public async Task<List<User>> GetAllUsersAsync()
+        {
+            List<User> allUsers = await _userManager.Users.ToListAsync();
+            return allUsers;
         }
 
         //public async Task<string> GetPasswordByEmailAsync(string Email)
@@ -68,14 +83,14 @@ namespace Persistance.Repo.Repositories
             await _context.SaveChangesAsync();
         }
 
-        public async Task<Guid> GetUserIdByEmailAsync(string Email)
+        public async Task<string> GetUserIdByEmailAsync(string Email)
         {
             var user = await _context.Users.FirstOrDefaultAsync(c => c.Email == Email);
             if (user != null)
             {
                 return user.Id;
             }
-            return Guid.Empty;
+            return string.Empty;
         }
 
         public async Task<List<User>> GetCoachWithoutClub()

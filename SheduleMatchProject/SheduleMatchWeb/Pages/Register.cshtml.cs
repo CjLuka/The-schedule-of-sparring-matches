@@ -32,7 +32,6 @@ namespace SheduleMatchWeb.Pages
                 NormalizedEmail = RegisterViewModel.Email.ToUpper()
             };
             var identityResult = await userManager.CreateAsync(user, RegisterViewModel.Password);
-
             try
             {
                 if (identityResult.Succeeded)

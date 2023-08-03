@@ -25,9 +25,9 @@ namespace SheduleMatchWeb.Pages.Clubs
 
             ClaimsPrincipal currentUser = this.User;//pobranie u¿ytkownika
             string userIdString = currentUser.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-            Guid.TryParse(userIdString, out var userId);
+            //Guid.TryParse(userIdString, out var userId);
 
-            var myClub2 = await _clubServices.GetClubByPresidentIdAsync(userId);//wyswietlenie klubu zalogowanego uzytkownika
+            var myClub2 = await _clubServices.GetClubByPresidentIdAsync(userIdString);//wyswietlenie klubu zalogowanego uzytkownika
 
             myClub = myClub2.Data;//przypisanie danych do bindProperty
             return Page();

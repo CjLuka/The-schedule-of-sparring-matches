@@ -55,11 +55,14 @@ namespace Aplication.Services.Services
                     Success = false
                 };
             }
+            //var aa = _mapper.Map<Club>(newClub);
             await _clubRepository.AddAsync(_mapper.Map<Club>(newClub));
+            //var b = 10;
             //await _clubRepository.AddAsync(club);
+
             return new ServiceResponse<newClub>
             {
-                Data = _mapper.Map<newClub>(newClub),
+                Data = newClub,
                 Message = "Dodano nowy klub",
                 Success = true
             };
@@ -133,7 +136,7 @@ namespace Aplication.Services.Services
             };
         }
 
-        public async Task<ServiceResponse<Club>> GetClubByPresidentIdAsync(Guid userId)
+        public async Task<ServiceResponse<Club>> GetClubByPresidentIdAsync(string userId)
         {
             var club = await _clubRepository.GetClubByPresidentIdAsync(userId);
             if (club == null)

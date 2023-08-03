@@ -15,6 +15,6 @@ namespace Persistance.Repo.Interfaces
         Task AddAsync(Club club);
         Task DeleteAsync(Club club);
         Task UpdateAsync(Club club);
-        Task<Club> GetClubByPresidentIdAsync(Guid userId);
+        Task<Club> GetClubByPresidentIdAsync(string userId);
     }
 }

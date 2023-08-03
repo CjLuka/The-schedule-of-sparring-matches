@@ -30,6 +30,10 @@ namespace Persistance.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<Club>()
+            .HasOne(c => c.User)
+            .WithOne(u => u.Club)
+            .HasForeignKey<User>(u => u.ClubId);
 
             //modelBuilder.Entity<User>()
             //.HasOne(u => u.Club)

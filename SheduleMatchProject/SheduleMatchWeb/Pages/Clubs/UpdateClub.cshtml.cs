@@ -3,6 +3,7 @@ using Aplication.Services.Services;
 using Domain.Models.Domain;
 using Domain.Models.VievModel;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -19,11 +20,13 @@ namespace SheduleMatchWeb.Pages.Clubs
         private readonly IClubServices _clubServices;
         private readonly IGameClassServices _gameClassServices;
         private readonly IUserServices _userServices;
-        public UpdateClubModel(IClubServices clubServices, IGameClassServices gameClassServices, IUserServices userServices)
+        private readonly UserManager<User> _userManager;
+        public UpdateClubModel(IClubServices clubServices, IGameClassServices gameClassServices, IUserServices userServices, UserManager<User> userManager)
         {
             _clubServices = clubServices;
             _gameClassServices = gameClassServices;
             _userServices = userServices;
+            _userManager = userManager;
         }
 
         [BindProperty]
@@ -31,6 +34,7 @@ namespace SheduleMatchWeb.Pages.Clubs
         [BindProperty]
         public List<SelectListItem> GameClassess { get; set; }//do sprawdzenia 
         public List<SelectListItem> Users { get; set; }//do sprawdzenia czy to potrzebne
+        public static string previousUserId;
         public async Task<IActionResult> OnGetAsync(int id)
         {
             List <SelectListItem> Users = new List<SelectListItem>();//utworzenie selectlisty dla wszystkich uzytkownikow
@@ -45,6 +49,8 @@ namespace SheduleMatchWeb.Pages.Clubs
                 Users.Add(new SelectListItem { Text = user.Email, Value = user.Id.ToString() });//dodanie uzytkownikow, ktorzy nie sa prezesami zadnego klubu do selectlisty
             }
 
+            var currentlyPresident = await _userServices.GetUserById(ClubUpdate.UserId);
+            previousUserId = currentlyPresident.Data.Id;
 
             var AllUsers = await _userServices.GetAllUsersAsync();//pobranie wszystkich uzytkownikow
             foreach (var user in AllUsers.Data)
@@ -52,11 +58,13 @@ namespace SheduleMatchWeb.Pages.Clubs
                 if(user.Id == ClubUpdate.UserId)//Dopisanie uzytkownika ktory obecnie jest prezesem klubu
                 {
                     Users.Add(new SelectListItem { Text = user.Email, Value = user.Id.ToString() });
+                    //var removeRolesResult = await _userManager.RemoveFromRoleAsync(user2.Data, "President");
                 }
                 continue;
             }
             ViewData["Users"] = Users;//przypisanie listy uzytkownikow do ViewData
             
+
 
 
             List<SelectListItem> GameClassess = new List<SelectListItem>();
@@ -102,7 +110,15 @@ namespace SheduleMatchWeb.Pages.Clubs
                     Message = "Rekord poprawnie edytowany",
                     Type = Domain.Models.Enum.NotificationType.Success
                 };
+                if (previousUserId != ClubUpdate.UserId)//w przypadku zmiany prezesa - usuniêcie roli staremu u¿ytkownikowi(rola president)
+                {
+                    //W przypadku zmiany, pobranie obu u¿ytkowników i przypisanie im odpowiednich ról
+                    var oldPresident = await _userServices.GetUserById(previousUserId);
+                    var newPresident = await _userServices.GetUserById(ClubUpdate.UserId);
 
+                    await _userManager.AddToRoleAsync(newPresident.Data, "President");
+                    await _userManager.RemoveFromRoleAsync(oldPresident.Data, "President");
+                }
                 return RedirectToPage("/Clubs/ShowAllClubs");
             }
             catch (Exception ex)
