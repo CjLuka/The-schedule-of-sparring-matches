@@ -52,9 +52,13 @@
                     <select class="form-select" aria-label="Default select example" asp-for="BranchClub.UserId" asp-items="@(ViewData["Coaches"] as IEnumerable<SelectListItem>)"></select>
 @*                    <span asp-validation-for="User" class="text-danger"></span>*@
             </div>
-            <div class="mb-3 d-flex justify-content-between">
+            @*<div class="mb-3 d-flex justify-content-between">
                 <button class="btn btn-primary" type="submit" asp-page-handler="Update">Zaktualizuj</button>
                 <button class="btn btn-danger" type="submit" asp-page-handler="Delete">Usuń</button>
+            </div>*@
+            <div class="mb-3 d-flex justify-content-between">
+                <button class="btn btn-primary" type="submit" asp-page-handler="Update">Aktualizuj</button>
+                <button class="btn btn-danger" type="submit" asp-page-handler="Delete">Delete</button>
             </div>
         </form>
     </div>

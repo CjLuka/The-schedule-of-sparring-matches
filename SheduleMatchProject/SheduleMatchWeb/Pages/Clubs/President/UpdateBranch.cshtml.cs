@@ -2,6 +2,7 @@ using Aplication.Services.Interfaces;
 using Aplication.Services.Services;
 using Domain.Models.Domain;
 using Domain.Models.VievModel;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -13,18 +14,23 @@ namespace SheduleMatchWeb.Pages.Clubs.President
     {
         private readonly IBranchClubServices _branchClubServices;
         private readonly IUserServices _userServices;
-        public UpdateBranchModel(IBranchClubServices branchClubServices, IUserServices userServices)
+        private readonly UserManager<User> _userManager;
+        public UpdateBranchModel(IBranchClubServices branchClubServices, IUserServices userServices, UserManager<User> userManager)
         {
             _branchClubServices = branchClubServices;
             _userServices = userServices;
+            _userManager = userManager;
         }
         [BindProperty]
         public BranchClub BranchClub { get; set; }
-        
+        public static string previousCoachId;
         public async Task<IActionResult> OnGetAsync(int id)
         {
             var myBranch = await _branchClubServices.GetDetailBranchByIdAsync(id);//pobranie danych na temat zespo³u po id
             BranchClub = myBranch.Data;
+
+            var currentlyCoach = await _userServices.GetUserById(BranchClub.UserId);//pobranie obecnego trenera
+            previousCoachId = currentlyCoach.Data.Id;//przypisanie id obecnego trenera
 
             List<SelectListItem> Coaches = new List<SelectListItem>();//Utworzenie selectlisty dla trenerow bez klubu
 
@@ -59,7 +65,17 @@ namespace SheduleMatchWeb.Pages.Clubs.President
                 BranchClub.CreatedBy = userEmail;
 
                 await _branchClubServices.UpdateBranchAsync(BranchClub, id);
-                
+
+                if (previousCoachId != BranchClub.UserId)//w przypadku zmiany trenera - usuniêcie roli staremu u¿ytkownikowi(rola Coach)
+                {
+                    //W przypadku zmiany, pobranie obu u¿ytkowników i przypisanie im odpowiednich ról
+                    var oldPresident = await _userServices.GetUserById(previousCoachId);
+                    var newPresident = await _userServices.GetUserById(BranchClub.UserId);
+
+                    await _userManager.AddToRoleAsync(newPresident.Data, "Coach");
+                    await _userManager.RemoveFromRoleAsync(oldPresident.Data, "Coach");
+                }
+
                 ViewData["Notification"] = new Notification
                 {
                     Message = "Rekord poprawnie edytowany",
@@ -77,6 +93,17 @@ namespace SheduleMatchWeb.Pages.Clubs.President
                 };
             }
 
+            return Page();
+        }
+        public async Task<IActionResult> OnPostDeleteAsync(int id)
+        {
+            var deleted = await _branchClubServices.DeleteBranchAsync(id);
+            if (deleted.Success)
+            {
+                var oldPresident = await _userServices.GetUserById(previousCoachId);//pobranie u¿ytkownika który by³ prezesem klubu
+                await _userManager.RemoveFromRoleAsync(oldPresident.Data, "Coach");//usuniêcie roli prezesa przy usuniêciu klubu
+                return RedirectToPage("./ShowAllClubs");
+            }
             return Page();
         }
     }

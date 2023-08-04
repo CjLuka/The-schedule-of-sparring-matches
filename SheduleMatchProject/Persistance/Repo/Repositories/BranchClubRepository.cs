@@ -98,7 +98,7 @@ namespace Persistance.Repo.Repositories
 
         public async Task UpdateAsync(BranchClub branchClub)
         {
-            _context.Update(branchClub);
+            _context.BranchesClubs.Update(branchClub);
             await _context.SaveChangesAsync();
         }
     }

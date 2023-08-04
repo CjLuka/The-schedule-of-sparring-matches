@@ -130,8 +130,8 @@ namespace Aplication.Services.Services
 
         public async Task<ServiceResponse<BranchClub>> UpdateBranchAsync(BranchClub branchClub, int id)
         {
-            var branch = await _branchClubRepository.GetBranchByIdAsync(id);
-            if (branch == null)
+            var branchFromBase = await _branchClubRepository.GetBranchByIdAsync(id);
+            if (branchFromBase == null)
             {
                 return new ServiceResponse<BranchClub>
                 {
@@ -140,14 +140,28 @@ namespace Aplication.Services.Services
                     Success = false
                 };
             }
-            branchClub.Type= branch.Type;
-            branchClub.UserId = branch.UserId;
-            branchClub.LastModifiedDate = DateTime.Now;
-            branchClub.ClubId= branch.ClubId;
+            //branchClub.Type= branchFromBase.Type;
+            //branchClub.UserId = branchFromBase.UserId;
+            //branchClub.LastModifiedDate = DateTime.Now;
+            //branchClub.ClubId= branchFromBase.ClubId;
+
+            branchFromBase.Type= branchClub.Type;
+            branchFromBase.UserId= branchClub.UserId;
+            //branchFromBase.ClubId= branchClub.ClubId;
+            branchFromBase.ClubId = branchFromBase.ClubId;
+            branchFromBase.LastModifiedDate= DateTime.Now;
 
 
+            try
+            {
+                await _branchClubRepository.UpdateAsync(branchFromBase);
+            }
+            catch (Exception)
+            {
 
-            await _branchClubRepository.UpdateAsync(branchClub);
+                throw;
+            }
+            
 
             return new ServiceResponse<BranchClub>
             {
@@ -157,9 +171,23 @@ namespace Aplication.Services.Services
             };
         }
 
-        public Task<ServiceResponse<BranchClub>> DeleteBranchAsync(BranchClub branchClub)
+        public async Task<ServiceResponse<BranchClub>> DeleteBranchAsync(int id)
         {
-            throw new NotImplementedException();
+            var branch = await _branchClubRepository.GetBranchByIdAsync(id);
+            if (branch == null)
+            {
+                return new ServiceResponse<BranchClub>()
+                {
+                    Success= false,
+                    Message="Oddział o podanym Id nie istnieje"
+                };
+            }
+            await _branchClubRepository.DeleteAsync(branch);
+            return new ServiceResponse<BranchClub>()
+            {
+                Success = true,
+                Message = "Usunięto oddział"
+            };
         }
     }
 }

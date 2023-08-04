@@ -96,7 +96,8 @@ namespace Persistance.Repo.Repositories
         public async Task<List<User>> GetCoachWithoutClub()
         {
             var coachesWithoutClub = _context.Users
-            .Where(coach => coach.Role == "Coach" && !coach.BranchClubs.Any())//pobranie tylko takich, ktorzy są trenerami i nie mają innych klubow
+                .Where(coach=>!coach.BranchClubs.Any())
+            //.Where(coach => coach.Role == "Coach" && !coach.BranchClubs.Any())//pobranie tylko takich, ktorzy są trenerami i nie mają innych klubow
             .ToList();
             return coachesWithoutClub;
         }

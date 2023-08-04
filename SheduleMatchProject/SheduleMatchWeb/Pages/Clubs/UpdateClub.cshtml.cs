@@ -32,9 +32,9 @@ namespace SheduleMatchWeb.Pages.Clubs
         [BindProperty]
         public Club ClubUpdate { get; set; }
         [BindProperty]
-        public List<SelectListItem> GameClassess { get; set; }//do sprawdzenia 
-        public List<SelectListItem> Users { get; set; }//do sprawdzenia czy to potrzebne
-        public static string previousUserId;
+        public List<SelectListItem> GameClassess { get; set; }//Lista do wyœwietlania wszystkich lig
+        public List<SelectListItem> Users { get; set; }//Lista do wyœwietlania u¿ytkowników
+        public static string previousUserId;//Id prezesa który by³ ustawiony wczeœniej
         public async Task<IActionResult> OnGetAsync(int id)
         {
             List <SelectListItem> Users = new List<SelectListItem>();//utworzenie selectlisty dla wszystkich uzytkownikow
@@ -137,6 +137,8 @@ namespace SheduleMatchWeb.Pages.Clubs
             var deleted = await _clubServices.DeleteClubAsync(id);
             if (deleted.Success)
             {
+                var oldPresident = await _userServices.GetUserById(previousUserId);//pobranie u¿ytkownika który by³ prezesem klubu
+                await _userManager.RemoveFromRoleAsync(oldPresident.Data, "President");//usuniêcie roli prezesa przy usuniêciu klubu
                 return RedirectToPage("./ShowAllClubs");
             }
             return Page();

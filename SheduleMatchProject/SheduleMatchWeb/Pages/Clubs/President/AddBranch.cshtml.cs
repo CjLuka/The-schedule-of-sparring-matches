@@ -1,24 +1,30 @@
 using Aplication.Services.Interfaces;
 using Aplication.Services.Services;
 using Domain.Models.Domain;
+using Domain.Models.VievModel;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Data;
 using System.Security.Claims;
 
 namespace SheduleMatchWeb.Pages.Clubs.President
 {
+    [Authorize(Roles = "Admin, President")]
     public class AddBranchModel : PageModel
     {
         private readonly IBranchClubServices _branchClubServices;
         private readonly IUserServices _userServices;
         private readonly IClubServices _clubServices;
-        public AddBranchModel(IBranchClubServices branchClubServices, IUserServices userServices, IClubServices clubServices)
+        private readonly UserManager<User> _userManager;
+        public AddBranchModel(IBranchClubServices branchClubServices, IUserServices userServices, IClubServices clubServices, UserManager<User> userManager)
         {
             _branchClubServices = branchClubServices;
             _userServices = userServices;
             _clubServices = clubServices;
-
+            _userManager= userManager;
         }
 
         [BindProperty]
@@ -39,7 +45,7 @@ namespace SheduleMatchWeb.Pages.Clubs.President
             var myClub = await _clubServices.GetClubByPresidentIdAsync(userIdString);
             Club = myClub.Data;
 
-            var coachesFromBase = await _userServices.GetAll();//pobranie uzytkownikow, ktorzy nie sa prezesami zadnego klubu
+            var coachesFromBase = await _userServices.GetCoachesWithoutClub();//pobranie uzytkownikow, ktorzy nie sa prezesami zadnego klubu
             //var coachesFromBase = await _userServices.GetCoachesWithoutClub();//pobranie uzytkownikow, ktorzy nie sa prezesami zadnego klubu
             foreach (var user in coachesFromBase.Data)
             {
@@ -59,9 +65,12 @@ namespace SheduleMatchWeb.Pages.Clubs.President
             Branch.CreatedDate= DateTime.Now;
             Branch.CreatedBy = userEmail;
             Branch.ClubId = myClub.Data.Id;
-            await _branchClubServices.AddBranchAsync(Branch);
 
-            return RedirectToAction("/President/MyBranches");
+            await _branchClubServices.AddBranchAsync(Branch);
+            var newCoach = await _userServices.GetUserById(Branch.UserId);//pobranie u¿ytkownika, który bêdzie nowym trenerem
+            var addRolesResult = await _userManager.AddToRoleAsync(newCoach.Data, "Coach");//przypisanie roli trenera nowemu trenerowi
+
+            return RedirectToPage("../President/MyBranches");
         }
     }
 }
