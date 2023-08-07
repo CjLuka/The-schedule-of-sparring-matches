@@ -102,7 +102,7 @@ namespace SheduleMatchWeb.Pages.Clubs.President
             {
                 var oldPresident = await _userServices.GetUserById(previousCoachId);//pobranie u¿ytkownika który by³ prezesem klubu
                 await _userManager.RemoveFromRoleAsync(oldPresident.Data, "Coach");//usuniêcie roli prezesa przy usuniêciu klubu
-                return RedirectToPage("./ShowAllClubs");
+                return RedirectToPage("../ShowAllClubs");
             }
             return Page();
         }

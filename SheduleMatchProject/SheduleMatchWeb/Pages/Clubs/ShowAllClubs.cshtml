@@ -34,7 +34,7 @@
                             <td>
                                 <img src="@item.FeaturedImageUrl" class="club-image" />
                             </td>
-                            @if (User.IsInRole("Admin") || User.IsInRole("President"))
+                            @if (User.IsInRole("Admin")@* || User.IsInRole("President")*@)
                             {
                                 <td>
                                     <a href="./UpdateClub/@item.Id" class="btn btn-primary">Aktualizuj</a>

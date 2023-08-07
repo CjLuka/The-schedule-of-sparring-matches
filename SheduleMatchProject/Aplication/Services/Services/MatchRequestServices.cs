@@ -37,5 +37,23 @@ namespace Aplication.Services.Services
                Success= true
             };
         }
+
+        public async Task<ServiceResponse<MatchRequest>> PlanNewMatchAsync(MatchRequest matchRequest)
+        {
+            var planMatch = _matchRequestRepository.PlanNewMatchAsync(matchRequest);
+            if (planMatch.IsCompletedSuccessfully)
+            {
+                return new ServiceResponse<MatchRequest>
+                {
+                    Message = "Poprawnie dodano nowe zapytanie o mecz",
+                    Success = true
+                };
+            }
+            return new ServiceResponse<MatchRequest>
+            {
+                Success = false,
+                Message = "Coś poszło nie tak.."
+            };
+        }
     }
 }

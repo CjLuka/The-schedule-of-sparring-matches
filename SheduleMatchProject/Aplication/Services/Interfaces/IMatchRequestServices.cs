@@ -11,5 +11,6 @@ namespace Aplication.Services.Interfaces
     public interface IMatchRequestServices
     {
         Task<ServiceResponse<List<MatchRequest>>> GetPlannedMatchAsync(BranchClub branchClub);
+        Task<ServiceResponse<MatchRequest>> PlanNewMatchAsync(MatchRequest matchRequest);
     }
 }

@@ -42,7 +42,6 @@ namespace SheduleMatchWeb.Pages.Clubs
             var AllGameClassess = await _gameClassServices.GetAllAsync();//Pobranie wszystkich klas rozgrywkowych
             foreach (var item in AllGameClassess)
             {
-                //Console.WriteLine(item.Id);
                 GameClassess.Add(new SelectListItem { Text = item.Name, Value = item.Id.ToString() });//przypisanie wszystkich klas rozgrywkowych do selectlisty
             }
             ViewData["klasyRozgrywkowe"] = GameClassess;//przypisanie klas rozgrywkowych do ViewData
@@ -51,7 +50,6 @@ namespace SheduleMatchWeb.Pages.Clubs
             var UsersWithoutClub = await _userServices.GetPresidentWithoutClub();//pobranie uzytkownikow, ktorzy nie sa prezesami zadnego klubu
             foreach (var user in UsersWithoutClub.Data)
             {
-                //Console.WriteLine(user.Id);
                 //Users.Add(new SelectListItem { Text = user.Email, Value = user.Id});//dodanie uzytkownikow, ktorzy nie sa prezesami zadnego klubu do selectlisty
                 Users.Add(new SelectListItem { Text = user.Email, Value = user.Id.ToString() });//dodanie uzytkownikow, ktorzy nie sa prezesami zadnego klubu do selectlisty
             }

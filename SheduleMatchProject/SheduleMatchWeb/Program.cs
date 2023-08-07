@@ -68,6 +68,7 @@ builder.Services.AddScoped<IGameClassServices, GameClassServices>();
 builder.Services.AddScoped<IBranchClubServices, BranchClubServices>();
 builder.Services.AddScoped<IMatchServices, MatchServices>();
 builder.Services.AddScoped<IFootballPitchServices, FootballPitchServices>();
+builder.Services.AddScoped<IMatchRequestServices, MatchRequestServices>();
 
 builder.Services.addAplication(builder.Configuration);
 //builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());

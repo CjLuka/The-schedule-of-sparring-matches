@@ -26,33 +26,52 @@
                         <li class="nav-item">
                             <a class="nav-link text-light" asp-area="" asp-page="/Clubs/ShowAllClubs">Wszystkie kluby</a>
                         </li>
-                        @if (signInManager.IsSignedIn(User) && User.IsInRole("Coach"))
+                        @*@if (signInManager.IsSignedIn(User) && User.IsInRole("Coach"))
                         {
                             <a class="nav-link text-light" asp-area="" asp-page="/Clubs/BranchClubs/MyBranchClub">Moja drużyna</a>
                             <a class="nav-link text-light" asp-area="" asp-page="/Clubs/Matches/MatchPlanned">Zaplanowane mecze</a>
                             <a class="nav-link text-light" asp-area="" asp-page="/Matches/PlanNewMatch">Zaplanuj nowy mecz</a>
 
-                        }
-                        @if(signInManager.IsSignedIn(User) && User.IsInRole("President"))
+                        }*@
+                        @if(signInManager.IsSignedIn(User) && (User.IsInRole("President") || User.IsInRole("Coach")))
                         {
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" id="navbarDropdownAdmin">
                                     Mój klub
                                 </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownAdmin">
-                                <li>
-                                    <a class="dropdown-item" href="/clubs/myclub">
-                                        Profil klubu
-                                    </a>
-                                    <a class="dropdown-item" href="/Matches/MyScheduleMatch">
-                                        Rozegrane mecze
-                                    </a>
-                                    <a class="dropdown-item" href="/Clubs/President/MyBranches">
-                                        Moje drużyny
-                                    </a>
-                                    <a class="dropdown-item" href="/Clubs/President/AddBranch">
-                                        Dodaj nowy drużynę
-                                    </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdownAdmin">
+                                    <li>
+                                        <a class="dropdown-item" href="/clubs/myclub">
+                                            Profil klubu
+                                        </a>
+                                        <a class="dropdown-item" href="/Matches/MyScheduleMatch">
+                                            Rozegrane mecze
+                                        </a>
+                                        @if (User.IsInRole("Coach"))
+                                        {
+                                            <a class="dropdown-item" href="/Clubs/BranchClubs/MyBranchClub">
+                                                Moja drużyna
+                                            </a>
+                                            <a class="dropdown-item" href="/Clubs/Coach/MyPlannedMatch">
+                                                Zaplanowane mecze
+                                            </a>
+                                            <a class="dropdown-item" href="/Clubs/Coach/BranchesForPlanMatch">
+                                                Zaplanuj nowy mecz
+                                            </a>
+                                        }
+                                        
+                                        @if (User.IsInRole("President"))
+                                        {
+                                            <a class="dropdown-item" href="/Clubs/President/MyBranches">
+                                                Moje drużyny
+                                            </a>
+
+                                            <a class="dropdown-item" href="/Clubs/President/AddBranch">
+                                                Dodaj nowy drużynę
+                                            </a>
+                                        }
+                                        
+                                    
                                 </li>
                             </ul>
                             </li>

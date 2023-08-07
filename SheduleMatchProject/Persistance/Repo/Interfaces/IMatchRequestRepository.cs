@@ -10,5 +10,6 @@ namespace Persistance.Repo.Interfaces
     public interface IMatchRequestRepository
     {
         Task<List<MatchRequest>> GetPlannedMatchAsync(BranchClub branchClub);
+        Task PlanNewMatchAsync(MatchRequest matchRequest);
     }
 }

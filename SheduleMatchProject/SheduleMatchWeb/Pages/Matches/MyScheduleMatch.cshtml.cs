@@ -28,10 +28,19 @@ namespace SheduleMatchWeb.Pages.Clubs
             //int.TryParse(userIdString, out int userId);//przerobieine userId na int
 
             var Club = await _clubServices.GetClubByPresidentIdAsync(userIdString);//pobranie klubu przypisanego do zalogowanego uzytkownika
+            try
+            {
+                var Matches2 = await _matchServices.GetAllByClubAsync(Club.Data.Id);
+                Matches = Matches2.Data;//przypisanie danych do bindProperty
+            }
+            catch (Exception)
+            {
 
-            var Matches2 = await _matchServices.GetAllByClubAsync(Club.Data.Id);
+                throw;
+            }
+            
 
-            Matches = Matches2.Data;//przypisanie danych do bindProperty
+            
 
             return Page();
         }

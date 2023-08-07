@@ -31,5 +31,11 @@ namespace Persistance.Repo.Repositories
             }
             return allMatchRequestByBranchClub;
         }
+
+        public async Task PlanNewMatchAsync(MatchRequest matchRequest)
+        {
+            _context.MatchRequests.Add(matchRequest);
+            _context.SaveChanges();
+        }
     }
 }

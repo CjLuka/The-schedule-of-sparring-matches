@@ -1,0 +1,51 @@
+﻿@page
+@model SheduleMatchWeb.Pages.Clubs.Coach.BranchesForPlanMatchModel
+@{
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Wszystkie Kluby</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/siteShow.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Wybierz przeciwnika</h1>
+        @*<form method="post">*@
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Nazwa klubu</th>
+                    <th>Typ drużyny</th>
+                    <th>Trener</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Branches)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.Club.Name)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Type)</td>
+                        @*<td>@Html.DisplayFor(modelItem => item.User.FirstName)</td>*@
+                        <td>@(item.User.FirstName + " " + item.User.LastName)</td>
+                        @if (User.IsInRole("Admin") || User.IsInRole("President") || User.IsInRole("Coach"))
+                        {
+                            <td>
+                                <a href="./PlanMatchWithPitch/@item.Id" class="btn btn-primary">Mecz z boiskiem</a>
+                            </td>
+                            <td>
+                                <a href="./PlanMatchWithoutPitch/@item.Id" class="btn btn-primary">Mecz bez boiska</a>
+                            </td>
+                        }
+                    </tr>
+                }
+            </tbody>
+        </table>
+        @*</form>*@
+    </div>
+</body>
+</html>
