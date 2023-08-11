@@ -1,4 +1,4 @@
-﻿@page
+﻿@page "{id:int}"
 @model SheduleMatchWeb.Pages.Clubs.Coach.PlanMatchWithPitchModel
 @{
 }
@@ -10,11 +10,17 @@
                 <label for="Data" class="form-label">
                     Podaj date rozpoczęcia meczu
                 </label>
-                @*<input id="DateTime" type="datetime-local" class="form-control" asp-for="matchRequest.Date" />*@
+                <input id="DateTime" type="datetime-local" class="form-control" asp-for="matchRequest.Date" />
             </div>
+@*            <div class="mb-3">
+                <label for="Data" class="form-label">
+                    Podaj date rozpoczęcia meczu
+                </label>
+                <input id="FootballPitch" type="datetime-local" class="form-control" asp-for="matchRequest.Date" />
+            </div>*@
             <div>
                 <button type="submit" class="btn btn-dark">
-                    Zaproponuj spotkanie
+                    Przejdź do wyboru boiska
                 </button>
             </div>
         </form>

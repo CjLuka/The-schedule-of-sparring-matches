@@ -24,8 +24,11 @@ namespace Persistance.Repo.Repositories
         }
         public async Task<List<FootballPitch>> GetAvailableFootballPitchesForMatchRequest(DateTime dateTime)
         {
+            // Dodaj 2 godziny do podanej daty
+            DateTime endTime = dateTime.AddHours(2);
+
             var reservedFootballPitchIds = await _context.MatchRequests
-                .Where(mr => mr.Date == dateTime && mr.IsAccepted)
+                .Where(mr => mr.Date >= dateTime && mr.Date < endTime && mr.IsAccepted)
                 .Select(mr => mr.FootballPitch.Id)
                 .ToListAsync();
 
