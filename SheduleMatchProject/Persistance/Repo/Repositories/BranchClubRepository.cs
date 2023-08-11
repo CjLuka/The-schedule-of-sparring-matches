@@ -24,6 +24,11 @@ namespace Persistance.Repo.Repositories
             await _context.SaveChangesAsync();
         }
 
+        public Task<int> CountBranchesForCoach(string userId)
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task DeleteAsync(BranchClub branchClub)
         {
             _context.BranchesClubs.Remove(branchClub);
@@ -34,6 +39,7 @@ namespace Persistance.Repo.Repositories
         {
             var allBranchClubs = await _context.BranchesClubs
                 .Include(c => c.Club)
+                .Include(u => u.User)
                 .ToListAsync();
             return allBranchClubs;
         }

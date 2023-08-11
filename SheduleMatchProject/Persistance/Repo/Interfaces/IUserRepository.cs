@@ -15,7 +15,7 @@ namespace Persistance.Repo.Interfaces
         Task<List<User>> GetAllUsersAsync();
         Task <User> GetByIdAsync(string id);
         Task<User> GetByEmailAsync(string Email);
-        Task<List<User>> GetCoachWithoutClub();
+        Task<List<User>> GetCoaches();
         Task<List<User>> GetAllCoaches();
         Task<string> GetPasswordByEmailAsync(string Email);
         Task<string> GetEmailAsync(string Email);

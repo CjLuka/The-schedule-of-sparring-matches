@@ -189,5 +189,23 @@ namespace Aplication.Services.Services
                 Message = "Usunięto oddział"
             };
         }
+
+        public async Task<ServiceResponse<int>> CountBranchesForCoach(string userId)
+        {
+            var allBranches = await _branchClubRepository.GetAllBranchClubAsync();
+            int count = 0;
+            foreach (var item in allBranches)
+            {
+                if(item.UserId == userId)
+                {
+                    count++;
+                }
+            }
+            return new ServiceResponse<int>
+            {
+                Data = count, 
+                Success = true
+            };
+        }
     }
 }

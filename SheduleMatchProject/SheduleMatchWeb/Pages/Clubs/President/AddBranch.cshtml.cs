@@ -45,7 +45,7 @@ namespace SheduleMatchWeb.Pages.Clubs.President
             var myClub = await _clubServices.GetClubByPresidentIdAsync(userIdString);
             Club = myClub.Data;
 
-            var coachesFromBase = await _userServices.GetCoachesWithoutClub();//pobranie uzytkownikow, ktorzy nie sa prezesami zadnego klubu
+            var coachesFromBase = await _userServices.GetCoaches();//pobranie uzytkownikow, ktorzy nie sa prezesami zadnego klubu
             //var coachesFromBase = await _userServices.GetCoachesWithoutClub();//pobranie uzytkownikow, ktorzy nie sa prezesami zadnego klubu
             foreach (var user in coachesFromBase.Data)
             {

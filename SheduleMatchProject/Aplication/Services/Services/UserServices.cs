@@ -83,9 +83,9 @@ namespace Aplication.Services.Services
             };
         }
 
-        public async Task<ServiceResponse<List<User>>> GetCoachesWithoutClub()
+        public async Task<ServiceResponse<List<User>>> GetCoaches()
         {
-            var coaches = await _userRepository.GetCoachWithoutClub();
+            var coaches = await _userRepository.GetCoaches();
             if (coaches.IsNullOrEmpty())
             {
                 return new ServiceResponse<List<User>>()

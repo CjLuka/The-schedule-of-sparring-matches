@@ -21,16 +21,6 @@ namespace SheduleMatchWeb.Pages.Clubs.Coach
         public MatchRequest matchRequest { get; set; }
         public async Task<IActionResult> OnGetAsync(int id)
         {
-            //ClaimsPrincipal currentUser = this.User;//pobranie u¿ytkownika
-            //string userIdString = currentUser.FindFirst(ClaimTypes.NameIdentifier)?.Value;//pobranie Id zalogowanego u¿ytkownika
-
-            //var myBranch = await _branchClubServices.GetBranchClubByCoachAsync(userIdString);//pobieranie branchClubu zalogowanego usera, aby podaæ w parametrze metody id klubu i nie braæ pod uwagê podczas szukania przeciwnika
-
-
-            //List<BranchClub> branchesForNewMatch = new List<BranchClub>();
-            //var allBranches = await _branchClubServices.GetAllBranchClubsForPlanMatchAsync(myBranch.Data.ClubId);
-
-
 
             return Page();
         }

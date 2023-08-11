@@ -34,7 +34,7 @@ namespace SheduleMatchWeb.Pages.Clubs.President
 
             List<SelectListItem> Coaches = new List<SelectListItem>();//Utworzenie selectlisty dla trenerow bez klubu
 
-            var coachesFromBase = await _userServices.GetCoachesWithoutClub();//pobranie uzytkownikow, ktorzy nie sa prezesami zadnego klubu
+            var coachesFromBase = await _userServices.GetCoaches();//pobranie uzytkownikow
             foreach (var user in coachesFromBase.Data)
             {
                 Coaches.Add(new SelectListItem { Text = user.FirstName + " " + user.LastName, Value = user.Id.ToString() });//dodanie uzytkownikow, ktorzy nie sa prezesami zadnego klubu do selectlisty
@@ -72,8 +72,15 @@ namespace SheduleMatchWeb.Pages.Clubs.President
                     var oldPresident = await _userServices.GetUserById(previousCoachId);
                     var newPresident = await _userServices.GetUserById(BranchClub.UserId);
 
+                    var countClubs = await _branchClubServices.CountBranchesForCoach(oldPresident.Data.Id);
+
+                    if(countClubs.Data == 0)
+                    {
+                        await _userManager.RemoveFromRoleAsync(oldPresident.Data, "Coach");
+                    }
+                    
                     await _userManager.AddToRoleAsync(newPresident.Data, "Coach");
-                    await _userManager.RemoveFromRoleAsync(oldPresident.Data, "Coach");
+                    
                 }
 
                 ViewData["Notification"] = new Notification

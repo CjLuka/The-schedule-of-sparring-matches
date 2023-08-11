@@ -93,13 +93,13 @@ namespace Persistance.Repo.Repositories
             return string.Empty;
         }
 
-        public async Task<List<User>> GetCoachWithoutClub()
+        public async Task<List<User>> GetCoaches()
         {
-            var coachesWithoutClub = _context.Users
-                .Where(coach=>!coach.BranchClubs.Any())
+            var coaches = _context.Users
+                //.Where(coach=>!coach.BranchClubs.Any())
             //.Where(coach => coach.Role == "Coach" && !coach.BranchClubs.Any())//pobranie tylko takich, ktorzy są trenerami i nie mają innych klubow
             .ToList();
-            return coachesWithoutClub;
+            return coaches;
         }
 
         public async Task<List<User>> GetAllCoaches()

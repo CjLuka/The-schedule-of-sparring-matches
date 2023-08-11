@@ -1,0 +1,36 @@
+﻿@page
+@model SheduleMatchWeb.Pages.AllBranchesModel
+@{
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Wszystkie Kluby</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/siteShow.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Wszystkie zespoły</h1>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Nazwa</th>
+                        <th>Typ drużyny</th>
+                        <th>Trener</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Branches)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => item.Club.Name)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Type)</td>
+                            <td>@Html.DisplayFor(modelItem => item.User.UserName)</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+    </div>
+</body>
+</html>
