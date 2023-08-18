@@ -141,7 +141,7 @@ namespace Persistance.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("AddressesId")
+                    b.Property<int>("AddressesId")
                         .HasColumnType("int");
 
                     b.Property<string>("CreatedBy")
@@ -586,9 +586,13 @@ namespace Persistance.Migrations
 
             modelBuilder.Entity("Domain.Models.Domain.FootballPitch", b =>
                 {
-                    b.HasOne("Domain.Models.Domain.Addresses", null)
+                    b.HasOne("Domain.Models.Domain.Addresses", "Addresses")
                         .WithMany("FootballPitches")
-                        .HasForeignKey("AddressesId");
+                        .HasForeignKey("AddressesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Addresses");
                 });
 
             modelBuilder.Entity("Domain.Models.Domain.FootballPitchRequest", b =>

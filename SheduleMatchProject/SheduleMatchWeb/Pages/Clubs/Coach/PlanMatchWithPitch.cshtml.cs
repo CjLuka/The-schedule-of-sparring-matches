@@ -38,9 +38,18 @@ namespace SheduleMatchWeb.Pages.Clubs.Coach
             matchRequest.SenderId = myBranch.Data.Id;
             matchRequest.ReceiverId = id;
             matchRequest.CreatedBy = userIdString;
-            matchRequest.CreatedDate = DateTime.Now;
-            var serializedMatchRequest = JsonConvert.SerializeObject(matchRequest);
-            return RedirectToPage("./ChosePitchForMatch", new { matchRequestData = serializedMatchRequest });
+            matchRequest.CreatedDate = DateTime.Now;  
+            //return RedirectToPage("./ChosePitchForMatch");
+            try
+            {
+                //await _matchRequestServices.PlanNewMatchAsync(matchRequest);
+                var serializedMatchRequest = JsonConvert.SerializeObject(matchRequest);
+                return RedirectToPage("./ChosePitchForMatch", new { matchRequestData = serializedMatchRequest });
+            }
+            catch (Exception)
+            {
+                throw;
+            }             
         }
     }
 }

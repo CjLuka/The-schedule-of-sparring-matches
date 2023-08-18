@@ -33,6 +33,7 @@ namespace Persistance.Repo.Repositories
                 .ToListAsync();
 
             var availableFootballPitches = await _context.FootballPitches
+                .Include(a => a.Addresses)
                 .Where(fp => !reservedFootballPitchIds.Contains(fp.Id))
                 .ToListAsync();
 

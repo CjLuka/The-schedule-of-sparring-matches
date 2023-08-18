@@ -3,5 +3,65 @@
 @{
 }
 
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Wybierz stadion</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/siteShow.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Wybór boiska</h1>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Nazwa</th>
+                        <th>Miejscowość</th>
+                        <th>Adres</th>
+                        <th>Kod pocztowy</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+@*                    @foreach (var item in Model.FootballPitches)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Addresses.City)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Addresses.Street)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Addresses.PostalCode)</td>
+                            <td>
+                                <button type="submit" class="btn btn-dark">Wybierz</button>
+                            </td>
 
-@Html.DisplayFor(modelItem => Model.MatchRequest.Date)
+                        </tr>
+                    }*@
+                    @foreach (var item in Model.FootballPitches)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Addresses.City)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Addresses.Street)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Addresses.PostalCode)</td>
+                            <td>
+                                @*<form method="post">
+                                    <input type="hidden" name="matchRequestData" value="@Model.MatchRequestData" />
+                                    <input type="hidden" name="footballPitchId" value="@item.Id" />
+                                    <button type="submit" class="btn btn-dark">Wybierz</button>
+                                </form>*@
+
+                            <form method="post">
+                                <input type="hidden" name="matchRequestData" value="@Model.MatchRequestData" />
+                                <input type="hidden" name="footballPitchId" value="@item.Id" />
+                                <button type="submit" class="btn btn-dark">Wybierz</button>
+                            </form>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+    </div>
+</body>
+</html>
