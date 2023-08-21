@@ -31,9 +31,10 @@ namespace SheduleMatchWeb.Pages.Clubs.Coach
             {
                 var matchRequest = JsonConvert.DeserializeObject<MatchRequest>(MatchRequestData);
                 MatchRequest = matchRequest;
+
+
                 var availableFootballPitches = await _footballPitchServices.GetAvailableFootballPitchesForMatchRequest(matchRequest.Date);
                 FootballPitches = availableFootballPitches.Data.ToList();
-
             }
 
             return Page();
@@ -42,10 +43,9 @@ namespace SheduleMatchWeb.Pages.Clubs.Coach
         public async Task<IActionResult> OnPostAsync(int footballPitchId)
         {
 
-            var matchRequest = JsonConvert.DeserializeObject<MatchRequest>(MatchRequestData);
+            var matchRequest = JsonConvert.DeserializeObject<MatchRequest>(MatchRequestData);//przekonwertowanie z jsona z powrotem na obiekt
             MatchRequest = matchRequest;
             MatchRequest.FootballPitchId = footballPitchId;
-            //await _matchRequestServices.PlanNewMatchAsync(matchRequest);
             try
             {
                 var match = await _matchRequestServices.PlanNewMatchAsync(MatchRequest);

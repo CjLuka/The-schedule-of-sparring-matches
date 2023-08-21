@@ -22,16 +22,41 @@ namespace Persistance.Repo.Repositories
             var allFootballPitches = await _context.FootballPitches.ToListAsync();
             return allFootballPitches;
         }
+        //public async Task<List<FootballPitch>> GetAvailableFootballPitchesForMatchRequest(DateTime dateTime)
+        //{
+        //    DateTime startTime = dateTime.AddHours(-2);
+        //    DateTime endTime = dateTime.AddHours(2);
+
+        //    //Lista boisk które są w podanym terminie zarezerwowane
+        //    var reservedFootballPitchIds = await _context.MatchRequests
+        //        .Where(mr => mr.Date > startTime && mr.Date <= dateTime&&mr.Date < endTime)
+        //        .Where(mr => mr.IsAccepted)
+        //        .Where(mr => mr.FootballPitchId != null)
+        //        .Select(mr => mr.FootballPitch.Id)
+        //        .ToListAsync();
+
+        //    //Lista tylko dostępnych boisk
+        //    var availableFootballPitches = await _context.FootballPitches
+        //        .Include(a => a.Addresses)
+        //        .Where(fp => !reservedFootballPitchIds.Contains(fp.Id))
+        //        .ToListAsync();
+
+        //    return availableFootballPitches;
+        //}
         public async Task<List<FootballPitch>> GetAvailableFootballPitchesForMatchRequest(DateTime dateTime)
         {
-            // Dodaj 2 godziny do podanej daty
+            DateTime startTime = dateTime.AddHours(-2);
             DateTime endTime = dateTime.AddHours(2);
 
+            // Lista boisk które są w podanym terminie zarezerwowane
             var reservedFootballPitchIds = await _context.MatchRequests
-                .Where(mr => mr.Date >= dateTime && mr.Date < endTime && mr.IsAccepted)
+                .Where(mr => mr.Date > startTime && mr.Date < endTime)
+                .Where(mr => mr.IsAccepted)
+                .Where(mr => mr.FootballPitchId != null)
                 .Select(mr => mr.FootballPitch.Id)
                 .ToListAsync();
 
+            // Lista dostępnych boisk (niezajętych 2 godziny przed meczem i 2 godziny po meczu)
             var availableFootballPitches = await _context.FootballPitches
                 .Include(a => a.Addresses)
                 .Where(fp => !reservedFootballPitchIds.Contains(fp.Id))

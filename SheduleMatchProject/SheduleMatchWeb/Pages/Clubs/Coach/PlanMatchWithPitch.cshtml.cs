@@ -39,12 +39,10 @@ namespace SheduleMatchWeb.Pages.Clubs.Coach
             matchRequest.ReceiverId = id;
             matchRequest.CreatedBy = userIdString;
             matchRequest.CreatedDate = DateTime.Now;  
-            //return RedirectToPage("./ChosePitchForMatch");
             try
             {
-                //await _matchRequestServices.PlanNewMatchAsync(matchRequest);
-                var serializedMatchRequest = JsonConvert.SerializeObject(matchRequest);
-                return RedirectToPage("./ChosePitchForMatch", new { matchRequestData = serializedMatchRequest });
+                var serializedMatchRequest = JsonConvert.SerializeObject(matchRequest);//konwertowanie obiektu na jsona, aby móc go przes³aæ do innego widoku
+                return RedirectToPage("./ChosePitchForMatch", new { matchRequestData = serializedMatchRequest });//przes³aie obiektu przez json
             }
             catch (Exception)
             {

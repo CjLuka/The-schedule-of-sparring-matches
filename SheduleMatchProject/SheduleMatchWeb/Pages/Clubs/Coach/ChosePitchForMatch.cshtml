@@ -24,19 +24,6 @@
                     </tr>
                 </thead>
                 <tbody>
-@*                    @foreach (var item in Model.FootballPitches)
-                    {
-                        <tr>
-                            <td>@Html.DisplayFor(modelItem => item.Name)</td>
-                            <td>@Html.DisplayFor(modelItem => item.Addresses.City)</td>
-                            <td>@Html.DisplayFor(modelItem => item.Addresses.Street)</td>
-                            <td>@Html.DisplayFor(modelItem => item.Addresses.PostalCode)</td>
-                            <td>
-                                <button type="submit" class="btn btn-dark">Wybierz</button>
-                            </td>
-
-                        </tr>
-                    }*@
                     @foreach (var item in Model.FootballPitches)
                     {
                         <tr>
@@ -45,12 +32,6 @@
                             <td>@Html.DisplayFor(modelItem => item.Addresses.Street)</td>
                             <td>@Html.DisplayFor(modelItem => item.Addresses.PostalCode)</td>
                             <td>
-                                @*<form method="post">
-                                    <input type="hidden" name="matchRequestData" value="@Model.MatchRequestData" />
-                                    <input type="hidden" name="footballPitchId" value="@item.Id" />
-                                    <button type="submit" class="btn btn-dark">Wybierz</button>
-                                </form>*@
-
                             <form method="post">
                                 <input type="hidden" name="matchRequestData" value="@Model.MatchRequestData" />
                                 <input type="hidden" name="footballPitchId" value="@item.Id" />
