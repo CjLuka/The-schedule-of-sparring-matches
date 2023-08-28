@@ -61,6 +61,15 @@ namespace Persistance.Repo.Repositories
             return branchClubsWithoutSender;
         }
 
+        public async Task<List<BranchClub>> GetAllBranchesForCoach(string userId)
+        {
+            var branches = await _context.BranchesClubs
+                .Where(c => c.UserId == userId)
+                .Include(c => c.Club)
+                .ToListAsync();
+            return branches;
+        }
+
         public async Task<List<BranchClub>> GetAllByClubAsync(int clubId)
         {
             var allBranchClubs = await _context.BranchesClubs

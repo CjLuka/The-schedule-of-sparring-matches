@@ -18,9 +18,9 @@ namespace Aplication.Services.Services
             _matchRequestRepository = matchRequestRepository;
         }
 
-        public async Task<ServiceResponse<List<MatchRequest>>> GetPlannedMatchAsync(BranchClub branchClub)
+        public async Task<ServiceResponse<List<MatchRequest>>> GetPlannedMatchByBranchAsync(BranchClub branchClub)
         {
-            var PlannedMatch = await _matchRequestRepository.GetPlannedMatchAsync(branchClub);
+            var PlannedMatch = await _matchRequestRepository.GetPlannedMatchByBranchAsync(branchClub);
             if (PlannedMatch == null)
             {
                 return new ServiceResponse<List<MatchRequest>>
@@ -35,6 +35,46 @@ namespace Aplication.Services.Services
                Data = PlannedMatch,
                Message = "Zaplanowane spotkania",
                Success= true
+            };
+        }
+
+        //Funkcja wyciągająca mecze danego trenera. 1 użytkownik może trenować kilka drużyn, dlatego wyciągamy per userId
+        public async Task<ServiceResponse<List<MatchRequest>>> GetPlannedMatchByCoachAsync(string userId)
+        {
+            var allPlannedMatch = _matchRequestRepository.GetPlannedMatchByCoachAsync(userId);
+            if(allPlannedMatch == null)
+            {
+                return new ServiceResponse<List<MatchRequest>>
+                {
+                    Success = false,
+                    Message = "Brak danych"
+                };
+            }
+            return new ServiceResponse<List<MatchRequest>>
+            {
+                Data = allPlannedMatch.Result,
+                Success = true,
+                Message = "Twoje mecze"
+            };
+        }
+
+        //Funkcja zwracająca zapytania o mecz otrzymane od innych klubów. Zwracane per trener
+        public async Task<ServiceResponse<List<MatchRequest>>> GetPropositionsByCoachAsync(string userId)
+        {
+            var matchPropositions = await _matchRequestRepository.GetPropositionsByCoachAsync(userId);
+            if(matchPropositions == null)
+            {
+                return new ServiceResponse<List<MatchRequest>>
+                {
+                    Success= false,
+                    Message="Brak zapytań o mecz dla Twojego zespołu"
+                };
+            }
+            return new ServiceResponse<List<MatchRequest>>
+            {
+                Success = true,
+                Message = "Oto propozycję dla Twojego zespołu",
+                Data = matchPropositions
             };
         }
 

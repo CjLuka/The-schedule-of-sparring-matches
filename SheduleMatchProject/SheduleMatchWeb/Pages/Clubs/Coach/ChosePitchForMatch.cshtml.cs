@@ -25,7 +25,7 @@ namespace SheduleMatchWeb.Pages.Clubs.Coach
         [BindProperty(SupportsGet = true)]
         public string MatchRequestData { get; set; } // Przechowuje dane matchRequest w adresie URL
 
-        public async Task<IActionResult> OnGetAsync(int id)
+        public async Task<IActionResult> OnGetAsync(/*int id*/)
         {
             if (!string.IsNullOrEmpty(MatchRequestData))
             {
@@ -49,7 +49,7 @@ namespace SheduleMatchWeb.Pages.Clubs.Coach
             try
             {
                 var match = await _matchRequestServices.PlanNewMatchAsync(MatchRequest);
-                return RedirectToPage("./MyPlannedMatch");
+                return RedirectToPage("./ScheduledMatches");
             }
             catch (Exception)
             {

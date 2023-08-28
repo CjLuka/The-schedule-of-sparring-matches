@@ -56,6 +56,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2x1YnNcQ29hY2hcQ2hvc2VQaXRjaEZvck1hdGNoLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[F:/Praca dyplomowa/Projekt/SheduleMatchProject/SheduleMatchWeb/Pages/Clubs/Coach/MatchPropositions.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2x1YnNcQ29hY2hcTWF0Y2hQcm9wb3NpdGlvbnMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [F:/Praca dyplomowa/Projekt/SheduleMatchProject/SheduleMatchWeb/Pages/Clubs/Coach/MyPlannedMatch.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2x1YnNcQ29hY2hcTXlQbGFubmVkTWF0Y2guY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -66,6 +70,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [F:/Praca dyplomowa/Projekt/SheduleMatchProject/SheduleMatchWeb/Pages/Clubs/Coach/PlanMatchWithPitch.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2x1YnNcQ29hY2hcUGxhbk1hdGNoV2l0aFBpdGNoLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/Praca dyplomowa/Projekt/SheduleMatchProject/SheduleMatchWeb/Pages/Clubs/Coach/ScheduledMatches.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2x1YnNcQ29hY2hcU2NoZWR1bGVkTWF0Y2hlcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [F:/Praca dyplomowa/Projekt/SheduleMatchProject/SheduleMatchWeb/Pages/Clubs/MyClub.cshtml]
@@ -82,6 +90,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [F:/Praca dyplomowa/Projekt/SheduleMatchProject/SheduleMatchWeb/Pages/Clubs/President/UpdateBranch.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2x1YnNcUHJlc2lkZW50XFVwZGF0ZUJyYW5jaC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/Praca dyplomowa/Projekt/SheduleMatchProject/SheduleMatchWeb/Pages/Clubs/SheduledMatches.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2x1YnNcU2hlZHVsZWRNYXRjaGVzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [F:/Praca dyplomowa/Projekt/SheduleMatchProject/SheduleMatchWeb/Pages/Clubs/ShowAllClubs.cshtml]

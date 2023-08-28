@@ -1,0 +1,54 @@
+﻿@page
+@model SheduleMatchWeb.Pages.Clubs.Coach.MatchPropositionsModel
+@{
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Propozycje rozegrania meczu</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/siteShow.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Propozycje rozegrania meczu</h1>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Gospodarze</th>
+                        <th>Typ drużyny</th>
+                        <th>Goście</th>
+                        <th>Typ drużyny</th>
+                        <th>Data</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.MatchRequests)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => item.Sender.Club.Name)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Sender.Type)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Receiver.Club.Name)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Receiver.Type)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Date)</td>
+                            <td>
+                                <button class="btn btn-primary" type="submit" asp-page-handler="Accept">Zaakceptuj</button>
+                            </td>
+                            <td>
+                                <button class="btn btn-danger" type="submit" asp-page-handler="Remove">Odrzuć</button>
+                            </td>
+                            
+
+@*                            <a href="./UpdateClub/@item.Id" class="btn btn-primary">Zaakceptuj</a>
+                            <a href="./UpdateClub/@item.Id" class="btn btn-primary">Odrzuć</a>*@
+                            
+                        </tr>
+                    }
+                </tbody>
+            </table>
+    </div>
+</body>
+</html>

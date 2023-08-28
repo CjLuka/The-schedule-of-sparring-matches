@@ -27,7 +27,7 @@ namespace SheduleMatchWeb.Pages.Matches
             //Guid.TryParse(userIdString, out var userId);
 
             var branchClub = await _branchClubServices.GetBranchClubByCoachAsync(userIdString);//pobranie zespo³u poprzez id trenera
-            var matchRequeestsFromBase = await _matchRequestServices.GetPlannedMatchAsync(branchClub.Data);//pobranie wszystkich meczów per klub
+            var matchRequeestsFromBase = await _matchRequestServices.GetPlannedMatchByBranchAsync(branchClub.Data);//pobranie wszystkich meczów per klub
             matchRequests = matchRequeestsFromBase.Data;
 
             return Page();

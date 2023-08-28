@@ -19,5 +19,7 @@ namespace Aplication.Services.Interfaces
         Task<ServiceResponse<BranchClub>> UpdateBranchAsync(BranchClub branchClub, int id);
         Task<ServiceResponse<BranchClub>> DeleteBranchAsync(int id);
         Task<ServiceResponse<int>>CountBranchesForCoach(string id);
+        Task<ServiceResponse<List<BranchClub>>> GetAllBranchesForCoach(string userId);
+        Task <ServiceResponse<BranchClub>>GetBranchClubById(int selectedClubId);
     }
 }

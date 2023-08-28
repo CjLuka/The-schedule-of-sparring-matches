@@ -19,6 +19,7 @@ namespace Persistance.Repo.Interfaces
         Task UpdateAsync(BranchClub branchClub);
         Task DeleteAsync(BranchClub branchClub);
         Task<int> CountBranchesForCoach(string userId);
+        Task<List<BranchClub>> GetAllBranchesForCoach(string userId);
 
         //Task<BranchClub> GetByIdAsync(int branchId);
         //Task AddAsync(BranchClub branchClub);

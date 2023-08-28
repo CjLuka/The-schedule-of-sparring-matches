@@ -34,14 +34,14 @@
                         <td>@(item.User.FirstName + " " + item.User.LastName)</td>
                         @if (User.IsInRole("Admin") || User.IsInRole("President") || User.IsInRole("Coach"))
                         {
+                            @*                            <td>
+                    <a href="/Clubs/Coach/PlanMatchWithPitch/@item.Id" asp-route-branchRequestData="@Model.branchClub" class="btn btn-primary">Mecz z boiskiem</a>
+                    </td>*@
                             <td>
-                                <a href="/Clubs/Coach/PlanMatchWithPitch/@item.Id" class="btn btn-primary">Mecz z boiskiem</a>
+                                <a href="/Clubs/Coach/PlanMatchWithPitch/@item.Id?branchRequestData=@Model.branchClub" class="btn btn-primary">Mecz z boiskiem</a>
                             </td>
                             <td>
                                 <a href="./PlanMatchWithoutPitch/@item.Id" class="btn btn-primary">Mecz bez boiska</a>
-                            </td>
-                            <td>
-                                <a href="./PlanMatchWithPitch/@item.Id">TEST</a>
                             </td>
                         }
                     </tr>

@@ -207,5 +207,43 @@ namespace Aplication.Services.Services
                 Success = true
             };
         }
+
+        public async Task<ServiceResponse<List<BranchClub>>> GetAllBranchesForCoach(string userId)
+        {
+            var branches = await _branchClubRepository.GetAllBranchesForCoach(userId);
+            if(branches == null)
+            {
+                return new ServiceResponse<List<BranchClub>>
+                {
+                    Success= false,
+                    Message="Brak klubów"
+                };
+            }
+            return new ServiceResponse<List<BranchClub>>
+            {
+                Success = true,
+                Data= branches,
+                Message="Twoje zespoły"
+            };
+        }
+
+        public async Task<ServiceResponse<BranchClub>> GetBranchClubById(int selectedClubId)
+        {
+            var branch = await _branchClubRepository.GetBranchByIdAsync(selectedClubId);
+            if (branch == null)
+            {
+                return new ServiceResponse<BranchClub>
+                {
+                    Success = false,
+                    Message = "Brak klubu o tym Id"
+                };
+            }
+            return new ServiceResponse<BranchClub>
+            {
+                Success = true,
+                Data = branch,
+                Message = "Twój branch"
+            };
+        }
     }
 }
