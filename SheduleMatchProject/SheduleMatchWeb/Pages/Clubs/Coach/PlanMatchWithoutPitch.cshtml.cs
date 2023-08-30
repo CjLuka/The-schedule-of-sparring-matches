@@ -31,7 +31,7 @@ namespace SheduleMatchWeb.Pages.Clubs.Coach
 
             var myBranch = await _branchClubServices.GetBranchClubByCoachAsync(userIdString);//pobieranie branchClubu zalogowanego usera, aby podaæ w parametrze metody id klubu i nie braæ pod uwagê podczas szukania przeciwnika
 
-            matchRequest.IsAccepted= false;
+            //matchRequest.IsAccepted= false;
             matchRequest.SenderId = myBranch.Data.Id;
             matchRequest.ReceiverId = id;
             matchRequest.CreatedBy= userIdString;

@@ -18,6 +18,13 @@ namespace Persistance.Repo.Repositories
         {
             _context= context;
         }
+
+        public async Task<MatchRequest> GetMatchRequestByIdAsync(int id)
+        {
+            var matchReq = await _context.MatchRequests.FirstOrDefaultAsync(x => x.Id == id);
+            return matchReq;
+        }
+
         public async Task<List<MatchRequest>> GetPlannedMatchByBranchAsync(BranchClub branchClub)
         {
             var allMatchRequest = await _context.MatchRequests.ToListAsync();//pobranie wszystkich zapytan o mecz
@@ -59,17 +66,24 @@ namespace Persistance.Repo.Repositories
         {
             var matchPropositions = await _context.MatchRequests
                 .Where(mr => mr.Receiver.UserId == userId)
-                .Where(mr => mr.IsAccepted == false)
+                .Where(mr => !mr.IsAccepted.HasValue)
                 .Include(c => c.Receiver.Club)
                 .Include(c => c.Sender.Club)
                 .ToListAsync();
             return matchPropositions;
         }
 
+        //Zaplanuj nowy mecz
         public async Task PlanNewMatchAsync(MatchRequest matchRequest)
         {
             _context.MatchRequests.Add(matchRequest);
             _context.SaveChanges();
+        }
+
+        public async Task UpdateAsync(MatchRequest matchRequest)
+        {
+            _context.MatchRequests.Update(matchRequest);
+            await _context.SaveChangesAsync();
         }
     }
 }

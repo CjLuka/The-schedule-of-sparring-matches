@@ -30,7 +30,7 @@ namespace Persistance.Repo.Repositories
             // Lista boisk które są w podanym terminie zarezerwowane
             var reservedFootballPitchIds = await _context.MatchRequests
                 .Where(mr => mr.Date > startTime && mr.Date < endTime)
-                .Where(mr => mr.IsAccepted)
+                .Where(mr => mr.IsAccepted == true)
                 .Where(mr => mr.FootballPitchId != null)
                 .Select(mr => mr.FootballPitch.Id)
                 .ToListAsync();

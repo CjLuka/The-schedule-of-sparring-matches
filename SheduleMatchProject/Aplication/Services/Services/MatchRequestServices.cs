@@ -2,6 +2,7 @@
 using Domain.Models.Domain;
 using Domain.Response;
 using Persistance.Repo.Interfaces;
+using Persistance.Repo.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +17,26 @@ namespace Aplication.Services.Services
         public MatchRequestServices(IMatchRequestRepository matchRequestRepository)
         {
             _matchRequestRepository = matchRequestRepository;
+        }
+
+        public async Task<ServiceResponse<MatchRequest>> GetMatchRequestByIdAsync(int id)
+        {
+            var matchReq = await _matchRequestRepository.GetMatchRequestByIdAsync(id);
+            if(matchReq == null)
+            {
+                return new ServiceResponse<MatchRequest>
+                {
+                    Success = false,
+                    Message = "Brak matchRequest o podanym id"
+                };
+            }
+            return new ServiceResponse<MatchRequest>
+            {
+                Success = true,
+                Data= matchReq,
+                Message="MatchReq o podanym id"
+
+            };
         }
 
         public async Task<ServiceResponse<List<MatchRequest>>> GetPlannedMatchByBranchAsync(BranchClub branchClub)
@@ -93,6 +114,28 @@ namespace Aplication.Services.Services
             {
                 Success = false,
                 Message = "Coś poszło nie tak.."
+            };
+        }
+
+        //Funkcja updateująca IsAccepted(potrzebne przy decyzji o zatwierdzeniu lub odrzuceniu meczu)
+        public async Task<ServiceResponse<MatchRequest>> UpdateAsync(MatchRequest matchRequest)
+        {
+            var matchFromBase = await _matchRequestRepository.GetMatchRequestByIdAsync(matchRequest.Id);
+            if (matchFromBase == null)
+            {
+                return new ServiceResponse<MatchRequest>()
+                {
+                    Message = "Brak meczu o takim Id",
+                    Success = false
+                };
+            }
+            matchFromBase.IsAccepted = matchRequest.IsAccepted;
+
+            await _matchRequestRepository.UpdateAsync(matchFromBase);
+            return new ServiceResponse<MatchRequest>()
+            {
+                Data = matchFromBase,
+                Success = true
             };
         }
     }

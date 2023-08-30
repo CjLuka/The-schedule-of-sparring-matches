@@ -40,7 +40,7 @@ namespace SheduleMatchWeb.Pages.Clubs.Coach
             //var branchRequest = JsonConvert.DeserializeObject<BranchClub>(branchRequestData);
             //branchClub = branchRequest;
 
-            matchRequest.IsAccepted = false;
+            //matchRequest.IsAccepted = false;
             matchRequest.SenderId = myBranch.Data.Id;
             //matchRequest.SenderId = branchClub.Id;
             matchRequest.ReceiverId = id;

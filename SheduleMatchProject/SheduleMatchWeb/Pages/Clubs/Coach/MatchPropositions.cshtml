@@ -11,8 +11,9 @@
     <link rel="stylesheet" href="~/css/siteShow.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Propozycje rozegrania meczu</h1>
+    <form method="post">
+        <div class="container">
+            <h1>Propozycje rozegrania meczu</h1>
             <table class="table table-striped">
                 <thead>
                     <tr>
@@ -35,20 +36,24 @@
                             <td>@Html.DisplayFor(modelItem => item.Receiver.Type)</td>
                             <td>@Html.DisplayFor(modelItem => item.Date)</td>
                             <td>
+                                <input type="hidden" name="matchRequestId" value="@item.Id" />
                                 <button class="btn btn-primary" type="submit" asp-page-handler="Accept">Zaakceptuj</button>
                             </td>
                             <td>
+                                <input type="hidden" name="matchRequestId" value="@item.Id" />
                                 <button class="btn btn-danger" type="submit" asp-page-handler="Remove">Odrzuć</button>
                             </td>
-                            
 
-@*                            <a href="./UpdateClub/@item.Id" class="btn btn-primary">Zaakceptuj</a>
-                            <a href="./UpdateClub/@item.Id" class="btn btn-primary">Odrzuć</a>*@
-                            
+
+                            @*                            <a href="./UpdateClub/@item.Id" class="btn btn-primary">Zaakceptuj</a>
+                        <a href="./UpdateClub/@item.Id" class="btn btn-primary">Odrzuć</a>*@
+
                         </tr>
                     }
                 </tbody>
             </table>
-    </div>
+        </div>
+    </form>
+    
 </body>
 </html>

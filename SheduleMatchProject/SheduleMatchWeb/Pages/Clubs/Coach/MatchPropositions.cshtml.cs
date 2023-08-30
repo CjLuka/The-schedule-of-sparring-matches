@@ -25,5 +25,23 @@ namespace SheduleMatchWeb.Pages.Clubs.Coach
             MatchRequests = allPropositions.Data;
             return Page();
         }
+
+        //odrzucenie meczu
+        public async Task<IActionResult> OnPostRemoveAsync(int matchRequestId)
+        {
+            var matchReq = await _matchRequestServices.GetMatchRequestByIdAsync(matchRequestId);
+            matchReq.Data.IsAccepted= false;
+            await _matchRequestServices.UpdateAsync(matchReq.Data);
+            return RedirectToPage("./MatchPropositions");
+        }
+
+        //zaakceptowanie meczu
+        public async Task<IActionResult> OnPostAcceptAsync(int matchRequestId)
+        {
+            var matchReq = await _matchRequestServices.GetMatchRequestByIdAsync(matchRequestId);
+            matchReq.Data.IsAccepted = true;
+            await _matchRequestServices.UpdateAsync(matchReq.Data);
+            return RedirectToPage("./MatchPropositions");
+        }
     }
 }

@@ -14,5 +14,7 @@ namespace Persistance.Repo.Interfaces
         Task<List<MatchRequest>> GetPlannedMatchByCoachAsync(string userId);
         Task PlanNewMatchAsync(MatchRequest matchRequest);
         Task<List<MatchRequest>> GetPropositionsByCoachAsync(string userId);
+        Task<MatchRequest> GetMatchRequestByIdAsync(int id);
+        Task UpdateAsync(MatchRequest matchRequest);
     }
 }

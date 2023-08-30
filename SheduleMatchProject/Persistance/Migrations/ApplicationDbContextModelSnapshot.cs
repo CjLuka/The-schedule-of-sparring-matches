@@ -310,7 +310,7 @@ namespace Persistance.Migrations
                     b.Property<int?>("FootballPitchId")
                         .HasColumnType("int");
 
-                    b.Property<bool>("IsAccepted")
+                    b.Property<bool?>("IsAccepted")
                         .HasColumnType("bit");
 
                     b.Property<string>("LastModifiedBy")
