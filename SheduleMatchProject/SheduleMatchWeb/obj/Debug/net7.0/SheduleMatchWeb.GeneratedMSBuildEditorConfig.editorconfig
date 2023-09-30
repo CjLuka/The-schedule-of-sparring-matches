@@ -20,14 +20,6 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWNjZXNzRGVuaWVkLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/Praca dyplomowa/Projekt/SheduleMatchProject/SheduleMatchWeb/Pages/Account/Login.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWNjb3VudFxMb2dpbi5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[F:/Praca dyplomowa/Projekt/SheduleMatchProject/SheduleMatchWeb/Pages/Account/Register.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
 [F:/Praca dyplomowa/Projekt/SheduleMatchProject/SheduleMatchWeb/Pages/AllBranches.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWxsQnJhbmNoZXMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -138,6 +130,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [F:/Praca dyplomowa/Projekt/SheduleMatchProject/SheduleMatchWeb/Pages/Register.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmVnaXN0ZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/Praca dyplomowa/Projekt/SheduleMatchProject/SheduleMatchWeb/Pages/Shared/_NoAvaliableData.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9Ob0F2YWxpYWJsZURhdGEuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [F:/Praca dyplomowa/Projekt/SheduleMatchProject/SheduleMatchWeb/Pages/Shared/_Notification.cshtml]

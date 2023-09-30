@@ -17,6 +17,14 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "F:\\Praca dyplomowa\\Projekt\\SheduleMatchProject\\SheduleMatchWeb\\wwwroot\\image\\PlanerSparingów.png",
+      "PackagePath": "staticwebassets\\image\\PlanerSparingów.png"
+    },
+    {
+      "Id": "F:\\Praca dyplomowa\\Projekt\\SheduleMatchProject\\SheduleMatchWeb\\wwwroot\\image\\jasiolka_jasliska.jpg",
+      "PackagePath": "staticwebassets\\image\\jasiolka_jasliska.jpg"
+    },
+    {
       "Id": "F:\\Praca dyplomowa\\Projekt\\SheduleMatchProject\\SheduleMatchWeb\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },

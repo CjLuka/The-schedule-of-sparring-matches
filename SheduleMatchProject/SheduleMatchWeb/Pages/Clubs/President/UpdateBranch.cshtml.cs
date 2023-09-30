@@ -34,12 +34,14 @@ namespace SheduleMatchWeb.Pages.Clubs.President
 
             List<SelectListItem> Coaches = new List<SelectListItem>();//Utworzenie selectlisty dla trenerow bez klubu
 
-            var coachesFromBase = await _userServices.GetCoaches();//pobranie uzytkownikow
+            //var coachesFromBase = await _userServices.GetCoaches();//pobranie uzytkownikow
+            var coachesFromBase = await _userServices.GetUsersWithoutAnyFunction();//pobranie uzytkownikow
             foreach (var user in coachesFromBase.Data)
             {
                 Coaches.Add(new SelectListItem { Text = user.FirstName + " " + user.LastName, Value = user.Id.ToString() });//dodanie uzytkownikow, ktorzy nie sa prezesami zadnego klubu do selectlisty
             }
             var AllCoaches = await _userServices.GetAllCoaches();//pobranie wszystkich uzytkownikow
+            //var AllCoaches = await _userServices.GetUsersWithoutAnyFunction();//pobranie wszystkich uzytkownikow
             foreach (var user in AllCoaches.Data)
             {
                 if (user.Id == BranchClub.UserId)//Dopisanie uzytkownika ktory obecnie jest trenerem zespolu
@@ -72,12 +74,12 @@ namespace SheduleMatchWeb.Pages.Clubs.President
                     var oldPresident = await _userServices.GetUserById(previousCoachId);
                     var newPresident = await _userServices.GetUserById(BranchClub.UserId);
 
-                    var countClubs = await _branchClubServices.CountBranchesForCoach(oldPresident.Data.Id);
+                    //var countClubs = await _branchClubServices.CountBranchesForCoach(oldPresident.Data.Id);
 
-                    if(countClubs.Data == 0)
-                    {
-                        await _userManager.RemoveFromRoleAsync(oldPresident.Data, "Coach");
-                    }
+                    //if(countClubs.Data == 0)
+                    //{
+                    //    await _userManager.RemoveFromRoleAsync(oldPresident.Data, "Coach");
+                    //}
                     
                     await _userManager.AddToRoleAsync(newPresident.Data, "Coach");
                     
@@ -107,8 +109,8 @@ namespace SheduleMatchWeb.Pages.Clubs.President
             var deleted = await _branchClubServices.DeleteBranchAsync(id);
             if (deleted.Success)
             {
-                var oldPresident = await _userServices.GetUserById(previousCoachId);//pobranie u¿ytkownika który by³ prezesem klubu
-                await _userManager.RemoveFromRoleAsync(oldPresident.Data, "Coach");//usuniêcie roli prezesa przy usuniêciu klubu
+                var oldPresident = await _userServices.GetUserById(previousCoachId);//pobranie u¿ytkownika który by³ trenerem oddzialu
+                await _userManager.RemoveFromRoleAsync(oldPresident.Data, "Coach");//usuniêcie roli trenera przy usuniêciu oddzialu
                 return RedirectToPage("../ShowAllClubs");
             }
             return Page();

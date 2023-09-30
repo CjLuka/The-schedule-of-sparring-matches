@@ -35,21 +35,17 @@ namespace SheduleMatchWeb.Pages.Clubs.President
         {
             List<SelectListItem> Coaches = new List<SelectListItem>();//Utworzenie selectlisty dla trenerow bez klubu
 
-            //string userIdString = HttpContext.User.FindFirstValue("UserId");//pobranie userId zalogowanego uzytkownika, aby wyswietlic odpowiedni klub
-            //int.TryParse(userIdString, out int userId);//przerobieine userId na int
-
             ClaimsPrincipal currentUser = this.User;//pobranie u¿ytkownika
             string userIdString = currentUser.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-            //Guid.TryParse(userIdString, out var userId);
 
             var myClub = await _clubServices.GetClubByPresidentIdAsync(userIdString);
             Club = myClub.Data;
 
-            var coachesFromBase = await _userServices.GetCoaches();//pobranie uzytkownikow, ktorzy nie sa prezesami zadnego klubu
-            //var coachesFromBase = await _userServices.GetCoachesWithoutClub();//pobranie uzytkownikow, ktorzy nie sa prezesami zadnego klubu
+            //var coachesFromBase = await _userServices.GetCoaches();//pobranie uzytkownikow, ktorzy nie sa prezesami zadnego klubu
+            var coachesFromBase = await _userServices.GetUsersWithoutAnyFunction();//pobranie uzytkownikow, ktorzy nie posiadaja zadnych funkcji w klubach
             foreach (var user in coachesFromBase.Data)
             {
-                Coaches.Add(new SelectListItem { Text = user.FirstName + " " + user.LastName, Value = user.Id.ToString() });//dodanie uzytkownikow, ktorzy nie sa prezesami zadnego klubu do selectlisty
+                Coaches.Add(new SelectListItem { Text = user.FirstName + " " + user.LastName, Value = user.Id.ToString() });//dodanie uzytkownikow, ktorzy nie sa prezesami ani trenerami zadnego klubu do selectlisty
             }
             ViewData["Coaches"] = Coaches;//przypisanie listy uzytkownikow do ViewData
             return Page();

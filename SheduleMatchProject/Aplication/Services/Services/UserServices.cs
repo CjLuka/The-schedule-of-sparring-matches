@@ -17,11 +17,13 @@ namespace Aplication.Services.Services
     {
         private readonly IUserRepository _userRepository;
         private readonly IClubRepository _clubRepository;
+        private readonly IBranchClubRepository _branchClubRepository;
 
-        public UserServices(IUserRepository userRepository, IClubRepository clubRepository)
+        public UserServices(IUserRepository userRepository, IClubRepository clubRepository, IBranchClubRepository branchClubRepository)
         {
             _userRepository = userRepository;
             _clubRepository = clubRepository;
+            _branchClubRepository = branchClubRepository;
         }
 
         public async Task<ServiceResponse<User>> AddAsync(User user)
@@ -191,8 +193,10 @@ namespace Aplication.Services.Services
         {
             var users = await _userRepository.GetAllAsync();
             var clubs = await _clubRepository.GetAllAsync();
+            var branches = await _branchClubRepository.GetAllBranchClubAsync();
             var usersWithoutFunction = users
-                .Where(users => !clubs.Any(club => club.UserId == users.Id)).ToList();
+                .Where(users => !clubs.Any(club => club.UserId == users.Id)).ToList()
+                .Where(users => !branches.Any(branch => branch.UserId == users.Id)).ToList();
 
             if (usersWithoutFunction.IsNullOrEmpty())
             {

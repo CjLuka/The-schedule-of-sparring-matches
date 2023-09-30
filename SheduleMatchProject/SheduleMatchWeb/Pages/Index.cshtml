@@ -1,10 +1,97 @@
 ﻿@page
+@using Domain.Models.Domain;
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<User> signInManager
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Planowanie Meczów";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container text-center mt-5">
+    <h1 class="display-4">Witaj na Stronie Planowania Meczów</h1>
+    <p class="lead">Tutaj możesz planować, zarządzać i śledzić mecze piłki nożnej.</p>
+    <p class="lead">Skorzystaj z naszych narzędzi do tworzenia, edycji i przeglądania rozkładu meczów.</p>
+
+    @if (User.IsInRole("Coach"))
+    {
+        <div class="row mt-5">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Zaplanuj nowy mecz</h5>
+                        <p class="card-text">Dodaj nowy mecz do rozkładu.</p>
+                        <a href="/Clubs/Coach/BranchesForPlanMatch" class="btn btn-primary">Rozpocznij</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Przeglądaj zaplanowane mecze</h5>
+                        <p class="card-text">Sprawdź listę zaplanowanych meczów.</p>
+                        <a href="/Clubs/Coach/ScheduledMatches" class="btn btn-success">Rozpocznij</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Przeglądaj rozegrane mecze</h5>
+                        <p class="card-text">Sprawdź historię rozegranych meczów.</p>
+                        <a href="/Matches/MyScheduleMatch" class="btn btn-info">Rozpocznij</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    else if (User.IsInRole("President"))
+    {
+        <div class="row mt-5">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Dodaj nową drużynę</h5>
+                        <p class="card-text">Zarejestruj swoją drużynę.</p>
+                        <a href="/Clubs/President/AddBranch" class="btn btn-primary">Rozpocznij</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Zarządzaj drużynami</h5>
+                        <p class="card-text">Edytuj i zarządzaj swoimi drużynami.</p>
+                        <a href="/Clubs/President/MyBranches" class="btn btn-success">Rozpocznij</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Przeglądaj zaplanowane mecze</h5>
+                        <p class="card-text">Sprawdź listę zaplanowanych meczów.</p>
+                        <a href="/Clubs/President/ScheduledMatches" class="btn btn-info">Rozpocznij</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    else if (User.IsInRole("Admin"))
+    {
+        <!-- Dodaj odpowiednie elementy dla administratora -->
+    }
+    else
+    {
+        <div class="mt-5">
+            <p>Zaloguj się lub zarejestruj, aby korzystać z usług aplikacji.</p>
+            <div class="row">
+                <div class="col-md-6">
+                    <a href="/Login" class="btn btn-primary btn-block">Zaloguj się</a>
+                </div>
+                <div class="col-md-6">
+                    <a href="/Register" class="btn btn-success btn-block">Zarejestruj się</a>
+                </div>
+            </div>
+        </div>
+    }
 </div>

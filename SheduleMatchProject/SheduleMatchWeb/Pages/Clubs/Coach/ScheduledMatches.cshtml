@@ -1,17 +1,26 @@
 ﻿@page
+@using Domain.Models.VievModel;
 @model SheduleMatchWeb.Pages.Clubs.Coach.ScheduledMatchesModel
 @{
 }
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Wszystkie Kluby</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="~/css/siteShow.css">
-</head>
-<body>
-    <div class="container">
-        <h1>Wszystkie Kluby</h1>
+@if (Model.MatchRequests.Count == 0)
+{
+    var model = new NoAvaliableData { MessageTitle = "zaplanowanych meczów", MessageContent1 = "Przepraszamy, ale nie masz żadnych zaplanowanych meczów.", MessageContent2 = "Proszę zaplanować nowy mecz lub skontaktować się z administratorem." };
+    @Html.Partial("_NoAvaliableData", model)
+
+}
+else
+{
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>Wszystkie Kluby</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="~/css/siteShow.css">
+    </head>
+    <body>
+        <div class="container">
+            <h1>Wszystkie Kluby</h1>
             <table class="table table-striped">
                 <thead>
                     <tr>
@@ -44,6 +53,7 @@
                     }
                 </tbody>
             </table>
-    </div>
-</body>
-</html>
+        </div>
+    </body>
+    </html>
+}

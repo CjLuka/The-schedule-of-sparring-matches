@@ -2,33 +2,33 @@
 @using Domain.Models.Enum;
 @model SheduleMatchWeb.Pages.Clubs.President.AddBranchModel
 @{
+    ViewData["Title"] = "Dodaj Nową Drużynę";
 }
-<div>
-    <div class="container">
-        <form method="post">
-            <div class="mb-3">
-                <label for="Nazwa" class="form-label">
-                    Klub
-                </label>
-                <input type="text" class="form-control" asp-for="Club.Name" readonly/>
-            </div>
+<div class="container mt-5">
+    <h1 class="display-4">Dodaj Nową Drużynę</h1>
+    <form method="post">
+        <div class="mb-3">
+            <label for="Nazwa" class="form-label">
+                Klub
+            </label>
+            <input type="text" class="form-control" asp-for="Club.Name" readonly />
+        </div>
+        <div class="mb-3">
             <label class="form-label">
                 Wybierz typ drużyny
             </label>
-            <div class="form-group">
-                <select asp-for="Branch.Type" asp-items="@Html.GetEnumSelectList<BranchType>()" class="form-control"></select>
-                <span asp-validation-for="Branch.Type" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label for="UserId" class="form-label">Wybierz trenera</label>
-                <select class="form-select" aria-label="Default select example" asp-for="Branch.UserId" asp-items="@(ViewData["Coaches"] as IEnumerable<SelectListItem>)"></select>
-                <span asp-validation-for="User" class="text-danger"></span>
-            </div>
-            <div>
-                <button type="submit" class="btn btn-dark">
-                    Dodaj
-                </button>
-            </div>
-        </form>
-    </div>
+            <select asp-for="Branch.Type" asp-items="@Html.GetEnumSelectList<BranchType>()" class="form-select"></select>
+            <span asp-validation-for="Branch.Type" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label for="UserId" class="form-label">Wybierz trenera</label>
+            <select class="form-select" aria-label="Default select example" asp-for="Branch.UserId" asp-items="@(ViewData["Coaches"] as IEnumerable<SelectListItem>)"></select>
+            <span asp-validation-for="User" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <button type="submit" class="btn btn-dark">
+                Dodaj Drużynę
+            </button>
+        </div>
+    </form>
 </div>

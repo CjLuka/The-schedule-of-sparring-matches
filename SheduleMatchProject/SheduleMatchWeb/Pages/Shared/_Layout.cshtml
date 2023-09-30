@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/SheduleMatchWeb.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+
 </head>
 <body>
     <header>
@@ -23,20 +25,100 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
+                    @if(signInManager.IsSignedIn(User) && User.IsInRole("Coach"))
+                    {
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" id="navbarDropdownAdmin">
+                                Mój klub
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownAdmin">
+                                <li>
+                                    <a class="dropdown-item" href="/clubs/myclub">
+                                        Profil klubu
+                                    </a>
+                                    <a class="dropdown-item" href="/Clubs/BranchClubs/MyBranchClub">
+                                        Profil drużyny
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" id="navbarDropdownAdmin">
+                                Moje mecze
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownAdmin">
+                                <li>
+                                    <a class="dropdown-item" href="/clubs/myclub">
+                                        Rozegrane mecze
+                                    </a>
+                                    <a class="dropdown-item" href="/Clubs/Coach/ScheduledMatches">
+                                        Zaplanowane mecze
+                                    </a>
+                                    <a class="dropdown-item" href="/Clubs/Coach/MatchPropositions">
+                                        Propozycje meczów
+                                    </a>
+                                    <a class="dropdown-item" href="/Matches/MyScheduleMatch">
+                                        Odrzucone prośby o mecz
+                                    </a>
+                                        <a class="dropdown-item" href="/Clubs/Coach/BranchesForPlanMatch">
+                                        Zaplanuj nowy mecz
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    }
+                    else if(signInManager.IsSignedIn(User) && User.IsInRole("President"))
+                    {
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" id="navbarDropdownAdmin">
+                                Mój klub
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownAdmin">
+                                <li>
+                                    <a class="dropdown-item" href="/clubs/myclub">
+                                        Profil klubu
+                                    </a>
+                                    <a class="dropdown-item" href="/Clubs/President/MyBranches">
+                                        Wszystkie drużyny
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" id="navbarDropdownAdmin">
+                                Moje mecze
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownAdmin">
+                            <li>
+                                    <a class="dropdown-item" href="/clubs/myclub">
+                                        Rozegrane mecze
+                                    </a>
+                                    <a class="dropdown-item" href="/Clubs/Coach/ScheduledMatches">
+                                        Zaplanowane mecze
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    }
+                    
+                   
+                        
+
+
+
                         <li class="nav-item">
                             <a class="nav-link text-light" asp-area="" asp-page="/Clubs/ShowAllClubs">Wszystkie kluby</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-light" asp-area="" asp-page="/AllBranches">Wszystkie zespoły</a>
                         </li>
-                        @*@if (signInManager.IsSignedIn(User) && User.IsInRole("Coach"))
-                        {
-                            <a class="nav-link text-light" asp-area="" asp-page="/Clubs/BranchClubs/MyBranchClub">Moja drużyna</a>
-                            <a class="nav-link text-light" asp-area="" asp-page="/Clubs/Matches/MatchPlanned">Zaplanowane mecze</a>
-                            <a class="nav-link text-light" asp-area="" asp-page="/Matches/PlanNewMatch">Zaplanuj nowy mecz</a>
 
-                        }*@
-                        @if(signInManager.IsSignedIn(User) && (User.IsInRole("President") || User.IsInRole("Coach")))
+                        @*@if(signInManager.IsSignedIn(User) && (User.IsInRole("President") || User.IsInRole("Coach")))
                         {
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" id="navbarDropdownAdmin">
@@ -81,7 +163,7 @@
                                 </li>
                             </ul>
                             </li>
-                        }
+                        }*@
                         @*@if (User.IsInRole("President"))
                         {
                        
@@ -107,21 +189,6 @@
                 }
                 
             </div>
-@*            @if ()
-            {
-                <div class="nav-item">
-                    <a class="nav-link text-dark" asp-area="" asp-page="/Login">Zaloguj się!</a>
-                </div>
-                <div class="nav-item">
-                    <a class="nav-link text-dark" asp-area="" asp-page="/Register">Zarejestruj się!</a>
-                </div>
-            }*@
-            @*@if (User.Identity.IsAuthenticated)
-            {
-                <div class="nav-item">
-                    <a class="nav-link text-dark" asp-area="" asp-page="/LogOut">Wyloguj się!</a>
-                </div>
-            }*@
             
         </nav>
     </header>

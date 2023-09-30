@@ -35,7 +35,6 @@ namespace SheduleMatchWeb.Pages.Clubs
             }
             catch (Exception)
             {
-
                 throw;
             }
             

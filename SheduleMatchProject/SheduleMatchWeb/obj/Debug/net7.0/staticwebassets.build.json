@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "8xYe+RQiQEaUfeW2jT2oUMYCRS0d4Sh7z1xk/UWOiYc=",
+  "Hash": "B0Cd5n2oWyDavyrXDZsCisSbyXDE716ee6g4+G0nhGg=",
   "Source": "SheduleMatchWeb",
   "BasePath": "_content/SheduleMatchWeb",
   "Mode": "Default",
@@ -100,6 +100,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "F:\\Praca dyplomowa\\Projekt\\SheduleMatchProject\\SheduleMatchWeb\\wwwroot\\image\\jasiolka_jasliska.jpg",
+      "SourceId": "SheduleMatchWeb",
+      "SourceType": "Discovered",
+      "ContentRoot": "F:\\Praca dyplomowa\\Projekt\\SheduleMatchProject\\SheduleMatchWeb\\wwwroot\\",
+      "BasePath": "_content/SheduleMatchWeb",
+      "RelativePath": "image/jasiolka_jasliska.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\image\\jasiolka_jasliska.jpg"
+    },
+    {
+      "Identity": "F:\\Praca dyplomowa\\Projekt\\SheduleMatchProject\\SheduleMatchWeb\\wwwroot\\image\\PlanerSparingów.png",
+      "SourceId": "SheduleMatchWeb",
+      "SourceType": "Discovered",
+      "ContentRoot": "F:\\Praca dyplomowa\\Projekt\\SheduleMatchProject\\SheduleMatchWeb\\wwwroot\\",
+      "BasePath": "_content/SheduleMatchWeb",
+      "RelativePath": "image/PlanerSparingów.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\image\\PlanerSparingów.png"
     },
     {
       "Identity": "F:\\Praca dyplomowa\\Projekt\\SheduleMatchProject\\SheduleMatchWeb\\wwwroot\\js\\site.js",
