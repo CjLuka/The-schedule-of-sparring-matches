@@ -80,7 +80,21 @@
     {
         <!-- Dodaj odpowiednie elementy dla administratora -->
     }
-    else
+    @*else
+    {
+        <div class="mt-5">
+            <p>Zaloguj się lub zarejestruj, aby korzystać z usług aplikacji.</p>
+            <div class="row">
+                <div class="col-md-6">
+                    <a href="/Login" class="btn btn-primary btn-block">Zaloguj się</a>
+                </div>
+                <div class="col-md-6">
+                    <a href="/Register" class="btn btn-success btn-block">Zarejestruj się</a>
+                </div>
+            </div>
+        </div>
+    }*@
+    @if(!signInManager.IsSignedIn(User))
     {
         <div class="mt-5">
             <p>Zaloguj się lub zarejestruj, aby korzystać z usług aplikacji.</p>

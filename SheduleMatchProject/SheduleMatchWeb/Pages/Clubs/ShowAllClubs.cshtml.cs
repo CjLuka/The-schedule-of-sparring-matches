@@ -15,15 +15,16 @@ namespace SheduleMatchWeb.Pages.Clubs
             _clubServices = clubServices;
         }
 
-        public List<Club> Clubs;
+        [BindProperty]
+        public List<Club> Clubs { get; set; }
         public async Task<IActionResult> OnGetAsync()
         {
             var allClubs = await _clubServices.GetAllAsync();
-            Clubs = allClubs.Data.ToList();
-            if (!Clubs.Any())
-            {
-                return NotFound();
-            }
+            Clubs = allClubs.Data;
+            //if (!Clubs.Any())
+            //{
+            //    return NotFound();
+            //}
             return Page();
         }
     }

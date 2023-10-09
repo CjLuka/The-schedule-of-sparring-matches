@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "F:\\Praca dyplomowa\\Projekt\\SheduleMatchProject\\Aplication\\Aplication.csproj": {}
+    "F:\\Praca dyplomowa - kopia\\Praca dyplomowa\\Projekt\\SheduleMatchProject\\Aplication\\Aplication.csproj": {}
   },
   "projects": {
-    "F:\\Praca dyplomowa\\Projekt\\SheduleMatchProject\\Aplication\\Aplication.csproj": {
+    "F:\\Praca dyplomowa - kopia\\Praca dyplomowa\\Projekt\\SheduleMatchProject\\Aplication\\Aplication.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\Praca dyplomowa\\Projekt\\SheduleMatchProject\\Aplication\\Aplication.csproj",
+        "projectUniqueName": "F:\\Praca dyplomowa - kopia\\Praca dyplomowa\\Projekt\\SheduleMatchProject\\Aplication\\Aplication.csproj",
         "projectName": "Aplication",
-        "projectPath": "F:\\Praca dyplomowa\\Projekt\\SheduleMatchProject\\Aplication\\Aplication.csproj",
+        "projectPath": "F:\\Praca dyplomowa - kopia\\Praca dyplomowa\\Projekt\\SheduleMatchProject\\Aplication\\Aplication.csproj",
         "packagesPath": "C:\\Users\\Luka\\.nuget\\packages\\",
-        "outputPath": "F:\\Praca dyplomowa\\Projekt\\SheduleMatchProject\\Aplication\\obj\\",
+        "outputPath": "F:\\Praca dyplomowa - kopia\\Praca dyplomowa\\Projekt\\SheduleMatchProject\\Aplication\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -32,8 +32,8 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "F:\\Praca dyplomowa\\Projekt\\SheduleMatchProject\\Persistance\\Persistance.csproj": {
-                "projectPath": "F:\\Praca dyplomowa\\Projekt\\SheduleMatchProject\\Persistance\\Persistance.csproj"
+              "F:\\Praca dyplomowa - kopia\\Praca dyplomowa\\Projekt\\SheduleMatchProject\\Persistance\\Persistance.csproj": {
+                "projectPath": "F:\\Praca dyplomowa - kopia\\Praca dyplomowa\\Projekt\\SheduleMatchProject\\Persistance\\Persistance.csproj"
               }
             }
           }
@@ -77,14 +77,14 @@
         }
       }
     },
-    "F:\\Praca dyplomowa\\Projekt\\SheduleMatchProject\\Domain\\Domain.csproj": {
+    "F:\\Praca dyplomowa - kopia\\Praca dyplomowa\\Projekt\\SheduleMatchProject\\Domain\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\Praca dyplomowa\\Projekt\\SheduleMatchProject\\Domain\\Domain.csproj",
+        "projectUniqueName": "F:\\Praca dyplomowa - kopia\\Praca dyplomowa\\Projekt\\SheduleMatchProject\\Domain\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "F:\\Praca dyplomowa\\Projekt\\SheduleMatchProject\\Domain\\Domain.csproj",
+        "projectPath": "F:\\Praca dyplomowa - kopia\\Praca dyplomowa\\Projekt\\SheduleMatchProject\\Domain\\Domain.csproj",
         "packagesPath": "C:\\Users\\Luka\\.nuget\\packages\\",
-        "outputPath": "F:\\Praca dyplomowa\\Projekt\\SheduleMatchProject\\Domain\\obj\\",
+        "outputPath": "F:\\Praca dyplomowa - kopia\\Praca dyplomowa\\Projekt\\SheduleMatchProject\\Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -150,14 +150,14 @@
         }
       }
     },
-    "F:\\Praca dyplomowa\\Projekt\\SheduleMatchProject\\Persistance\\Persistance.csproj": {
+    "F:\\Praca dyplomowa - kopia\\Praca dyplomowa\\Projekt\\SheduleMatchProject\\Persistance\\Persistance.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\Praca dyplomowa\\Projekt\\SheduleMatchProject\\Persistance\\Persistance.csproj",
+        "projectUniqueName": "F:\\Praca dyplomowa - kopia\\Praca dyplomowa\\Projekt\\SheduleMatchProject\\Persistance\\Persistance.csproj",
         "projectName": "Persistance",
-        "projectPath": "F:\\Praca dyplomowa\\Projekt\\SheduleMatchProject\\Persistance\\Persistance.csproj",
+        "projectPath": "F:\\Praca dyplomowa - kopia\\Praca dyplomowa\\Projekt\\SheduleMatchProject\\Persistance\\Persistance.csproj",
         "packagesPath": "C:\\Users\\Luka\\.nuget\\packages\\",
-        "outputPath": "F:\\Praca dyplomowa\\Projekt\\SheduleMatchProject\\Persistance\\obj\\",
+        "outputPath": "F:\\Praca dyplomowa - kopia\\Praca dyplomowa\\Projekt\\SheduleMatchProject\\Persistance\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -178,8 +178,8 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "F:\\Praca dyplomowa\\Projekt\\SheduleMatchProject\\Domain\\Domain.csproj": {
-                "projectPath": "F:\\Praca dyplomowa\\Projekt\\SheduleMatchProject\\Domain\\Domain.csproj"
+              "F:\\Praca dyplomowa - kopia\\Praca dyplomowa\\Projekt\\SheduleMatchProject\\Domain\\Domain.csproj": {
+                "projectPath": "F:\\Praca dyplomowa - kopia\\Praca dyplomowa\\Projekt\\SheduleMatchProject\\Domain\\Domain.csproj"
               }
             }
           }

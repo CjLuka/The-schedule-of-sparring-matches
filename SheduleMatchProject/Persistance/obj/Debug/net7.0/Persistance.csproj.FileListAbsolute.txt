@@ -15,3 +15,20 @@ F:\Praca dyplomowa\Projekt\SheduleMatchProject\Persistance\obj\Debug\net7.0\refi
 F:\Praca dyplomowa\Projekt\SheduleMatchProject\Persistance\obj\Debug\net7.0\Persistance.pdb
 F:\Praca dyplomowa\Projekt\SheduleMatchProject\Persistance\obj\Debug\net7.0\Persistance.genruntimeconfig.cache
 F:\Praca dyplomowa\Projekt\SheduleMatchProject\Persistance\obj\Debug\net7.0\ref\Persistance.dll
+F:\Praca dyplomowa - kopia\Praca dyplomowa\Projekt\SheduleMatchProject\Persistance\bin\Debug\net7.0\Persistance.deps.json
+F:\Praca dyplomowa - kopia\Praca dyplomowa\Projekt\SheduleMatchProject\Persistance\bin\Debug\net7.0\Persistance.runtimeconfig.json
+F:\Praca dyplomowa - kopia\Praca dyplomowa\Projekt\SheduleMatchProject\Persistance\bin\Debug\net7.0\Persistance.dll
+F:\Praca dyplomowa - kopia\Praca dyplomowa\Projekt\SheduleMatchProject\Persistance\bin\Debug\net7.0\Persistance.pdb
+F:\Praca dyplomowa - kopia\Praca dyplomowa\Projekt\SheduleMatchProject\Persistance\bin\Debug\net7.0\Domain.dll
+F:\Praca dyplomowa - kopia\Praca dyplomowa\Projekt\SheduleMatchProject\Persistance\bin\Debug\net7.0\Domain.pdb
+F:\Praca dyplomowa - kopia\Praca dyplomowa\Projekt\SheduleMatchProject\Persistance\obj\Debug\net7.0\Persistance.csproj.AssemblyReference.cache
+F:\Praca dyplomowa - kopia\Praca dyplomowa\Projekt\SheduleMatchProject\Persistance\obj\Debug\net7.0\Persistance.GeneratedMSBuildEditorConfig.editorconfig
+F:\Praca dyplomowa - kopia\Praca dyplomowa\Projekt\SheduleMatchProject\Persistance\obj\Debug\net7.0\Persistance.AssemblyInfoInputs.cache
+F:\Praca dyplomowa - kopia\Praca dyplomowa\Projekt\SheduleMatchProject\Persistance\obj\Debug\net7.0\Persistance.AssemblyInfo.cs
+F:\Praca dyplomowa - kopia\Praca dyplomowa\Projekt\SheduleMatchProject\Persistance\obj\Debug\net7.0\Persistance.csproj.CoreCompileInputs.cache
+F:\Praca dyplomowa - kopia\Praca dyplomowa\Projekt\SheduleMatchProject\Persistance\obj\Debug\net7.0\Persistance.csproj.CopyComplete
+F:\Praca dyplomowa - kopia\Praca dyplomowa\Projekt\SheduleMatchProject\Persistance\obj\Debug\net7.0\Persistance.dll
+F:\Praca dyplomowa - kopia\Praca dyplomowa\Projekt\SheduleMatchProject\Persistance\obj\Debug\net7.0\refint\Persistance.dll
+F:\Praca dyplomowa - kopia\Praca dyplomowa\Projekt\SheduleMatchProject\Persistance\obj\Debug\net7.0\Persistance.pdb
+F:\Praca dyplomowa - kopia\Praca dyplomowa\Projekt\SheduleMatchProject\Persistance\obj\Debug\net7.0\Persistance.genruntimeconfig.cache
+F:\Praca dyplomowa - kopia\Praca dyplomowa\Projekt\SheduleMatchProject\Persistance\obj\Debug\net7.0\ref\Persistance.dll

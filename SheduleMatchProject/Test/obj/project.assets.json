@@ -8890,11 +8890,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\Praca dyplomowa\\Projekt\\SheduleMatchProject\\Test\\Test.csproj",
+      "projectUniqueName": "F:\\Praca dyplomowa - kopia\\Praca dyplomowa\\Projekt\\SheduleMatchProject\\Test\\Test.csproj",
       "projectName": "Test",
-      "projectPath": "F:\\Praca dyplomowa\\Projekt\\SheduleMatchProject\\Test\\Test.csproj",
+      "projectPath": "F:\\Praca dyplomowa - kopia\\Praca dyplomowa\\Projekt\\SheduleMatchProject\\Test\\Test.csproj",
       "packagesPath": "C:\\Users\\Luka\\.nuget\\packages\\",
-      "outputPath": "F:\\Praca dyplomowa\\Projekt\\SheduleMatchProject\\Test\\obj\\",
+      "outputPath": "F:\\Praca dyplomowa - kopia\\Praca dyplomowa\\Projekt\\SheduleMatchProject\\Test\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -8915,11 +8915,11 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "F:\\Praca dyplomowa\\Projekt\\SheduleMatchProject\\Aplication\\Aplication.csproj": {
-              "projectPath": "F:\\Praca dyplomowa\\Projekt\\SheduleMatchProject\\Aplication\\Aplication.csproj"
+            "F:\\Praca dyplomowa - kopia\\Praca dyplomowa\\Projekt\\SheduleMatchProject\\Aplication\\Aplication.csproj": {
+              "projectPath": "F:\\Praca dyplomowa - kopia\\Praca dyplomowa\\Projekt\\SheduleMatchProject\\Aplication\\Aplication.csproj"
             },
-            "F:\\Praca dyplomowa\\Projekt\\SheduleMatchProject\\Persistance\\Persistance.csproj": {
-              "projectPath": "F:\\Praca dyplomowa\\Projekt\\SheduleMatchProject\\Persistance\\Persistance.csproj"
+            "F:\\Praca dyplomowa - kopia\\Praca dyplomowa\\Projekt\\SheduleMatchProject\\Persistance\\Persistance.csproj": {
+              "projectPath": "F:\\Praca dyplomowa - kopia\\Praca dyplomowa\\Projekt\\SheduleMatchProject\\Persistance\\Persistance.csproj"
             }
           }
         }

@@ -18,7 +18,6 @@ namespace Test.Services.ClubServices
 
             response.Success.ShouldBeTrue();
             response.Data.ShouldBeNull();
-            response.Message.ShouldBe("Usunięto klub");
         }
     }
 }

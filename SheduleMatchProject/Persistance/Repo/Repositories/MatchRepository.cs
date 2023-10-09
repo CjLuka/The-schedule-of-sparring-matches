@@ -39,9 +39,10 @@ namespace Persistance.Repo.Repositories
         {
             throw new NotImplementedException();
         }
-        public Task AddAsync(Match match)
+        public async Task AddAsync(Match match)
         {
-            throw new NotImplementedException();
+            await _context.AddAsync(match);
+            await _context.SaveChangesAsync();
         }
         public Task DeleteAsync(Match match)
         {

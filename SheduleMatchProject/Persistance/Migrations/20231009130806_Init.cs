@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Persistance.Migrations
 {
     /// <inheritdoc />
-    public partial class InitDatabase : Migration
+    public partial class Init : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -60,7 +60,7 @@ namespace Persistance.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    AddressesId = table.Column<int>(type: "int", nullable: true),
+                    AddressesId = table.Column<int>(type: "int", nullable: false),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     LastModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -73,7 +73,8 @@ namespace Persistance.Migrations
                         name: "FK_FootballPitches_Addresses_AddressesId",
                         column: x => x.AddressesId,
                         principalTable: "Addresses",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateTable(
@@ -107,7 +108,7 @@ namespace Persistance.Migrations
                     DateCreated = table.Column<DateTime>(type: "datetime2", nullable: false),
                     FeaturedImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     GameClassId = table.Column<int>(type: "int", nullable: false),
-                    UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    UserId = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     LastModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -283,8 +284,7 @@ namespace Persistance.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Type = table.Column<int>(type: "int", nullable: false),
-                    UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    UserId1 = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     ClubId = table.Column<int>(type: "int", nullable: false),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -295,8 +295,8 @@ namespace Persistance.Migrations
                 {
                     table.PrimaryKey("PK_BranchesClubs", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_BranchesClubs_AspNetUsers_UserId1",
-                        column: x => x.UserId1,
+                        name: "FK_BranchesClubs_AspNetUsers_UserId",
+                        column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.NoAction);
@@ -318,7 +318,8 @@ namespace Persistance.Migrations
                     SenderId = table.Column<int>(type: "int", nullable: false),
                     ReceiverId = table.Column<int>(type: "int", nullable: false),
                     FootballPitchId = table.Column<int>(type: "int", nullable: true),
-                    IsAccepted = table.Column<bool>(type: "bit", nullable: false),
+                    IsAccepted = table.Column<bool>(type: "bit", nullable: true),
+                    HasResult = table.Column<bool>(type: "bit", nullable: false),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     LastModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -445,9 +446,9 @@ namespace Persistance.Migrations
                 column: "ClubId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_BranchesClubs_UserId1",
+                name: "IX_BranchesClubs_UserId",
                 table: "BranchesClubs",
-                column: "UserId1");
+                column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Clubs_GameClassId",

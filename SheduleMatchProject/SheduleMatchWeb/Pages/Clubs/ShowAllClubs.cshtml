@@ -1,8 +1,47 @@
 ﻿@page
+@using Domain.Models.VievModel;
 @model SheduleMatchWeb.Pages.Clubs.ShowAllClubsModel
 @{
 }
-<!DOCTYPE html>
+@*<!DOCTYPE html>
+<html>
+<head>
+    <title>Wszystkie Kluby</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/siteShow.css">
+</head>
+<body>*@
+    @*@if(Model.Clubs.Count == 0)
+    {
+    <!DOCTYPE html>
+        <html>
+        <head>
+            <title>Wszystkie Kluby</title>
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+            <link rel="stylesheet" href="~/css/siteShow.css">
+        </head>
+        <body>
+            <h1>Brak klubów</h1>
+        @if (User.IsInRole("Admin"))
+        {
+            <a asp-page="./Admin/AddNewClub" class="btn btn-success">Dodaj nowy klub</a>
+        }
+        
+        </body>
+        </html>
+    }*@
+@if (Model.Clubs.Count == 0)
+{
+    var model = new NoAvaliableData { MessageTitle = "klubów", MessageContent1 = "Przepraszamy, ale aktualnie nie posiadamy żadnych klubów w bazie danych."};
+    @Html.Partial("_NoAvaliableData", model)
+    @if (User.IsInRole("Admin"))
+    {
+        <a asp-page="./Admin/AddNewClub" class="btn btn-success">Dodaj nowy klub</a>
+    }
+}
+    else
+    {
+        <!DOCTYPE html>
 <html>
 <head>
     <title>Wszystkie Kluby</title>
@@ -10,6 +49,7 @@
     <link rel="stylesheet" href="~/css/siteShow.css">
 </head>
 <body>
+    
     <div class="container">
         <h1>Wszystkie Kluby</h1>
         <form method="post">
@@ -45,6 +85,7 @@
                             }
                         </tr>
                     }
+                    
                 </tbody>
             </table>
             @if (User.IsInRole("Admin"))
@@ -54,4 +95,5 @@
         </form>
     </div>
 </body>
-</html>
+    </html>
+    }

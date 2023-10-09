@@ -18,7 +18,6 @@ namespace Test.Services.BranchClubServices
             var response = await _branchClubServices.GetAllBranchClubsAsync();
 
             response.Success.ShouldBeTrue();
-            response.Message.ShouldBe("Oto wszystkie zespoły");
             response.Data.Count.ShouldBe(3);
             
         }

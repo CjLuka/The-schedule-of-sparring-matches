@@ -17,23 +17,21 @@ namespace Aplication.Services.Services
         {
             _matchRepository= matchRepository;
         }
+
+        public async Task AddAsync(Match match)
+        {
+            await _matchRepository.AddAsync(match);
+        }
+
         public async Task<ServiceResponse<List<Match>>> GetAllAsync()
         {
             var allMatches = await _matchRepository.GetAllAsync();
             if (allMatches == null)
             {
-                return new ServiceResponse<List<Match>>
-                {
-                    Message = "Brak meczow",
-                    Success= false
-                };
+                return new ServiceResponse<List<Match>>(false, "Brak meczów");
             }
-            return new ServiceResponse<List<Match>>
-            {
-                Data = allMatches,
-                Message = "Wszystkie mecze",
-                Success = true
-            };
+
+            return new ServiceResponse<List<Match>>(allMatches, true);
         }
 
         public async Task<ServiceResponse<List<Match>>> GetAllByClubAsync(int clubId)
@@ -41,18 +39,10 @@ namespace Aplication.Services.Services
             var allMatches = await _matchRepository.GetAllByClubAsync(clubId);//pobranie meczow danego uzytkownika
             if (allMatches == null)
             {
-                return new ServiceResponse<List<Match>>
-                {
-                    Message = "Brak meczow",
-                    Success = false
-                };
+                return new ServiceResponse<List<Match>>(false, "Brak meczów");
             }
-            return new ServiceResponse<List<Match>>
-            {
-                Data = allMatches,
-                Message = "Wszystkie mecze",
-                Success = true
-            };
+
+            return new ServiceResponse<List<Match>>(allMatches, true);
         }
     }
 }

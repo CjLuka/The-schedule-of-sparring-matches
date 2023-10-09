@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "t85Cca6oh70m4DyI4IUejAtaoDAs8TQfnOnEsT6xaBRJNmgTXvvuSbK4BDGs+Y6PFlYZ7w1yRi0JJFrai/ckXw==",
+  "dgSpecHash": "ktRKTB+2fw1ar4mfhV5OjQKfg0C6IUqJWL6uIz/VHiiohm03KHlIVGj6LmUBjWqZYHB8Imr17P6k4hf8lRwVZA==",
   "success": true,
-  "projectFilePath": "F:\\Praca dyplomowa\\Projekt\\SheduleMatchProject\\SheduleMatchWeb\\SheduleMatchWeb.csproj",
+  "projectFilePath": "F:\\Praca dyplomowa - kopia\\Praca dyplomowa\\Projekt\\SheduleMatchProject\\SheduleMatchWeb\\SheduleMatchWeb.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Luka\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\Luka\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",

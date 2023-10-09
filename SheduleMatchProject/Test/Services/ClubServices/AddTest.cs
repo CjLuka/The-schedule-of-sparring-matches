@@ -29,7 +29,6 @@ namespace Test.Services.ClubServices
             var response = await clubServices.AddClubAsync(club);
 
             response.Success.ShouldBeTrue();
-            response.Message.ShouldBe("Dodano nowy klub");
             response.Data.ShouldBe(club);
         }
     }

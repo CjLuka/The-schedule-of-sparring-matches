@@ -10,6 +10,7 @@ namespace Aplication.Services.Interfaces
 {
     public interface IMatchServices
     {
+        Task AddAsync(Match match);
         Task<ServiceResponse<List<Match>>> GetAllAsync();
         Task<ServiceResponse<List<Match>>> GetAllByClubAsync(int clubId);
 

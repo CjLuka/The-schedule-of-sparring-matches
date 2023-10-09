@@ -33,6 +33,11 @@ namespace Test.Repository
                     _context.Clubs.Remove(club);
                 }
             }).Returns(Task.CompletedTask);
+            //Potrzebne do usunięcia klubu
+            _clubRepository.Setup(repo => repo.GetByIdAsync(It.IsAny<int>())).ReturnsAsync((int id) => 
+            {
+                return _context.Clubs.FirstOrDefault(cl => cl.Id == id);
+            });
 
             //Test dodania klubu
             _clubRepository.Setup(repo => repo.AddAsync(It.IsAny<Club>())).Returns(Task.CompletedTask);

@@ -1,0 +1,68 @@
+﻿@page
+@using Domain.Models.VievModel;
+@model SheduleMatchWeb.Pages.Clubs.President.ScheduledMatchesModel
+@{
+}
+
+@if (Model.MatchRequests.Count == 0)
+{
+    var model = new NoAvaliableData { MessageTitle = "zaplanowanych meczów", MessageContent1 = "Przepraszamy, ale nie masz żadnych zaplanowanych meczów.", MessageContent2 = "Proszę zaplanować nowy mecz lub skontaktować się z administratorem." };
+    @Html.Partial("_NoAvaliableData", model)
+
+}
+else
+{
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>Wszystkie Kluby</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="~/css/siteShow.css">
+    </head>
+    <body>
+        <div class="container">
+            <h1>Wszystkie Kluby</h1>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Gospodarze</th>
+                        <th>Typ drużyny</th>
+                        <th>Goście</th>
+                        <th>Typ drużyny</th>
+                        <th>Data</th>
+                        <th>Zaakceptowany</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.MatchRequests)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => item.Sender.Club.Name)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Sender.Type)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Receiver.Club.Name)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Receiver.Type)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Date)</td>
+                            @if (item.IsAccepted == true)
+                            {
+                                <td>Tak</td>
+                            }
+                            @if (item.IsAccepted == false)
+                            {
+                                <td>Nie</td>
+                            }
+                            @if(item.IsAccepted == true && item.Date < DateTime.Now.AddHours(2))
+                            {
+                                <td>
+                                    <a href="./AddResultToMatch/@item.Id" class="btn btn-primary">Dodaj wynik</a>
+                                </td>
+                            }
+                            
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </body>
+    </html>
+}

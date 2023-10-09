@@ -310,6 +310,9 @@ namespace Persistance.Migrations
                     b.Property<int?>("FootballPitchId")
                         .HasColumnType("int");
 
+                    b.Property<bool>("HasResult")
+                        .HasColumnType("bit");
+
                     b.Property<bool?>("IsAccepted")
                         .HasColumnType("bit");
 

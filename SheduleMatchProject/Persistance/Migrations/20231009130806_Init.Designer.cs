@@ -12,8 +12,8 @@ using Persistance.Data;
 namespace Persistance.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230811124512_Add Addresses to FootballPitches")]
-    partial class AddAddressestoFootballPitches
+    [Migration("20231009130806_Init")]
+    partial class Init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -313,7 +313,10 @@ namespace Persistance.Migrations
                     b.Property<int?>("FootballPitchId")
                         .HasColumnType("int");
 
-                    b.Property<bool>("IsAccepted")
+                    b.Property<bool>("HasResult")
+                        .HasColumnType("bit");
+
+                    b.Property<bool?>("IsAccepted")
                         .HasColumnType("bit");
 
                     b.Property<string>("LastModifiedBy")

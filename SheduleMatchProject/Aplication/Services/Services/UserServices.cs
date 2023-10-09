@@ -32,18 +32,10 @@ namespace Aplication.Services.Services
             var checkEmail = await _userRepository.GetEmailAsync(user.Email);
             if (checkEmail == null)
             {
-                return new ServiceResponse<User>()
-                {
-                    Success = true,
-                    Data = user,
-                    Message = "Dodano użytkownika!"
-                };
+                return new ServiceResponse<User>(user, true);
             }
-            return new ServiceResponse<User>()
-            {
-                Success = false,
-                Message = "Podany adres email istnieje w bazie danych!"
-            };
+
+            return new ServiceResponse<User>(false, "Podany adres email istnieje w bazie danych!");
         }
 
         public async Task<ServiceResponse<List<User>>> GetAllCoaches()
@@ -51,19 +43,10 @@ namespace Aplication.Services.Services
             var allCoaches = await _userRepository.GetAllCoaches();
             if (allCoaches == null)
             {
-                return new ServiceResponse<List<User>>()
-                {
-                    Success = false,
-                    Data = null,
-                    Message = "Brak trenerów"
-                };
+                return new ServiceResponse<List<User>>(false, "Brak trenerów");
             }
-            return new ServiceResponse<List<User>> 
-            { 
-                Success = false,
-                Data = allCoaches, 
-                Message= "Wszyscy trenerzy"
-            };
+
+            return new ServiceResponse<List<User>>(allCoaches, true);
         }
 
         public async Task<ServiceResponse<List<User>>> GetAllUsersAsync()
@@ -71,18 +54,10 @@ namespace Aplication.Services.Services
             var users = await _userRepository.GetAllAsync();
             if (users.IsNullOrEmpty())
             {
-                return new ServiceResponse<List<User>>()
-                {
-                    Success= false,
-                    Message= "Brak użytkowników"
-                };
+                return new ServiceResponse<List<User>>(false, "Brak użytkowników");
             }
-            return new ServiceResponse<List<User>>()
-            {
-                Success = true,
-                Data = users,
-                Message = "Wszyscy uzytkownicy"
-            };
+
+            return new ServiceResponse<List<User>>(users, true);
         }
 
         public async Task<ServiceResponse<List<User>>> GetCoaches()
@@ -90,19 +65,10 @@ namespace Aplication.Services.Services
             var coaches = await _userRepository.GetCoaches();
             if (coaches.IsNullOrEmpty())
             {
-                return new ServiceResponse<List<User>>()
-                {
-                    Data = null,
-                    Success= false,
-                    Message = "Brak trenerow bez klubu"
-                };
+                return new ServiceResponse<List<User>>(false, "Brak trenerów bez klubu");
             }
-            return new ServiceResponse<List<User>>
-            {
-                Data= coaches,
-                Success= true,
-                Message="Wszyscy trenerzy"
-            };
+
+            return new ServiceResponse<List<User>>(coaches, true);
         }
 
         public async Task<string> GetEmailAsync(string email)
@@ -160,12 +126,8 @@ namespace Aplication.Services.Services
                 //.Where(user => user.Role == "President" || user.Role == "User")
                 .Where(user => !clubs.Any(club => club.UserId == user.Id))
                 .ToList();
-            return new ServiceResponse<List<User>>
-            {
-                Success=true,
-                Data = usersWithoutClub,
-                Message="Uzytkownicy bez klubow"
-            };
+
+            return new ServiceResponse<List<User>>(usersWithoutClub, true);
         }
 
         public void Login(string email)
@@ -174,19 +136,10 @@ namespace Aplication.Services.Services
             var passwordFromUser = _userRepository.GetPasswordByEmailAsync(email);
             if(emailFromUser== null || passwordFromUser == null ) 
             {
-                new ServiceResponse<User>()
-                {
-                    Message = "Email lub hasło nie istnieje",
-                    Success= false,
-                };
+                new ServiceResponse<User>(false, "Email lub hasło nie istnieje");
             }
-            
-            new ServiceResponse<User>()
-            {
-                Message = "Zwrócono Usera",
-                Success = true
-            };
-            
+
+            new ServiceResponse<User>(true);        
         }
 
         public async Task<ServiceResponse<List<User>>> GetUsersWithoutAnyFunction()//pobranie uzytkownikow, ktorzy nie pelnią żadnych funkcji
@@ -200,18 +153,10 @@ namespace Aplication.Services.Services
 
             if (usersWithoutFunction.IsNullOrEmpty())
             {
-                return new ServiceResponse<List<User>>()
-                {
-                    Success = false
-                };
+                return new ServiceResponse<List<User>>(false);
             }
 
-            return new ServiceResponse<List<User>>()
-            {
-                Data = usersWithoutFunction,
-                Success = true,
-                Message = "Wszyscy użytkownicy bez funkcji w klubach"
-            };
+            return new ServiceResponse<List<User>>(usersWithoutFunction, true);
         }
 
         public async Task<ServiceResponse<User>> GetUserById(string userId)
@@ -219,30 +164,17 @@ namespace Aplication.Services.Services
             var user = await _userRepository.GetByIdAsync(userId);
             if (user == null)
             {
-                return new ServiceResponse<User>()
-                {
-                    Success = false,
-                    Message = "Problem z pobraniem użytkownika o podanym Id"
-                };
+                return new ServiceResponse<User>(false, "Problem z pobraniem użytkownika o podanym Id");
             }
-            return new ServiceResponse<User>()
-            {
-                Data = user,
-                Success = true,
-                Message = "Pobrano użytkownika"
-            };
 
+            return new ServiceResponse<User>(user, true);
         }
 
         public async Task<ServiceResponse<List<User>>> GetAll()
         {
             List<User> users = await _userRepository.GetAllUsersAsync();
-            return new ServiceResponse<List<User>>()
-            {
-                Success = true,
-                Data= users,
-                Message="Użytkownicy"
-            };
+
+            return new ServiceResponse<List<User>>(users, true);
         }
     }
 }

@@ -16,6 +16,8 @@ namespace Aplication.Services.Interfaces
         Task<ServiceResponse<List<MatchRequest>>> GetPropositionsByCoachAsync(string userId);
         Task<ServiceResponse<MatchRequest>> GetMatchRequestByIdAsync(int id);
         Task<ServiceResponse<MatchRequest>> UpdateAsync(MatchRequest matchRequest);
+        Task<ServiceResponse<List<MatchRequest>>> GetPlannedMatchByClubAsync(Club club);
+
 
     }
 }

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "i+/pr+wmyyp1w1//HasGY9Gwh8bSvzM7i1V0klg9ENn3Y70Uc9bmFU4JGwj6F0KDf5V0z5fy+HULh0IB1lM+Jg==",
+  "dgSpecHash": "MYyp8J069VDKgNbtTazuHLpsbOpC4sN70k+bTFb7NSA6hJw1jhj4Bu28nT+U8ekevWyrZANnaTiYCh2x5tqEvw==",
   "success": true,
-  "projectFilePath": "F:\\Praca dyplomowa\\Projekt\\SheduleMatchProject\\Domain\\Domain.csproj",
+  "projectFilePath": "F:\\Praca dyplomowa - kopia\\Praca dyplomowa\\Projekt\\SheduleMatchProject\\Domain\\Domain.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Luka\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\Luka\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\7.0.5\\microsoft.aspnetcore.cryptography.internal.7.0.5.nupkg.sha512",

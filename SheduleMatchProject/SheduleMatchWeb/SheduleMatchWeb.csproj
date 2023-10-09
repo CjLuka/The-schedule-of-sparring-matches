@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="Pages\Clubs\Coach\MyRemovedMatches.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="AutoMapper" Version="12.0.1" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="7.0.5" />
@@ -31,6 +35,18 @@
   <ItemGroup>
     <Folder Include="Controlers\" />
     <Folder Include="wwwroot\image\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Pages\Clubs\Coach\MyRemovedMatches.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Pages\Clubs\Coach\MyRemovedMatches.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Pages\Clubs\Coach\MyRemovedMatches.cshtml" />
   </ItemGroup>
 
 </Project>

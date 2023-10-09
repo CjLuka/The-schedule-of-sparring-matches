@@ -21,6 +21,7 @@ namespace Domain.Models.Domain
         public FootballPitch FootballPitch { get; set; }
         public int? FootballPitchId { get; set; }
         public bool? IsAccepted { get; set; }
+        public bool HasResult { get; set; } = false;
         public Match Match { get; set; }
 
     }

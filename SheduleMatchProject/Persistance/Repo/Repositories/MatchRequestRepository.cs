@@ -21,7 +21,11 @@ namespace Persistance.Repo.Repositories
 
         public async Task<MatchRequest> GetMatchRequestByIdAsync(int id)
         {
-            var matchReq = await _context.MatchRequests.FirstOrDefaultAsync(x => x.Id == id);
+            var matchReq = await _context.MatchRequests
+                .Include(x => x.Sender.Club)
+                .Include(x => x.Receiver.Club)
+                .Include(x => x.FootballPitch)
+                .FirstOrDefaultAsync(x => x.Id == id);
             return matchReq;
         }
 
@@ -43,6 +47,8 @@ namespace Persistance.Repo.Repositories
         public async Task<List<MatchRequest>> GetPlannedMatchByClubAsync(Club club)
         {
             var matches = await _context.MatchRequests
+                .Include(x => x.Sender.Club)
+                .Include(x => x.Receiver.Club)
                 .Where(mr => mr.Sender.ClubId == club.Id || mr.Receiver.ClubId == club.Id)
                 .ToListAsync();
             return matches;
