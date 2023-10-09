@@ -1,0 +1,55 @@
+﻿@page
+@using Domain.Models.VievModel;
+@model SheduleMatchWeb.Pages.Clubs.President.MatchesPlayedModel
+@{
+}
+
+@if (Model.Matches.Count == 0)
+{
+    var model = new NoAvaliableData { MessageTitle = "rozegranych meczów", MessageContent1 = "Przepraszamy, ale Twoje drużyny nie posiadają rozegranych meczów.", MessageContent2 = "Proszę zaplanować nowy mecz lub skontaktować się z administratorem." };
+    @Html.Partial("_NoAvaliableData", model)
+
+}
+else
+{
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>Wszystkie Kluby</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="~/css/siteShow.css">
+    </head>
+    <body>
+        <div class="container">
+            <h1>Rozegrane spotkania</h1>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Gospodarze</th>
+                        <th>Typ drużyny</th>
+                        <th>Gole gospodarzy</th>
+                        <th>Goście</th>
+                        <th>Typ drużyny</th>
+                        <th>Gole gości</th>
+                        <th>Data rozpoczęcia meczu</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Matches)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => item.BranchClubHome.Club.Name)</td>
+                            <td>@Html.DisplayFor(modelItem => item.BranchClubHome.Type)</td>
+                            <td>@Html.DisplayFor(modelItem => item.GoalsHome)</td>
+                            <td>@Html.DisplayFor(modelItem => item.BranchClubAway.Club.Name)</td>
+                            <td>@Html.DisplayFor(modelItem => item.BranchClubAway.Type)</td>
+                            <td>@Html.DisplayFor(modelItem => item.GoalsAway)</td>
+                            <td>@Html.DisplayFor(modelItem => item.DateStart)</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </body>
+    </html>
+}

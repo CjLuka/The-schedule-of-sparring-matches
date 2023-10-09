@@ -66,12 +66,23 @@ namespace Persistance.Repo.Repositories
 
             foreach (var match in Matches)
             {
-                if (match.BranchClubHomeId == clubId || match.BranchClubAwayId == clubId)
+                if (match.BranchClubHome.ClubId == clubId || match.BranchClubAway.ClubId == clubId)
                 {
                     ListOfMatches.Add(match);
                 }
             }
             return ListOfMatches;
+        }
+
+        public async Task<List<Match>> GetAllByBranchClubAsync(int branchClubId)
+        {
+            var matches = await _context.Matches
+                .Include(x => x.BranchClubHome)
+                .Include(x => x.BranchClubAway)
+                .Where(x => x.BranchClubAwayId == branchClubId|| x.BranchClubAwayId== branchClubId)
+                .ToListAsync();
+
+            return matches;
         }
     }
 }

@@ -47,6 +47,7 @@ namespace Persistance.Repo.Repositories
         public async Task<List<MatchRequest>> GetPlannedMatchByClubAsync(Club club)
         {
             var matches = await _context.MatchRequests
+                .Where(x => x.HasResult == false)
                 .Include(x => x.Sender.Club)
                 .Include(x => x.Receiver.Club)
                 .Where(mr => mr.Sender.ClubId == club.Id || mr.Receiver.ClubId == club.Id)
@@ -59,7 +60,7 @@ namespace Persistance.Repo.Repositories
         {
             var allMatches = await _context.MatchRequests
                 .Where(mr => mr.Sender.UserId == userId || mr.Receiver.UserId == userId)  // Sprawdzamy, czy użytkownik jest trenerem w Sender lub Receiver
-                //.Where(mr => mr.IsAccepted)
+                .Where(x => x.HasResult == false)
                 .Include(s => s.Sender.Club)
                 .Include(r => r.Receiver.Club)
                 .ToListAsync();

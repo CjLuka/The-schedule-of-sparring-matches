@@ -22,6 +22,7 @@ namespace Domain.Models.Domain
         public int GoalsAway { get; set; }
         public int MatchRequestId { get; set; }
         public MatchRequest MatchRequest { get; set; }
-        public FootballPitch? FootballPitch { get; set; }
+        public FootballPitch FootballPitch { get; set; }
+        public int? FootballPitchId { get; set; }
     }
 }

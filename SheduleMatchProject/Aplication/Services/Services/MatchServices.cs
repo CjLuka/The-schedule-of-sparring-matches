@@ -34,6 +34,17 @@ namespace Aplication.Services.Services
             return new ServiceResponse<List<Match>>(allMatches, true);
         }
 
+        public async Task<ServiceResponse<List<Match>>> GetAllByBranchClubAsync(int branchClubId)
+        {
+            var allMatches= await _matchRepository.GetAllByBranchClubAsync(branchClubId);
+            if (allMatches == null)
+            {
+                return new ServiceResponse<List<Match>>(false, "Brak spotkań dla danego zespołu");
+            }
+            
+            return new ServiceResponse<List<Match>>(allMatches, true);
+        }
+
         public async Task<ServiceResponse<List<Match>>> GetAllByClubAsync(int clubId)
         {
             var allMatches = await _matchRepository.GetAllByClubAsync(clubId);//pobranie meczow danego uzytkownika

@@ -18,6 +18,5 @@ namespace Aplication.Services.Interfaces
         Task<ServiceResponse<MatchRequest>> UpdateAsync(MatchRequest matchRequest);
         Task<ServiceResponse<List<MatchRequest>>> GetPlannedMatchByClubAsync(Club club);
 
-
     }
 }

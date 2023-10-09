@@ -11,6 +11,7 @@ namespace Persistance.Repo.Interfaces
     {
         Task<List<Match>> GetAllAsync();
         Task<List<Match>> GetAllByClubAsync(int clubId);
+        Task<List<Match>> GetAllByBranchClubAsync(int branchClubId);
         Task<Match> GetByIdAsync(int matchId);
         Task AddAsync(Match match);
         Task DeleteAsync(Match match);

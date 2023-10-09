@@ -13,6 +13,7 @@ namespace Aplication.Services.Interfaces
         Task AddAsync(Match match);
         Task<ServiceResponse<List<Match>>> GetAllAsync();
         Task<ServiceResponse<List<Match>>> GetAllByClubAsync(int clubId);
+        Task<ServiceResponse<List<Match>>> GetAllByBranchClubAsync(int branchClubId);
 
     }
 }
