@@ -4,31 +4,26 @@
 @{
     ViewData["Title"] = "Dodaj Nową Drużynę";
 }
+
 <div class="container mt-5">
     <h1 class="display-4">Dodaj Nową Drużynę</h1>
     <form method="post">
         <div class="mb-3">
-            <label for="Nazwa" class="form-label">
-                Klub
-            </label>
+            <label for="Nazwa" class="form-label">Klub</label>
             <input type="text" class="form-control" asp-for="Club.Name" readonly />
         </div>
         <div class="mb-3">
-            <label class="form-label">
-                Wybierz typ drużyny
-            </label>
-            <select asp-for="Branch.Type" asp-items="@Html.GetEnumSelectList<BranchType>()" class="form-select"></select>
+            <label for="Branch_Type" class="form-label">Wybierz typ drużyny</label>
+            <select id="Branch_Type" asp-for="Branch.Type" asp-items="@Html.GetEnumSelectList<BranchType>()" class="form-select"></select>
             <span asp-validation-for="Branch.Type" class="text-danger"></span>
         </div>
         <div class="mb-3">
             <label for="UserId" class="form-label">Wybierz trenera</label>
-            <select class="form-select" aria-label="Default select example" asp-for="Branch.UserId" asp-items="@(ViewData["Coaches"] as IEnumerable<SelectListItem>)"></select>
-            <span asp-validation-for="User" class="text-danger"></span>
+            <select id="UserId" class="form-select" asp-for="Branch.UserId" asp-items="@(ViewData["Coaches"] as IEnumerable<SelectListItem>)"></select>
+            <span asp-validation-for="Branch.UserId" class="text-danger"></span>
         </div>
         <div class="mb-3">
-            <button type="submit" class="btn btn-dark">
-                Dodaj Drużynę
-            </button>
+            <button type="submit" class="btn btn-dark">Dodaj Drużynę</button>
         </div>
     </form>
 </div>

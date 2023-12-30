@@ -1,23 +1,50 @@
 ﻿@page
 @using Domain.Models.VievModel;
 @model SheduleMatchWeb.Pages.Clubs.President.MatchesPlayedModel
-@{
-}
 
 @if (Model.Matches.Count == 0)
 {
-    var model = new NoAvaliableData { MessageTitle = "rozegranych meczów", MessageContent1 = "Przepraszamy, ale Twoje drużyny nie posiadają rozegranych meczów.", MessageContent2 = "Proszę zaplanować nowy mecz lub skontaktować się z administratorem." };
+    var model = new NoAvaliableData
+                {
+                    MessageTitle = "rozegranych meczów",
+                    MessageContent1 = "Przepraszamy, ale Twoje drużyny nie posiadają rozegranych meczów.",
+                    MessageContent2 = "Proszę zaplanować nowy mecz lub skontaktować się z administratorem."
+                };
     @Html.Partial("_NoAvaliableData", model)
-
 }
 else
 {
     <!DOCTYPE html>
-    <html>
+    <html lang="pl">
     <head>
-        <title>Wszystkie Kluby</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Rozegrane spotkania</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="~/css/siteShow.css">
+        <style>
+            body {
+                background-color: #f8f9fa;
+            }
+
+            .container {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+            h1 {
+                color: #007bff;
+            }
+
+            th {
+                background-color: #007bff;
+                color: #ffffff;
+            }
+
+            tbody tr:hover {
+                background-color: #f2f2f2;
+            }
+        </style>
     </head>
     <body>
         <div class="container">
@@ -50,6 +77,9 @@ else
                 </tbody>
             </table>
         </div>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
     </body>
     </html>
 }

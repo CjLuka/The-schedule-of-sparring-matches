@@ -1,4 +1,5 @@
 ﻿@page
+@using Domain.Models.VievModel;
 @model SheduleMatchWeb.Pages.Clubs.Coach.MatchPropositionsModel
 @{
 }
@@ -13,19 +14,31 @@
 <body>
     <form method="post">
         <div class="container">
-            <h1>Propozycje rozegrania meczu</h1>
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th>Gospodarze</th>
-                        <th>Typ drużyny</th>
-                        <th>Goście</th>
-                        <th>Typ drużyny</th>
-                        <th>Data</th>
-                        <th></th>
-                        <th></th>
-                    </tr>
-                </thead>
+            @if (Model.MatchRequests.Count == 0)
+            {
+                var model = new NoAvaliableData
+                {
+                    MessageTitle = "propozycji rozegrania meczu",
+                    MessageContent1 = "Przepraszamy, ale nie masz żadnych propozycji rozegrania nowego meczu."
+                };
+                @Html.Partial("_NoAvaliableData", model)
+            }
+            else
+            {
+                <h1>Propozycje rozegrania meczu</h1>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Gospodarze</th>
+                            <th>Typ drużyny</th>
+                            <th>Goście</th>
+                            <th>Typ drużyny</th>
+                            <th>Data</th>
+                            <th>Stadion</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
                 <tbody>
                     @foreach (var item in Model.MatchRequests)
                     {
@@ -35,6 +48,14 @@
                             <td>@Html.DisplayFor(modelItem => item.Receiver.Club.Name)</td>
                             <td>@Html.DisplayFor(modelItem => item.Receiver.Type)</td>
                             <td>@Html.DisplayFor(modelItem => item.Date)</td>
+                            @if (item.FootballPitchId == null)
+                            {
+                                <td>Brak rezerwacji</td>
+                            }
+                            else
+                            {
+                                <td>@Html.DisplayFor(modelItem => item.FootballPitch.Name)</td>
+                            }
                             <td>
                                 <input type="hidden" name="matchRequestId" value="@item.Id" />
                                 <button class="btn btn-primary" type="submit" asp-page-handler="Accept">Zaakceptuj</button>
@@ -52,6 +73,8 @@
                     }
                 </tbody>
             </table>
+            }
+            
         </div>
     </form>
     

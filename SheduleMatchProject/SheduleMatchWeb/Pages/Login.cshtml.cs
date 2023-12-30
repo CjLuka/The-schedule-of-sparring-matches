@@ -38,7 +38,7 @@ namespace SheduleMatchWeb.Pages
                 ViewData["Notification"] = new Notification
                 {
                     Type = Domain.Models.Enum.NotificationType.Error,
-                    Message = "B³¹d podczas próby logowania"
+                    Message = "B³¹d podczas próby logowania. Nieprawid³owy email lub has³o", 
                 };
                 return Page();
             }

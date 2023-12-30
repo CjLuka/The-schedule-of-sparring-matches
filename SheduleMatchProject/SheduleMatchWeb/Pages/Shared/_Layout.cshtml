@@ -33,7 +33,7 @@
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdownAdmin">
                                 <li>
-                                    <a class="dropdown-item" href="/clubs/myclub">
+                                    <a class="dropdown-item" href="/clubs/coach/myclub">
                                         Profil klubu
                                     </a>
                                     <a class="dropdown-item" href="/Clubs/BranchClubs/MyBranchClub">
@@ -60,9 +60,9 @@
                                     <a class="dropdown-item" href="/Clubs/Coach/MatchPropositions">
                                         Propozycje meczów
                                     </a>
-                                    <a class="dropdown-item" href="/Matches/MyScheduleMatch">
+                                    @*<a class="dropdown-item" href="/Matches/MyScheduleMatch">
                                         Odrzucone prośby o mecz
-                                    </a>
+                                    </a>*@
                                         <a class="dropdown-item" href="/Clubs/Coach/BranchesForPlanMatch">
                                         Zaplanuj nowy mecz
                                     </a>
@@ -112,10 +112,13 @@
 
 
                         <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="" asp-page="/Clubs/ShowAllClubs">Wszystkie kluby</a>
+                            <a class="nav-link text-light" asp-area="" asp-page="/Clubs/ShowAllClubs">Kluby</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="" asp-page="/AllBranches">Wszystkie zespoły</a>
+                            <a class="nav-link text-light" asp-area="" asp-page="/AllBranches">Zespoły</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light" asp-area="" asp-page="/AllPitches">Stadiony</a>
                         </li>
 
                         @*@if(signInManager.IsSignedIn(User) && (User.IsInRole("President") || User.IsInRole("Coach")))

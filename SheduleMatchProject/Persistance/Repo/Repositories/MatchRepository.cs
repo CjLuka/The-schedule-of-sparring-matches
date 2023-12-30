@@ -77,8 +77,9 @@ namespace Persistance.Repo.Repositories
         public async Task<List<Match>> GetAllByBranchClubAsync(int branchClubId)
         {
             var matches = await _context.Matches
-                .Include(x => x.BranchClubHome)
-                .Include(x => x.BranchClubAway)
+                .Include(x => x.BranchClubHome.Club)
+                .Include(x => x.BranchClubAway.Club)
+                .Include(x => x.FootballPitch)
                 .Where(x => x.BranchClubAwayId == branchClubId|| x.BranchClubAwayId== branchClubId)
                 .ToListAsync();
 

@@ -32,12 +32,12 @@
         <form method="post">
             <div class="mb-3">
                 <label for="Id" class="form-label">Nazwa klubu</label>
-                <input type="text" class="form-control" @*id="id"*@ asp-for="BranchClub.Club.Name" readonly>
+                <input type="text" class="form-control" id="id" asp-for="BranchClub.Club.Name" readonly>
             </div>
-            <div class="mb-3">
+            @*<div class="mb-3">
                 <label for="Id" class="form-label">Nazwa klubu</label>
-                <input type="text" class="form-control" @*id="id"*@ asp-for="BranchClub.Club.CreatedBy" readonly>
-            </div>
+                <input type="text" class="form-control" asp-for="BranchClub.Club.CreatedBy" readonly>
+            </div>*@
 @*            <div class="mb-3">
                 <label for="Type" class="form-label">Typ zespołu</label>
                 @Html.GetEnumSelectList(model => model.BranchClub.Type, new { @class = "form-control" })

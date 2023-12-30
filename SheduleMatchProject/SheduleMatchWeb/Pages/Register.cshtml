@@ -7,7 +7,6 @@
     <div class="row justify-content-center">
         <div class="col-12 col-lg-6">
 
-
             <h1 class="mb-3 mt-5 h3">Rejestracja</h1>
 
             <partial name="_Notification">
@@ -15,25 +14,30 @@
                 <form method="post">
                     <div class="mb-3">
                         <label class="form-label">Imię</label>
-                        <input type="text" class="form-control" asp-for="RegisterViewModel.FirstName" />
+                        <input type="text" class="form-control" asp-for="RegisterViewModel.FirstName" required />
+                        <span asp-validation-for="RegisterViewModel.FirstName"></span>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Nazwisko</label>
-                        <input type="text" class="form-control" asp-for="RegisterViewModel.LastName" />
+                        <input type="text" class="form-control" asp-for="RegisterViewModel.LastName" required />
+                        <span asp-validation-for="RegisterViewModel.LastName"></span>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Nazwa użytkownika</label>
-                        <input type="text" class="form-control" asp-for="RegisterViewModel.Username" />
+                        <input type="text" class="form-control" asp-for="RegisterViewModel.Username" required />
+                        <span asp-validation-for="RegisterViewModel.Username"></span>
                     </div>
 
                     <div class="mb-3">
                         <label class="form-label">Email</label>
-                        <input type="email" class="form-control" asp-for="RegisterViewModel.Email" />
+                        <input type="email" class="form-control" asp-for="RegisterViewModel.Email" required />
+                        <span asp-validation-for="RegisterViewModel.Email"></span>
                     </div>
 
                     <div class="mb-3">
                         <label class="form-label">Hasło</label>
-                        <input type="password" class="form-control" asp-for="RegisterViewModel.Password" />
+                        <input type="password" class="form-control" asp-for="RegisterViewModel.Password" required />
+                        <span asp-validation-for="RegisterViewModel.Password"></span>
                     </div>
 
                     <div class="mb-3">

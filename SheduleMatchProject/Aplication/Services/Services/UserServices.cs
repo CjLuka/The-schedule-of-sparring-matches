@@ -1,6 +1,7 @@
 ﻿using Aplication.Services.Interfaces;
 using Azure;
 using Domain.Models.Domain;
+using Domain.Models.Pagination;
 using Domain.Response;
 using Microsoft.IdentityModel.Tokens;
 using Persistance.Repo.Interfaces;
@@ -118,6 +119,7 @@ namespace Aplication.Services.Services
         {
             var users = await _userRepository.GetAllAsync();
             var clubs = await _clubRepository.GetAllAsync();
+            var branches = await _branchClubRepository.GetAllBranchClubAsync();
 
             //var users = usersResponse;
             //var clubs = clubsResponse;
@@ -125,6 +127,7 @@ namespace Aplication.Services.Services
             var usersWithoutClub = users
                 //.Where(user => user.Role == "President" || user.Role == "User")
                 .Where(user => !clubs.Any(club => club.UserId == user.Id))
+                .Where(user => !branches.Any(branches => branches.UserId == user.Id))
                 .ToList();
 
             return new ServiceResponse<List<User>>(usersWithoutClub, true);
@@ -175,6 +178,12 @@ namespace Aplication.Services.Services
             List<User> users = await _userRepository.GetAllUsersAsync();
 
             return new ServiceResponse<List<User>>(users, true);
+        }
+
+        public async Task<string> GetEmailByUserIdAsync(string userId)
+        {
+            var email = await _userRepository.GetEmailByUserIdAsync(userId);
+            return email;
         }
     }
 }

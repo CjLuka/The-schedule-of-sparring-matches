@@ -19,7 +19,9 @@ namespace Persistance.Repo.Repositories
         }
         public async Task<List<FootballPitch>> GetAllAsync()
         {
-            var allFootballPitches = await _context.FootballPitches.ToListAsync();
+            var allFootballPitches = await _context.FootballPitches
+                .Include(x => x.Addresses)
+                .ToListAsync();
             return allFootballPitches;
         }
         public async Task<List<FootballPitch>> GetAvailableFootballPitchesForMatchRequest(DateTime dateTime)

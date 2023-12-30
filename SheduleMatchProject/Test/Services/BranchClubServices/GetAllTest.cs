@@ -13,7 +13,7 @@ namespace Test.Services.BranchClubServices
         public async Task BranchClub_GetAll_IsOk()
         {
             var _branchClubServices = new Aplication.Services.Services.BranchClubServices(_branchClubRepository.Object);
-            var _clubServices = new Aplication.Services.Services.ClubServices(_clubRepository.Object, _mapper);
+            //var _clubServices = new Aplication.Services.Services.ClubServices(_clubRepository.Object, _mapper);
 
             var response = await _branchClubServices.GetAllBranchClubsAsync();
 

@@ -1,27 +1,64 @@
 ﻿@page
 @using Domain.Models.VievModel;
 @model SheduleMatchWeb.Pages.Clubs.President.ScheduledMatchesModel
-@{
-}
 
 @if (Model.MatchRequests.Count == 0)
 {
-    var model = new NoAvaliableData { MessageTitle = "zaplanowanych meczów", MessageContent1 = "Przepraszamy, ale nie masz żadnych zaplanowanych meczów.", MessageContent2 = "Proszę zaplanować nowy mecz lub skontaktować się z administratorem." };
+    var model = new NoAvaliableData
+                {
+                    MessageTitle = "Brak zaplanowanych meczów",
+                    MessageContent1 = "Przepraszamy, ale nie masz żadnych zaplanowanych meczów.",
+                    MessageContent2 = "Proszę zaplanować nowy mecz lub skontaktować się z administratorem."
+                };
     @Html.Partial("_NoAvaliableData", model)
-
 }
 else
 {
     <!DOCTYPE html>
-    <html>
+    <html lang="pl">
     <head>
-        <title>Wszystkie Kluby</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Zaplanowane spotkania</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="~/css/siteShow.css">
+        <style>
+            body {
+                background-color: #f8f9fa;
+            }
+
+            .container {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+            h1 {
+                color: #007bff;
+            }
+
+            th {
+                background-color: #007bff;
+                color: #ffffff;
+            }
+
+            tbody tr:hover {
+                background-color: #f2f2f2;
+            }
+
+            .btn-primary {
+                background-color: #007bff;
+                border-color: #007bff;
+            }
+
+                .btn-primary:hover {
+                    background-color: #0056b3;
+                    border-color: #0056b3;
+                }
+        </style>
     </head>
     <body>
         <div class="container">
-            <h1>Wszystkie Kluby</h1>
+            <h1>Zaplanowane spotkania</h1>
             <table class="table table-striped">
                 <thead>
                     <tr>
@@ -51,18 +88,20 @@ else
                             {
                                 <td>Nie</td>
                             }
-                            @if(item.IsAccepted == true && item.Date < DateTime.Now.AddHours(2))
+                            @if (item.IsAccepted == true && item.Date < DateTime.Now.AddHours(2))
                             {
                                 <td>
                                     <a href="./AddResultToMatch/@item.Id" class="btn btn-primary">Dodaj wynik</a>
                                 </td>
                             }
-                            
                         </tr>
                     }
                 </tbody>
             </table>
         </div>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
     </body>
     </html>
 }

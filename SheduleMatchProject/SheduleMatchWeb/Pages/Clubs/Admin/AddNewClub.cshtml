@@ -1,39 +1,32 @@
 ﻿@page
 @model SheduleMatchWeb.Pages.Clubs.AddNewClubModel
 @{
+    ViewData["Title"] = "Dodaj nowy klub";
 }
-<div>
-    <div class="container">
-       <form method="post">
-           <div class="mb-3">
-               <label for="Nazwa" class="form-label">
-                 Podaj nazwę:
-               </label>
-                <input id="Nazwa" type="text" class="form-control" asp-for="NewClub.Name" />
-           </div>
-           <div class="mb-3">
-                <label for="Data" class="form-label">
-                    Podaj date utworzenia:
-                </label>
-                <input id="Data" type="date" class="form-control" asp-for="NewClub.DateCreated" />
-           </div>
-            <label class="form-label">
-                Podaj klasę rozgrywkową klubu:
-            </label>
-           <div class="form-group">
-                <select class="form-select" aria-label="Default select example" asp-for="NewClub.GameClassId" asp-items="@(ViewData["klasyRozgrywkowe"] as IEnumerable<SelectListItem>)"></select>
-                <span asp-validation-for="GameClassess" class="text-danger"></span>
-              </div>
-            <div class="form-group">
-                <label for="UserId" class="form-label">Prezes</label>
-                <select class="form-select" aria-label="Default select example" asp-for="NewClub.UserId" asp-items="@(ViewData["Users"] as IEnumerable<SelectListItem>)"></select>
-                <span asp-validation-for="NewClub" class="text-danger"></span>
-           </div>
-           <div>
-               <button type="submit" class="btn btn-dark">
-                   Dodaj
-               </button>
-           </div>
-       </form>
-    </div>
+
+<div class="container mt-5">
+    <h2>Dodaj nowy klub</h2>
+    <form method="post">
+        <div class="mb-3">
+            <label for="Nazwa" class="form-label">Podaj nazwę:</label>
+            <input id="Nazwa" type="text" class="form-control" asp-for="NewClub.Name" />
+        </div>
+        <div class="mb-3">
+            <label for="Data" class="form-label">Podaj datę utworzenia:</label>
+            <input id="Data" type="date" class="form-control" asp-for="NewClub.DateCreated" />
+        </div>
+        <div class="mb-3">
+            <label for="GameClassId" class="form-label">Wybierz klasę rozgrywkową klubu:</label>
+            <select class="form-select" asp-for="NewClub.GameClassId" asp-items="@(ViewData["klasyRozgrywkowe"] as IEnumerable<SelectListItem>)"></select>
+            <span asp-validation-for="NewClub.GameClassId" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label for="UserId" class="form-label">Wybierz prezesa klubu:</label>
+            <select class="form-select" asp-for="NewClub.UserId" asp-items="@(ViewData["Users"] as IEnumerable<SelectListItem>)"></select>
+            <span asp-validation-for="NewClub.UserId" class="text-danger"></span>
+        </div>
+        <div>
+            <button type="submit" class="btn btn-dark">Dodaj</button>
+        </div>
+    </form>
 </div>

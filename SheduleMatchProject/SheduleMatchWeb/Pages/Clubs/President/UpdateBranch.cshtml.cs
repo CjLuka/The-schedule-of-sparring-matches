@@ -74,13 +74,14 @@ namespace SheduleMatchWeb.Pages.Clubs.President
                     var oldPresident = await _userServices.GetUserById(previousCoachId);
                     var newPresident = await _userServices.GetUserById(BranchClub.UserId);
 
+                    await _userManager.RemoveFromRoleAsync(oldPresident.Data, "Coach");
                     //var countClubs = await _branchClubServices.CountBranchesForCoach(oldPresident.Data.Id);
 
                     //if(countClubs.Data == 0)
                     //{
                     //    await _userManager.RemoveFromRoleAsync(oldPresident.Data, "Coach");
                     //}
-                    
+
                     await _userManager.AddToRoleAsync(newPresident.Data, "Coach");
                     
                 }

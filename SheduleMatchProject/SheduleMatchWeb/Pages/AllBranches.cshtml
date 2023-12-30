@@ -1,36 +1,63 @@
 ﻿@page
 @model SheduleMatchWeb.Pages.AllBranchesModel
-@{
-}
+
 <!DOCTYPE html>
-<html>
+<html lang="pl">
 <head>
-    <title>Wszystkie Kluby</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Wszystkie Zespoły</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="~/css/siteShow.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        h1 {
+            color: #007bff;
+        }
+
+        th {
+            background-color: #007bff;
+            color: #ffffff;
+        }
+
+        tbody tr:hover {
+            background-color: #f2f2f2;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
-        <h1>Wszystkie zespoły</h1>
-            <table class="table table-striped">
-                <thead>
+        <h1>Wszystkie Zespoły</h1>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Nazwa</th>
+                    <th>Typ drużyny</th>
+                    <th>Trener</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Branches)
+                {
                     <tr>
-                        <th>Nazwa</th>
-                        <th>Typ drużyny</th>
-                        <th>Trener</th>
+                        <td>@Html.DisplayFor(modelItem => item.Club.Name)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Type)</td>
+                        <td>@Html.DisplayFor(modelItem => item.User.UserName)</td>
                     </tr>
-                </thead>
-                <tbody>
-                    @foreach (var item in Model.Branches)
-                    {
-                        <tr>
-                            <td>@Html.DisplayFor(modelItem => item.Club.Name)</td>
-                            <td>@Html.DisplayFor(modelItem => item.Type)</td>
-                            <td>@Html.DisplayFor(modelItem => item.User.UserName)</td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
+                }
+            </tbody>
+        </table>
     </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 </body>
 </html>

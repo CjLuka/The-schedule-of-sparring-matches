@@ -18,6 +18,7 @@ namespace SheduleMatchWeb.Pages
         public async Task<IActionResult> OnGetAsync()
         {
             var allBranches = await _branchClubServices.GetAllBranchClubsAsync();
+
             Branches = allBranches.Data.ToList();
             return Page();
         }

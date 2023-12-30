@@ -63,6 +63,7 @@ namespace Persistance.Repo.Repositories
                 .Where(x => x.HasResult == false)
                 .Include(s => s.Sender.Club)
                 .Include(r => r.Receiver.Club)
+                .Include(x => x.FootballPitch)
                 .ToListAsync();
 
             return allMatches;
@@ -76,6 +77,7 @@ namespace Persistance.Repo.Repositories
                 .Where(mr => !mr.IsAccepted.HasValue)
                 .Include(c => c.Receiver.Club)
                 .Include(c => c.Sender.Club)
+                .Include(c => c.FootballPitch)
                 .ToListAsync();
             return matchPropositions;
         }

@@ -9,165 +9,175 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = SheduleMatchWeb
 build_property.RootNamespace = SheduleMatchWeb
-build_property.ProjectDir = F:\Praca dyplomowa - kopia\Praca dyplomowa\Projekt\SheduleMatchProject\SheduleMatchWeb\
+build_property.ProjectDir = F:\Praca dyplomowa\Praca dyplomowa\Projekt\SheduleMatchProject\SheduleMatchWeb\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 7.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = F:\Praca dyplomowa - kopia\Praca dyplomowa\Projekt\SheduleMatchProject\SheduleMatchWeb
+build_property.MSBuildProjectDirectory = F:\Praca dyplomowa\Praca dyplomowa\Projekt\SheduleMatchProject\SheduleMatchWeb
 build_property._RazorSourceGeneratorDebug = 
 
-[F:/Praca dyplomowa - kopia/Praca dyplomowa/Projekt/SheduleMatchProject/SheduleMatchWeb/Pages/AccessDenied.cshtml]
+[F:/Praca dyplomowa/Praca dyplomowa/Projekt/SheduleMatchProject/SheduleMatchWeb/Pages/AccessDenied.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWNjZXNzRGVuaWVkLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/Praca dyplomowa - kopia/Praca dyplomowa/Projekt/SheduleMatchProject/SheduleMatchWeb/Pages/AllBranches.cshtml]
+[F:/Praca dyplomowa/Praca dyplomowa/Projekt/SheduleMatchProject/SheduleMatchWeb/Pages/AllBranches.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWxsQnJhbmNoZXMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/Praca dyplomowa - kopia/Praca dyplomowa/Projekt/SheduleMatchProject/SheduleMatchWeb/Pages/Calendar.cshtml]
+[F:/Praca dyplomowa/Praca dyplomowa/Projekt/SheduleMatchProject/SheduleMatchWeb/Pages/AllPitches.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWxsUGl0Y2hlcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/Praca dyplomowa/Praca dyplomowa/Projekt/SheduleMatchProject/SheduleMatchWeb/Pages/Calendar.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2FsZW5kYXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/Praca dyplomowa - kopia/Praca dyplomowa/Projekt/SheduleMatchProject/SheduleMatchWeb/Pages/Clubs/Admin/AddNewClub.cshtml]
+[F:/Praca dyplomowa/Praca dyplomowa/Projekt/SheduleMatchProject/SheduleMatchWeb/Pages/Clubs/Admin/AddNewClub.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2x1YnNcQWRtaW5cQWRkTmV3Q2x1Yi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/Praca dyplomowa - kopia/Praca dyplomowa/Projekt/SheduleMatchProject/SheduleMatchWeb/Pages/Clubs/BranchClubs/MyBranchClub.cshtml]
+[F:/Praca dyplomowa/Praca dyplomowa/Projekt/SheduleMatchProject/SheduleMatchWeb/Pages/Clubs/BranchClubs/MyBranchClub.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2x1YnNcQnJhbmNoQ2x1YnNcTXlCcmFuY2hDbHViLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/Praca dyplomowa - kopia/Praca dyplomowa/Projekt/SheduleMatchProject/SheduleMatchWeb/Pages/Clubs/BranchClubs/ShowAllBranchesClub.cshtml]
+[F:/Praca dyplomowa/Praca dyplomowa/Projekt/SheduleMatchProject/SheduleMatchWeb/Pages/Clubs/BranchClubs/ShowAllBranchesClub.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2x1YnNcQnJhbmNoQ2x1YnNcU2hvd0FsbEJyYW5jaGVzQ2x1Yi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/Praca dyplomowa - kopia/Praca dyplomowa/Projekt/SheduleMatchProject/SheduleMatchWeb/Pages/Clubs/Coach/BranchesForPlanMatch.cshtml]
+[F:/Praca dyplomowa/Praca dyplomowa/Projekt/SheduleMatchProject/SheduleMatchWeb/Pages/Clubs/Coach/BranchesForPlanMatch.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2x1YnNcQ29hY2hcQnJhbmNoZXNGb3JQbGFuTWF0Y2guY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/Praca dyplomowa - kopia/Praca dyplomowa/Projekt/SheduleMatchProject/SheduleMatchWeb/Pages/Clubs/Coach/ChosePitchForMatch.cshtml]
+[F:/Praca dyplomowa/Praca dyplomowa/Projekt/SheduleMatchProject/SheduleMatchWeb/Pages/Clubs/Coach/ChosePitchForMatch.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2x1YnNcQ29hY2hcQ2hvc2VQaXRjaEZvck1hdGNoLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/Praca dyplomowa - kopia/Praca dyplomowa/Projekt/SheduleMatchProject/SheduleMatchWeb/Pages/Clubs/Coach/MatchesPlayed.cshtml]
+[F:/Praca dyplomowa/Praca dyplomowa/Projekt/SheduleMatchProject/SheduleMatchWeb/Pages/Clubs/Coach/MatchesPlayed.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2x1YnNcQ29hY2hcTWF0Y2hlc1BsYXllZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/Praca dyplomowa - kopia/Praca dyplomowa/Projekt/SheduleMatchProject/SheduleMatchWeb/Pages/Clubs/Coach/MatchPropositions.cshtml]
+[F:/Praca dyplomowa/Praca dyplomowa/Projekt/SheduleMatchProject/SheduleMatchWeb/Pages/Clubs/Coach/MatchPropositions.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2x1YnNcQ29hY2hcTWF0Y2hQcm9wb3NpdGlvbnMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/Praca dyplomowa - kopia/Praca dyplomowa/Projekt/SheduleMatchProject/SheduleMatchWeb/Pages/Clubs/Coach/MyPlannedMatch.cshtml]
+[F:/Praca dyplomowa/Praca dyplomowa/Projekt/SheduleMatchProject/SheduleMatchWeb/Pages/Clubs/Coach/MyClub.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2x1YnNcQ29hY2hcTXlDbHViLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/Praca dyplomowa/Praca dyplomowa/Projekt/SheduleMatchProject/SheduleMatchWeb/Pages/Clubs/Coach/MyPlannedMatch.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2x1YnNcQ29hY2hcTXlQbGFubmVkTWF0Y2guY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/Praca dyplomowa - kopia/Praca dyplomowa/Projekt/SheduleMatchProject/SheduleMatchWeb/Pages/Clubs/Coach/PlanMatchWithoutPitch.cshtml]
+[F:/Praca dyplomowa/Praca dyplomowa/Projekt/SheduleMatchProject/SheduleMatchWeb/Pages/Clubs/Coach/PlanMatchWithoutPitch.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2x1YnNcQ29hY2hcUGxhbk1hdGNoV2l0aG91dFBpdGNoLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/Praca dyplomowa - kopia/Praca dyplomowa/Projekt/SheduleMatchProject/SheduleMatchWeb/Pages/Clubs/Coach/PlanMatchWithPitch.cshtml]
+[F:/Praca dyplomowa/Praca dyplomowa/Projekt/SheduleMatchProject/SheduleMatchWeb/Pages/Clubs/Coach/PlanMatchWithPitch.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2x1YnNcQ29hY2hcUGxhbk1hdGNoV2l0aFBpdGNoLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/Praca dyplomowa - kopia/Praca dyplomowa/Projekt/SheduleMatchProject/SheduleMatchWeb/Pages/Clubs/Coach/ScheduledMatches.cshtml]
+[F:/Praca dyplomowa/Praca dyplomowa/Projekt/SheduleMatchProject/SheduleMatchWeb/Pages/Clubs/Coach/ScheduledMatches.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2x1YnNcQ29hY2hcU2NoZWR1bGVkTWF0Y2hlcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/Praca dyplomowa - kopia/Praca dyplomowa/Projekt/SheduleMatchProject/SheduleMatchWeb/Pages/Clubs/MyClub.cshtml]
+[F:/Praca dyplomowa/Praca dyplomowa/Projekt/SheduleMatchProject/SheduleMatchWeb/Pages/Clubs/MyClub.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2x1YnNcTXlDbHViLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/Praca dyplomowa - kopia/Praca dyplomowa/Projekt/SheduleMatchProject/SheduleMatchWeb/Pages/Clubs/President/AddBranch.cshtml]
+[F:/Praca dyplomowa/Praca dyplomowa/Projekt/SheduleMatchProject/SheduleMatchWeb/Pages/Clubs/President/AddBranch.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2x1YnNcUHJlc2lkZW50XEFkZEJyYW5jaC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/Praca dyplomowa - kopia/Praca dyplomowa/Projekt/SheduleMatchProject/SheduleMatchWeb/Pages/Clubs/President/AddResultToMatch.cshtml]
+[F:/Praca dyplomowa/Praca dyplomowa/Projekt/SheduleMatchProject/SheduleMatchWeb/Pages/Clubs/President/AddResultToMatch.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2x1YnNcUHJlc2lkZW50XEFkZFJlc3VsdFRvTWF0Y2guY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/Praca dyplomowa - kopia/Praca dyplomowa/Projekt/SheduleMatchProject/SheduleMatchWeb/Pages/Clubs/President/MatchesPlayed.cshtml]
+[F:/Praca dyplomowa/Praca dyplomowa/Projekt/SheduleMatchProject/SheduleMatchWeb/Pages/Clubs/President/MatchesPlayed.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2x1YnNcUHJlc2lkZW50XE1hdGNoZXNQbGF5ZWQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/Praca dyplomowa - kopia/Praca dyplomowa/Projekt/SheduleMatchProject/SheduleMatchWeb/Pages/Clubs/President/MyBranches.cshtml]
+[F:/Praca dyplomowa/Praca dyplomowa/Projekt/SheduleMatchProject/SheduleMatchWeb/Pages/Clubs/President/MyBranches.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2x1YnNcUHJlc2lkZW50XE15QnJhbmNoZXMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/Praca dyplomowa - kopia/Praca dyplomowa/Projekt/SheduleMatchProject/SheduleMatchWeb/Pages/Clubs/President/ScheduledMatches.cshtml]
+[F:/Praca dyplomowa/Praca dyplomowa/Projekt/SheduleMatchProject/SheduleMatchWeb/Pages/Clubs/President/ScheduledMatches.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2x1YnNcUHJlc2lkZW50XFNjaGVkdWxlZE1hdGNoZXMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/Praca dyplomowa - kopia/Praca dyplomowa/Projekt/SheduleMatchProject/SheduleMatchWeb/Pages/Clubs/President/UpdateBranch.cshtml]
+[F:/Praca dyplomowa/Praca dyplomowa/Projekt/SheduleMatchProject/SheduleMatchWeb/Pages/Clubs/President/UpdateBranch.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2x1YnNcUHJlc2lkZW50XFVwZGF0ZUJyYW5jaC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/Praca dyplomowa - kopia/Praca dyplomowa/Projekt/SheduleMatchProject/SheduleMatchWeb/Pages/Clubs/SheduledMatches.cshtml]
+[F:/Praca dyplomowa/Praca dyplomowa/Projekt/SheduleMatchProject/SheduleMatchWeb/Pages/Clubs/SheduledMatches.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2x1YnNcU2hlZHVsZWRNYXRjaGVzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/Praca dyplomowa - kopia/Praca dyplomowa/Projekt/SheduleMatchProject/SheduleMatchWeb/Pages/Clubs/ShowAllClubs.cshtml]
+[F:/Praca dyplomowa/Praca dyplomowa/Projekt/SheduleMatchProject/SheduleMatchWeb/Pages/Clubs/ShowAllClubs.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2x1YnNcU2hvd0FsbENsdWJzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/Praca dyplomowa - kopia/Praca dyplomowa/Projekt/SheduleMatchProject/SheduleMatchWeb/Pages/Clubs/UpdateClub.cshtml]
+[F:/Praca dyplomowa/Praca dyplomowa/Projekt/SheduleMatchProject/SheduleMatchWeb/Pages/Clubs/UpdateClub.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2x1YnNcVXBkYXRlQ2x1Yi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/Praca dyplomowa - kopia/Praca dyplomowa/Projekt/SheduleMatchProject/SheduleMatchWeb/Pages/Error.cshtml]
+[F:/Praca dyplomowa/Praca dyplomowa/Projekt/SheduleMatchProject/SheduleMatchWeb/Pages/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/Praca dyplomowa - kopia/Praca dyplomowa/Projekt/SheduleMatchProject/SheduleMatchWeb/Pages/Index.cshtml]
+[F:/Praca dyplomowa/Praca dyplomowa/Projekt/SheduleMatchProject/SheduleMatchWeb/Pages/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/Praca dyplomowa - kopia/Praca dyplomowa/Projekt/SheduleMatchProject/SheduleMatchWeb/Pages/Login.cshtml]
+[F:/Praca dyplomowa/Praca dyplomowa/Projekt/SheduleMatchProject/SheduleMatchWeb/Pages/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTG9naW4uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/Praca dyplomowa - kopia/Praca dyplomowa/Projekt/SheduleMatchProject/SheduleMatchWeb/Pages/LogOut.cshtml]
+[F:/Praca dyplomowa/Praca dyplomowa/Projekt/SheduleMatchProject/SheduleMatchWeb/Pages/LogOut.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTG9nT3V0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/Praca dyplomowa - kopia/Praca dyplomowa/Projekt/SheduleMatchProject/SheduleMatchWeb/Pages/Matches/MatchPlanned.cshtml]
+[F:/Praca dyplomowa/Praca dyplomowa/Projekt/SheduleMatchProject/SheduleMatchWeb/Pages/Matches/MatchPlanned.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWF0Y2hlc1xNYXRjaFBsYW5uZWQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/Praca dyplomowa - kopia/Praca dyplomowa/Projekt/SheduleMatchProject/SheduleMatchWeb/Pages/Matches/MyScheduleMatch.cshtml]
+[F:/Praca dyplomowa/Praca dyplomowa/Projekt/SheduleMatchProject/SheduleMatchWeb/Pages/Matches/MyScheduleMatch.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWF0Y2hlc1xNeVNjaGVkdWxlTWF0Y2guY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/Praca dyplomowa - kopia/Praca dyplomowa/Projekt/SheduleMatchProject/SheduleMatchWeb/Pages/Matches/PlanNewMatch.cshtml]
+[F:/Praca dyplomowa/Praca dyplomowa/Projekt/SheduleMatchProject/SheduleMatchWeb/Pages/Matches/PlanNewMatch.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWF0Y2hlc1xQbGFuTmV3TWF0Y2guY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/Praca dyplomowa - kopia/Praca dyplomowa/Projekt/SheduleMatchProject/SheduleMatchWeb/Pages/Privacy.cshtml]
+[F:/Praca dyplomowa/Praca dyplomowa/Projekt/SheduleMatchProject/SheduleMatchWeb/Pages/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJpdmFjeS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/Praca dyplomowa - kopia/Praca dyplomowa/Projekt/SheduleMatchProject/SheduleMatchWeb/Pages/Register.cshtml]
+[F:/Praca dyplomowa/Praca dyplomowa/Projekt/SheduleMatchProject/SheduleMatchWeb/Pages/Register.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmVnaXN0ZXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/Praca dyplomowa - kopia/Praca dyplomowa/Projekt/SheduleMatchProject/SheduleMatchWeb/Pages/Shared/_NoAvaliableData.cshtml]
+[F:/Praca dyplomowa/Praca dyplomowa/Projekt/SheduleMatchProject/SheduleMatchWeb/Pages/Shared/_NoAvaliableData.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9Ob0F2YWxpYWJsZURhdGEuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/Praca dyplomowa - kopia/Praca dyplomowa/Projekt/SheduleMatchProject/SheduleMatchWeb/Pages/Shared/_Notification.cshtml]
+[F:/Praca dyplomowa/Praca dyplomowa/Projekt/SheduleMatchProject/SheduleMatchWeb/Pages/Shared/_Notification.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9Ob3RpZmljYXRpb24uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/Praca dyplomowa - kopia/Praca dyplomowa/Projekt/SheduleMatchProject/SheduleMatchWeb/Pages/Shared/_ValidationScriptsPartial.cshtml]
+[F:/Praca dyplomowa/Praca dyplomowa/Projekt/SheduleMatchProject/SheduleMatchWeb/Pages/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/Praca dyplomowa - kopia/Praca dyplomowa/Projekt/SheduleMatchProject/SheduleMatchWeb/Pages/_ViewImports.cshtml]
+[F:/Praca dyplomowa/Praca dyplomowa/Projekt/SheduleMatchProject/SheduleMatchWeb/Pages/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/Praca dyplomowa - kopia/Praca dyplomowa/Projekt/SheduleMatchProject/SheduleMatchWeb/Pages/_ViewStart.cshtml]
+[F:/Praca dyplomowa/Praca dyplomowa/Projekt/SheduleMatchProject/SheduleMatchWeb/Pages/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/Praca dyplomowa - kopia/Praca dyplomowa/Projekt/SheduleMatchProject/SheduleMatchWeb/Pages/Shared/_Layout.cshtml]
+[F:/Praca dyplomowa/Praca dyplomowa/Projekt/SheduleMatchProject/SheduleMatchWeb/Pages/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-0376fvzg7w

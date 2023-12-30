@@ -23,5 +23,6 @@ namespace Aplication.Services.Interfaces
         Task<ServiceResponse<List<User>>> GetAllCoaches();
         Task<ServiceResponse<List<User>>> GetUsersWithoutAnyFunction();
         Task<ServiceResponse<List<User>>> GetAll();
+        Task<string> GetEmailByUserIdAsync(string userId);
     }
 }

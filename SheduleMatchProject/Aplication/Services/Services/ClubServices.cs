@@ -1,6 +1,7 @@
 ﻿using Aplication.Services.Interfaces;
 using AutoMapper;
 using Domain.Models.Domain;
+using Domain.Models.Pagination;
 using Domain.Models.VievModel;
 using Domain.Response;
 using Microsoft.IdentityModel.Tokens;
@@ -34,6 +35,16 @@ namespace Aplication.Services.Services
             }
 
             return new ServiceResponse<List<Club>>(Clubs, true);
+        }
+        public async Task<ServiceResponse<ListPaginated<Club>>> GetAllAsync(ModelPagination modelPagination)
+        {
+            var Clubs = await _clubRepository.GetAllAsync(modelPagination);
+            if (Clubs == null)
+            {
+                return new ServiceResponse<ListPaginated<Club>>(false, "Brak klubów w bazie danych!");
+            }
+
+            return new ServiceResponse<ListPaginated<Club>>(Clubs, true);
         }
         public async Task<ServiceResponse<newClub>> AddClubAsync(newClub newClub)
         {

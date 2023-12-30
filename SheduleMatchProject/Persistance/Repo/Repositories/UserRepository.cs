@@ -114,5 +114,12 @@ namespace Persistance.Repo.Repositories
 		{
 			throw new NotImplementedException();
 		}
+
+        public async Task<string> GetEmailByUserIdAsync(string userId)
+        {
+            var user = await _context.Users
+                .FirstOrDefaultAsync(u => u.Id == userId);
+            return user.Email;
+        }
 	}
 }

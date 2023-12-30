@@ -32,3 +32,22 @@ F:\Praca dyplomowa - kopia\Praca dyplomowa\Projekt\SheduleMatchProject\Aplicatio
 F:\Praca dyplomowa - kopia\Praca dyplomowa\Projekt\SheduleMatchProject\Aplication\bin\Debug\net7.0\Domain.pdb
 F:\Praca dyplomowa - kopia\Praca dyplomowa\Projekt\SheduleMatchProject\Aplication\obj\Debug\net7.0\Aplication.csproj.CopyComplete
 F:\Praca dyplomowa - kopia\Praca dyplomowa\Projekt\SheduleMatchProject\Aplication\obj\Debug\net7.0\ref\Aplication.dll
+F:\Praca dyplomowa - kopia\Praca dyplomowa\Projekt\SheduleMatchProject\Aplication\obj\Debug\net7.0\Aplication.sourcelink.json
+F:\Praca dyplomowa\Praca dyplomowa\Projekt\SheduleMatchProject\Aplication\bin\Debug\net7.0\Aplication.deps.json
+F:\Praca dyplomowa\Praca dyplomowa\Projekt\SheduleMatchProject\Aplication\bin\Debug\net7.0\Aplication.dll
+F:\Praca dyplomowa\Praca dyplomowa\Projekt\SheduleMatchProject\Aplication\bin\Debug\net7.0\Aplication.pdb
+F:\Praca dyplomowa\Praca dyplomowa\Projekt\SheduleMatchProject\Aplication\bin\Debug\net7.0\Domain.dll
+F:\Praca dyplomowa\Praca dyplomowa\Projekt\SheduleMatchProject\Aplication\bin\Debug\net7.0\Persistance.dll
+F:\Praca dyplomowa\Praca dyplomowa\Projekt\SheduleMatchProject\Aplication\bin\Debug\net7.0\Persistance.pdb
+F:\Praca dyplomowa\Praca dyplomowa\Projekt\SheduleMatchProject\Aplication\bin\Debug\net7.0\Domain.pdb
+F:\Praca dyplomowa\Praca dyplomowa\Projekt\SheduleMatchProject\Aplication\obj\Debug\net7.0\Aplication.csproj.AssemblyReference.cache
+F:\Praca dyplomowa\Praca dyplomowa\Projekt\SheduleMatchProject\Aplication\obj\Debug\net7.0\Aplication.GeneratedMSBuildEditorConfig.editorconfig
+F:\Praca dyplomowa\Praca dyplomowa\Projekt\SheduleMatchProject\Aplication\obj\Debug\net7.0\Aplication.AssemblyInfoInputs.cache
+F:\Praca dyplomowa\Praca dyplomowa\Projekt\SheduleMatchProject\Aplication\obj\Debug\net7.0\Aplication.AssemblyInfo.cs
+F:\Praca dyplomowa\Praca dyplomowa\Projekt\SheduleMatchProject\Aplication\obj\Debug\net7.0\Aplication.csproj.CoreCompileInputs.cache
+F:\Praca dyplomowa\Praca dyplomowa\Projekt\SheduleMatchProject\Aplication\obj\Debug\net7.0\Aplication.sourcelink.json
+F:\Praca dyplomowa\Praca dyplomowa\Projekt\SheduleMatchProject\Aplication\obj\Debug\net7.0\Aplication.csproj.CopyComplete
+F:\Praca dyplomowa\Praca dyplomowa\Projekt\SheduleMatchProject\Aplication\obj\Debug\net7.0\Aplication.dll
+F:\Praca dyplomowa\Praca dyplomowa\Projekt\SheduleMatchProject\Aplication\obj\Debug\net7.0\refint\Aplication.dll
+F:\Praca dyplomowa\Praca dyplomowa\Projekt\SheduleMatchProject\Aplication\obj\Debug\net7.0\Aplication.pdb
+F:\Praca dyplomowa\Praca dyplomowa\Projekt\SheduleMatchProject\Aplication\obj\Debug\net7.0\ref\Aplication.dll

@@ -21,7 +21,6 @@ namespace SheduleMatchWeb.Pages.Clubs.Coach
         public MatchRequest matchRequest { get; set; }
         public async Task<IActionResult> OnGetAsync(int id)
         {
-
             return Page();
         }
         public async Task<IActionResult> OnPostAsync(int id)
@@ -38,7 +37,7 @@ namespace SheduleMatchWeb.Pages.Clubs.Coach
             matchRequest.CreatedDate = DateTime.Now;
 
             await _matchRequestServices.PlanNewMatchAsync(matchRequest);
-            return RedirectToPage("../Coach/MyPlannedMatch");
+            return RedirectToPage("../Coach/ScheduledMatches");
         }
     }
 }

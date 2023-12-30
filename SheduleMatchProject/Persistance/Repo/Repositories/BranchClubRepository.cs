@@ -91,6 +91,7 @@ namespace Persistance.Repo.Repositories
         {
             var branch = await _context.BranchesClubs
                 .Include(c => c.Club)
+                .ThenInclude(b => b.Branches)
                 .FirstOrDefaultAsync(b => b.Id == branchClubId);
             return branch;
         }
@@ -99,6 +100,7 @@ namespace Persistance.Repo.Repositories
         {
             var myBranchClub = await _context.BranchesClubs
                 .Include(c => c.Club)
+                .Include(u => u.User)
                 .FirstOrDefaultAsync(u => u.UserId == userId);
             return myBranchClub;
         }

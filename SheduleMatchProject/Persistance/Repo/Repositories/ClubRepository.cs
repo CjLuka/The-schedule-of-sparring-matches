@@ -1,6 +1,8 @@
 ﻿using Domain.Models.Domain;
+using Domain.Models.Pagination;
 using Microsoft.EntityFrameworkCore;
 using Persistance.Data;
+using Persistance.Helpers;
 using Persistance.Repo.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -21,10 +23,20 @@ namespace Persistance.Repo.Repositories
         public async Task<List<Club>> GetAllAsync()
         {
             var Clubs = await _context.Clubs
-                .Include(C => C.GameClass)
+                .Include(c => c.GameClass)
+                .Include(u => u.User)
                 .ToListAsync();
             return Clubs;
         }
+        public async Task<ListPaginated<Club>> GetAllAsync(ModelPagination modelPagination)
+        {
+            var Clubs = await _context.Clubs
+                .Include(c => c.GameClass)
+                .Include(u => u.User)
+                .AddPagination(modelPagination);
+            return Clubs;
+        }
+
         public async Task<Club> GetByIdAsync(int clubId)
         {
             return await _context.Clubs.FirstOrDefaultAsync(c => c.Id == clubId);
@@ -53,7 +65,9 @@ namespace Persistance.Repo.Repositories
 
         public async Task<Club> GetClubByPresidentIdAsync(string userId)
         {
-            return await _context.Clubs.FirstOrDefaultAsync(c => c.UserId== userId);
+            return await _context.Clubs
+                .Include(x => x.GameClass)
+                .FirstOrDefaultAsync(c => c.UserId== userId);
         }
     }
 }
