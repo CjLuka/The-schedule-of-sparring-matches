@@ -1,5 +1,6 @@
 ﻿using Aplication.Services.Interfaces;
 using Domain.Models.Domain;
+using Domain.Models.Pagination;
 using Domain.Response;
 using Persistance.Repo.Interfaces;
 using System;
@@ -27,6 +28,16 @@ namespace Aplication.Services.Services
             }
 
             return new ServiceResponse<List<BranchClub>>(branchClubs, true);
+        }
+        public async Task<ServiceResponse<ListPaginated<BranchClub>>> GetAllBranchClubsAsync(ModelPagination pagination)
+        {
+            var branchClubs = await _branchClubRepository.GetAllBranchClubAsync(pagination);
+            if (branchClubs == null)
+            {
+                return new ServiceResponse<ListPaginated<BranchClub>>(false, "Brak zespołów");
+            }
+
+            return new ServiceResponse<ListPaginated<BranchClub>>(branchClubs, true);
         }
 
         public async Task<ServiceResponse<List<BranchClub>>> GetAllBranchClubsForPlanMatchAsync(int clubId)

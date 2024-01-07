@@ -1,6 +1,8 @@
 ﻿using Domain.Models.Domain;
+using Domain.Models.Pagination;
 using Microsoft.EntityFrameworkCore;
 using Persistance.Data;
+using Persistance.Helpers;
 using Persistance.Repo.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -22,6 +24,13 @@ namespace Persistance.Repo.Repositories
             var allFootballPitches = await _context.FootballPitches
                 .Include(x => x.Addresses)
                 .ToListAsync();
+            return allFootballPitches;
+        }
+        public async Task<ListPaginated<FootballPitch>> GetAllAsync(ModelPagination pagination)
+        {
+            var allFootballPitches = await _context.FootballPitches
+                .Include(x => x.Addresses)
+                .AddPagination(pagination);
             return allFootballPitches;
         }
         public async Task<List<FootballPitch>> GetAvailableFootballPitchesForMatchRequest(DateTime dateTime)

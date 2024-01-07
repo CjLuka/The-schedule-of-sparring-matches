@@ -1,5 +1,6 @@
 using Aplication.Services.Interfaces;
 using Domain.Models.Domain;
+using Domain.Models.Pagination;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -15,10 +16,13 @@ namespace SheduleMatchWeb.Pages
         }
 
         [BindProperty]
-        public List<FootballPitch> FootballPitches { get; set; }
-        public async Task<IActionResult> OnGetAsync()
+        public ListPaginated<FootballPitch> FootballPitches { get; set; }
+        [BindProperty]
+        public ModelPagination Pagination { get; set; }
+        public async Task<IActionResult> OnGetAsync(int side = 1, int size = 10)
         {
-            var allPitches = await _footballPitchServices.GetAllFootballPitchesAsync();
+            Pagination = new ModelPagination(side, size);
+            var allPitches = await _footballPitchServices.GetAllFootballPitchesAsync(Pagination);
 
             FootballPitches = allPitches.Data;
             return Page();

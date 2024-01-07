@@ -31,8 +31,8 @@ else
             }
 
             .container {
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                border-radius: 8px;
             }
 
             h1 {
@@ -74,15 +74,12 @@ else
                             <th>Nazwa</th>
                             <th>Data powstania klubu</th>
                             <th>Klasa rozgrywkowa</th>
-@*                            <th>Prezes klubu</th>
-*@                          <th>Zdjęcie</th>
-                            @if (User.IsInRole("Admin"))
+@*                             <th>Zdjęcie</th>
+ *@                            @if (User.IsInRole("Admin"))
                             {
                                 <th></th>
                                 <th></th>
                             }
-                            
-
                         </tr>
                     </thead>
                     <tbody>
@@ -92,10 +89,9 @@ else
                                 <td>@Html.DisplayFor(modelItem => item.Name)</td>
                                 <td>@Html.DisplayFor(modelItem => item.DateCreated)</td>
                                 <td>@Html.DisplayFor(modelItem => item.GameClass.Name)</td>
-                                @*<td>@Html.DisplayFor(modelItem => item.User.UserName)</td>*@
-                                <td>
+                                @* <td>
                                     <img src="@item.FeaturedImageUrl" class="club-image" />
-                                </td>
+                                </td> *@
                                 @if (User.IsInRole("Admin"))
                                 {
                                     <td>
@@ -109,32 +105,67 @@ else
                         }
                     </tbody>
                 </table>
-                @* <nav aria-label="Page navigation example">
-                    <ul class="pagination">
-                        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+
+                <nav aria-label="...">
+                    <ul class="pagination justify-content-end">
+                        @if (Model.Pagination.Page != 1)
+                        {
+                            <li class="page-item disabled">
+                                <a class="nav-link text-dark"
+                                   asp-page="/Clubs/ShowAllClubs"
+                                   asp-route-side="1"
+                                   asp-route-size="@Model.Pagination.Size"
+                                   asp-area="">
+                                    Pierwsza
+                                </a>
+                            </li>
+                        }
+                        @if (Model.Pagination.Page > 2)
+                        {
+                            <li class="page-item disabled">
+                                <a class="nav-link text-dark"
+                                   asp-page="/Clubs/ShowAllClubs"
+                                   asp-route-side="@(Model.Pagination.Page - 1)"
+                                   asp-route-size="@Model.Pagination.Size"
+                                   asp-area="">
+                                    @(Model.Pagination.Page - 1)
+                                </a>
+                            </li>
+                        }
+
+                        <li class="page-item active">
+                            <a class="page-link" href="#">@Model.Pagination.Page <span class="sr-only">(current)</span></a>
+                        </li>
+                        @if (Model.Pagination.Page < (Model.Clubs.PaginationInfo.PagesCount - 1))
+                        {
+                            <li class="page-item">
+                                <a class="nav-link text-dark"
+                                   asp-page="/Clubs/ShowAllClubs"
+                                   asp-route-side="@(Model.Pagination.Page + 1)"
+                                   asp-route-size="@Model.Pagination.Size"
+                                   asp-area="">
+                                    @(Model.Pagination.Page + 1)
+                                </a>
+                            </li>
+                        }
+                        @if (Model.Pagination.Page < Model.Clubs.PaginationInfo.PagesCount)
+                        {
+                            <li class="page-item">
+                                <a class="nav-link text-dark"
+                                   asp-page="/Clubs/ShowAllClubs"
+                                   asp-route-side="@(Model.Clubs.PaginationInfo.PagesCount)"
+                                   asp-route-size="@Model.Pagination.Size"
+                                   asp-area="">
+                                    Ostatnia
+                                </a>
+                            </li>
+                        }
                     </ul>
-                </nav> *@
-                @* <a class="nav-link text-dark" asp-page="/Clubs/ShowAllClubs" asp-route-page="@Model.Clubs.PaginationInfo.CurrentPage + 1" asp-route-size="@Model.Clubs.PaginationInfo.CurrentSize" asp-area="">next</a>
-                <a class="pagination" asp-page="/Clubs/ShowAllClubs" asp-route-page="@Model.Clubs.PaginationInfo.CurrentPage + 1" asp-route-size="@Model.Clubs.PaginationInfo.CurrentSize" asp-area="">next2</a> *@
-
-
-                <a class="nav-link text-dark"
-                   asp-page="/Clubs/ShowAllClubs"
-                   asp-route-page="@Model.Clubs.PaginationInfo.CurrentPage + 1"
-                   asp-route-size="@Model.Clubs.PaginationInfo.CurrentSize"
-                   asp-area="">
-                    next
-                </a>
-
-
+                </nav>
 
                 @if (User.IsInRole("Admin"))
                 {
-                    <a asp-page="./Admin/AddNewClub" class="btn btn-success">Dodaj nowy klub</a>
+                    <a asp-page="./Admin/AddNewClub" class="btn btn-success float-right">Dodaj nowy klub</a>
                 }
             </form>
         </div>

@@ -45,7 +45,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (var item in Model.Branches)
+                @foreach (var item in Model.Branches.Items)
                 {
                     <tr>
                         <td>@Html.DisplayFor(modelItem => item.Club.Name)</td>
@@ -55,6 +55,63 @@
                 }
             </tbody>
         </table>
+
+        <nav aria-label="...">
+            <ul class="pagination justify-content-end">
+                @if (Model.Pagination.Page != 1)
+                {
+                    <li class="page-item disabled">
+                        <a class="nav-link text-dark"
+                           asp-page="/AllBranches"
+                           asp-route-side="1"
+                           asp-route-size="@Model.Pagination.Size"
+                           asp-area="">
+                            Pierwsza
+                        </a>
+                    </li>
+                }
+                @if (Model.Pagination.Page > 2)
+                {
+                    <li class="page-item disabled">
+                        <a class="nav-link text-dark"
+                           asp-page="/AllBranches"
+                           asp-route-side="@(Model.Pagination.Page - 1)"
+                           asp-route-size="@Model.Pagination.Size"
+                           asp-area="">
+                            @(Model.Pagination.Page - 1)
+                        </a>
+                    </li>
+                }
+
+                <li class="page-item active">
+                    <a class="page-link" href="#">@Model.Pagination.Page <span class="sr-only">(current)</span></a>
+                </li>
+                @if (Model.Pagination.Page < (Model.Branches.PaginationInfo.PagesCount - 1))
+                {
+                    <li class="page-item">
+                        <a class="nav-link text-dark"
+                           asp-page="/AllBranches"
+                           asp-route-side="@(Model.Pagination.Page + 1)"
+                           asp-route-size="@Model.Pagination.Size"
+                           asp-area="">
+                            @(Model.Pagination.Page + 1)
+                        </a>
+                    </li>
+                }
+                @if (Model.Pagination.Page < Model.Branches.PaginationInfo.PagesCount)
+                {
+                    <li class="page-item">
+                        <a class="nav-link text-dark"
+                           asp-page="/AllBranches"
+                           asp-route-side="@(Model.Branches.PaginationInfo.PagesCount)"
+                           asp-route-size="@Model.Pagination.Size"
+                           asp-area="">
+                            Ostatnia
+                        </a>
+                    </li>
+                }
+            </ul>
+        </nav>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

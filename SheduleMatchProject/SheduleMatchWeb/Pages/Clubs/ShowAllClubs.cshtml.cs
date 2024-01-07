@@ -12,6 +12,7 @@ namespace SheduleMatchWeb.Pages.Clubs
     {
         private readonly IClubServices _clubServices;
 
+
         public ShowAllClubsModel(IClubServices clubServices)
         {
             _clubServices = clubServices;
@@ -19,12 +20,14 @@ namespace SheduleMatchWeb.Pages.Clubs
 
         [BindProperty]
         public ListPaginated<Club> Clubs { get; set; }
-
-
-        public async Task<IActionResult> OnGetAsync(int page = 1, int size = 1)
+        [BindProperty]
+        public ModelPagination Pagination { get; set; }
+        
+        public async Task<IActionResult> OnGetAsync(int side =1, int size = 10)
         {
+            Pagination = new ModelPagination(side, size);
    
-            var allClubs = await _clubServices.GetAllAsync(new ModelPagination(page, size));
+            var allClubs = await _clubServices.GetAllAsync(Pagination);
             Clubs = allClubs.Data;
 
             return Page();

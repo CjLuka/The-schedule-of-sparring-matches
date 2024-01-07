@@ -22,11 +22,11 @@ namespace Persistance.Helpers
                 PaginationInfo = new PaginationInfo()
                 {
                     TotalCount = totalCount,
-                    PagesCount = totalCount / modelPagination.Size,
+                    PagesCount = (int)Math.Ceiling((decimal)totalCount / modelPagination.Size),
                     FirstIndex = totalCount == 0 ? 0 : modelPagination.Size * (modelPagination.Page - 1) + 1,
                     LastIndex = Math.Min(modelPagination.Page * modelPagination.Size, totalCount),
-                    CurrentPage = modelPagination.Page,
-                    CurrentSize = modelPagination.Size
+                    //CurrentPage = modelPagination.Page,
+                    //CurrentSize = modelPagination.Size
                 }
 
             };

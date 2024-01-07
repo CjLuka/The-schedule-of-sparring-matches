@@ -12,7 +12,7 @@ namespace Domain.Models.Pagination
         public int TotalCount { get; set; }
         public int FirstIndex { get; set; }
         public int LastIndex { get; set; }
-        public int CurrentPage { get; set; }
-        public int CurrentSize { get; set; }
+        //public int CurrentPage { get; set; }
+        //public int CurrentSize { get; set; }
     }
 }

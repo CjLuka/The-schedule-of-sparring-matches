@@ -1,6 +1,8 @@
 ﻿using Domain.Models.Domain;
+using Domain.Models.Pagination;
 using Microsoft.EntityFrameworkCore;
 using Persistance.Data;
+using Persistance.Helpers;
 using Persistance.Repo.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -41,6 +43,15 @@ namespace Persistance.Repo.Repositories
                 .Include(c => c.Club)
                 .Include(u => u.User)
                 .ToListAsync();
+            return allBranchClubs;
+        }
+        public async Task<ListPaginated<BranchClub>> GetAllBranchClubAsync(ModelPagination pagination)
+        {
+            var allBranchClubs = await _context.BranchesClubs
+                .Include(c => c.Club)
+                .Include(u => u.User)
+                .AddPagination(pagination);
+
             return allBranchClubs;
         }
 

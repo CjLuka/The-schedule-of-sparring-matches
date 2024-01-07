@@ -1,4 +1,5 @@
 ﻿using Domain.Models.Domain;
+using Domain.Models.Pagination;
 using Persistance.Data;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,7 @@ namespace Persistance.Repo.Interfaces
     public interface IFootballPitchRepository
     {
         Task<List<FootballPitch>> GetAllAsync();
+        Task<ListPaginated<FootballPitch>> GetAllAsync(ModelPagination pagination);
         Task<List<FootballPitch>> GetAvailableFootballPitchesForMatchRequest(DateTime dateTime);
     }
 }

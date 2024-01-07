@@ -1,4 +1,5 @@
 ﻿using Domain.Models.Domain;
+using Domain.Models.Pagination;
 using Domain.Response;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,7 @@ namespace Aplication.Services.Interfaces
         Task<ServiceResponse<BranchClub>> GetBranchClubByCoachAsync(string coachId);
         Task<ServiceResponse<List<BranchClub>>> GetBranchesByClubAsync(int clubId);
         Task<ServiceResponse<List<BranchClub>>> GetAllBranchClubsAsync();
+        Task<ServiceResponse<ListPaginated<BranchClub>>> GetAllBranchClubsAsync(ModelPagination pagination);
         Task<ServiceResponse<BranchClub>> GetDetailBranchByIdAsync(int branchId);
         Task<ServiceResponse<List<BranchClub>>> GetAllBranchClubsForPlanMatchAsync(int clubId);//serwis pobierający wszystkie zespoły, poza zespolami z klubu, który składa prośbę o mecz
         Task<ServiceResponse<BranchClub>> AddBranchAsync(BranchClub branchClub);

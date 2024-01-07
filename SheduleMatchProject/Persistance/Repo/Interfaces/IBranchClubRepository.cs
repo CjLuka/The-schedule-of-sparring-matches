@@ -1,4 +1,5 @@
 ﻿using Domain.Models.Domain;
+using Domain.Models.Pagination;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,7 @@ namespace Persistance.Repo.Interfaces
         Task<List<BranchClub>> GetAllByClubAsync(int clubId);
         Task <BranchClub> GetClubBranchByCoach(string userId);
         Task<List<BranchClub>> GetAllBranchClubAsync();
+        Task<ListPaginated<BranchClub>> GetAllBranchClubAsync(ModelPagination pagination);
         Task<List<BranchClub>> GetAllBranchClubsForPlanMatch(int clubId);
         Task<BranchClub> GetDetailBranchByIdAsync(int branchClubId);
         Task<BranchClub> GetBranchByIdAsync(int branchClubId);
