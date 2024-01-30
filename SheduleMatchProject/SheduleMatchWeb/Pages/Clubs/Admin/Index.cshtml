@@ -1,0 +1,80 @@
+﻿@page
+@using Domain.Models.VievModel
+@model ScheduleMatchWeb.Pages.Clubs.Admin.IndexModel
+@{
+}
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Dodaj nowy stadion</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/siteShow.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+
+
+        .form-control, .form-select {
+            border-color: #007bff;
+        }
+
+        .btn-dark {
+            background-color: #343a40;
+            border-color: #343a40;
+        }
+
+            .btn-dark:hover {
+                background-color: #292b2c;
+                border-color: #292b2c;
+            }
+
+        .text-danger {
+            color: #dc3545;
+        }
+    </style>
+</head>
+<body>
+    @if (ViewData["adresy"] == null)
+    {
+        var model = new NoAvaliableData
+                {
+                    MessageTitle = "adresów",
+                    MessageContent1 = "Przepraszamy, ale aktualnie nie posiadamy adresów w bazie danych."
+                };
+        @Html.Partial("_NoAvaliableData", model)
+    }
+    else
+    {
+        <div class="container">
+            <h2 class="text-center">Dodaj nowy stadion</h2>
+            <form method="post">
+                <div class="mb-3">
+                    <label for="Nazwa" class="form-label">Podaj nazwę:</label>
+                    <input id="Nazwa" type="text" class="form-control" asp-for="FootballPitch.Name" required />
+                </div>
+                <div class="mb-3">
+                    <label for="Addresses" class="form-label">Wybierz prezesa klubu:</label>
+                    <select class="form-select" asp-for="FootballPitch.Addresses" asp-items="@(ViewData["adresy"] as IEnumerable<SelectListItem>)"></select>
+                    <span asp-validation-for="FootballPitch.Addresses.Id" class="text-danger"></span>
+                </div>
+                <div>
+                    <button type="submit" class="btn btn-dark">Dodaj</button>
+                </div>
+            </form>
+        </div>
+    }
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</body>
+</html>

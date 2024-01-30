@@ -10,6 +10,8 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Hosting;
 using Domain.Models.Domain;
 using Aplication;
+using Application.Services.Interfaces;
+using Application.Services.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
@@ -61,6 +63,7 @@ builder.Services.AddScoped<IBranchClubRepository, BranchClubRepository>();
 builder.Services.AddScoped<IMatchRepository, MatchRepository>();
 builder.Services.AddScoped<IFootballPitchRepository, FootballPitchRepository>();
 builder.Services.AddScoped<IMatchRequestRepository, MatchRequestRepository>();
+builder.Services.AddScoped<IAdressRepository, AddressRepository>();
 
 builder.Services.AddScoped<IUserServices, UserServices>();
 builder.Services.AddScoped<IClubServices, ClubServices>();
@@ -69,6 +72,7 @@ builder.Services.AddScoped<IBranchClubServices, BranchClubServices>();
 builder.Services.AddScoped<IMatchServices, MatchServices>();
 builder.Services.AddScoped<IFootballPitchServices, FootballPitchServices>();
 builder.Services.AddScoped<IMatchRequestServices, MatchRequestServices>();
+builder.Services.AddScoped<IAdressServices, AdressServices>();
 
 builder.Services.addAplication(builder.Configuration);
 //builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());

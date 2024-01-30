@@ -20,6 +20,12 @@ namespace Aplication.Services.Services
             _footballPitchRepository = footballPitchRepository;
         }
 
+        public async Task<ServiceResponse> AddAsync(FootballPitch footballPitch)
+        {
+            await _footballPitchRepository.AddAsync(footballPitch);
+            return new ServiceResponse(true, "Dodano nowy stadion");
+        }
+
         public async Task<ServiceResponse<List<FootballPitch>>> GetAllFootballPitchesAsync()
         {
             var allFootballPitches = await _footballPitchRepository.GetAllAsync();

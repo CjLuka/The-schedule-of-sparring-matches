@@ -2,7 +2,7 @@
 @using Domain.Models.VievModel;
 @model SheduleMatchWeb.Pages.Clubs.President.MatchesPlayedModel
 
-@if (Model.Matches.Count == 0)
+@* @if (Model.Matches.Count == 0)
 {
     var model = new NoAvaliableData
                 {
@@ -11,9 +11,8 @@
                     MessageContent2 = "Proszę zaplanować nowy mecz lub skontaktować się z administratorem."
                 };
     @Html.Partial("_NoAvaliableData", model)
-}
-else
-{
+} *@
+
     <!DOCTYPE html>
     <html lang="pl">
     <head>
@@ -47,7 +46,19 @@ else
         </style>
     </head>
     <body>
-        <div class="container">
+        @if (Model.Matches.Count == 0)
+        {
+            var model = new NoAvaliableData
+                    {
+                        MessageTitle = "rozegranych meczów",
+                        MessageContent1 = "Przepraszamy, ale Twoje drużyny nie posiadają rozegranych meczów.",
+                        MessageContent2 = "Proszę zaplanować nowy mecz lub skontaktować się z administratorem."
+                    };
+            @Html.Partial("_NoAvaliableData", model)
+        }
+        else
+        {
+            <div class="container">
             <h1>Rozegrane spotkania</h1>
             <table class="table table-striped">
                 <thead>
@@ -59,6 +70,8 @@ else
                         <th>Typ drużyny</th>
                         <th>Gole gości</th>
                         <th>Data rozpoczęcia meczu</th>
+                        <th>Stadion</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -72,14 +85,26 @@ else
                             <td>@Html.DisplayFor(modelItem => item.BranchClubAway.Type)</td>
                             <td>@Html.DisplayFor(modelItem => item.GoalsAway)</td>
                             <td>@Html.DisplayFor(modelItem => item.DateStart)</td>
+                            @if (item.FootballPitchId == null)
+                            {
+                                <td>Brak rezerwacji</td>
+                            }
+                            else
+                            {
+                                <td>@Html.DisplayFor(modelItem => item.FootballPitch.Name)</td>
+                            }
+                            <td>
+                                <a href="./UpdateMatch/@item.Id" class="btn btn-primary">Edytuj wynik</a>
+                            </td>
                         </tr>
                     }
                 </tbody>
             </table>
         </div>
+        }
+        
 
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
     </body>
     </html>
-}

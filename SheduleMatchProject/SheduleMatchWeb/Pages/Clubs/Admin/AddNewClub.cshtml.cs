@@ -31,6 +31,7 @@ namespace SheduleMatchWeb.Pages.Clubs
         public newClub NewClub { get; set; }
         [BindProperty]
         public List<SelectListItem> GameClassess { get; set; }
+
         public List<SelectListItem> Users { get; set; }
         
         public async Task <IActionResult> OnGetAsync()

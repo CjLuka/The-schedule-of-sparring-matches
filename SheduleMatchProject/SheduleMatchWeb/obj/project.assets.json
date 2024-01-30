@@ -4524,7 +4524,7 @@
           "lib/netstandard1.3/System.Xml.XDocument.dll": {}
         }
       },
-      "Aplication/1.0.0": {
+      "Application/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v7.0",
         "dependencies": {
@@ -4533,10 +4533,10 @@
           "Persistance": "1.0.0"
         },
         "compile": {
-          "bin/placeholder/Aplication.dll": {}
+          "bin/placeholder/Application.dll": {}
         },
         "runtime": {
-          "bin/placeholder/Aplication.dll": {}
+          "bin/placeholder/Application.dll": {}
         }
       },
       "Domain/1.0.0": {
@@ -12296,10 +12296,10 @@
         "system.xml.xdocument.nuspec"
       ]
     },
-    "Aplication/1.0.0": {
+    "Application/1.0.0": {
       "type": "project",
-      "path": "../Aplication/Aplication.csproj",
-      "msbuildProject": "../Aplication/Aplication.csproj"
+      "path": "../Aplication/Application.csproj",
+      "msbuildProject": "../Aplication/Application.csproj"
     },
     "Domain/1.0.0": {
       "type": "project",
@@ -12314,7 +12314,7 @@
   },
   "projectFileDependencyGroups": {
     "net7.0": [
-      "Aplication >= 1.0.0",
+      "Application >= 1.0.0",
       "AutoMapper >= 12.0.1",
       "AutoMapper.Extensions.Microsoft.DependencyInjection >= 12.0.1",
       "LazZiya.TagHelpers >= 6.0.2",
@@ -12335,9 +12335,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\Praca dyplomowa\\Praca dyplomowa\\Projekt\\SheduleMatchProject\\SheduleMatchWeb\\SheduleMatchWeb.csproj",
-      "projectName": "SheduleMatchWeb",
-      "projectPath": "F:\\Praca dyplomowa\\Praca dyplomowa\\Projekt\\SheduleMatchProject\\SheduleMatchWeb\\SheduleMatchWeb.csproj",
+      "projectUniqueName": "F:\\Praca dyplomowa\\Praca dyplomowa\\Projekt\\SheduleMatchProject\\SheduleMatchWeb\\ScheduleMatchWeb.csproj",
+      "projectName": "ScheduleMatchWeb",
+      "projectPath": "F:\\Praca dyplomowa\\Praca dyplomowa\\Projekt\\SheduleMatchProject\\SheduleMatchWeb\\ScheduleMatchWeb.csproj",
       "packagesPath": "C:\\Users\\Luka\\.nuget\\packages\\",
       "outputPath": "F:\\Praca dyplomowa\\Praca dyplomowa\\Projekt\\SheduleMatchProject\\SheduleMatchWeb\\obj\\",
       "projectStyle": "PackageReference",
@@ -12360,8 +12360,8 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "F:\\Praca dyplomowa\\Praca dyplomowa\\Projekt\\SheduleMatchProject\\Aplication\\Aplication.csproj": {
-              "projectPath": "F:\\Praca dyplomowa\\Praca dyplomowa\\Projekt\\SheduleMatchProject\\Aplication\\Aplication.csproj"
+            "F:\\Praca dyplomowa\\Praca dyplomowa\\Projekt\\SheduleMatchProject\\Aplication\\Application.csproj": {
+              "projectPath": "F:\\Praca dyplomowa\\Praca dyplomowa\\Projekt\\SheduleMatchProject\\Aplication\\Application.csproj"
             }
           }
         }

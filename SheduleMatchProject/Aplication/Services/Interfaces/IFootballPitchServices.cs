@@ -14,6 +14,7 @@ namespace Aplication.Services.Interfaces
         Task<ServiceResponse<List<FootballPitch>>> GetAllFootballPitchesAsync();
         Task<ServiceResponse<ListPaginated<FootballPitch>>> GetAllFootballPitchesAsync(ModelPagination pagination);
         Task<ServiceResponse<List<FootballPitch>>> GetAvailableFootballPitchesForMatchRequest(DateTime dateTime);
+        Task<ServiceResponse> AddAsync(FootballPitch footballPitch);
 
     }
 }

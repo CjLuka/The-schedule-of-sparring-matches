@@ -38,7 +38,7 @@ namespace SheduleMatchWeb.Pages
                 ViewData["Notification"] = new Notification
                 {
                     Type = Domain.Models.Enum.NotificationType.Error,
-                    Message = "B章d podczas pr鏏y logowania. Nieprawid這wy email lub has這", 
+                    Message = "B章d podczas pr鏏y logowania. Nieprawid這wa nazwa u篡tkownika lub has這", 
                 };
                 return Page();
             }

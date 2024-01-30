@@ -1,8 +1,8 @@
 {
   "Files": [
     {
-      "Id": "F:\\Praca dyplomowa\\Praca dyplomowa\\Projekt\\SheduleMatchProject\\SheduleMatchWeb\\obj\\Debug\\net7.0\\scopedcss\\projectbundle\\SheduleMatchWeb.bundle.scp.css",
-      "PackagePath": "staticwebassets\\SheduleMatchWeb.bundle.scp.css"
+      "Id": "F:\\Praca dyplomowa\\Praca dyplomowa\\Projekt\\SheduleMatchProject\\SheduleMatchWeb\\obj\\Debug\\net7.0\\scopedcss\\projectbundle\\ScheduleMatchWeb.bundle.scp.css",
+      "PackagePath": "staticwebassets\\ScheduleMatchWeb.bundle.scp.css"
     },
     {
       "Id": "F:\\Praca dyplomowa\\Praca dyplomowa\\Projekt\\SheduleMatchProject\\SheduleMatchWeb\\wwwroot\\css\\site.css",
@@ -257,20 +257,20 @@
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
-      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.SheduleMatchWeb.Microsoft.AspNetCore.StaticWebAssets.props",
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.ScheduleMatchWeb.Microsoft.AspNetCore.StaticWebAssets.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
     },
     {
-      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.build.SheduleMatchWeb.props",
-      "PackagePath": "build\\SheduleMatchWeb.props"
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.build.ScheduleMatchWeb.props",
+      "PackagePath": "build\\ScheduleMatchWeb.props"
     },
     {
-      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.buildMultiTargeting.SheduleMatchWeb.props",
-      "PackagePath": "buildMultiTargeting\\SheduleMatchWeb.props"
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.buildMultiTargeting.ScheduleMatchWeb.props",
+      "PackagePath": "buildMultiTargeting\\ScheduleMatchWeb.props"
     },
     {
-      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.buildTransitive.SheduleMatchWeb.props",
-      "PackagePath": "buildTransitive\\SheduleMatchWeb.props"
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.buildTransitive.ScheduleMatchWeb.props",
+      "PackagePath": "buildTransitive\\ScheduleMatchWeb.props"
     }
   ],
   "ElementsToRemove": []

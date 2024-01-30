@@ -1,4 +1,5 @@
 ﻿using Domain.Models.Domain;
+using Domain.Models.Pagination;
 using Domain.Response;
 using System;
 using System.Collections.Generic;
@@ -17,6 +18,7 @@ namespace Aplication.Services.Interfaces
         Task<ServiceResponse<MatchRequest>> GetMatchRequestByIdAsync(int id);
         Task<ServiceResponse<MatchRequest>> UpdateAsync(MatchRequest matchRequest);
         Task<ServiceResponse<List<MatchRequest>>> GetPlannedMatchByClubAsync(Club club);
+        Task<ServiceResponse<ListPaginated<MatchRequest>>> GetAllMatchRequestsAsync(ModelPagination modelPagination);
 
     }
 }

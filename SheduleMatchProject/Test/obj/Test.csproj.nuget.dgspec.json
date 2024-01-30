@@ -4,12 +4,12 @@
     "F:\\Praca dyplomowa\\Praca dyplomowa\\Projekt\\SheduleMatchProject\\Test\\Test.csproj": {}
   },
   "projects": {
-    "F:\\Praca dyplomowa\\Praca dyplomowa\\Projekt\\SheduleMatchProject\\Aplication\\Aplication.csproj": {
+    "F:\\Praca dyplomowa\\Praca dyplomowa\\Projekt\\SheduleMatchProject\\Aplication\\Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\Praca dyplomowa\\Praca dyplomowa\\Projekt\\SheduleMatchProject\\Aplication\\Aplication.csproj",
-        "projectName": "Aplication",
-        "projectPath": "F:\\Praca dyplomowa\\Praca dyplomowa\\Projekt\\SheduleMatchProject\\Aplication\\Aplication.csproj",
+        "projectUniqueName": "F:\\Praca dyplomowa\\Praca dyplomowa\\Projekt\\SheduleMatchProject\\Aplication\\Application.csproj",
+        "projectName": "Application",
+        "projectPath": "F:\\Praca dyplomowa\\Praca dyplomowa\\Projekt\\SheduleMatchProject\\Aplication\\Application.csproj",
         "packagesPath": "C:\\Users\\Luka\\.nuget\\packages\\",
         "outputPath": "F:\\Praca dyplomowa\\Praca dyplomowa\\Projekt\\SheduleMatchProject\\Aplication\\obj\\",
         "projectStyle": "PackageReference",
@@ -267,8 +267,8 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "F:\\Praca dyplomowa\\Praca dyplomowa\\Projekt\\SheduleMatchProject\\Aplication\\Aplication.csproj": {
-                "projectPath": "F:\\Praca dyplomowa\\Praca dyplomowa\\Projekt\\SheduleMatchProject\\Aplication\\Aplication.csproj"
+              "F:\\Praca dyplomowa\\Praca dyplomowa\\Projekt\\SheduleMatchProject\\Aplication\\Application.csproj": {
+                "projectPath": "F:\\Praca dyplomowa\\Praca dyplomowa\\Projekt\\SheduleMatchProject\\Aplication\\Application.csproj"
               },
               "F:\\Praca dyplomowa\\Praca dyplomowa\\Projekt\\SheduleMatchProject\\Persistance\\Persistance.csproj": {
                 "projectPath": "F:\\Praca dyplomowa\\Praca dyplomowa\\Projekt\\SheduleMatchProject\\Persistance\\Persistance.csproj"

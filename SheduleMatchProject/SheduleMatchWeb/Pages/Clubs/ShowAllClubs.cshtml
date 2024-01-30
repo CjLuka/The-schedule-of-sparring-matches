@@ -2,109 +2,107 @@
 @using Domain.Models.VievModel;
 @model SheduleMatchWeb.Pages.Clubs.ShowAllClubsModel
 
-@if (Model.Clubs.Items.Count == 0)
-{
-    var model = new NoAvaliableData
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Wszystkie Kluby</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/siteShow.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        h1 {
+            color: #007bff;
+        }
+
+        th {
+            background-color: #007bff;
+            color: #ffffff;
+        }
+
+        tbody tr:hover {
+            background-color: #f2f2f2;
+        }
+
+        .club-image {
+            max-width: 100px;
+            max-height: 100px;
+        }
+
+        .btn-primary, .btn-secondary, .btn-success {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+
+            .btn-primary:hover, .btn-secondary:hover, .btn-success:hover {
+                background-color: #0056b3;
+                border-color: #0056b3;
+            }
+
+        table {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    @if (Model.Clubs.Items.Count == 0)
+    {
+        var model = new NoAvaliableData
                 {
-                    MessageTitle = "Brak klubów",
+                    MessageTitle = "klubów",
                     MessageContent1 = "Przepraszamy, ale aktualnie nie posiadamy żadnych klubów w bazie danych."
                 };
-    @Html.Partial("_NoAvaliableData", model)
-    @if (User.IsInRole("Admin"))
-    {
-        <a asp-page="./Admin/AddNewClub" class="btn btn-success mt-3">Dodaj nowy klub</a>
+        @Html.Partial("_NoAvaliableData", model)
+        @if (User.IsInRole("Admin"))
+        {
+            <a asp-page="./Admin/AddNewClub" class="btn btn-success mt-3">Dodaj nowy klub</a>
+        }
     }
-}
-else
-{
-    <!DOCTYPE html>
-    <html lang="pl">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>Wszystkie Kluby</title>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-        <link rel="stylesheet" href="~/css/siteShow.css">
-        <style>
-            body {
-                background-color: #f8f9fa;
-            }
-
-            .container {
-                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-                border-radius: 8px;
-            }
-
-            h1 {
-                color: #007bff;
-            }
-
-            th {
-                background-color: #007bff;
-                color: #ffffff;
-            }
-
-            tbody tr:hover {
-                background-color: #f2f2f2;
-            }
-
-            .club-image {
-                max-width: 100px;
-                max-height: 100px;
-            }
-
-            .btn-primary, .btn-secondary, .btn-success {
-                background-color: #007bff;
-                border-color: #007bff;
-            }
-
-                .btn-primary:hover, .btn-secondary:hover, .btn-success:hover {
-                    background-color: #0056b3;
-                    border-color: #0056b3;
-                }
-        </style>
-    </head>
-    <body>
-        <div class="container">
+    else
+    {
+        <div class="container mt-5">
             <h1>Wszystkie Kluby</h1>
             <form method="post">
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th>Nazwa</th>
-                            <th>Data powstania klubu</th>
-                            <th>Klasa rozgrywkowa</th>
-@*                             <th>Zdjęcie</th>
- *@                            @if (User.IsInRole("Admin"))
-                            {
-                                <th></th>
-                                <th></th>
-                            }
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var item in Model.Clubs.Items)
-                        {
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
                             <tr>
-                                <td>@Html.DisplayFor(modelItem => item.Name)</td>
-                                <td>@Html.DisplayFor(modelItem => item.DateCreated)</td>
-                                <td>@Html.DisplayFor(modelItem => item.GameClass.Name)</td>
-                                @* <td>
-                                    <img src="@item.FeaturedImageUrl" class="club-image" />
-                                </td> *@
+                                <th>Nazwa</th>
+                                <th>Data powstania klubu</th>
+                                <th>Klasa rozgrywkowa</th>
                                 @if (User.IsInRole("Admin"))
                                 {
-                                    <td>
-                                        <a href="./UpdateClub/@item.Id" class="btn btn-primary">Aktualizuj</a>
-                                    </td>
-                                    <td>
-                                        <a href="./BranchClubs/ShowAllBranchesClub/@item.Id" class="btn btn-secondary">Pokaż wszystkie oddziały</a>
-                                    </td>
+                                    <th></th>
                                 }
                             </tr>
-                        }
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.Clubs.Items)
+                            {
+                                <tr>
+                                    <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.DateCreated)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.GameClass.Name)</td>
+                                    @if (User.IsInRole("Admin"))
+                                    {
+                                        <td>
+                                            <a href="./UpdateClub/@item.Id" class="btn btn-primary">Aktualizuj</a>
+                                        </td>
+                                    }
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
 
                 <nav aria-label="...">
                     <ul class="pagination justify-content-end">
@@ -165,13 +163,15 @@ else
 
                 @if (User.IsInRole("Admin"))
                 {
-                    <a asp-page="./Admin/AddNewClub" class="btn btn-success float-right">Dodaj nowy klub</a>
+                    <a asp-page="./Admin/AddNewClub" class="btn btn-success">Dodaj nowy klub</a>
+                    <a asp-page="./Admin/AddNewFootballPitch" class="btn btn-success">Dodaj nowy stadion</a>
+
                 }
             </form>
         </div>
+    }
 
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-    </body>
-    </html>
-}
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</body>
+</html>

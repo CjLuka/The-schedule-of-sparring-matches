@@ -1,0 +1,153 @@
+﻿@page
+@using Domain.Models.VievModel;
+@model ScheduleMatchWeb.Pages.Matches.AllMatchesPlayedModel
+@{
+}
+
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Rozegrane spotkania</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/siteShow.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        h1 {
+            color: #007bff;
+        }
+
+        th {
+            background-color: #007bff;
+            color: #ffffff;
+        }
+
+        tbody tr:hover {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    @if (Model.Matches.Items.Count == 0)
+    {
+        var model = new NoAvaliableData
+                {
+                    MessageTitle = "rozegranych meczów",
+                    MessageContent1 = "Przepraszamy, ale aktualnie nie posiadamy żadnych rozegranych meczów w bazie danych",
+                };
+        @Html.Partial("_NoAvaliableData", model)
+    }
+    else
+    {
+        <div class="container mt-5">
+            <h1>Rozegrane spotkania</h1>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Gospodarze</th>
+                            <th>Typ drużyny</th>
+                            <th>Gole gospodarzy</th>
+                            <th>Goście</th>
+                            <th>Typ drużyny</th>
+                            <th>Gole gości</th>
+                            <th>Stadion</th>
+                            <th>Data rozpoczęcia meczu</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.Matches.Items)
+                        {
+                            <tr>
+                                <td>@Html.DisplayFor(modelItem => item.BranchClubHome.Club.Name)</td>
+                                <td>@Html.DisplayFor(modelItem => item.BranchClubHome.Type)</td>
+                                <td>@Html.DisplayFor(modelItem => item.GoalsHome)</td>
+                                <td>@Html.DisplayFor(modelItem => item.BranchClubAway.Club.Name)</td>
+                                <td>@Html.DisplayFor(modelItem => item.BranchClubAway.Type)</td>
+                                <td>@Html.DisplayFor(modelItem => item.GoalsAway)</td>
+                                @if (item.FootballPitchId == null)
+                                {
+                                    <td>Brak rezerwacji</td>
+                                }
+                                else
+                                {
+                                    <td>@Html.DisplayFor(modelItem => item.FootballPitch.Name)</td>
+                                }
+                                <td>@Html.DisplayFor(modelItem => item.DateStart)</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <nav aria-label="...">
+                <ul class="pagination justify-content-end">
+                    @if (Model.Pagination.Page != 1)
+                    {
+                        <li class="page-item disabled">
+                            <a class="nav-link text-dark"
+                               asp-page="/Matches/AllMatchesPlayed"
+                               asp-route-side="1"
+                               asp-route-size="@Model.Pagination.Size"
+                               asp-area="">
+                                Pierwsza
+                            </a>
+                        </li>
+                    }
+                    @if (Model.Pagination.Page > 2)
+                    {
+                        <li class="page-item disabled">
+                            <a class="nav-link text-dark"
+                               asp-page="/Matches/AllMatchesPlayed"
+                               asp-route-side="@(Model.Pagination.Page - 1)"
+                               asp-route-size="@Model.Pagination.Size"
+                               asp-area="">
+                                @(Model.Pagination.Page - 1)
+                            </a>
+                        </li>
+                    }
+
+                    <li class="page-item active">
+                        <a class="page-link" href="#">@Model.Pagination.Page <span class="sr-only">(current)</span></a>
+                    </li>
+                    @if (Model.Pagination.Page < (Model.Matches.PaginationInfo.PagesCount - 1))
+                    {
+                        <li class="page-item">
+                            <a class="nav-link text-dark"
+                               asp-page="/Matches/AllMatchesPlayed"
+                               asp-route-side="@(Model.Pagination.Page + 1)"
+                               asp-route-size="@Model.Pagination.Size"
+                               asp-area="">
+                                @(Model.Pagination.Page + 1)
+                            </a>
+                        </li>
+                    }
+                    @if (Model.Pagination.Page < Model.Matches.PaginationInfo.PagesCount)
+                    {
+                        <li class="page-item">
+                            <a class="nav-link text-dark"
+                               asp-page="/Matches/AllMatchesPlayed"
+                               asp-route-side="@(Model.Matches.PaginationInfo.PagesCount)"
+                               asp-route-size="@Model.Pagination.Size"
+                               asp-area="">
+                                Ostatnia
+                            </a>
+                        </li>
+                    }
+                </ul>
+            </nav>
+        </div>
+    }
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -2,18 +2,8 @@
 @using Domain.Models.VievModel;
 @model SheduleMatchWeb.Pages.Clubs.President.ScheduledMatchesModel
 
-@if (Model.MatchRequests.Count == 0)
-{
-    var model = new NoAvaliableData
-                {
-                    MessageTitle = "Brak zaplanowanych meczów",
-                    MessageContent1 = "Przepraszamy, ale nie masz żadnych zaplanowanych meczów.",
-                    MessageContent2 = "Proszę zaplanować nowy mecz lub skontaktować się z administratorem."
-                };
-    @Html.Partial("_NoAvaliableData", model)
-}
-else
-{
+
+
     <!DOCTYPE html>
     <html lang="pl">
     <head>
@@ -57,6 +47,18 @@ else
         </style>
     </head>
     <body>
+        @if(Model.MatchRequests.Count == 0)
+        {
+            var model = new NoAvaliableData
+                    {
+                        MessageTitle = "zaplanowanych meczów",
+                        MessageContent1 = "Przepraszamy, ale nie masz żadnych zaplanowanych meczów.",
+                        MessageContent2 = "Proszę zaplanować nowy mecz lub skontaktować się z administratorem."
+                    };
+        @Html.Partial("_NoAvaliableData", model)
+    }
+    else
+    {
         <div class="container">
             <h1>Zaplanowane spotkania</h1>
             <table class="table table-striped">
@@ -67,7 +69,8 @@ else
                         <th>Goście</th>
                         <th>Typ drużyny</th>
                         <th>Data</th>
-                        <th>Zaakceptowany</th>
+                        <th>Stadion</th>
+                        <th>Status</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -80,13 +83,21 @@ else
                             <td>@Html.DisplayFor(modelItem => item.Receiver.Club.Name)</td>
                             <td>@Html.DisplayFor(modelItem => item.Receiver.Type)</td>
                             <td>@Html.DisplayFor(modelItem => item.Date)</td>
+                            @if (item.FootballPitchId == null)
+                            {
+                                <td>Brak rezerwacji</td>
+                            }
+                            else
+                            {
+                                <td>@Html.DisplayFor(modelItem => item.FootballPitch.Name)</td>
+                            }
                             @if (item.IsAccepted == true)
                             {
-                                <td>Tak</td>
+                                <td>Zaakceptowany</td>
                             }
                             @if (item.IsAccepted == false)
                             {
-                                <td>Nie</td>
+                                <td>Odrzucony</td>
                             }
                             @if (item.IsAccepted == true && item.Date < DateTime.Now.AddHours(2))
                             {
@@ -99,9 +110,10 @@ else
                 </tbody>
             </table>
         </div>
+    }
+    
 
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
     </body>
     </html>
-}

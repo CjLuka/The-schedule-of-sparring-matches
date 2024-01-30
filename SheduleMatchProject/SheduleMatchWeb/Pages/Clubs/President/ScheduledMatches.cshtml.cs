@@ -31,6 +31,10 @@ namespace SheduleMatchWeb.Pages.Clubs.President
             var matches = await _matchRequestServices.GetPlannedMatchByClubAsync(club.Data);
 
             MatchRequests = matches.Data;// przypisanie wartoœci do bindProp
+            if(MatchRequests == null)
+            {
+                MatchRequests = new List<MatchRequest>();
+            }
             return Page();
         }
     }

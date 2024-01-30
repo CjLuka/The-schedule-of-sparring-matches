@@ -1,5 +1,6 @@
 ﻿using Aplication.Services.Interfaces;
 using Domain.Models.Domain;
+using Domain.Models.Pagination;
 using Domain.Response;
 using Persistance.Repo.Interfaces;
 using Persistance.Repo.Repositories;
@@ -32,10 +33,10 @@ namespace Aplication.Services.Services
         public async Task<ServiceResponse<List<MatchRequest>>> GetPlannedMatchByClubAsync(Club club)
         {
             var plannedMatch = await _matchRequestRepository.GetPlannedMatchByClubAsync(club);
-            if (plannedMatch.Count == 0)
-            {
-                return new ServiceResponse<List<MatchRequest>>(false, "Brak meczów dla danego klubu");
-            }
+            //if (plannedMatch.Count == 0)
+            //{
+            //    return new ServiceResponse<List<MatchRequest>>(false, "Brak meczów dla danego klubu");
+            //}
 
             if (plannedMatch.Any())
             {
@@ -105,6 +106,18 @@ namespace Aplication.Services.Services
 
             await _matchRequestRepository.UpdateAsync(matchFromBase);
             return new ServiceResponse<MatchRequest>(matchFromBase, true);
+        }
+
+        public async Task<ServiceResponse<ListPaginated<MatchRequest>>> GetAllMatchRequestsAsync(ModelPagination modelPagination)
+        {
+            var matchRequests = await _matchRequestRepository.GetAllMatchRequestsAsync(modelPagination);
+            
+            if (matchRequests == null)
+            {
+                return new ServiceResponse<ListPaginated<MatchRequest>>(false, "Brak dostępnych meczów");
+            }
+
+            return new ServiceResponse<ListPaginated<MatchRequest>>(matchRequests,true);
         }
     }
 }

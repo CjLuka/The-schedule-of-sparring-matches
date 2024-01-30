@@ -1,13 +1,13 @@
 ﻿@page
+@using Domain.Models.VievModel;
 @model SheduleMatchWeb.Pages.AllPitchesModel
-@{
-}
+
 <!DOCTYPE html>
 <html lang="pl">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Wszystkie Zespoły</title>
+    <title>Wszystkie Stadiony</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="~/css/siteShow.css">
     <style>
@@ -35,86 +35,107 @@
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Wszystkie Zespoły</h1>
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>Nazwa</th>
-                    <th>Miejscowość</th>
-                    <th>Ulica</th>
-                    <th>Kod pocztowy</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model.FootballPitches.Items)
+    @if (Model.FootballPitches.Items.Count == 0)
+    {
+        var model = new NoAvaliableData
                 {
-                    <tr>
-                        <td>@Html.DisplayFor(modelItem => item.Name)</td>
-                        <td>@Html.DisplayFor(modelItem => item.Addresses.City)</td>
-                        <td>@Html.DisplayFor(modelItem => item.Addresses.Street)</td>
-                        <td>@Html.DisplayFor(modelItem => item.Addresses.PostalCode)</td>
-                    </tr>
-                }
-            </tbody>
-        </table>
-        <nav aria-label="...">
-            <ul class="pagination justify-content-end">
-                @if (Model.Pagination.Page != 1)
-                {
-                    <li class="page-item disabled">
-                        <a class="nav-link text-dark"
-                           asp-page="/AllPitches"
-                           asp-route-side="1"
-                           asp-route-size="@Model.Pagination.Size"
-                           asp-area="">
-                            Pierwsza
-                        </a>
-                    </li>
-                }
-                @if (Model.Pagination.Page > 2)
-                {
-                    <li class="page-item disabled">
-                        <a class="nav-link text-dark"
-                           asp-page="/AllPitches"
-                           asp-route-side="@(Model.Pagination.Page - 1)"
-                           asp-route-size="@Model.Pagination.Size"
-                           asp-area="">
-                            @(Model.Pagination.Page - 1)
-                        </a>
-                    </li>
-                }
+                    MessageTitle = "stadionów",
+                    MessageContent1 = "Przepraszamy, ale aktualnie nie posiadamy żadnych stadionów w bazie danych."
+                };
+        @Html.Partial("_NoAvaliableData", model)
+    }
+    else
+    {
+        <div class="container">
+            <h1>Wszystkie Stadiony</h1>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Nazwa</th>
+                            <th>Miejscowość</th>
+                            <th>Ulica</th>
+                            <th>Kod pocztowy</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.FootballPitches.Items)
+                        {
+                            <tr>
+                                <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Addresses.City)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Addresses.Street)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Addresses.PostalCode)</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
 
-                <li class="page-item active">
-                    <a class="page-link" href="#">@Model.Pagination.Page <span class="sr-only">(current)</span></a>
-                </li>
-                @if (Model.Pagination.Page < (Model.FootballPitches.PaginationInfo.PagesCount - 1))
-                {
-                    <li class="page-item">
-                        <a class="nav-link text-dark"
-                           asp-page="/AllPitches"
-                           asp-route-side="@(Model.Pagination.Page + 1)"
-                           asp-route-size="@Model.Pagination.Size"
-                           asp-area="">
-                            @(Model.Pagination.Page + 1)
-                        </a>
+            <nav aria-label="...">
+                <ul class="pagination justify-content-end">
+                    @if (Model.Pagination.Page != 1)
+                    {
+                        <li class="page-item disabled">
+                            <a class="nav-link text-dark"
+                               asp-page="/AllPitches"
+                               asp-route-side="1"
+                               asp-route-size="@Model.Pagination.Size"
+                               asp-area="">
+                                Pierwsza
+                            </a>
+                        </li>
+                    }
+                    @if (Model.Pagination.Page > 2)
+                    {
+                        <li class="page-item disabled">
+                            <a class="nav-link text-dark"
+                               asp-page="/AllPitches"
+                               asp-route-side="@(Model.Pagination.Page - 1)"
+                               asp-route-size="@Model.Pagination.Size"
+                               asp-area="">
+                                @(Model.Pagination.Page - 1)
+                            </a>
+                        </li>
+                    }
+
+                    <li class="page-item active">
+                        <a class="page-link" href="#">@Model.Pagination.Page <span class="sr-only">(current)</span></a>
                     </li>
-                }
-                @if (Model.Pagination.Page < Model.FootballPitches.PaginationInfo.PagesCount)
-                {
-                    <li class="page-item">
-                        <a class="nav-link text-dark"
-                           asp-page="/AllPitches"
-                           asp-route-side="@(Model.FootballPitches.PaginationInfo.PagesCount)"
-                           asp-route-size="@Model.Pagination.Size"
-                           asp-area="">
-                            Ostatnia
-                        </a>
-                    </li>
-                }
-            </ul>
-        </nav>
-    </div>
+                    @if (Model.Pagination.Page < (Model.FootballPitches.PaginationInfo.PagesCount - 1))
+                    {
+                        <li class="page-item">
+                            <a class="nav-link text-dark"
+                               asp-page="/AllPitches"
+                               asp-route-side="@(Model.Pagination.Page + 1)"
+                               asp-route-size="@Model.Pagination.Size"
+                               asp-area="">
+                                @(Model.Pagination.Page + 1)
+                            </a>
+                        </li>
+                    }
+                    @if (Model.Pagination.Page < Model.FootballPitches.PaginationInfo.PagesCount)
+                    {
+                        <li class="page-item">
+                            <a class="nav-link text-dark"
+                               asp-page="/AllPitches"
+                               asp-route-side="@(Model.FootballPitches.PaginationInfo.PagesCount)"
+                               asp-route-size="@Model.Pagination.Size"
+                               asp-area="">
+                                Ostatnia
+                            </a>
+                        </li>
+                    }
+                </ul>
+            </nav>
+            @* @if (User.IsInRole("Admin")) *@
+            @* { *@
+                <a asp-page="./Clubs/Admin/AddNewFootballPitch" class="btn btn-success">Dodaj nowy stadion</a>
+                <a href="./Clubs/Admin/index">tes</a>
+                <a href="./Clubs/Admin/AddNewFootballPitch">tes2</a>
+            @* } *@
+        </div>
+    }
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>

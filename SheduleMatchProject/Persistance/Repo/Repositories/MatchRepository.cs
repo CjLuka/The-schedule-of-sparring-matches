@@ -1,6 +1,8 @@
 ﻿using Domain.Models.Domain;
+using Domain.Models.Pagination;
 using Microsoft.EntityFrameworkCore;
 using Persistance.Data;
+using Persistance.Helpers;
 using Persistance.Repo.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -35,9 +37,14 @@ namespace Persistance.Repo.Repositories
         }
 
 
-        public Task<Match> GetByIdAsync(int matchId)
+        public async Task<Match> GetByIdAsync(int matchId)
         {
-            throw new NotImplementedException();
+            var match = await _context.Matches
+                .Include(x => x.BranchClubHome.Club)
+                .Include(x => x.BranchClubAway.Club)
+                .Include(x => x.FootballPitch)
+                .FirstOrDefaultAsync(x => x.Id == matchId);
+            return match;
         }
         public async Task AddAsync(Match match)
         {
@@ -48,18 +55,20 @@ namespace Persistance.Repo.Repositories
         {
             throw new NotImplementedException();
         }
-        public Task UpdateAsync(Match match)
+        public async Task UpdateAsync(Match match)
         {
-            throw new NotImplementedException();
+            _context.Update(match);
+            await _context.SaveChangesAsync();
         }
 
         public async Task<List<Match>> GetAllByClubAsync(int clubId)
         {
             var Matches = await _context.Matches
-                            .Include(m=>m.BranchClubHome)//Nadanie dostępu do tabeli BranchClub, aby mozna bylo odowlywac sie do wartosci z tej tabeli                       
+                            .Include(m=>m.BranchClubHome)//Nadanie dostępu do tabeli BranchClub, aby mozna bylo odowlywac sie do wartosci z tej tabeli                     
                             .ThenInclude(mb => mb.Club)//Nadanie wartości jeszcze dalej, do tabeli Club 
                             .Include(m => m.BranchClubAway)// Załaduj powiązaną drużynę wyjazdową 
                             .ThenInclude(mb => mb.Club)// Załaduj powiązaną drużynę wyjazdową 
+                            .Include(x => x.FootballPitch)
                             .ToListAsync();
 
             List<Match> ListOfMatches = new List<Match>();//Lista meczow do ktorej będą dodawane mecze i ta, która będzie zwracana
@@ -80,9 +89,19 @@ namespace Persistance.Repo.Repositories
                 .Include(x => x.BranchClubHome.Club)
                 .Include(x => x.BranchClubAway.Club)
                 .Include(x => x.FootballPitch)
-                .Where(x => x.BranchClubAwayId == branchClubId|| x.BranchClubAwayId== branchClubId)
+                .Where(x => x.BranchClubHomeId == branchClubId|| x.BranchClubAwayId== branchClubId)
                 .ToListAsync();
 
+            return matches;
+        }
+
+        public async Task<ListPaginated<Match>> GetAllAsync(ModelPagination modelPagination)
+        {
+            var matches = await _context.Matches
+                .Include(x => x.BranchClubHome.Club)
+                .Include(x => x.BranchClubAway.Club)
+                .Include(x => x.FootballPitch)
+                .AddPagination(modelPagination);
             return matches;
         }
     }

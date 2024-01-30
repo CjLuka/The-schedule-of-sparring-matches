@@ -14,5 +14,6 @@ namespace Persistance.Repo.Interfaces
         Task<List<FootballPitch>> GetAllAsync();
         Task<ListPaginated<FootballPitch>> GetAllAsync(ModelPagination pagination);
         Task<List<FootballPitch>> GetAvailableFootballPitchesForMatchRequest(DateTime dateTime);
+        Task AddAsync(FootballPitch footballPitch);
     }
 }

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "BlOYLFO535TZW0fQLgIX8p+Fgp0JwFop231uhnC8Z0wdmCUBTK9ujrlb02/+f7LOhdnTzxeRY4nYAssTfWlOGg==",
+  "dgSpecHash": "dsEUhTOC0q3CQAXI77Ncg03umstfAYtO6/AdlC3r5J6R6pgCeXIl+mmG9FFJw9NtdTTiWUtD3xrkQlEez4uGeg==",
   "success": true,
-  "projectFilePath": "F:\\Praca dyplomowa\\Praca dyplomowa\\Projekt\\SheduleMatchProject\\Aplication\\Aplication.csproj",
+  "projectFilePath": "F:\\Praca dyplomowa\\Praca dyplomowa\\Projekt\\SheduleMatchProject\\Aplication\\Application.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Luka\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\Luka\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",

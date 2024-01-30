@@ -1,6 +1,8 @@
 ﻿using Domain.Models.Domain;
+using Domain.Models.Pagination;
 using Microsoft.EntityFrameworkCore;
 using Persistance.Data;
+using Persistance.Helpers;
 using Persistance.Repo.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -17,6 +19,18 @@ namespace Persistance.Repo.Repositories
         public MatchRequestRepository(ApplicationDbContext context)
         {
             _context= context;
+        }
+
+        public async Task<ListPaginated<MatchRequest>> GetAllMatchRequestsAsync(ModelPagination modelPagination)
+        {
+            var matches = await _context.MatchRequests
+                .Include(x => x.Sender.Club)
+                .Include(x => x.Receiver.Club)
+                .Include(x => x.FootballPitch)
+                .Where(x => x.IsAccepted == true)
+                .Where(x => x.HasResult == false)
+                .AddPagination(modelPagination);
+            return matches;
         }
 
         public async Task<MatchRequest> GetMatchRequestByIdAsync(int id)
@@ -51,6 +65,7 @@ namespace Persistance.Repo.Repositories
                 .Include(x => x.Sender.Club)
                 .Include(x => x.Receiver.Club)
                 .Where(mr => mr.Sender.ClubId == club.Id || mr.Receiver.ClubId == club.Id)
+                .Include(x => x.FootballPitch)
                 .ToListAsync();
             return matches;
         }

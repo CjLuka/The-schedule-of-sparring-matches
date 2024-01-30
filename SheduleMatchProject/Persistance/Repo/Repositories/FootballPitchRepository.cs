@@ -19,6 +19,13 @@ namespace Persistance.Repo.Repositories
         {
             _context= context;
         }
+
+        public async Task AddAsync(FootballPitch footballPitch)
+        {
+            await _context.AddAsync(footballPitch);
+            await _context.SaveChangesAsync();
+        }
+
         public async Task<List<FootballPitch>> GetAllAsync()
         {
             var allFootballPitches = await _context.FootballPitches

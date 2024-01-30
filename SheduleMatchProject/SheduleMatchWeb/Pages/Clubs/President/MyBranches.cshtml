@@ -1,4 +1,5 @@
 ﻿@page
+@using Domain.Models.VievModel;
 @model SheduleMatchWeb.Pages.Clubs.President.MyBranchesModel
 
 <!DOCTYPE html>
@@ -8,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Wszystkie oddziały w klubie</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/siteShow.css">
     <style>
         body {
             background-color: #f8f9fa;
@@ -20,11 +22,6 @@
 
         h1 {
             color: #007bff;
-        }
-
-        th {
-            background-color: #007bff;
-            color: #ffffff;
         }
 
         tbody tr:hover {
@@ -43,33 +40,44 @@
     </style>
 </head>
 <body>
-
-    <div class="container">
-        <h1 class="text-center">Wszystkie oddziały w klubie</h1>
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>Klub Id</th>
-                    <th>Typ</th>
-                    <th>Trener</th>
-                    <th>Akcje</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model.BranchClubs)
+    @if (Model.BranchClubs.Count == 0)
+    {
+        var model = new NoAvaliableData
                 {
+                    MessageTitle = "zespołów",
+                    MessageContent1 = "Aktualnie nie posiadasz żadnego oddziału w klubie. Aby dodać nowy zespół przejdź do odpowiedniego formularza z dodaniem zespołu."
+                };
+        @Html.Partial("_NoAvaliableData", model)
+    }
+    else
+    {
+        <div class="container mt-5">
+            <h1 class="text-center mb-4">Wszystkie oddziały w klubie</h1>
+            <table class="table table-striped">
+                <thead>
                     <tr>
-                        <td>@Html.DisplayFor(modelItem => item.Club.Name)</td>
-                        <td>@Html.DisplayFor(modelItem => item.Type)</td>
-                        <td>@(item.User.FirstName + " " + item.User.LastName)</td>
-                        <td>
-                            <a href="./UpdateBranch/@item.Id" class="btn btn-primary">Aktualizuj</a>
-                        </td>
+                        <th>Klub Id</th>
+                        <th>Typ</th>
+                        <th>Trener</th>
+                        <th>Akcje</th>
                     </tr>
-                }
-            </tbody>
-        </table>
-    </div>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.BranchClubs)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => item.Club.Name)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Type)</td>
+                            <td>@(item.User.FirstName + " " + item.User.LastName)</td>
+                            <td>
+                                <a href="./UpdateBranch/@item.Id" class="btn btn-primary">Aktualizuj</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>

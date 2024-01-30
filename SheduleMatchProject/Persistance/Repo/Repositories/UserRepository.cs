@@ -105,7 +105,6 @@ namespace Persistance.Repo.Repositories
         public async Task<List<User>> GetAllCoaches()
         {
             var allCoaches = _context.Users
-            .Where(coach => coach.Role == "Coach")
             .ToList();
             return allCoaches;
         }

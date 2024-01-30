@@ -19,7 +19,7 @@ namespace SheduleMatchWeb.Pages
         public ListPaginated<FootballPitch> FootballPitches { get; set; }
         [BindProperty]
         public ModelPagination Pagination { get; set; }
-        public async Task<IActionResult> OnGetAsync(int side = 1, int size = 10)
+        public async Task<IActionResult> OnGetAsync(int side = 1, int size = 2)
         {
             Pagination = new ModelPagination(side, size);
             var allPitches = await _footballPitchServices.GetAllFootballPitchesAsync(Pagination);

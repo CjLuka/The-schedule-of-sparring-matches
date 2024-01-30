@@ -47,10 +47,7 @@ namespace SheduleMatchWeb.Pages.Clubs.President
 
             newMatch.MatchRequestId = matchRequest.Data.Id;
             newMatch.FootballPitchId = matchRequest.Data.FootballPitchId;
-            //if (matchRequest.Data.FootballPitchId == null)
-            //{
-            //    newMatch.FootballPitch = null;
-            //}
+
 
             Match = newMatch;
             await _matchServices.AddAsync(Match);

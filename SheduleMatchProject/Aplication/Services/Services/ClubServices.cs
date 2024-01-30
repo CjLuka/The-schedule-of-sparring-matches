@@ -53,10 +53,8 @@ namespace Aplication.Services.Services
             {
                 return new ServiceResponse<newClub>(false, "Klub o podanej nazwie istnieje w bazie danych");
             }
-            //var aa = _mapper.Map<Club>(newClub);
             await _clubRepository.AddAsync(_mapper.Map<Club>(newClub));
-            //var b = 10;
-            //await _clubRepository.AddAsync(club);
+
 
             return new ServiceResponse<newClub>(newClub, true);
         }

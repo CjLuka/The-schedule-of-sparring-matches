@@ -1,0 +1,55 @@
+﻿@page "{id:int}"
+@model ScheduleMatchWeb.Pages.Clubs.President.UpdateMatchModel
+@{
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/siteShow.css">
+</head>
+<form method="post">
+    <body>
+
+        <div class="container">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Gospodarze</th>
+                        <th>Typ drużyny</th>
+                        <th>Goście</th>
+                        <th>Typ drużyny</th>
+                        <th>Data</th>
+                        <th>Liczba bramek Gospodarze</th>
+                        <th>Liczba bramek Goście</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => Model.editMatch.BranchClubHome.Club.Name)</td>
+                        <td>@Html.DisplayFor(modelItem => Model.editMatch.BranchClubHome.Type)</td>
+                        <td>@Html.DisplayFor(modelItem => Model.editMatch.BranchClubAway.Club.Name)</td>
+                        <td>@Html.DisplayFor(modelItem => Model.editMatch.BranchClubAway.Type)</td>
+                        <td>@Html.DisplayFor(modelItem => Model.editMatch.DateStart)</td>
+                        <td>
+                            <input type="number" name="GoalsHome" id="GoalsHome" asp-for="editMatch.GoalsHome">
+                        </td>
+                        <td>
+                            <input type="number" name="GoalsAway" id="GoalsAway" asp-for="editMatch.GoalsAway">
+                        </td>
+                        <td>
+                            <button type="submit" class="btn-primary">
+                                Edytuj wynik
+                            </button>
+                            @*<a href="./AddResultToMatch/@Model.MatchRequest.Id" class="btn btn-primary">Dodaj wynik</a>*@
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </body>
+</form>
+</html>
+

@@ -34,7 +34,7 @@
                         <th>Typ drużyny</th>
                         <th>Data</th>
                         <th>Stadion</th>
-                        <th>Zaakceptowany</th>
+                        <th>Status</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -57,12 +57,17 @@
                             <td>
                                 @if (item.IsAccepted == true)
                                 {
-                                    <span class="badge badge-success">Tak</span>
+                                    <span class="badge badge-success">Zaakceptowany</span>
                                 }
-                                else
+                                @if (item.IsAccepted == false)
                                 {
-                                    <span class="badge badge-danger">Nie</span>
+                                    <span class="badge badge-danger">Odrzucony</span>
                                 }
+                                @if (item.IsAccepted == null)
+                                {
+                                    <span class="badge badge-secondary">Brak odpowiedzi</span>
+                                }
+                                
                             </td>
                         </tr>
                     }

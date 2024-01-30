@@ -1,4 +1,5 @@
 ﻿using Domain.Models.Domain;
+using Domain.Models.Pagination;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,5 +17,6 @@ namespace Persistance.Repo.Interfaces
         Task<List<MatchRequest>> GetPropositionsByCoachAsync(string userId);
         Task<MatchRequest> GetMatchRequestByIdAsync(int id);
         Task UpdateAsync(MatchRequest matchRequest);
+        Task<ListPaginated<MatchRequest>> GetAllMatchRequestsAsync(ModelPagination modelPagination);
     }
 }

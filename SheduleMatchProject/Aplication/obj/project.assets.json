@@ -3503,9 +3503,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\Praca dyplomowa\\Praca dyplomowa\\Projekt\\SheduleMatchProject\\Aplication\\Aplication.csproj",
-      "projectName": "Aplication",
-      "projectPath": "F:\\Praca dyplomowa\\Praca dyplomowa\\Projekt\\SheduleMatchProject\\Aplication\\Aplication.csproj",
+      "projectUniqueName": "F:\\Praca dyplomowa\\Praca dyplomowa\\Projekt\\SheduleMatchProject\\Aplication\\Application.csproj",
+      "projectName": "Application",
+      "projectPath": "F:\\Praca dyplomowa\\Praca dyplomowa\\Projekt\\SheduleMatchProject\\Aplication\\Application.csproj",
       "packagesPath": "C:\\Users\\Luka\\.nuget\\packages\\",
       "outputPath": "F:\\Praca dyplomowa\\Praca dyplomowa\\Projekt\\SheduleMatchProject\\Aplication\\obj\\",
       "projectStyle": "PackageReference",
